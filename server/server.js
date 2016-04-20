@@ -10,14 +10,25 @@ import 'babel-polyfill';
 const app = new Koa();
 const PORT = parseInt(process.env.PORT || 8080);
 
-// koa static server
-const publicFiles = serve(path.resolve(__dirname, '../client'));
-app.use(publicFiles);
+
 
 import webpack from 'webpack';
 import { devMiddleware, hotMiddleware } from 'koa-webpack-middleware';
 import devConfig from '../../webpack.js';
-if (process.env.NODE_ENV === 'development') {
+
+if (process.env.NODE_ENV === 'production') {
+	// koa static server
+	const publicFiles = serve(path.resolve(__dirname, '../client'));
+	app.use(publicFiles);
+} else {
+	// koa static server
+	// static server should use before webpack middleware
+	const publicFiles = serve(path.resolve(__dirname, '../../client'));
+	app.use(publicFiles);
+
+	// import modules should be in dynamic way
+	// System.import support dynamic import file, not support import module now
+	// update later
   // System.import('');
 
 	const compile = webpack(devConfig);

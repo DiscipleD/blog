@@ -1,7 +1,7 @@
 {
   "name": "disciple.ding-blog",
   "title": "Disciple Ding Blog",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "https://github.com/DiscipleD/blog",
   "author": "Start Bootstrap",
   "license": {
@@ -13,10 +13,10 @@
     "babel-core": "^6.7.6",
     "babel-eslint": "^6.0.2",
     "babel-loader": "^6.2.4",
-    "babel-plugin-transform-async-to-generator": "^6.7.4",
-    "babel-plugin-transform-runtime": "^6.7.5",
     "babel-polyfill": "^6.7.4",
     "babel-preset-es2015": "^6.6.0",
+    "babel-preset-stage-3": "^6.5.0",
+    "css-loader": "^0.23.1",
     "eslint": "^2.8.0",
     "eslint-friendly-formatter": "^2.0.2",
     "eslint-loader": "^1.3.0",
@@ -25,6 +25,8 @@
     "gulp-babel": "^6.1.2",
     "gulp-clean": "^0.3.2",
     "koa-webpack-middleware": "^1.0.1",
+    "vue": "^1.0.21",
+    "vue-loader": "^8.2.3",
     "webpack": "^1.13.0"
   },
   "repository": {
@@ -36,6 +38,6 @@
     "koa-static": "^2.0.0"
   },
   "scripts": {
-    "start": "NODE_ENV=development DEBUG=koa-send* node dist/server/server.js --harmony"
+    "start": "node dist/server/server.js --harmony"
   }
 }

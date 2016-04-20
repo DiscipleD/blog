@@ -5,18 +5,18 @@ const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 
-const SOURCEPATH = path.join(__dirname, 'client');
+const SOURCEPATH = path.join(__dirname, 'client/app');
 const DISTPATH = path.join(SOURCEPATH, 'dist/client');
 
 module.exports = {
 	devtool: 'source-map',
 	entry: [
 		'webpack-hot-middleware/client?path=/__webpack_hmr&reload=true&timeout=20000',
-		'./client/index.js'],
+		'./client/app/app.js'],
 	output: {
 		filename: 'bundle.js',
 		path: DISTPATH,
-		publicPath: '/dist/client/'
+		publicPath: '/client/'
 	},
 	plugins: [
 		new webpack.optimize.OccurenceOrderPlugin(),
