@@ -197,8 +197,6 @@
 	"one-var": [2, { "initialized": "never" }],
 	//在进行断行时，操作符应该放在行首还是行尾。并且还可以对某些操作符进行重写。
 	"operator-linebreak": [2, "after", { "overrides": { "?": "before", ":": "before" } }],
-	//使用单引号
-	"quotes": [2, "single", "avoid-escape"],
 	//在使用parseInt() 方法时，需要传递第二个参数，来帮助解析，告诉方法解析成多少进制。
 	"radix": 2,
 	//这就是分号党和非分号党关心的了，我们还是选择加分号

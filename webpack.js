@@ -5,7 +5,7 @@ const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 
-const SOURCEPATH = path.join(__dirname, 'client/app');
+const SOURCEPATH = path.join(__dirname, 'client');
 const DISTPATH = path.join(SOURCEPATH, 'dist/client');
 
 module.exports = {
@@ -36,7 +36,7 @@ module.exports = {
 	module: {
 		preLoaders: [
 			{
-				test: /\.js$/,
+				test: /[^(\.min)]\.js$/,
 				loader: 'eslint-loader',
 				exclude: /node_modules/,
 				include: SOURCEPATH
@@ -45,24 +45,24 @@ module.exports = {
 
 		loaders: [
 			{
-				test: /\.js$/,
+				test: /[^(\.min)]\.js$/,
 				loaders: ['babel'],
 				exclude: /node_modules/,
 				include: SOURCEPATH
 			},
-			/* {
-				test: /(\.tpl|template)\.html$/,
+			{
+				test: /\.html$/,
 				loader: 'html',
 				query: {interpolate: true},
 				exclude: /node_modules/,
 				include: SOURCEPATH
-			},*/
-			{
+			},
+			/*{
 				test: /\.html$/,
 				loader: 'file?name=[path][name]-[hash:8].[ext]',
 				exclude: /node_modules/,
 				include: SOURCEPATH
-			},
+			},*/
 			{
 				test: /\.(sc|c)ss$/,
 				loader: ['style', 'css', 'postcss', 'sass']
