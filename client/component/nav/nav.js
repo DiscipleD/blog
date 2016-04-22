@@ -3,7 +3,7 @@
  */
 
 import Vue from 'vue';
-import jQuery from '../../assets/lib/jquery.min.js';
+import jQuery from 'jQuery';
 import template from './nav.html';
 
 // Navigation Scripts to Show Header on Scroll-Up

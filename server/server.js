@@ -14,7 +14,7 @@ const PORT = parseInt(process.env.PORT || 8080);
 
 import webpack from 'webpack';
 import { devMiddleware, hotMiddleware } from 'koa-webpack-middleware';
-import devConfig from '../../webpack.js';
+import devConfig from '../../webpack.config.js';
 
 if (process.env.NODE_ENV === 'production') {
 	// koa static server

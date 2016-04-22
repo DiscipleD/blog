@@ -18,6 +18,9 @@ module.exports = {
 		path: DISTPATH,
 		publicPath: '/client/'
 	},
+	externals: {
+		"jQuery": "jQuery" // externals key which is used by import, value which is used mapping global value
+	},
 	plugins: [
 		new webpack.optimize.OccurenceOrderPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
