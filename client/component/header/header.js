@@ -5,9 +5,7 @@
 import Vue from 'vue';
 import template from './header.html';
 
-export default Vue.component('pageHeader', {
+export default Vue.component('contentHeader', {
 	template,
-	data: {
-		img: ''
-	}
+	props: ['boardImg']
 });
