@@ -5,6 +5,12 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+// Bootstrap Core CSS for Clean-blog
+import '../assets/css/bootstrap.min.css';
+import '../assets/lib/bootstrap.min';
+// Clean-log less transform to Clean-log cass
+import '../assets/scss/clean-blog.scss';
+
 import Router from './router';
 import '../component';
 
@@ -21,5 +27,3 @@ let router = new VueRouter();
 router.map(Router);
 
 router.start(app, '#app');
-
-console.log('bbbc');
