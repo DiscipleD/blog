@@ -3,10 +3,14 @@
  */
 
 import Vue from 'vue';
+import headerImg from '../../assets/img/home-bg.jpg';
 import template from './home.html';
 
 const Home = Vue.extend({
-	template
+	template,
+	data: () => {
+		return { headerImg };
+	}
 });
 
 export default Home;

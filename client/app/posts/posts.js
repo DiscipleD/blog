@@ -6,7 +6,10 @@ import Vue from 'vue';
 import template from './post.html';
 
 const Posts = Vue.extend({
-	template
+	template,
+	data: () => {
+		return { headerImg: '' };
+	}
 });
 
 export default Posts;

@@ -3,11 +3,15 @@
  */
 
 import Vue from 'vue';
+import headerImg from '../../assets/img/about-bg.jpg';
 import template from './about.html';
 
 
 const About = Vue.extend({
-	template
+	template,
+	data: () => {
+		return { headerImg };
+	}
 });
 
 export default About;
