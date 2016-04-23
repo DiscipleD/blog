@@ -3,26 +3,36 @@
  */
 const path = require('path');
 const webpack = require('webpack');
+const CleanPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
 const SOURCEPATH = path.join(__dirname, 'client');
-const DISTPATH = path.join(SOURCEPATH, 'dist/client');
+const DISTPATH = path.join(__dirname, 'dist/public');
 
 module.exports = {
 	devtool: 'source-map',
 	entry: [
 		'webpack-hot-middleware/client?path=/__webpack_hmr&reload=true&timeout=20000',
-		'./client/app/app.js'],
+		SOURCEPATH + '/app/app.js'
+	],
 	output: {
-		filename: 'bundle.js',
+		filename: '[name].[hash].js',
 		path: DISTPATH,
-		publicPath: '/client/'
+		publicPath: '/'
 	},
+	// externals can be used when sources loaded by other project or remote system, like CDN.
 	externals: {
 		"jQuery": "jQuery" // externals key which is used by import, value which is used mapping global value
 	},
 	plugins: [
+		new CleanPlugin([DISTPATH]),
 		new webpack.optimize.OccurenceOrderPlugin(),
+		// webpack-dev-middleware doesn't create any file, but it will write file in memory, that will cause good performance
+		// write the right path, webpack-dev-middleware server can reach it
+		new HtmlWebpackPlugin({
+			template: SOURCEPATH + '/index.html'
+		}),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoErrorsPlugin()
 	],
@@ -68,7 +78,7 @@ module.exports = {
 			},*/
 			{
 				test: /\.(sc|c)ss$/,
-				loader: ['style', 'css', 'postcss', 'sass']
+				loaders: ['style', 'css', 'postcss', 'sass']
 			},
 			{
 				test: /\.(jpe?g|png|gif|svg)$/i,

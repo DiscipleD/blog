@@ -9,8 +9,7 @@ import 'babel-polyfill';
 // Koa application is now a class and requires the new operator.
 const app = new Koa();
 const PORT = parseInt(process.env.PORT || 8080);
-
-
+const PUBLICPATH = path.resolve(__dirname, '../public');
 
 import webpack from 'webpack';
 import { devMiddleware, hotMiddleware } from 'koa-webpack-middleware';
@@ -18,12 +17,12 @@ import devConfig from '../../webpack.config.js';
 
 if (process.env.NODE_ENV === 'production') {
 	// koa static server
-	const publicFiles = serve(path.resolve(__dirname, '../client'));
+	const publicFiles = serve(PUBLICPATH);
 	app.use(publicFiles);
 } else {
 	// koa static server
 	// static server should use before webpack middleware
-	const publicFiles = serve(path.resolve(__dirname, '../../client'));
+	const publicFiles = serve(PUBLICPATH);
 	app.use(publicFiles);
 
 	// import modules should be in dynamic way

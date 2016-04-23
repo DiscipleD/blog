@@ -188,7 +188,7 @@
 	//没有执行不到的代码
 	"no-unreachable": 2,
 	//没有定义了没有被使用到的变量
-	"no-unused-vars": [2, { "vars": "all", "args": "none" }],
+	"no-unused-vars": 2,
 	//禁止在不需要使用call（）或者apply（）的时候使用了这两个方法
 	"no-useless-call": 2,
 	//不要使用with语句
