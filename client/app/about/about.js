@@ -6,11 +6,12 @@ import Vue from 'vue';
 import headerImg from '../../assets/img/about-bg.jpg';
 import template from './about.html';
 
+import content from './about.md';
 
 const About = Vue.extend({
 	template,
 	data: () => {
-		return { headerImg };
+		return { headerImg, content };
 	}
 });
 

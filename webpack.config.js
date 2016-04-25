@@ -70,6 +70,10 @@ module.exports = {
 				exclude: /node_modules/,
 				include: SOURCEPATH
 			},
+			{
+				test: /\.md$/,
+				loader: "html!markdown?breaks=true&pedantic=true&smartypants=true"
+			},
 			/*{
 				test: /\.html$/,
 				loader: 'file?name=[path][name]-[hash:8].[ext]',

@@ -42,7 +42,8 @@
   },
   "dependencies": {
     "koa": "^2.0.0",
-    "koa-static": "^2.0.0"
+    "koa-static": "^2.0.0",
+    "markdown-loader": "^0.1.7"
   },
   "scripts": {
     "start": "node dist/server/server.js --harmony"
