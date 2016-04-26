@@ -72,7 +72,7 @@ module.exports = {
 			},
 			{
 				test: /\.md$/,
-				loader: "html!markdown?breaks=true&pedantic=true&smartypants=true"
+				loader: "html!markdown"
 			},
 			/*{
 				test: /\.html$/,

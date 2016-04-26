@@ -4,11 +4,13 @@
 
 import Footer from './footer/footer';
 import Header from './header/header';
-import Nav from './nav/nav';
+import Post from './post';
+import Nav from './nav';
 
 const Components = {
 	Footer,
 	Header,
+	Post,
 	Nav
 };
 

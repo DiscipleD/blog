@@ -3,8 +3,8 @@
  */
 
 import Home from './home/home';
-import Posts from './posts/posts';
 import About from './about/about';
+import Components from '../component';
 
 const Router = {
 	'/': {
@@ -16,8 +16,8 @@ const Router = {
 	'/home': {
 		component: Home
 	},
-	'/posts': {
-		component: Posts
+	'/posts/:postTitle': {
+		component: Components.Post
 	}
 };
 
