@@ -1,0 +1,20 @@
+.post-content{
+  img{
+    max-width: 92.5%; // fix img too large bug
+  }
+
+  table{
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #dddddd;
+    border-collapse: collapse;
+    border-left: none;
+
+    th,
+    td{
+      padding: 6px;
+      border-top: 1px solid #dddddd;
+      border-left: 1px solid #dddddd;
+    }
+  }
+}

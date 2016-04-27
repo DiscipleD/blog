@@ -3,9 +3,12 @@
  */
 
 import Vue from 'vue';
-import template from './post.html';
 
-import Post from './post';
+import './post-header';
+
+import template from './post.html';
+import './post.scss';
+import PostService from './post';
 
 const PostComponent = Vue.component('Post', {
 	template,
@@ -16,8 +19,7 @@ const PostComponent = Vue.component('Post', {
 	},
 	route: {
 		data: transition => {
-			let post = new Post();
-			post.queryPost(transition.to.params.postTitle);
+			let post = PostService.queryPost(transition.to.params.postTitle);
 			return {
 				post
 			};

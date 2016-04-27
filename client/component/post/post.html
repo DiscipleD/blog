@@ -1,12 +1,11 @@
 <section>
 	<!-- Content Header -->
-	<content-header></content-header>
-{{ post.title}}
+	<post-header :board-img="post.headerImg" :title="post.title" :sub-title="post.subTitle" :created-time="post.createdTime"></post-header>
 	<!-- Post Content -->
 	<article>
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">{{{ post.content }}}</div>
+				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-content">{{{ post.content }}}</div>
 			</div>
 		</div>
 	</article>
