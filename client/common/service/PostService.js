@@ -6,7 +6,10 @@ import posts from '../../data/posts';
 
 export default class PostService {
 	constructor() {
+	}
 
+	queryPostList() {
+		return new Promise(resolve => resolve({postList: posts}));
 	}
 
 	static queryPost(postName) {

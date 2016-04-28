@@ -1,0 +1,16 @@
+<ul class="post-list">
+	<li v-for="post of postList">
+		<div class="post-preview">
+			<a v-link="{ path: '/posts/' + post.name }">
+				<h2 class="post-title">
+					{{ post.title }}
+				</h2>
+				<h3 class="post-subtitle">
+					{{ post.subTitle }}
+				</h3>
+			</a>
+			<p class="post-meta">Posted on {{ post.createdTime }}</p>
+		</div>
+		<hr>
+	</li>
+</ul>

@@ -9,7 +9,7 @@ import './post-header';
 import template from './post.html';
 import './post.scss';
 
-const PostComponent = Vue.component('Post', {
+const PostComponent = Vue.component('post', {
 	template,
 	props: ['post']
 });
