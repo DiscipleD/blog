@@ -12,6 +12,7 @@ import '../assets/lib/bootstrap.min';
 import '../assets/scss/clean-blog.scss';
 
 import Router from './router';
+import '../component';
 
 if (module.hot) {
 	module.hot.accept();

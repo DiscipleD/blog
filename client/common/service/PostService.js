@@ -2,7 +2,7 @@
  * Created by jack on 16-4-27.
  */
 
-import posts from '../../app/posts';
+import posts from '../../data/posts';
 
 export default class PostService {
 	constructor() {

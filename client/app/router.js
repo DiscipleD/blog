@@ -4,7 +4,7 @@
 
 import Home from './home/home';
 import About from './about/about';
-import Components from '../component';
+import Post from './post/post';
 
 const Router = {
 	'/': {
@@ -17,7 +17,7 @@ const Router = {
 		component: Home
 	},
 	'/posts/:postName': {
-		component: Components.Post
+		component: Post
 	}
 };
 

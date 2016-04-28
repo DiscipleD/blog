@@ -2,10 +2,10 @@
  * Created by jack on 16-4-27.
  */
 
-import Post from '../../../util/post';
+import Post from '../../../common/model/Post';
 
 import headerImg from './header-img-2016-04-27.jpg';
-import content from './private-npm.md';
+import content from './private-npm-server.md';
 
 const post = new Post({
 	headerImg,
