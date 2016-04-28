@@ -13,8 +13,7 @@ const DISTPATH = path.join(__dirname, 'dist');
 gulp.task('build-backend', ['clean'], () => {
 	return gulp.src(BACKENDSOURCE + '/**/*.js')
 		.pipe(babel({
-			presets: ['es2015'],
-			plugins: ['transform-runtime', 'transform-async-to-generator']
+			plugins: ['transform-runtime'] // gulp-babel plugin
 		}))
 		.pipe(gulp.dest(DISTPATH + '/server'));
 });
