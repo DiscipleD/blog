@@ -16,7 +16,7 @@ const Router = {
 	'/home': {
 		component: Home
 	},
-	'/posts/:postTitle': {
+	'/posts/:postName': {
 		component: Components.Post
 	}
 };
