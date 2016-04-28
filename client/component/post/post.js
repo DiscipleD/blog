@@ -10,13 +10,16 @@ export default class PostService {
 	}
 
 	static queryPost(postName) {
-		let post;
-		if (postName) {
-			post = posts.filter(item => {
-				return item.name === postName;
-			});
-			post = post.length ? post[0] : '';
-		}
-		return post;
+		// tail call optimisation
+		return new Promise((resolve, reject) => {
+			let post;
+			// using setTimeout to simulate call back end function
+			setTimeout(() => {
+				post = posts.filter(item => {
+					return item.name === postName;
+				});
+				post.length ? resolve({post: post[0]}) : reject('Post not found.');
+			}, 50);
+		});
 	}
 }

@@ -19,10 +19,14 @@ const PostComponent = Vue.component('Post', {
 	},
 	route: {
 		data: transition => {
-			let post = PostService.queryPost(transition.to.params.postTitle);
-			return {
-				post
-			};
+			// direct return promise not works well when user go some page and go back to the wrong route.
+			// return PostService.queryPost(transition.to.params.postName);
+			PostService.queryPost(transition.to.params.postName).then(post => {
+				transition.next(post);
+			}, err => {
+				console.error(err + 'Page will redirect to the Home page.');
+				transition.redirect('/');
+			});
 		}
 	}
 });
