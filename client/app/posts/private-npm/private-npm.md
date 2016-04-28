@@ -77,10 +77,10 @@ cnpm 默认的两个访问端口是：
 6. npm start // 启动cnpm服务
     1. 启动成功  
     ![success log](./cnpm-server-start.jpg)
-    1. 验证：访问http://localhost:7001/
+    1. 验证：访问 http://localhost:7001/
     ![cnpm 的 registry 信息](./cnpm-repositry.jpg)
 
-    2. 验证：访问http://localhost:7002/
+    2. 验证：访问 http://localhost:7002/
     ![web访问](./cnpm-web.jpg)
 
 至此，cnpm 的安装已经完成了。
@@ -236,7 +236,7 @@ sinopia 搭建完成后就可以发布 npm 包了，上文已经叙述过如何�
 
 在此，我就不耍流氓了。
 
-####参考资料：
+#### 参考资料：
 
 1. [github cnpm](https://github.com/cnpm/cnpmjs.org)
 2. [Deploy a private npm registry in 5 minutes](https://github.com/cnpm/cnpmjs.org/wiki/Deploy-a-private-npm-registry-in-5-minutes)
