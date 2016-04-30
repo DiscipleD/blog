@@ -9,7 +9,7 @@ export default class PostService {
 	}
 
 	queryPostList() {
-		return new Promise(resolve => resolve({postList: posts}));
+		return Promise.resolve({postList: posts});
 	}
 
 	static queryPost(postName) {

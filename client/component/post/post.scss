@@ -1,6 +1,20 @@
 .post-content{
+  font-family: 'Lora', 'Times New Roman', serif, "Microsoft YaHei";
+  font-size: 18px;
+
+  p{
+    line-height: 1.5;
+    margin: 30px 0;
+  }
+
   img{
     max-width: 92.5%; // fix img too large bug
+  }
+
+  blockquote{
+    p{
+      margin: 0;
+    }
   }
 
   table{
