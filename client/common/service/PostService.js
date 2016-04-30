@@ -2,14 +2,14 @@
  * Created by jack on 16-4-27.
  */
 
-import posts from '../../data/posts';
+import postList from '../../data/posts';
 
 export default class PostService {
 	constructor() {
 	}
 
 	queryPostList() {
-		return Promise.resolve({postList: posts});
+		return Promise.resolve({ postList });
 	}
 
 	static queryPost(postName) {
@@ -18,7 +18,7 @@ export default class PostService {
 			let post;
 			// using setTimeout to simulate call back end function
 			setTimeout(() => {
-				post = posts.filter(item => {
+				post = postList.filter(item => {
 					return item.name === postName;
 				});
 				post.length ? resolve({post: post[0]}) : reject('Post not found.');

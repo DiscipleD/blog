@@ -6,13 +6,19 @@ import Vue from 'vue';
 
 import PostService from '../../common/service/PostService';
 
-import headerImg from '../../assets/img/home-bg.jpg';
+import img from '../../assets/img/home-bg.jpg';
 import template from './home.html';
 
 const Home = Vue.extend({
 	template,
 	data: () => {
-		return { headerImg, postList: [] };
+		return {
+			header: {
+				img,
+				title: 'D.D Blog',
+				subtitle: 'Share More, Gain More.'
+			},
+			postList: [] };
 	},
 	route: {
 		data: () => {

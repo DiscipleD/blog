@@ -9,9 +9,16 @@ import _defaultImg from '../../assets/img/contact-bg.jpg';
 export default Vue.component('contentHeader', {
 	template,
 	props: {
-		'boardImg': {
+		boardImg: {
 			type: String,
 			default: _defaultImg
+		},
+		title: {
+			type: String,
+			required: true
+		},
+		subtitle: {
+			type: String
 		}
 	}
 });

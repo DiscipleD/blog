@@ -1,1 +1,1 @@
-##Record life, Record happiness.
+## Share More, Gain More.
