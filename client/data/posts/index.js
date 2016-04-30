@@ -22,6 +22,10 @@ posts.push(es6);
 posts.push(jsDoc);
 posts.push(privateNpmServer);
 
+posts.sort((a, b) => {
+	return a.createdTime > b.createdTime ? -1 : 1;
+});
+
 // 暂时由静态目录通过 webpack 的文件引入为对象的方式来管理 Post
 // 后期可直接将这部分移植至 database
 export default posts;
