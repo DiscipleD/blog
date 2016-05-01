@@ -3,21 +3,21 @@
  */
 const path = require('path');
 const webpack = require('webpack');
-const CleanPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const CleanPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const SOURCEPATH = path.join(__dirname, 'client');
 const DISTPATH = path.join(__dirname, 'dist/public');
 
-module.exports = {
+const defaultWebpackConfig = {
 	devtool: 'source-map',
 	entry: [
-		'webpack-hot-middleware/client?path=/__webpack_hmr&reload=true&timeout=20000',
 		SOURCEPATH + '/app/app.js'
 	],
 	output: {
-		filename: '[name].[hash].js',
+		filename: '[name].[hash:8].js',
 		path: DISTPATH,
 		publicPath: '/'
 	},
@@ -26,14 +26,23 @@ module.exports = {
 		"jQuery": "jQuery" // externals key which is used by import, value which is used mapping global value
 	},
 	plugins: [
-		new CleanPlugin([DISTPATH]),
 		new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'common',
+			filename: 'common.[hash:8].js'
+		}),
 		// webpack-dev-middleware doesn't create any file, but it will write file in memory, that will cause good performance
 		// write the right path, webpack-dev-middleware server can reach it
 		new HtmlWebpackPlugin({
 			template: SOURCEPATH + '/index.html'
 		}),
-		new webpack.HotModuleReplacementPlugin(),
+		// the plugin need be added in loader
+		new ExtractTextPlugin('style-[contenthash:8].css'),
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {
+				warnings: false
+			}
+		}),
 		new webpack.NoErrorsPlugin()
 	],
 	resolve: {
@@ -55,7 +64,6 @@ module.exports = {
 				include: SOURCEPATH
 			}
 		],
-
 		loaders: [
 			{
 				test: /[^(\.min)]\.js$/,
@@ -75,14 +83,17 @@ module.exports = {
 				loader: "html!markdown"
 			},
 			/*{
-				test: /\.html$/,
-				loader: 'file?name=[path][name]-[hash:8].[ext]',
-				exclude: /node_modules/,
-				include: SOURCEPATH
-			},*/
+			 test: /\.html$/,
+			 loader: 'file?name=[path][name]-[hash:8].[ext]',
+			 exclude: /node_modules/,
+			 include: SOURCEPATH
+			 },*/
 			{
 				test: /\.(sc|c)ss$/,
-				loaders: ['style', 'css', 'postcss', 'sass']
+				// extract css file from js file, that will reduce the js file size and optimize page loading.
+				// but it will increase the package time, so it should be only used in build file.
+				loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader')
+				// loaders: ['style', 'css', 'postcss', 'sass']
 			},
 			{
 				test: /\.(jpe?g|png|gif|svg)$/i,
@@ -111,3 +122,20 @@ module.exports = {
 		]
 	}
 };
+
+var webpackConfig = Object.assign({}, defaultWebpackConfig);
+
+if (process.env.NODE_ENV === 'production') {
+	webpackConfig.plugins.unshift(new CleanPlugin([DISTPATH]));
+	webpackConfig.plugins.push(new ExtractTextPlugin());
+	webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
+		compress: {
+			warnings: false
+		}
+	}));
+} else {
+	webpackConfig.entry.unshift('webpack-hot-middleware/client?path=/__webpack_hmr&reload=true&timeout=20000');
+	webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
+}
+
+module.exports = webpackConfig;

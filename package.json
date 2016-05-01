@@ -43,6 +43,7 @@
     "url": "https://github.com/DiscipleD/blog.git"
   },
   "dependencies": {
+    "extract-text-webpack-plugin": "^1.0.1",
     "koa": "^2.0.0",
     "koa-static": "^2.0.0",
     "markdown-loader": "^0.1.7"
