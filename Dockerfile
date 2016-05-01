@@ -16,7 +16,7 @@ RUN npm install
 # Bundle app source
 COPY . /usr/app
 
-EXPOSE 8080
+EXPOSE 80
 
 RUN npm run build
 
