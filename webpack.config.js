@@ -127,7 +127,6 @@ var webpackConfig = Object.assign({}, defaultWebpackConfig);
 
 if (process.env.NODE_ENV === 'production') {
 	webpackConfig.plugins.unshift(new CleanPlugin([DISTPATH]));
-	webpackConfig.plugins.push(new ExtractTextPlugin());
 	webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
 		compress: {
 			warnings: false

@@ -8,18 +8,18 @@ const babel = require('gulp-babel');
 const clean = require('gulp-clean');
 
 const BACKENDSOURCE = path.join(__dirname, 'server');
-const DISTPATH = path.join(__dirname, 'dist');
+const DISTPATH = path.join(__dirname, 'dist/server');
 
 gulp.task('build-backend', ['clean'], () => {
 	return gulp.src(BACKENDSOURCE + '/**/*.js')
 		.pipe(babel({
 			plugins: ['transform-runtime'] // gulp-babel plugin
 		}))
-		.pipe(gulp.dest(DISTPATH + '/server'));
+		.pipe(gulp.dest(DISTPATH));
 });
 
 gulp.task('clean', () => {
-	return gulp.src(DISTPATH + '/server', {read: false})
+	return gulp.src(DISTPATH, {read: false})
 		.pipe(clean());
 });
 

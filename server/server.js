@@ -15,16 +15,12 @@ import webpack from 'webpack';
 import { devMiddleware, hotMiddleware } from 'koa-webpack-middleware';
 import devConfig from '../../webpack.config.js';
 
-if (process.env.NODE_ENV === 'production') {
-	// koa static server
-	const publicFiles = serve(PUBLICPATH);
-	app.use(publicFiles);
-} else {
-	// koa static server
-	// static server should use before webpack middleware
-	const publicFiles = serve(PUBLICPATH);
-	app.use(publicFiles);
+// koa static server
+// static server should use before webpack middleware
+const publicFiles = serve(PUBLICPATH);
+app.use(publicFiles);
 
+if (process.env.NODE_ENV !== 'production') {
 	// import modules should be in dynamic way
 	// System.import support dynamic import file, not support import module now
 	// update later
