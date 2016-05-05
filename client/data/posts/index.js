@@ -10,6 +10,7 @@ import decorator from './decorator-design-pattern';
 import es6 from './es2015';
 import jsDoc from './js-doc';
 import privateNpmServer from './private-npm-server';
+import curryHelps from './why-curry-helps';
 
 let posts = [];
 
@@ -21,6 +22,7 @@ posts.push(decorator);
 posts.push(es6);
 posts.push(jsDoc);
 posts.push(privateNpmServer);
+posts.push(curryHelps);
 
 posts.sort((a, b) => {
 	return a.createdTime > b.createdTime ? -1 : 1;
