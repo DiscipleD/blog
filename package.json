@@ -52,7 +52,7 @@
   "scripts": {
     "start": "node dist/server/server.js --harmony",
     "build": "NODE_ENV=production webpack && gulp build-backend",
-    "pm2": "NODE_ENV=production pm2 start dist/server/server.js",
+    "pm2": "NODE_ENV=production pm2 start dist/server/server.js --no-daemon",
     "stop-server": "pm2 stop server"
   }
 }
