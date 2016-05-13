@@ -5,18 +5,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-// Bootstrap Core CSS for Clean-blog
-import '../assets/css/bootstrap.min.css';
-import '../assets/lib/bootstrap.min';
 // Clean-log less transform to Clean-log cass
 import '../assets/scss/clean-blog.scss';
 
 import Router from './router';
 import '../component';
-
-if (module.hot) {
-	module.hot.accept();
-}
 
 // vue 插件的装入
 Vue.use(VueRouter);

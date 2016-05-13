@@ -1,32 +1,20 @@
 <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-	<div class="container-fluid">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header page-scroll">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" v-link="{ path: '/home' }">Disciple.Ding Blog</a>
-		</div>
-
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav navbar-right">
-				<li>
-					<a v-link="{ path: '/home' }">Home</a>
-				</li>
-				<li>
-					<a v-link="{ path: '/about' }">About</a>
-				</li>
-				<li>
-					<a v-link="{ path: '/posts/private-npm-server' }">Latest Post</a>
-				</li>
-			</ul>
-		</div>
-		<!-- /.navbar-collapse -->
+<nav class="navbar navbar-light navbar-custom">
+	<button class="navbar-toggler pull-xs-right hidden-sm-up" type="button" data-toggle="collapse" data-target="#MenuBar">
+		&#9776;
+	</button>
+	<div class="">
+		<a class="navbar-brand" v-link="{ path: '/home' }">Disciple.Ding Blog</a>
+		<ul class="nav navbar-nav pull-xs-right collapse navbar-toggleable-xs" id="MenuBar">
+			<li class="nav-item">
+				<a class="nav-link" v-link="{ path: '/home' }">Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" v-link="{ path: '/about' }">About</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" v-link="{ path: '/posts/private-npm-server' }">Latest Post</a>
+			</li>
+		</ul>
 	</div>
-	<!-- /.container -->
 </nav>

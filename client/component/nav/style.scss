@@ -1,0 +1,100 @@
+$brand-primary: #0085A1;
+$gray-dark: lighten(black, 25%);
+$gray: lighten(black, 50%);
+$white-faded: rgba(255, 255, 255, 0.8);
+$black-faded: rgba(0, 0, 0, .8);
+$gray-light: #eee;
+
+.navbar-custom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+  .navbar-brand {
+    font-weight: 800;
+  }
+  .nav-link {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .navbar-toggler {
+    border-color: #ddd;
+  }
+  @media only screen and (min-width: 768px) {
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    padding: 0.75rem 1rem;
+
+    .navbar-nav{
+      margin-top: 0.325rem;
+    }
+
+    .navbar-brand, .navbar-nav .nav-link {
+      color: white;
+      &:hover,
+      &:focus {
+        color: $white-faded;
+      }
+    }
+    .nav-item {
+      color: white;
+
+      &:hover,
+      &:focus {
+        background: transparent;
+        color: $white-faded;
+      }
+
+      &::after{
+        content: '';
+        background-color: $white-faded;
+        display: block;
+        height: 2px;
+        width: 100%;
+        transform: scaleX(0);
+        transition: all 0.2s ease-in-out;
+      }
+
+      &:hover::after{
+        transform: scaleX(1);
+      }
+    }
+    .nav-link {
+      padding: 0.225rem 0;
+    }
+  }
+  @media only screen and (min-width: 1170px) {
+    transition: background-color 0.3s;
+    /* Force Hardware Acceleration in WebKit */
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    &.is-fixed {
+      /* when the user scrolls down, we hide the header right above the viewport */
+      position: fixed;
+      top: -61px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid darken(white, 5%);
+      transition: transform 0.3s;
+      .navbar-brand, .nav-link {
+        color: $gray-dark;
+        &:hover,
+        &:focus {
+          color: $brand-primary;
+        }
+      }
+      .nav-item::after{
+        background-color: $brand-primary;
+      }
+    }
+    &.is-visible {
+      /* if the user changes the scrolling direction, we show the header */
+      transform: translate3d(0, 100%, 0);
+    }
+  }
+}

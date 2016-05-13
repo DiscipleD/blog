@@ -5,6 +5,7 @@
 import Vue from 'vue';
 import jQuery from 'jQuery';
 import template from './nav.html';
+import './style.scss';
 
 // Navigation Scripts to Show Header on Scroll-Up
 jQuery(document).ready(function($) {
