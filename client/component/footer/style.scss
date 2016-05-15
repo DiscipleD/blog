@@ -1,0 +1,42 @@
+@import "../../assets/scss/variables.scss";
+
+.page-footer {
+  padding: 1rem 0;
+  .social-link-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+
+  .social-link-item {
+    padding: .225rem;
+
+    > a {
+      background-color: $gray-dark;
+      border-radius: 50%;
+      display: block;
+      width: 3rem;
+      height: 3rem;
+      padding: .75rem;
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        background-color: $gray;
+      }
+    }
+
+    .social-svg-item {
+      display: block;
+      width: 1.5rem;
+      height: 1.5rem;
+      fill: #fff;
+    }
+  }
+
+  .copyright {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 0;
+  }
+}

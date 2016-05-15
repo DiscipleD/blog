@@ -3,8 +3,20 @@
  */
 
 import Vue from 'vue';
+
+import svgPath from './social-link.svg';
+import './style.scss';
 import template from './footer.html';
+import { SocialLinkSetting } from './setting';
 
 export default Vue.component('pageFooter', {
-	template
+	template,
+	data: () => {
+		return {
+			socialLinkList: SocialLinkSetting.filter(item => !!item.link).map(item => {
+				item.svgPath = svgPath + '#' + item.name;
+				return item;
+			})
+		};
+	}
 });
