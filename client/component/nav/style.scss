@@ -68,8 +68,7 @@ $gray-light: #eee;
     .nav-link {
       padding: 0.225rem 0;
     }
-  }
-  @media only screen and (min-width: 1170px) {
+
     transition: background-color 0.3s;
     /* Force Hardware Acceleration in WebKit */
     transform: translate3d(0, 0, 0);

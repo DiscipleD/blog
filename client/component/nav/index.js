@@ -3,39 +3,54 @@
  */
 
 import Vue from 'vue';
-import jQuery from 'jQuery';
 import template from './nav.html';
 import './style.scss';
 
-// Navigation Scripts to Show Header on Scroll-Up
-jQuery(document).ready(function($) {
-	const MQL = 1170;
+class Navigation {
+	constructor() {
+		const MinScreenWidth = 768;
+		this.previousTop = 0;
+		this.isVisible = false;
+		this.isFixed = false;
+		this._bodyScrollListener = this._bodyScrollListener.bind(this);
 
-	// primary navigation slide-in effect
-	if ($(window).width() > MQL) {
-		let headerHeight = $('.navbar-custom').height();
-		$(window).on('scroll', {
-			previousTop: 0
-		}, () => {
-			let currentTop = $(window).scrollTop();
-			// check if user is scrolling up
-			if (currentTop < this.previousTop) {
-				// if scrolling up...
-				if (currentTop > 0 && $('.navbar-custom').hasClass('is-fixed')) {
-					$('.navbar-custom').addClass('is-visible');
-				} else {
-					$('.navbar-custom').removeClass('is-visible is-fixed');
-				}
-			} else if (currentTop > this.previousTop) {
-				// if scrolling down...
-				$('.navbar-custom').removeClass('is-visible');
-				if (currentTop > headerHeight && !$('.navbar-custom').hasClass('is-fixed')) $('.navbar-custom').addClass('is-fixed');
+		return {
+			template,
+			data: () => {
+				return {
+					data: this
+				};
+			},
+			ready: () => {
+				MinScreenWidth < document.body.clientWidth && document.addEventListener('scroll', this._bodyScrollListener);
+			},
+			detached: () => {
+				MinScreenWidth < document.body.clientWidth && document.removeEventListener('scroll', this._bodyScrollListener);
 			}
-			this.previousTop = currentTop;
-		});
+		};
 	}
-});
 
-export default Vue.component('navigation', {
-	template
-});
+	_bodyScrollListener() {
+		let currentTop = document.body.scrollTop;
+		// in vue ready lifecycle, page not rendered, so can't query the dom element.
+		this.headerHeight = document.querySelector('.navbar-custom').clientHeight;
+
+		// check if user is scrolling up
+		if (currentTop < this.previousTop) {
+			// if scrolling up...
+			if (currentTop > 0 && this.isFixed) {
+				this.isVisible = true;
+			} else {
+				this.isVisible = false;
+				this.isFixed = false;
+			}
+		} else if (currentTop > this.previousTop) {
+			// if scrolling down...
+			this.isVisible = false;
+			currentTop > this.headerHeight && (this.isFixed = true);
+		}chan
+		this.previousTop = currentTop;
+	}
+}
+
+export default Vue.component('navigation', new Navigation());
