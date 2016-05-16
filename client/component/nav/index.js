@@ -48,7 +48,7 @@ class Navigation {
 			// if scrolling down...
 			this.isVisible = false;
 			currentTop > this.headerHeight && (this.isFixed = true);
-		}chan
+		}
 		this.previousTop = currentTop;
 	}
 }
