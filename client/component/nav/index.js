@@ -6,31 +6,17 @@ import Vue from 'vue';
 import template from './nav.html';
 import './style.scss';
 
+const MinScreenWidth = 768;
+
 class Navigation {
 	constructor() {
-		const MinScreenWidth = 768;
 		this.previousTop = 0;
 		this.isVisible = false;
 		this.isFixed = false;
-		this._bodyScrollListener = this._bodyScrollListener.bind(this);
-
-		return {
-			template,
-			data: () => {
-				return {
-					data: this
-				};
-			},
-			ready: () => {
-				MinScreenWidth < document.body.clientWidth && document.addEventListener('scroll', this._bodyScrollListener);
-			},
-			detached: () => {
-				MinScreenWidth < document.body.clientWidth && document.removeEventListener('scroll', this._bodyScrollListener);
-			}
-		};
+		this.bodyScrollListener = this.bodyScrollListener.bind(this);
 	}
 
-	_bodyScrollListener() {
+	bodyScrollListener() {
 		let currentTop = document.body.scrollTop;
 		// in vue ready lifecycle, page not rendered, so can't query the dom element.
 		this.headerHeight = document.querySelector('.navbar-custom').clientHeight;
@@ -53,4 +39,17 @@ class Navigation {
 	}
 }
 
-export default Vue.component('navigation', new Navigation());
+export default Vue.component('navigation', {
+	template,
+	data: () => {
+		return {
+			data: new Navigation()
+		};
+	},
+	ready: function() {
+		MinScreenWidth < document.body.clientWidth && document.addEventListener('scroll', this.data.bodyScrollListener);
+	},
+	detached: function() {
+		MinScreenWidth < document.body.clientWidth && document.removeEventListener('scroll', this.data.bodyScrollListener);
+	}
+});
