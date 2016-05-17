@@ -3,8 +3,10 @@
  */
 
 import Vue from 'vue';
+
 import template from './nav.html';
 import './style.scss';
+import PostService from '../../common/service/PostService';
 
 const MinScreenWidth = 768;
 
@@ -43,8 +45,15 @@ export default Vue.component('navigation', {
 	template,
 	data: () => {
 		return {
+			postList: null,
 			data: new Navigation()
 		};
+	},
+	activate: function(done) {
+		new PostService().queryPostList().then(result => {
+			this.postList = result.postList;
+			done();
+		});
 	},
 	ready: function() {
 		MinScreenWidth < document.body.clientWidth && document.addEventListener('scroll', this.data.bodyScrollListener);

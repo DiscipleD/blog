@@ -12,8 +12,8 @@
 			<li class="nav-item">
 				<a class="nav-link" v-link="{ path: '/about' }">About</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" v-link="{ path: '/posts/private-npm-server' }">Latest Post</a>
+			<li class="nav-item" v-if="postList">
+				<a class="nav-link" v-link="{ path: '/posts/' + postList[0].name }">Latest Post</a>
 			</li>
 		</ul>
 	</div>

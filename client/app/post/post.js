@@ -20,7 +20,7 @@ const Post = Vue.extend({
 			// return PostService.queryPost(transition.to.params.postName);
 			PostService.queryPost(transition.to.params.postName).then(post => {
 				transition.next(post);
-			}, err => {
+			}).catch(err => {
 				console.error(err + 'Page will redirect to the Home page.');
 				transition.redirect('/');
 			});
