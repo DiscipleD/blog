@@ -7,13 +7,14 @@
 					<li v-for="item of socialLinkList" class="social-link-item">
 						<a href="{{item.link}}">
 							<!-- 我了个擦, vue的一个坑爹的坑 ———— xlink:href不能使用拼接的方式, 即="{{svgPath}}#github", 这会发生两次请求,
-								一次会请求'/%7B%7BsvgPath%7D%7D',即{{svgPath}}的uri转译, 这会导致请求不到 404 error, 第二次是正常并获得svg图
+								一次会请求'/%7B%7BsvgPath%7D%7D',即{{svgPath}}的uri转译, 这会导致请求不到 404 error, 第二次是正常并获得svg图.
 								全部使用变量则只发送一次正常的请求
 							 -->
 							<svg class="social-svg-item"><use xlink:href="{{item.svgPath}}"></use></svg>
 						</a>
 					</li>
 				</ul>
+				<p class="copyright text-muted"><a href="https://github.com/DiscipleD/blog">find source code here</a></p>
 				<p class="copyright text-muted">Copyright &copy; Disciple Ding 2016</p>
 			</div>
 		</div>

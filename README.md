@@ -1,24 +1,44 @@
-#Disciple.Ding blog
+Disciple.Ding blog
+====
 
-using [Start Bootstrap](http://startbootstrap.com/) - [Clean Blog](http://startbootstrap.com/template-overviews/clean-blog/) template
+The source code for my blog, [http://discipled.daoapp.io](http://discipled.daoapp.io)
 
-## Dev env
-### INSTALL
+I'm constantly rewriting / refactoring this silly little blog using
+the latest and buzziest tech, so that I can stay up to date on these
+libraries and frameworks. Current buzzwords:
+
+* main tech
+    - Vue v1.0 +
+    - ES2015
+    - scss
+    - Koa 2(async functions)
+* style & template
+    - bootstrap v4
+    - [Start Bootstrap](http://startbootstrap.com/) - [Clean Blog](http://startbootstrap.com/template-overviews/clean-blog/)
+* package
+    - webpack
+    - postcss
+    - gulp
+* publish
+    - docker
+
+### Dev env
+#### INSTALL
 npm i
 
-### RUN
+#### RUN
 gulp -- use to listen backend source change (no need watch backend file using **gulp build-backend**)
 npm start -- webpack for front end source
 
-## Production env
-### INSTALL
+### Production env
+#### INSTALL
 npm i
 
-### BUILD
+#### BUILD
 npm run build
 
-### Start server
-npm run pm2
+#### Start server
+npm run start-server
 
-### Stop server
+#### Stop server
 npm run stop-server
