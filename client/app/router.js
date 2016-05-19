@@ -17,7 +17,8 @@ const Router = {
 		component: Home
 	},
 	'/posts/:postName': {
-		component: Post
+		component: Post,
+		waitForData: true
 	}
 };
 
