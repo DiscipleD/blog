@@ -27,7 +27,10 @@ const Post = Vue.extend({
 				console.error(err + 'Page will redirect to the Home page.');
 				transition.redirect('/');
 			});
-		}
+		},
+		// set this attr will not reuse the component that child component ready hook will be called every time, default value is true
+		canReuse: false,
+		waitForData: true
 	}
 });
 
