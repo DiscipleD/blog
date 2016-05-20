@@ -9,7 +9,10 @@
 					{{ post.subTitle }}
 				</h3>
 			</a>
-			<p class="post-meta">Posted on {{ post.createdTime }}</p>
+			<p class="post-meta">
+				Posted on {{ post.createdTime }}<br/>
+				<span class="disqus-comment-count" data-disqus-identifier="{{post.name}}"></span>
+			</p>
 		</div>
 		<hr>
 	</li>

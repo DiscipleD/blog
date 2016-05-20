@@ -16,10 +16,9 @@
   ],
 
   "globals": {
-	"angular": true,
 	"document": true,
-	"navigator": true,
-	"window": true
+	"window": true,
+    "DISQUS": true
   },
 
   "parser": "babel-eslint",

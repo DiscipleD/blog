@@ -24,6 +24,10 @@ const defaultWebpackConfig = {
 	// externals can be used when sources loaded by other project or remote system, like CDN.
 	externals: {
 		"jQuery": "jQuery" // externals key which is used by import, value which is used mapping global value
+		// can't set this attribute for dynamic require, because the source file load in asynchronous way
+		// however webpack dynamic require need a exist lib
+		// so add this attr in .eslintrc file treated it as a global value
+		// "DISQUS": "DISQUS"
 	},
 	plugins: [
 		new webpack.optimize.OccurenceOrderPlugin(),
