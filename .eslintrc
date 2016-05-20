@@ -18,7 +18,8 @@
   "globals": {
 	"document": true,
 	"window": true,
-    "DISQUS": true
+    "DISQUS": true,
+    "DISQUSWIDGETS": true
   },
 
   "parser": "babel-eslint",
