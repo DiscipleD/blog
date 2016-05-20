@@ -20,10 +20,25 @@ class DisqusService {
 		}
 	}
 
+	resetDisqusCountPlugin() {
+		if (typeof DISQUSWIDGETS === 'undefined') {
+			setTimeout(() => {
+				this.resetDisqusCountPlugin();
+			}, 1000);
+		} else {
+			try {
+				DISQUSWIDGETS.getCount({reset: true});
+			} catch (e) {
+				console.error(e);
+			}
+		}
+
+	}
+
 	resetDisqusPlugin(identifier, title) {
 		if (typeof DISQUS === 'undefined') {
 			setTimeout(() => {
-				this.resetDisqusPlugin(identifier);
+				this.resetDisqusPlugin(identifier, title);
 			}, 1000);
 		} else {
 			try {

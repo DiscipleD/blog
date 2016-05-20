@@ -14,7 +14,7 @@ const PostComponent = Vue.component('post', {
 	props: ['post'],
 	ready: function() {
 		DisqusService.loadDisqusPlugin();
-		// manually handle data pass delay from parent props
+		// manually handle data pass delay because of page props render
 		// Try to remove it on Vue 2.0
 		setTimeout(() => {
 			const disqueService = new DisqusService();
