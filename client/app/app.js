@@ -31,6 +31,12 @@ router
 		// not matched path will be redirected to the home path
 		'*': '/'
 	})
+	// manually hook: page not scroll to top when router changes
+	// github issue: https://github.com/vuejs/vue-router/issues/173
+	.beforeEach(transition => {
+		window.scrollTo(0, 0);
+		transition.next();
+	})
 	.afterEach(transition => {
 		console.info(`${new Date()}: ${transition.to.path}`);
 	})
