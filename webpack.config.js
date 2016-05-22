@@ -40,14 +40,14 @@ const defaultWebpackConfig = {
 		new HtmlWebpackPlugin({
 			template: SOURCEPATH + '/index.html'
 		}),
-		// the plugin need be added in loader
-		new ExtractTextPlugin('style-[contenthash:8].css'),
-		new webpack.optimize.UglifyJsPlugin({
-			compress: {
-				warnings: false
-			}
+		// create another 404.html file
+		new HtmlWebpackPlugin({
+			filename: '404.html',
+			template: SOURCEPATH + '/404.html',
+			inject: false
 		}),
-		new webpack.NoErrorsPlugin()
+		// the plugin need be added in loader
+		new ExtractTextPlugin('style-[contenthash:8].css')
 	],
 	resolve: {
 		extensions: ['', '.js']
@@ -135,5 +135,7 @@ if (process.env.NODE_ENV === 'production') {
 	webpackConfig.entry.unshift('webpack-hot-middleware/client?path=/__webpack_hmr&reload=true&timeout=20000');
 	webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
 }
+
+webpackConfig.plugins.push(new webpack.NoErrorsPlugin());
 
 module.exports = webpackConfig;

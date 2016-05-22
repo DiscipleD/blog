@@ -20,11 +20,12 @@ import devConfig from '../../webpack.config.js';
 const publicFiles = serve(PUBLICPATH);
 app.use(publicFiles);
 
+// the middleware not work with 404 handler
 if (process.env.NODE_ENV !== 'production') {
 	// import modules should be in dynamic way
 	// System.import support dynamic import file, not support import module now
 	// update later
-  // System.import('');
+	// System.import('');
 
 	const compile = webpack(devConfig);
 	app.use(devMiddleware(compile, {
@@ -40,6 +41,40 @@ if (process.env.NODE_ENV !== 'production') {
 	app.use(hotMiddleware(compile, {}));
 }
 
+app.use(async (ctx, next) => {
+	try {
+		await next();
+	} catch (err) {
+		err.status = err.statusCode || err.status || 500;
+		throw err;
+	}
+});
+
+// 404 handler
+async function pageNotFound(ctx, next) {
+	await next();
+
+	if (404 != ctx.status) return;
+
+	// we need to explicitly set 404 here
+	// so that koa doesn't assign 200 on body=
+	ctx.status = 404;
+
+	switch (ctx.accepts('html', 'json')) {
+		case 'html':
+			ctx.response.redirect('/404.html');
+			break;
+		case 'json':
+			ctx.body = {
+				message: 'Page Not Found'
+			};
+			break;
+		default:
+			ctx.type = 'text';
+			ctx.body = 'Page Not Found';
+	}
+}
+
 // x-response-time
 async function responseTime(ctx, next) {
 	const start = new Date();
@@ -49,18 +84,19 @@ async function responseTime(ctx, next) {
 }
 
 // logger
-async function logger() {
+async function logger(ctx, next) {
 	const start = new Date();
 	await next();
 	const ms = new Date() - start;
-	console.log('%s %s - %s', this.method, this.url, ms);
+	console.log('%s %s - %s', ctx.method, ctx.url, `${ms}ms`);
 }
 
+app.use(pageNotFound);
 app.use(responseTime);
 app.use(logger);
 
 app.on('error', function(err){
-	log.error('server error', err);
+	console.log('server error', err);
 });
 
 app.listen(PORT, () => {
