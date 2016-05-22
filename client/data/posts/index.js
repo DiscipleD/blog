@@ -7,6 +7,7 @@ import autoprefixer from './autoprefixer';
 import browersync from './browsersync';
 import cssFlex from './css-flex';
 import decorator from './decorator-design-pattern';
+import doesCurryHelp from './does-curry-help';
 import es6 from './es2015';
 import jsDoc from './js-doc';
 import privateNpmServer from './private-npm-server';
@@ -23,6 +24,7 @@ posts.push(es6);
 posts.push(jsDoc);
 posts.push(privateNpmServer);
 posts.push(curryHelps);
+posts.push(doesCurryHelp);
 
 posts.sort((a, b) => {
 	return a.createdTime > b.createdTime ? -1 : 1;
