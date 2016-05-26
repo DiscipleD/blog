@@ -2,7 +2,7 @@
 
 随着项目的增大，通过 `angular-ui` 处理的路由配置的不断增加，使得 module.config 的内容不断膨胀，这时通常的做法是将所有的 router 配置抽出到一个文件中去统一配置，而 module.config 中只需做一个简单的路由 mapping，这样既方便代码的维护，又增加了代码的易读性。每当想建这样一个跨 `scope` 的单例数据源或者一个服务时同城就会很直接想到建一个 `factory` 或 `service` 去处理，于是我也建立了一个这样的 factory 来作为单例数据源通过 angular 注入的方式注入到 module.config 中，然而问题出现了，页面直接出现如下错误。
 
-![页面错误](./inject-error.png)
+![页面错误](http://o7nu3cbe9.bkt.clouddn.com/blog/angular-provide/inject-error.png)
 
 我再三仔细查看代码，发现语法上没有任何错误，最后从错误提示上的 Unknown provider 想起——**在 module.config 中只能注入 provider，而不能注入 service 或 factory**。
 

@@ -4,11 +4,9 @@
 
 import Post from '../../../common/model/Post';
 
-import headerImg from './header-img-2016-01-29.jpg';
 import content from './css-flex.md';
 
 const post = new Post({
-	headerImg,
 	name: 'css-flex',
 	title: 'Css Flex',
 	createdTime: '2016-01-29',

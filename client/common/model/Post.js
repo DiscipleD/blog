@@ -4,12 +4,12 @@
  */
 
 export default class Post {
-	constructor({headerImg, subTitle = '', createdTime = '', name, title, content} = {}) {
+	constructor({name, title, content, subTitle = '', createdTime = '', headerImageType = '.jpg'} = {}) {
 		this.name = name;
 		this.title = title;
 		this.subTitle = subTitle;
 		this.createdTime = createdTime;
 		this.content = content;
-		this.headerImg = headerImg;
+		this.headerImgName = createdTime + headerImageType;
 	}
 }

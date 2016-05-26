@@ -2,7 +2,7 @@
 
 如何解决这个问题？最近写项目时，就发现了一个处理 CSS 前缀问题的神器——**AutoPrefixer**。
 
-![AutoPrefixer](./autoprefixer.png)
+![AutoPrefixer](http://o7nu3cbe9.bkt.clouddn.com/blog/autoprefixer/autoprefixer.png)
 
 ### What is AutoPrefixer
 Autoprefixer 是一个后处理程序，它可以同 Sass，Stylus 或 LESS 等预处理器共通使用。它适用于普通的 CSS，而你无需关心要为哪些浏览器加前缀，只需关注于使用 W3C 最新的规范。

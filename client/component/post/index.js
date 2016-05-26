@@ -12,6 +12,12 @@ import DisqusService from '../../common/service/DisqusService';
 const PostComponent = Vue.component('post', {
 	template,
 	props: ['post'],
+	computed: {
+		headerUrl: function() {
+			const imgStorage = 'http://o7nu3cbe9.bkt.clouddn.com/blog/';
+			return imgStorage + this.post.name + '/' + this.post.headerImgName;
+		}
+	},
 	ready: function() {
 		DisqusService.loadDisqusPlugin();
 		// manually handle data pass delay because of page props render

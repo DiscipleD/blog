@@ -4,12 +4,10 @@
 
 import Post from '../../../common/model/Post';
 
-import headerImg from './header-img-2016-03-26.jpg';
 import content from './js-doc.md';
 
 const post = new Post({
-	headerImg,
-	name: 'jsDoc',
+	name: 'js-doc',
 	title: 'JSDoc',
 	subTitle: '前端代码文档化势在必行',
 	createdTime: '2016-03-26',

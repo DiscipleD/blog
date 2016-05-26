@@ -4,12 +4,10 @@
 
 import Post from '../../../common/model/Post';
 
-import headerImg from './header-img-2015-10-30.jpg';
 import content from './ECMAScript6.md';
 
 const post = new Post({
-	headerImg,
-	name: 'es6',
+	name: 'es2015',
 	title: 'ES 6',
 	subTitle: 'ECMAScript 6 学习总结',
 	createdTime: '2015-10-30',

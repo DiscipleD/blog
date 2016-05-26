@@ -3,7 +3,7 @@ Flex 是 Flexible Box 的缩写，意为"弹性布局"，用来为盒状模型�
 
 W3C 于 2009 年提出了这一方案，时至今日，常用的浏览器已经全部都提供了对它的支持（当然不包括 IE8）。
 
-![Flex浏览器支持情况](./browser-support.jpg)
+![Flex浏览器支持情况](http://o7nu3cbe9.bkt.clouddn.com/blog/css-flex/browser-support.jpg)
 
 #### Why to use Flex?
 简便的实现页面布局。
@@ -15,7 +15,7 @@ W3C 于 2009 年提出了这一方案，时至今日，常用的浏览器已经�
 
 项目默认沿主轴水平排列。单个项目占据的主轴空间叫做 `main size`，占据的交叉轴空间叫做 `cross size`。
 
-![Flex基本概念](./flex-box.png)
+![Flex基本概念](http://o7nu3cbe9.bkt.clouddn.com/blog/css-flex/flex-box.png)
 
 **注意：**当一个元素设置为 display: flex; 后，其子元素（即flex item）的 float，clear 和 vertical-align 属性将无效。
 
@@ -83,7 +83,7 @@ stretch：轴线占满整个交叉轴
 ----
 俗话说的好，光说不练假把式，既然已经清楚了概念，我就尝试使用这些特性，看到阮老师的另一篇文章后，自己也尝试做了一遍，通过 flex 完成了骰子的6个面。
 
-![骰子的六面](dice.png)
+![骰子的六面](http://o7nu3cbe9.bkt.clouddn.com/blog/css-flex/dice.png)
 
 [点击查看源码](http://plnkr.co/edit/BthfuHwFAlZiOUxrU99v?p=preview)
 
