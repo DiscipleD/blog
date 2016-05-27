@@ -1,7 +1,7 @@
-$brand-primary: #0085A1;
+$brand-primary: #8060ff;
 $gray-dark: lighten(black, 25%);
 $gray: lighten(black, 50%);
-$white-faded: rgba(255, 255, 255, 0.8);
+$white-faded: rgba(255, 255, 255, .7);
 $black-faded: rgba(0, 0, 0, .8);
 $gray-light: #eee;
 
@@ -12,10 +12,37 @@ $gray-light: #eee;
   width: 100%;
   z-index: 3;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background-color: #f8f8f8;
+  background-color: $white-faded;
   border-color: #e7e7e7;
   .navbar-brand {
     font-weight: 800;
+  }
+  .navbar-toggler {
+    border-color: #bbb;
+  }
+  .navbar-nav{
+    clear: both;
+
+    .nav-item{
+      float: none;
+    }
+
+    .nav-item + .nav-item{
+      margin: 0;
+    }
+  }
+  /* 必需 */
+  .navbar-nav.nav-expand-transition {
+    transition: all .3s ease;
+    overflow: hidden;
+    height: 6rem;
+  }
+  /* .expand-enter 定义进入的开始状态 */
+  /* .expand-leave 定义离开的结束状态 */
+  .navbar-nav.nav-expand-enter, .navbar-nav.nav-expand-leave {
+    height: 0; // 展开效果
+    padding: 0 1rem; // 字插入效果
+    opacity: 0; // 渐入效果
   }
   .nav-link {
     text-transform: uppercase;
@@ -23,8 +50,8 @@ $gray-light: #eee;
     font-weight: 800;
     letter-spacing: 1px;
   }
-  .navbar-toggler {
-    border-color: #ddd;
+  .nav-link.v-link-active{
+    color: rgba(0,0,0,.6);
   }
   @media only screen and (min-width: 768px) {
     background: transparent;
@@ -32,11 +59,23 @@ $gray-light: #eee;
     padding: 0.75rem 1rem;
 
     .navbar-nav{
-      margin-top: 0.325rem;
+      clear: initial;
+      display: flex;
+      margin-top: 0.425rem;
+
+      .nav-item + .nav-item{
+        margin-left: 1rem;
+      }
+    }
+
+    .navbar-nav.nav-expand-transition {
+      height: inherit;
     }
 
     .navbar-brand, .navbar-nav .nav-link {
       color: white;
+
+      &.v-link-active,
       &:hover,
       &:focus {
         color: $white-faded;
@@ -45,6 +84,7 @@ $gray-light: #eee;
     .nav-item {
       color: white;
 
+      &.v-link-active,
       &:hover,
       &:focus {
         background: transparent;
@@ -82,6 +122,8 @@ $gray-light: #eee;
       transition: transform 0.3s;
       .navbar-brand, .nav-link {
         color: $gray-dark;
+
+        &.v-link-active,
         &:hover,
         &:focus {
           color: $brand-primary;

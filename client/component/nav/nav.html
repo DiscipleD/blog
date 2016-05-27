@@ -1,19 +1,13 @@
 <!-- Navigation -->
-<nav class="navbar navbar-light navbar-custom" :class="{ 'is-visible': data.isVisible, 'is-fixed': data.isFixed }">
-	<button class="navbar-toggler pull-xs-right hidden-sm-up" type="button" data-toggle="collapse" data-target="#MenuBar">
+<nav class="navbar navbar-light navbar-custom" :class="{ 'is-visible': nav.isVisible, 'is-fixed': nav.isFixed }">
+	<button class="navbar-toggler pull-xs-right hidden-sm-up" type="button" @click="nav.isShown = !nav.isShown">
 		&#9776;
 	</button>
-	<div class="">
-		<a class="navbar-brand" v-link="{ path: '/home' }">Disciple.Ding Blog</a>
-		<ul class="nav navbar-nav pull-xs-right collapse navbar-toggleable-xs" id="MenuBar">
-			<li class="nav-item">
-				<a class="nav-link" v-link="{ path: '/home' }">Home</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" v-link="{ path: '/about' }">About</a>
-			</li>
-			<li class="nav-item" v-if="postList">
-				<a class="nav-link" v-link="{ path: '/posts/' + postList[0].name }">Latest Post</a>
+	<div>
+		<a class="navbar-brand" :class="{ 'focus': $route.path === '/home' }" v-link="{ path: '/home' }">Disciple.Ding Blog</a>
+		<ul class="nav navbar-nav pull-md-right" v-show="nav.isShown" transition="nav-expand">
+			<li class="nav-item" v-for="item of nav.navList">
+				<a class="nav-link" v-link="{ path: item.path}">{{ item.title }}</a>
 			</li>
 		</ul>
 	</div>
