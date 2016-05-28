@@ -10,6 +10,7 @@ import decorator from './decorator-design-pattern';
 import doesCurryHelp from './does-curry-help';
 import es6 from './es2015';
 import jsDoc from './js-doc';
+import ocLazyLoad from './ocLazyLoad';
 import privateNpmServer from './private-npm-server';
 import curryHelps from './why-curry-helps';
 
@@ -22,6 +23,7 @@ posts.push(cssFlex);
 posts.push(decorator);
 posts.push(es6);
 posts.push(jsDoc);
+posts.push(ocLazyLoad);
 posts.push(privateNpmServer);
 posts.push(curryHelps);
 posts.push(doesCurryHelp);
