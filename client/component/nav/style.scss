@@ -31,14 +31,14 @@ $gray-light: #eee;
       margin: 0;
     }
   }
-  /* 必需 */
+  /* .{name}-transition vue transition setting */
   .navbar-nav.nav-expand-transition {
     transition: all .3s ease;
     overflow: hidden;
     height: 6rem;
   }
-  /* .expand-enter 定义进入的开始状态 */
-  /* .expand-leave 定义离开的结束状态 */
+  /* .{name}-enter 定义进入的开始状态 */
+  /* .{name}-leave 定义离开的结束状态 */
   .navbar-nav.nav-expand-enter, .navbar-nav.nav-expand-leave {
     height: 0; // 展开效果
     padding: 0 1rem; // 字插入效果

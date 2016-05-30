@@ -2,6 +2,8 @@
 # detail on https://hub.docker.com/_/node/
 FROM node:6
 
+MAINTAINER Disciple.Ding <disciple.ding@gmail.com>
+
 # Create app directory
 RUN mkdir -p /usr/app
 WORKDIR /usr/app
@@ -16,8 +18,10 @@ RUN npm install
 # Bundle app source
 COPY . /usr/app
 
-EXPOSE 8080
-
 RUN npm run build
 
-CMD [ "npm", "run", "pm2" ]
+EXPOSE 8080
+
+VOLUME /usr/app/log
+
+CMD [ "npm", "run", "start-server" ]

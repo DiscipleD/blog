@@ -1,7 +1,7 @@
 {
   "name": "disciple.ding-blog",
   "title": "Disciple Ding Blog",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "homepage": "https://github.com/DiscipleD/blog",
   "author": "Discipe.Ding",
   "license": "MIT",
@@ -32,7 +32,7 @@
     "html-webpack-plugin": "^2.16.0",
     "image-webpack-loader": "^1.7.0",
     "koa": "^2.0.0",
-    "koa-router": "^5.4.0",
+    "koa-router": "^7.0.1",
     "koa-static": "^2.0.0",
     "markdown-loader": "^0.1.7",
     "node-sass": "^3.5.0",
@@ -52,7 +52,7 @@
   "scripts": {
     "start": "node dist/server/server.js --harmony",
     "build": "NODE_ENV=production webpack && gulp build-backend",
-    "pm2": "NODE_ENV=production pm2 start dist/server/server.js --no-daemon",
-    "stop-server": "pm2 stop server"
+    "start-server": "NODE_ENV=production pm2 start dist/server/server.js --name blog --output /usr/app/log/out.log --error /usr/app/log/error.log --no-daemon",
+    "stop-server": "pm2 stop blog"
   }
 }
