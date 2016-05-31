@@ -19,7 +19,11 @@ const defaultWebpackConfig = {
 	output: {
 		filename: '[name].[hash:8].js',
 		path: DISTPATH,
-		publicPath: '/'
+		publicPath: '/',
+		// The JSONP function used by webpack for asnyc loading of chunks.
+		// Must Using different identifier, when having multiple webpack instances on a single page.
+		// If not, that will cause reference error.
+		jsonpFunction: 'blogJsonp'
 	},
 	// externals can be used when sources loaded by other project or remote system, like CDN.
 	externals: {
