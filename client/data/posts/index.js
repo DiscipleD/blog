@@ -2,6 +2,7 @@
  * Created by jack on 16-4-26.
  */
 
+import angularStyleguide from './angular1.5-with-ES6-styleguide';
 import angularProvide from './angular-provide';
 import autoprefixer from './autoprefixer';
 import browersync from './browsersync';
@@ -16,6 +17,7 @@ import curryHelps from './why-curry-helps';
 
 let posts = [];
 
+posts.push(angularStyleguide);
 posts.push(angularProvide);
 posts.push(autoprefixer);
 posts.push(browersync);
