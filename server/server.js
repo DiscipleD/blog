@@ -1,10 +1,10 @@
 /**
  * Created by jack on 16-4-16.
  */
+import 'babel-polyfill';
 import path from 'path';
 import Koa from 'koa';
 import serve from 'koa-static';
-import 'babel-polyfill';
 
 // Koa application is now a class and requires the new operator.
 const app = new Koa();
@@ -51,7 +51,7 @@ app.use(async (ctx, next) => {
 });
 
 // 404 handler
-async function pageNotFound(ctx, next) {
+const pageNotFound = async function (ctx, next) {
 	await next();
 
 	if (404 != ctx.status) return;
@@ -73,23 +73,23 @@ async function pageNotFound(ctx, next) {
 			ctx.type = 'text';
 			ctx.body = 'Page Not Found';
 	}
-}
+};
 
 // x-response-time
-async function responseTime(ctx, next) {
+const responseTime = async function (ctx, next) {
 	const start = new Date();
 	await next();
 	const ms = new Date() - start;
 	ctx.set('X-Response-Time', `${ms}ms`);
-}
+};
 
 // logger
-async function logger(ctx, next) {
+const logger = async function (ctx, next) {
 	const start = new Date();
 	await next();
 	const ms = new Date() - start;
 	console.log('%s %s - %s', ctx.method, ctx.url, `${ms}ms`);
-}
+};
 
 app.use(pageNotFound);
 app.use(responseTime);
