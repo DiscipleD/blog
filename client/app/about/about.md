@@ -1,1 +1,4 @@
-## Share More, Gain More.
+技术栈:
+
+* JavaScript
+
