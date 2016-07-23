@@ -14,6 +14,7 @@ import es6 from './es2015';
 import jsDoc from './js-doc';
 import ocLazyLoad from './ocLazyLoad';
 import privateNpmServer from './private-npm-server';
+import reduxAdvanced from './redux-advanced';
 import curryHelps from './why-curry-helps';
 
 let posts = [];
@@ -24,13 +25,14 @@ posts.push(autoprefixer);
 posts.push(browersync);
 posts.push(cssFlex);
 posts.push(decorator);
+posts.push(doesCurryHelp);
 posts.push(gettingStartedWithRedux);
 posts.push(es6);
 posts.push(jsDoc);
 posts.push(ocLazyLoad);
 posts.push(privateNpmServer);
+posts.push(reduxAdvanced);
 posts.push(curryHelps);
-posts.push(doesCurryHelp);
 
 posts.sort((a, b) => {
 	return a.createdTime > b.createdTime ? -1 : 1;

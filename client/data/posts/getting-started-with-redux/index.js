@@ -11,6 +11,7 @@ const post = new Post({
 	title: 'Redux 入门',
 	subTitle: 'A tiny predictable state management lib for JavaScript apps',
 	createdTime: '2016-07-06',
+	tags: ['JavaScript', 'Redux', 'State management', 'Angular 1.x'],
 	content
 });
 
