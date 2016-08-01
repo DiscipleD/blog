@@ -41,7 +41,7 @@ export default function WeatherTodayReducer(state = {}, action) {
 	}
 }
 ```
-最后是 Sotre。
+最后是 Store。
 
 ```JavaScript
 import { createStore } from 'redux'
