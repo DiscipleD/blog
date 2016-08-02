@@ -9,7 +9,7 @@ const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const SOURCEPATH = path.join(__dirname, 'client');
-const DISTPATH = path.join(__dirname, 'dist/public');
+const DISTPATH = path.join(__dirname, 'build/public');
 
 const defaultWebpackConfig = {
 	devtool: 'source-map',
