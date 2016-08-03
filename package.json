@@ -53,7 +53,7 @@
     "build": "npm run build:client & npm run build:server",
     "build:client": "NODE_ENV=production webpack",
     "build:server": "babel server -d build/server",
-    "start-server": "NODE_ENV=production pm2 start dist/server/server.js --name blog --output /usr/app/log/out.log --error /usr/app/log/error.log --no-daemon",
+    "start-server": "NODE_ENV=production pm2 start build/server/server.js --name blog --output /usr/app/log/out.log --error /usr/app/log/error.log --no-daemon",
     "stop-server": "pm2 stop blog"
   }
 }
