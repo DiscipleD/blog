@@ -1,5 +1,5 @@
 /**
- * Created by jack on 16-4-29.
+ * Created by jack on 16-8-1.
  */
 
 import Post from '../../../common/model/Post';
