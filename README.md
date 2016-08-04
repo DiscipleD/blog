@@ -18,7 +18,6 @@ libraries and frameworks. Current buzzwords:
 * package
     - webpack
     - postcss
-    - gulp
 * publish
     - docker
 
@@ -27,8 +26,7 @@ libraries and frameworks. Current buzzwords:
 npm i
 
 #### RUN
-gulp -- use to listen backend source change (no need watch backend file using **gulp build-backend**)
-npm start -- webpack for front end source
+npm start
 
 ### Production env
 #### INSTALL

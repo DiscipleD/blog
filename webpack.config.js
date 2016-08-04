@@ -13,9 +13,10 @@ const DISTPATH = path.join(__dirname, 'build/public');
 
 const defaultWebpackConfig = {
 	devtool: 'source-map',
-	entry: [
-		SOURCEPATH + '/app/app.js'
-	],
+	entry: {
+		common: ['vue', 'vue-router'],
+		main: [SOURCEPATH + '/app/app.js']
+	},
 	output: {
 		filename: '[name].[hash:8].js',
 		path: DISTPATH,
@@ -34,11 +35,20 @@ const defaultWebpackConfig = {
 		// "DISQUS": "DISQUS"
 	},
 	plugins: [
-		new webpack.optimize.OccurenceOrderPlugin(),
+		// Common Chunk Plugin should be used when project has several entries for common lib file.
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'common',
 			filename: 'common.[hash:8].js'
 		}),
+		/*
+		 * DllReferencePlugin is used to package project library file, which will not be compile every time.
+		 * That plugin will improve local build efficiency.
+		 * But that cause another problem that file can't be automatically injected into index.html.
+		 * That problem causes the plugin is useless.
+		new webpack.DllReferencePlugin({
+			context: path.join(__dirname),
+			manifest: require(DISTPATH + '/VueStuff.manifest.json')
+		}),*/
 		// webpack-dev-middleware doesn't create any file, but it will write file in memory, that will cause good performance
 		// write the right path, webpack-dev-middleware server can reach it
 		new HtmlWebpackPlugin({
@@ -126,17 +136,18 @@ const defaultWebpackConfig = {
 	}
 };
 
-var webpackConfig = Object.assign({}, defaultWebpackConfig);
+let webpackConfig = Object.assign({}, defaultWebpackConfig);
 
 if (process.env.NODE_ENV === 'production') {
 	webpackConfig.plugins.unshift(new CleanPlugin([DISTPATH]));
+	webpackConfig.plugins.push(new webpack.optimize.OccurenceOrderPlugin());
 	webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
 		compress: {
 			warnings: false
 		}
 	}));
 } else {
-	webpackConfig.entry.unshift('webpack-hot-middleware/client?path=/__webpack_hmr&reload=true&timeout=20000');
+	webpackConfig.entry['main'].unshift('webpack-hot-middleware/client?path=/__webpack_hmr&reload=true&timeout=20000');
 	webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 

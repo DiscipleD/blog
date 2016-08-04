@@ -52,6 +52,7 @@
     "start": "babel server -w -d build/server & nodemon --watch build --delay 2 build/server/server.js",
     "build": "npm run build:server & npm run build:client",
     "build:client": "NODE_ENV=production webpack",
+    "build:clientDll": "NODE_ENV=production webpack --config webpack.dll.config.js",
     "build:server": "babel server -d build/server",
     "start-server": "NODE_ENV=production pm2 start build/server/server.js --name blog --output /usr/app/log/out.log --error /usr/app/log/error.log --no-daemon",
     "stop-server": "pm2 stop blog"
