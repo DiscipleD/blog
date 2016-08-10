@@ -64,6 +64,9 @@ const defaultWebpackConfig = {
 		new ExtractTextPlugin('style-[contenthash:8].css')
 	],
 	resolve: {
+		alias: {
+			'vue': 'vue/dist/vue.js'
+		},
 		extensions: ['', '.js']
 	},
 	eslint: {
