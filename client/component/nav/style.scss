@@ -50,7 +50,7 @@ $gray-light: #eee;
     font-weight: 800;
     letter-spacing: 1px;
   }
-  .nav-link.v-link-active{
+  .nav-link.router-link-active{
     color: rgba(0,0,0,.6);
   }
   @media only screen and (min-width: 768px) {
@@ -75,7 +75,7 @@ $gray-light: #eee;
     .navbar-brand, .navbar-nav .nav-link {
       color: white;
 
-      &.v-link-active,
+      &.router-link-active,
       &:hover,
       &:focus {
         color: $white-faded;
@@ -84,7 +84,7 @@ $gray-light: #eee;
     .nav-item {
       color: white;
 
-      &.v-link-active,
+      &.router-link-active,
       &:hover,
       &:focus {
         background: transparent;
@@ -123,7 +123,7 @@ $gray-light: #eee;
       .navbar-brand, .nav-link {
         color: $gray-dark;
 
-        &.v-link-active,
+        &.router-link-active,
         &:hover,
         &:focus {
           color: $brand-primary;

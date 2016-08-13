@@ -3,6 +3,7 @@
  */
 
 import Vue from 'vue';
+import throttle from 'lodash/throttle';
 
 import template from './nav.html';
 import './style.scss';
@@ -26,7 +27,7 @@ class Navigation {
 
 	initNavList() {
 		this.navList = [];
-		this.addNavItem('home', 'Home', '/home');
+		this.addNavItem('home', 'Home', '/');
 		this.addNavItem('aboutMe', 'About', '/about');
 	}
 
@@ -35,7 +36,7 @@ class Navigation {
 	}
 
 	addBodyListener() {
-		this.isDesktop && document.addEventListener('scroll', this._bodyScrollListener);
+		this.isDesktop && document.addEventListener('scroll', throttle(this._bodyScrollListener, 200));
 	}
 
 	removeBodyListener() {
@@ -73,22 +74,20 @@ export default Vue.component('navigation', {
 			nav: new Navigation(document.body.clientWidth)
 		};
 	},
-	activate: function(done) {
+	created() {
 		new PostService().queryPostList()
 			.then((result = {}) => {
 				const latestPost = result.postList[0];
 				this.nav.addNavItem('latestPost', 'Latest Post', '/posts/' + latestPost.name);
-				done();
 			})
 			.catch(err => {
 				console.error(err);
-				done();
 			});
 	},
-	ready: function() {
+	mounted: function() {
 		this.nav.addBodyListener();
 	},
-	detached: function() {
+	destroyed: function() {
 		this.nav.removeBodyListener();
 	}
 });

@@ -11,12 +11,8 @@ import DisqusService from '../../common/service/DisqusService';
 const PostComponent = Vue.component('postList', {
 	template,
 	props: ['postList'],
-	ready: () => {
-		// manually handle data pass delay because of page props render
-		// Try to remove it on Vue 2.0
-		setTimeout(() => {
-			new DisqusService().resetDisqusCountPlugin();
-		}, 50);
+	mounted: () => {
+		new DisqusService().resetDisqusCountPlugin();
 	}
 });
 

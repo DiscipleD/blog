@@ -8,7 +8,7 @@ import Vue from 'vue';
 import '../assets/scss/clean-blog.scss';
 
 import router from './router';
-// import '../component';
+import '../component';
 
 import template from './app.html';
 

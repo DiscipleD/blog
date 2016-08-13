@@ -18,13 +18,12 @@ const Home = Vue.extend({
 				title: 'D.D Blog',
 				subtitle: 'Share More, Gain More.'
 			},
-			postList: [] };
+			postList: []
+		};
 	},
-	route: {
-		data: () => {
-			const postService = new PostService();
-			return postService.queryPostList();
-		}
+	created() {
+		const postService = new PostService();
+		postService.queryPostList().then(({postList}) => (this.postList = postList));
 	}
 });
 

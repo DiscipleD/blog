@@ -1,13 +1,12 @@
-<!-- Navigation -->
 <nav class="navbar navbar-light navbar-custom" :class="{ 'is-visible': nav.isVisible, 'is-fixed': nav.isFixed }">
 	<button class="navbar-toggler pull-xs-right hidden-md-up" type="button" @click="nav.isShown = !nav.isShown">
 		&#9776;
 	</button>
 	<div>
-		<a class="navbar-brand" :class="{ 'focus': $route.path === '/home' }" v-link="{ path: '/home' }">Disciple.Ding Blog</a>
+		<router-link class="navbar-brand" to="/" exact>Disciple.Ding Blog</router-link>
 		<ul class="nav navbar-nav pull-md-right" v-show="nav.isShown" transition="nav-expand">
 			<li class="nav-item" v-for="item of nav.navList">
-				<a class="nav-link" v-link="{ path: item.path}">{{ item.title }}</a>
+				<router-link class="nav-link" :to="{ path: item.path}" exact>{{ item.title }}</router-link>
 			</li>
 		</ul>
 	</div>

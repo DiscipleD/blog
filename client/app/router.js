@@ -12,7 +12,7 @@ import Post from './post/post';
 // Inject vue plugin
 Vue.use(VueRouter);
 
-const router = new VueRouter({
+const ROUTER_SETTING = {
 	/* H5 Mode will access server first, that will cause no source file error
 	 it can be use when using SSR (server side render).
 	 Todo - SSR: priority 2 */
@@ -20,18 +20,23 @@ const router = new VueRouter({
 	routes: [
 		{path: '/', component: Home},
 		{path: '/about', component: About},
-		{path: '/home', component: Home},
 		{path: '/posts/:postName', component: Post},
 		// catch all redirect, not matched path will be redirected to the home path
 		{path: '*', redirect: '/'}
-	],
-	beforeEach(transition) {
-		window.scrollTo(0, 0);
-		transition.next();
-	},
-	afterEach(transition) {
-		console.info(`${new Date()}: ${transition.to.path}`);
-	}
+	]
+};
+
+const router = new VueRouter(ROUTER_SETTING);
+
+// manually hook: page not scroll to top when router changes
+// github issue: https://github.com/vuejs/vue-router/issues/173
+router.beforeEach((route, redirect, next) => {
+	window.scrollTo(0, 0);
+	next();
+});
+
+router.afterEach(route => {
+	console.info(`${new Date()}: ${route.path}`);
 });
 
 export default router;

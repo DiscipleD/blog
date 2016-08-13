@@ -32,6 +32,7 @@
     "koa": "^2.0.0",
     "koa-router": "^7.0.1",
     "koa-static": "^2.0.0",
+    "lodash": "^4.15.0",
     "markdown-loader": "^0.1.7",
     "node-sass": "^3.5.0",
     "nodemon": "^1.10.0",
@@ -52,7 +53,7 @@
   },
   "scripts": {
     "start": "babel server -w -d build/server & nodemon --watch build --delay 2 build/server/server.js",
-    "build": "npm run build:server & npm run build:client",
+    "build": "npm run build:server && npm run build:client",
     "build:client": "NODE_ENV=production webpack",
     "build:clientDll": "NODE_ENV=production webpack --config webpack.dll.config.js",
     "build:server": "babel server -d build/server",

@@ -1,17 +1,17 @@
 <ul class="post-list">
 	<li v-for="post of postList">
 		<div class="post-preview">
-			<a v-link="{ path: '/posts/' + post.name }">
+			<router-link :to="{ path: '/posts/' + post.name }">
 				<h2 class="post-title">
 					{{ post.title }}
 				</h2>
 				<h3 class="post-subtitle">
 					{{ post.subTitle }}
 				</h3>
-			</a>
+			</router-link>
 			<p class="post-meta">
 				Posted on {{ post.createdTime }}<br/>
-				<span class="disqus-comment-count" data-disqus-identifier="{{post.name}}"></span>
+				<span class="disqus-comment-count" :data-disqus-identifier="post.name"></span>
 			</p>
 		</div>
 		<hr>
