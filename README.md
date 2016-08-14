@@ -8,7 +8,7 @@ the latest and buzziest tech, so that I can stay up to date on these
 libraries and frameworks. Current buzzwords:
 
 * main tech
-    - Vue v1.0 +
+    - vue & vue-router v2.0
     - ES2015
     - scss
     - Koa 2(async functions)
