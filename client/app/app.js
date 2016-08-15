@@ -8,11 +8,10 @@ import Vue from 'vue';
 import '../assets/scss/clean-blog.scss';
 
 import router from './router';
+import './blog';
 import '../component';
-
-import template from './app.html';
 
 new Vue({
 	router,
-	template
+	template: '<blog></blog>'
 }).$mount('#app');

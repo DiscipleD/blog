@@ -5,7 +5,7 @@
 import Vue from 'vue';
 
 import template from './post.html';
-import PostService from '../../common/service/PostService';
+import PostService from '../../../common/service/PostService';
 
 const Post = Vue.extend({
 	template,

@@ -4,9 +4,9 @@
 
 import Vue from 'vue';
 
-import PostService from '../../common/service/PostService';
+import PostService from '../../../common/service/PostService';
 
-import img from '../../assets/img/home-bg.jpg';
+import img from '../../../assets/img/home-bg.jpg';
 import template from './home.html';
 
 const Home = Vue.extend({

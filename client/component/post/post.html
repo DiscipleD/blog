@@ -1,15 +1,14 @@
 <section>
 	<!-- Content Header -->
-	<post-header :board-img="headerUrl" :title="post.title" :sub-title="post.subTitle" :created-time="post.createdTime"></post-header>
+	<post-header :board-img="headerUrl" :title="post.title" :sub-title="post.subTitle"
+	             :created-time="post.createdTime"></post-header>
 	<!-- Post Content -->
-	<article>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-content" v-html="post.content"></div>
-			</div>
-			<div class="row">
-				<div id="disqus_thread" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"></div>
-			</div>
+	<article class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-content" v-html="post.content"></div>
+		</div>
+		<div class="row">
+			<div id="disqus_thread" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"></div>
 		</div>
 	</article>
 </section>

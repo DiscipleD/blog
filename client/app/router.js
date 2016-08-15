@@ -5,9 +5,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Home from './home/home';
-import About from './about/about';
-import Post from './post/post';
+import Home from './blog/home/home';
+import About from './blog/about/about';
+import Post from './blog/post/post';
 
 // Inject vue plugin
 Vue.use(VueRouter);

@@ -85,8 +85,6 @@ module.exports = {
 
 也就是说，`vue.js = vue.common.js + compiler.js`，而如果要使用 `template` 这个属性的话就一定要用 compiler.js，那么，引入 vue.js 是最恰当的。
 
-第一句代码就把我坑那么久，后面还会有多少坑哪？
-
 #### 路由升级
 vue-router 的升级并不困难，参照 [Releases Note](https://github.com/vuejs/vue-router/releases/tag/v2.0.0-beta.1) 上的注释修改应该没有什么大问题，主要的变化有两点：
 
@@ -126,7 +124,7 @@ router
 	.beforeEach(() => { /* some function */ })
 	.afterEach(() => { /* some function */ });
 ```
-OK，这样总好了吧。然而，并没有...console 中报出无法从 `undefined` 中读取 `afterEach`，好吧，我才这应该是 `beforeEach` 中没有像之前一样返回路由对象，所以不能链式调用。
+OK，这样总好了吧。然而，并没有...console 中报出无法从 `undefined` 中读取 `afterEach`，好吧，我猜这应该是 `beforeEach` 中没有像之前一样返回路由对象，所以不能链式调用。
 
 ```JavaScript
 class VueRouter {
@@ -206,7 +204,7 @@ destoryed | destoryed | 组件销毁后调用
 
 那个这个是不是也直接改改属性名就好了哪？
 
-恩，差不错。不过需要注意的是，如果原先 hooks 中使用了有关路由信息的 `transition` 参数是肯定不能用了。比如，根据路由参数来进行查询，原先通过 `transition.to.params` 获取路由参数，现在就要通过刚刚提到的**当前路由对象** `this.$route.params` 来获取。
+恩，差不多。不过需要注意的是，如果原先 hooks 中使用了有关路由信息的 `transition` 参数是肯定不能用了。比如，根据路由参数来进行查询，原先通过 `transition.to.params` 获取路由参数，现在就要通过刚刚提到的**当前路由对象** `this.$route.params` 来获取。
 
 在升级这里的过程中，还遇到一个问题：当用户输入的 URL 满足路由匹配，但根据路由参数无法获得正确的文章时，我想让路由直接跳转到首页。
 

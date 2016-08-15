@@ -3,7 +3,7 @@
  */
 
 import Vue from 'vue';
-import img from '../../assets/img/about-bg.jpg';
+import img from '../../../assets/img/about-bg.jpg';
 import template from './about.html';
 
 import content from './about.md';
