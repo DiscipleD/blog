@@ -5,7 +5,7 @@
 	<div>
 		<router-link class="navbar-brand" to="/" exact>Disciple.Ding Blog</router-link>
 		<ul class="nav navbar-nav pull-md-right" v-show="nav.isShown" transition="nav-expand">
-			<li class="nav-item" v-for="item of nav.navList">
+			<li class="nav-item" v-for="item of navList">
 				<router-link class="nav-link" :to="{ path: item.path}" exact>{{ item.title }}</router-link>
 			</li>
 		</ul>

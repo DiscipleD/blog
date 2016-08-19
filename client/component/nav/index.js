@@ -7,7 +7,6 @@ import throttle from 'lodash/throttle';
 
 import template from './nav.html';
 import './style.scss';
-import PostService from '../../common/service/PostService';
 
 class Navigation {
 	constructor(clientWidth = 860) {
@@ -21,18 +20,6 @@ class Navigation {
 		this.isDesktop = MinScreenWidth <= clientWidth;
 		this.isShown = this.isDesktop;
 		this._bodyScrollListener = this._bodyScrollListener.bind(this);
-
-		this.initNavList();
-	}
-
-	initNavList() {
-		this.navList = [];
-		this.addNavItem('home', 'Home', '/');
-		this.addNavItem('aboutMe', 'About', '/about');
-	}
-
-	addNavItem(name, title, path) {
-		this.navList.push({name, title, path});
 	}
 
 	addBodyListener() {
@@ -68,21 +55,11 @@ class Navigation {
 
 export default Vue.component('navigation', {
 	template,
+	props: ['navList'],
 	data: () => {
 		return {
-			postList: null,
 			nav: new Navigation(document.body.clientWidth)
 		};
-	},
-	created() {
-		new PostService().queryPostList()
-			.then((result = {}) => {
-				const latestPost = result.postList[0];
-				this.nav.addNavItem('latestPost', 'Latest Post', '/posts/' + latestPost.name);
-			})
-			.catch(err => {
-				console.error(err);
-			});
 	},
 	mounted: function() {
 		this.nav.addBodyListener();
