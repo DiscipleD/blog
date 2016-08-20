@@ -3,17 +3,20 @@
  */
 
 import mutations from './mutations';
-import {loadNavList} from './actions';
+import actions from './actions';
 
 export default {
 	state: {
-		navList: []
-	},
-	actions: {
-		loadNavList
+		navList: [],
+		navElementHeight: 0,
+		bodyScrollTop: 0,
+		isShown: false,
+		isVisible: false,
+		isFixed: false
 	},
 	getters: {
 		navList: state => state.navList
 	},
+	actions,
 	mutations
 };

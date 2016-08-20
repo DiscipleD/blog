@@ -5,14 +5,15 @@
 import vue from 'vue';
 import { mapGetters, mapActions } from 'vuex';
 
+import './nav/nav';
 import template from './blog.html';
 
 export default vue.component('blog', {
 	template,
 	created() {
-		this.loadNavList();
+		this.loadBrowserSetting();
 		this.loadSocialLink();
 	},
-	computed: mapGetters(['navList', 'socialLinkList']),
-	methods: mapActions(['loadNavList', 'loadSocialLink'])
+	computed: mapGetters(['socialLinkList']),
+	methods: mapActions(['loadBrowserSetting', 'loadSocialLink'])
 });

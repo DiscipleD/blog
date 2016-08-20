@@ -8,4 +8,4 @@ import SocialLinkSetting from './setting';
 
 const loadSocialLink = ({commit}) => commit(createAction(LOAD_SOCIAL_LINK, SocialLinkSetting));
 
-export {loadSocialLink};
+export default {loadSocialLink};
