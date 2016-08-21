@@ -19,6 +19,7 @@ import privateNpmServer from './private-npm-server';
 import reduxAdvanced from './redux-advanced';
 import curryHelps from './why-curry-helps';
 import upgradingVue from './troubleshooting-of-upgrading-vue';
+import vuex from './vuex-core-of-vue-application';
 
 let posts = [];
 
@@ -39,6 +40,7 @@ posts.push(privateNpmServer);
 posts.push(reduxAdvanced);
 posts.push(curryHelps);
 posts.push(upgradingVue);
+posts.push(vuex);
 
 posts.sort((a, b) => {
 	return a.createdTime > b.createdTime ? -1 : 1;

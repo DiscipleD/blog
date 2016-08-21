@@ -1,3 +1,8 @@
+> 系列文章:
+> 1. Redux 入门(本文)
+> 2. [Redux 进阶](http://discipled.daoapp.io/#/posts/redux-advanced)
+> 3. [番外篇: Vuex — The core of Vue application](http://discipled.daoapp.io/#/posts/vuex-core-of-vue-application)
+
 状态管理，第一次听到这个词要追溯到去年年底。那时，[Flux](https://facebook.github.io/flux/) 红透半边天，而 [Reflux](https://github.com/reflux/refluxjs) 也是风华正茂。然而，前一阵一直在忙其他的事，一直没时间学学这两个库，到现在 [Redux](http://redux.js.org/) 似乎又有一统天下的趋势。
 
 那就来看看，Redux 是凭借什么做到异军突起的。
