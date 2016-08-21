@@ -5,7 +5,7 @@
 import Vue from 'vue';
 
 import './style.scss';
-import template from './footer.html';
+import template from './template.html';
 
 export default Vue.component('pageFooter', {
 	template,

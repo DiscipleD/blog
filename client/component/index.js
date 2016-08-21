@@ -2,18 +2,23 @@
  * Created by jack on 16-4-21.
  */
 
-import Footer from './footer/footer';
-import Header from './header/header';
+import Header from './header';
+import Nav from './nav';
+import MainContent from './main-content';
+import Footer from './footer';
+import AboutMe from './about';
 import Post from './post';
 import PostList from './post-list';
-import Nav from './nav';
+
 
 const Components = {
-	Footer,
 	Header,
+	Nav,
+	MainContent,
+	Footer,
+	AboutMe,
 	Post,
-	PostList,
-	Nav
+	PostList
 };
 
 export default Components;

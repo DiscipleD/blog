@@ -46,6 +46,7 @@
     "vue-loader": "^9.3.2",
     "vue-router": "^2.0.0-rc.2",
     "vuex": "^2.0.0-rc.4",
+    "vuex-router-sync": "^3.0.0",
     "webpack": "^1.13.0"
   },
   "repository": {

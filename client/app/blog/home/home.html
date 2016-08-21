@@ -1,20 +1,16 @@
 <section>
 	<!-- Content Header -->
-	<content-header :board-img="header.img" :title="header.title" :subtitle="header.subtitle"></content-header>
+	<content-header :board-img="header.image" :title="header.title" :subtitle="header.subtitle"></content-header>
 
 	<!-- Main Content -->
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-				<post-list :post-list="postList"></post-list>
-				<!-- Pager -->
-				<!-- TODO: not support in V1.0.0
-				<ul class="pager">
-					<li class="next">
-						<a href="#">Older Posts &rarr;</a>
-					</li>
-				</ul>-->
-			</div>
-		</div>
-	</div>
+	<main-content>
+		<post-list :post-list="postsList"></post-list>
+		<!-- Pager -->
+		<!-- TODO: not support in V1.0.0
+		<ul class="pager">
+			<li class="next">
+				<a href="#">Older Posts &rarr;</a>
+			</li>
+		</ul>-->
+	</main-content>
 </section>

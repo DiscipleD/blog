@@ -2,28 +2,22 @@
  * Created by jack on 16-4-21.
  */
 
-import Vue from 'vue';
+import vue from 'vue';
+import { mapState, mapGetters, mapActions } from 'vuex';
 
-import PostService from '../../../common/service/PostService';
-
-import img from '../../../assets/img/home-bg.jpg';
 import template from './home.html';
 
-const Home = Vue.extend({
+const Home = vue.extend({
 	template,
-	data: () => {
-		return {
-			header: {
-				img,
-				title: 'D.D Blog',
-				subtitle: 'Share More, Gain More.'
-			},
-			postList: []
-		};
+	computed: {
+		...mapState({
+			header: state => state.home.header
+		}),
+		...mapGetters(['postsList'])
 	},
+	methods: mapActions(['initHomePage']),
 	created() {
-		const postService = new PostService();
-		postService.queryPostList().then(({postList}) => (this.postList = postList));
+		this.initHomePage();
 	}
 });
 

@@ -5,8 +5,8 @@
 import Vue from 'vue';
 
 import './post-header';
-import template from './post.html';
-import './post.scss';
+import template from './template.html';
+import './style.scss';
 import DisqusService from '../../common/service/DisqusService';
 
 const PostComponent = Vue.component('post', {

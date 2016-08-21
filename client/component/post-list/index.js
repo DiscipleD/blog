@@ -4,11 +4,11 @@
 
 import Vue from 'vue';
 
-import template from './post-list.html';
+import template from './template.html';
 import './style.scss';
 import DisqusService from '../../common/service/DisqusService';
 
-const PostComponent = Vue.component('postList', {
+const PostListComponent = Vue.component('postList', {
 	template,
 	props: ['postList'],
 	mounted: () => {
@@ -16,4 +16,4 @@ const PostComponent = Vue.component('postList', {
 	}
 });
 
-export default PostComponent;
+export default PostListComponent;

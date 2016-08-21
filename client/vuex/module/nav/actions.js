@@ -10,7 +10,7 @@ import {LOAD_NAV_LIST, INIT_NAV_ELEMENT, BODY_SCROLL_LISTENER_OF_NAV, TOGGLE_NAV
 const loadNavList = ({commit}) => {
 	new PostService().queryPostList()
 		.then((result = {}) => {
-			commit(createAction(LOAD_NAV_LIST, result.postList[0]));
+			commit(createAction(LOAD_NAV_LIST, result.postsList[0]));
 		});
 };
 

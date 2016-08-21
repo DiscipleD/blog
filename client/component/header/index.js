@@ -3,7 +3,7 @@
  */
 
 import Vue from 'vue';
-import template from './header.html';
+import template from './template.html';
 import _defaultImg from '../../assets/img/contact-bg.jpg';
 
 export default Vue.component('contentHeader', {

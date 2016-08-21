@@ -3,9 +3,7 @@
 	<content-header :board-img="header.img" :title="header.title" :subtitle="header.subtitle"></content-header>
 
 	<!-- Main Content -->
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" v-html="content"></div>
-		</div>
-	</div>
+	<main-content>
+		<about-me :content="content"></about-me>
+	</main-content>
 </section>

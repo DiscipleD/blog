@@ -3,22 +3,19 @@
  */
 
 import Vue from 'vue';
-import img from '../../../assets/img/about-bg.jpg';
-import template from './about.html';
+import { mapState, mapActions } from 'vuex';
 
-import content from './about.md';
+import template from './about.html';
 
 const About = Vue.extend({
 	template,
-	data: () => {
-		return {
-			header: {
-				img,
-				title: 'About D.D',
-				subtitle: 'Disciple.Ding'
-			},
-			content
-		};
+	computed: mapState({
+		header: state => state.aboutMe.header,
+		content: state => state.aboutMe.content
+	}),
+	methods: mapActions(['initAboutPage']),
+	created() {
+		this.initAboutPage();
 	}
 });
 

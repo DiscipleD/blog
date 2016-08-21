@@ -3,31 +3,23 @@
  */
 
 import Vue from 'vue';
+import {mapActions, mapState} from 'vuex';
 
 import template from './post.html';
-import PostService from '../../../common/service/PostService';
 
 const Post = Vue.extend({
 	template,
-	data: () => {
-		return {
-			post: {}
-		};
-	},
+	computed: mapState({
+		post: state => state.post.post,
+		postName: state => state.route.params.postName
+	}),
+	methods: mapActions(['getPost']),
 	created() {
-		this.getPostContent();
+		this.getPost({ postName: this.postName, router: this.$router });
 	},
 	watch: {
-		'$route': 'getPostContent'
-	},
-	methods: {
-		getPostContent() {
-			PostService.queryPost(this.$route.params.postName).then(data => {
-				this.post = data.post;
-			}).catch(err => {
-				console.error(err + 'Page will redirect to the Home page.');
-				this.$router.replace('/');
-			});
+		'postName': function() {
+			this.getPost({ postName: this.postName, router: this.$router });
 		}
 	}
 });

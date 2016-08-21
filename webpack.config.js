@@ -66,7 +66,8 @@ const defaultWebpackConfig = {
 	resolve: {
 		alias: {
 			'vue': 'vue/dist/vue.js',
-			'common': SOURCEPATH + '/common'
+			'common': SOURCEPATH + '/common',
+			'assets': SOURCEPATH + '/assets'
 		},
 		extensions: ['', '.js']
 	},

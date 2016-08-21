@@ -5,7 +5,7 @@
 import Vue from 'vue';
 import {mapActions} from 'vuex';
 
-import template from './nav.html';
+import template from './template.html';
 import './style.scss';
 
 export default Vue.component('navigation', {
