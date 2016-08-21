@@ -1,4 +1,5 @@
 > 系列文章:
+> 
 > 1. [Vue 2.0 升（cai）级（keng）之旅](http://discipled.daoapp.io/#/posts/troubleshooting-of-upgrading-vue)
 > 2. Vuex — The core of Vue application (本文)
 
@@ -6,7 +7,7 @@
 > 
 > 有关 Redux 的基础概念在本文中会简要略过，如再一一赘述篇幅就太长了，不了解的可以看一下本人之前写的有关 Redux 的两篇文章：
 > 
-> 1. [Redux 入门](http://discipled.daoapp.io/#!/posts/getting-started-with-redux)
+> 1. [Redux 入门](http://discipled.daoapp.io/#/posts/getting-started-with-redux)
 > 2. [Redux 进阶](http://discipled.daoapp.io/#/posts/redux-advanced)
 
 ### 为什么说 Vuex 是 Vue 应用的核心？

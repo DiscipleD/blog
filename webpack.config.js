@@ -14,7 +14,7 @@ const DISTPATH = path.join(__dirname, 'build/public');
 const defaultWebpackConfig = {
 	devtool: 'source-map',
 	entry: {
-		common: ['vue', 'vue-router'],
+		common: ['vue', 'vue-router', 'vuex'],
 		main: [SOURCEPATH + '/app/app.js']
 	},
 	output: {
