@@ -4,21 +4,30 @@
 import 'babel-polyfill';
 import path from 'path';
 import Koa from 'koa';
+import mount from 'koa-mount';
+import graphQLHTTP from 'koa-graphql';
+import convert from 'koa-convert';
 import serve from 'koa-static';
+
+import schema from './graphql'
+import * as middleware from './middleware';
 
 // Koa application is now a class and requires the new operator.
 const app = new Koa();
 const PORT = parseInt(process.env.PORT || 8080);
 const PUBLICPATH = path.resolve(__dirname, '../public');
 
-import webpack from 'webpack';
-import { devMiddleware, hotMiddleware } from 'koa-webpack-middleware';
-import devConfig from '../../webpack.config.js';
+// koa graphql
+app.use(mount('/graphql', convert(graphQLHTTP({ schema, pretty: true }))));
 
 // koa static server
 // static server should use before webpack middleware
 const publicFiles = serve(PUBLICPATH);
-app.use(publicFiles);
+app.use(mount('/', publicFiles));
+
+import webpack from 'webpack';
+import { devMiddleware, hotMiddleware } from 'koa-webpack-middleware';
+import devConfig from '../../webpack.config.js';
 
 // the middleware not work with 404 handler
 if (process.env.NODE_ENV !== 'production') {
@@ -41,59 +50,10 @@ if (process.env.NODE_ENV !== 'production') {
 	app.use(hotMiddleware(compile, {}));
 }
 
-app.use(async (ctx, next) => {
-	try {
-		await next();
-	} catch (err) {
-		err.status = err.statusCode || err.status || 500;
-		throw err;
-	}
-});
-
-// 404 handler
-const pageNotFound = async function (ctx, next) {
-	await next();
-
-	if (404 != ctx.status) return;
-
-	// we need to explicitly set 404 here
-	// so that koa doesn't assign 200 on body=
-	ctx.status = 404;
-
-	switch (ctx.accepts('html', 'json')) {
-		case 'html':
-			ctx.response.redirect('/404.html');
-			break;
-		case 'json':
-			ctx.body = {
-				message: 'Page Not Found'
-			};
-			break;
-		default:
-			ctx.type = 'text';
-			ctx.body = 'Page Not Found';
-	}
-};
-
-// x-response-time
-const responseTime = async function (ctx, next) {
-	const start = new Date();
-	await next();
-	const ms = new Date() - start;
-	ctx.set('X-Response-Time', `${ms}ms`);
-};
-
-// logger
-const logger = async function (ctx, next) {
-	const start = new Date();
-	await next();
-	const ms = new Date() - start;
-	console.log('%s %s - %s', ctx.method, ctx.url, `${ms}ms`);
-};
-
-app.use(pageNotFound);
-app.use(responseTime);
-app.use(logger);
+app.use(middleware.serverErrorHandler);
+app.use(middleware.pageNotFound);
+app.use(middleware.responseTime);
+app.use(middleware.logger);
 
 app.on('error', function(err){
 	console.log('server error', err);
