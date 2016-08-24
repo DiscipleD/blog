@@ -12,6 +12,7 @@ libraries and frameworks. Current buzzwords:
     - ES2015
     - scss
     - Koa 2(async functions)
+    - GraphQL
 * style & template
     - bootstrap v4
     - [Start Bootstrap](http://startbootstrap.com/) - [Clean Blog](http://startbootstrap.com/template-overviews/clean-blog/)
@@ -36,7 +37,7 @@ npm i
 npm run build
 
 #### Start server
-npm run start-server
+npm run start:server
 
 #### Stop server
-npm run stop-server
+npm run stop:server

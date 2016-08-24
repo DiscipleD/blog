@@ -62,11 +62,11 @@
     "clean": "rm -rf build",
     "copy:posts": "npm run clean && mkdir build && mkdir build/server && mkdir build/server/data && cp -r server/data/posts build/server/data",
     "start": "npm run copy:posts && babel server -w -d build/server & nodemon --watch build --delay 2 build/server/server.js",
-    "build": "NODE_ENV=production npm run copy:posts && npm run build:server && npm run build:client",
+    "build": "npm run copy:posts && NODE_ENV=production npm run build:server && NODE_ENV=production npm run build:client",
     "build:client": "webpack",
     "build:clientDll": "webpack --config webpack.dll.config.js",
     "build:server": "babel server -d build/server",
-    "start-server": "NODE_ENV=production pm2 start build/server/server.js --name blog --output /usr/app/log/out.log --error /usr/app/log/error.log --no-daemon",
-    "stop-server": "pm2 stop blog"
+    "start:server": "NODE_ENV=production pm2 start build/server/server.js --name blog --output /usr/app/log/out.log --error /usr/app/log/error.log --no-daemon",
+    "stop:server": "pm2 stop blog"
   }
 }

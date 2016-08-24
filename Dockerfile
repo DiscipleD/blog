@@ -24,4 +24,4 @@ EXPOSE 8080
 
 VOLUME /usr/app/log
 
-CMD [ "npm", "run", "start-server" ]
+CMD [ "npm", "run", "start:server" ]
