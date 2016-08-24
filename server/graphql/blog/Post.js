@@ -34,7 +34,7 @@ const Post = new GraphQLObjectType({
 		name: {
 			type: new GraphQLNonNull(GraphQLString)
 		},
-		createDate: {
+		createdDate: {
 			type: new GraphQLNonNull(GraphQLString)
 		},
 		title: {

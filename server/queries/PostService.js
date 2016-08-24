@@ -2,25 +2,25 @@
  * Created by jack on 16-4-27.
  */
 
-import posts from '../data/posts';
+import Data from '../data';
 
 class PostService {
 	constructor() {}
 
 	getPostById(id) {
-		return posts[id];
+		return Data.posts[id];
 	}
 
 	getPostByName(name){
-		return Object.values(posts).filter(post => post.name === name)[0] || {};
+		return Object.values(Data.posts).filter(post => post.name === name)[0] || {};
 	}
 
 	queryPostsList() {
-		return Object.values(posts);
+		return Object.values(Data.posts);
 	}
 
 	queryPostsListByTagName(tagName = '') {
-		return Object.keys(posts).filter(id => !~posts[id].tags.indexOf(tagName));
+		return Object.values(Data.posts).filter(post => post.tags.indexOf(tagName) > -1);
 	}
 }
 
