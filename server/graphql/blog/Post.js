@@ -43,6 +43,9 @@ const Post = new GraphQLObjectType({
 		subtitle: {
 			type: GraphQLString
 		},
+		headerImgName: {
+			type: GraphQLString
+		},
 		content: {
 			type: GraphQLString
 		},

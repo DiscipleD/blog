@@ -3,6 +3,7 @@
  */
 
 import Data from '../data';
+import * as DataService from '../common/DataService';
 
 class PostService {
 	constructor() {}
@@ -16,7 +17,7 @@ class PostService {
 	}
 
 	queryPostsList() {
-		return Object.values(Data.posts);
+		return Object.values(Data.posts).sort(DataService.sortFn('createdDate'));
 	}
 
 	queryPostsListByTagName(tagName = '') {

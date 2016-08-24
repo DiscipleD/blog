@@ -2,27 +2,31 @@
  * Created by jack on 16-4-27.
  */
 
-import postsList from '../../data/posts';
+import * as FetchService from './FetchService';
+
+const GRAPHQL_URL_PREFIX = '/graphql';
 
 export default class PostService {
-	constructor() {
+	constructor() {}
+
+	getLatestPost() {
+		const GET_LATEST_POST_GRAPHQL = `query={blog{posts{id,name,createdDate,title,subtitle,headerImgName,tags{name,label}}}}`;
+		return fetch(FetchService.generatorUrl(GRAPHQL_URL_PREFIX, GET_LATEST_POST_GRAPHQL))
+			.then(FetchService.status)
+			.then(FetchService.json);
 	}
 
 	queryPostList() {
-		return Promise.resolve({ postsList });
+		const QUERY_POST_LIST_GRAPHQL = `query={blog{posts{id,name,createdDate,title,subtitle,tags{name,label}}}}`;
+		return fetch(FetchService.generatorUrl(GRAPHQL_URL_PREFIX, QUERY_POST_LIST_GRAPHQL))
+			.then(FetchService.status)
+			.then(FetchService.json);
 	}
 
-	queryPost(postName) {
-		// tail call optimisation
-		return new Promise((resolve, reject) => {
-			let post;
-			// using setTimeout to simulate call back end function
-			setTimeout(() => {
-				post = postsList.filter(item => {
-					return item.name === postName;
-				});
-				post.length ? resolve({post: post[0]}) : reject('Post not found.');
-			}, 50);
-		});
+	getPostByName(postName) {
+		const GET_POST_BY_NAME_GRAPHQL = `query={blog{post(name: "${postName}"){id,name,createdDate,title,subtitle,headerImgName,content,tags{name,label}}}}`;
+		return fetch(FetchService.generatorUrl(GRAPHQL_URL_PREFIX, GET_POST_BY_NAME_GRAPHQL))
+			.then(FetchService.status)
+			.then(FetchService.json);
 	}
 }

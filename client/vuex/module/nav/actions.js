@@ -8,9 +8,9 @@ import {createAction} from '../../common/actionHelper';
 import {LOAD_NAV_LIST, INIT_NAV_ELEMENT, BODY_SCROLL_LISTENER_OF_NAV, TOGGLE_NAV_SHOWN} from './mutation_types';
 
 const loadNavList = ({commit}) => {
-	new PostService().queryPostList()
+	new PostService().getLatestPost()
 		.then((result = {}) => {
-			commit(createAction(LOAD_NAV_LIST, result.postsList[0]));
+			commit(createAction(LOAD_NAV_LIST, result.data.blog.posts[0]));
 		});
 };
 

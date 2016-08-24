@@ -17,10 +17,10 @@ const postHeader = Vue.component('postHeader', {
 		title: {
 			type: String
 		},
-		subTitle: {
+		subtitle: {
 			type: String
 		},
-		createdTime: {
+		createdDate: {
 			type: String
 		}
 	}

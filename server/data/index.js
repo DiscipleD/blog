@@ -3,7 +3,7 @@
  */
 
 import path from 'path';
-import * as DataService from '../common/DataService'
+import * as DataService from '../common/DataService';
 
 import POSTS from './posts';
 import TAGS from './tags';
@@ -23,7 +23,6 @@ Promise.all(POSTS.map(post => DataService.readMarkdownFile(POST_DICTIONARY + pos
 		...config,
 		content: postContentList[index]
 	})))
-	.then(posts => posts.sort(DataService.sortFn('createdDate')) || posts)
 	.then(DataService.normalize)
 	.then(posts => Data.posts = posts)
 	.catch(console.error);

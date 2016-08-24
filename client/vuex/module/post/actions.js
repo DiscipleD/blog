@@ -8,8 +8,8 @@ import {createAction} from '../../common/actionHelper';
 import {GET_POST} from './mutation_types';
 
 const getPost = ({commit}, {postName, router}) => {
-	new PostService().queryPost(postName)
-		.then(data => commit(createAction(GET_POST, data)))
+	new PostService().getPostByName(postName)
+		.then(result => commit(createAction(GET_POST, result.data.blog)))
 		.catch(err => {
 			console.error(err + 'Page will redirect to the Home page.');
 			router.replace('/');
