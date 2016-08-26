@@ -16,7 +16,7 @@ const ROUTER_SETTING = {
 	/* H5 Mode will access server first, that will cause no source file error
 	 it can be use when using SSR (server side render).
 	 Todo - SSR: priority 2 */
-	mode: 'hash', // default value
+	mode: 'history', // default value 'hash'
 	routes: [
 		{path: '/', component: Home},
 		{path: '/about', component: About},
