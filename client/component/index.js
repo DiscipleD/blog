@@ -9,7 +9,7 @@ import Footer from './footer';
 import AboutMe from './about';
 import Post from './post';
 import PostList from './post-list';
-
+import Tags from './tags';
 
 const Components = {
 	Header,
@@ -18,7 +18,8 @@ const Components = {
 	Footer,
 	AboutMe,
 	Post,
-	PostList
+	PostList,
+	Tags
 };
 
 export default Components;

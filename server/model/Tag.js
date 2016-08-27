@@ -5,10 +5,10 @@
 let TAG_ID = 1;
 
 export default class Tag {
-	constructor({name, label, createDate = ''} = {}) {
+	constructor({name, label, createdDate = ''} = {}) {
 		this.id = TAG_ID++;
 		this.name = name;
 		this.label = label;
-		this.createDate = createDate;
+		this.createdDate = createdDate;
 	}
 }

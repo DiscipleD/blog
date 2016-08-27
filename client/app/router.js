@@ -8,6 +8,7 @@ import VueRouter from 'vue-router';
 import Home from './blog/home/home';
 import About from './blog/about/about';
 import Post from './blog/post/post';
+import Tags from './blog/tags/tags';
 
 // Inject vue plugin
 Vue.use(VueRouter);
@@ -21,6 +22,8 @@ const ROUTER_SETTING = {
 		{path: '/', component: Home},
 		{path: '/about', component: About},
 		{path: '/posts/:postName', component: Post},
+		{path: '/tags', component: Tags},
+		{path: '/tags/:tagName', component: Tags},
 		// catch all redirect, not matched path will be redirected to the home path
 		{path: '*', redirect: '/'}
 	]

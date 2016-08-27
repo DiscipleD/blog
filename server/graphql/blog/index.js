@@ -39,18 +39,14 @@ const BlogType = new GraphQLObjectType({
 			type: new GraphQLList(PostType),
 			resolve: () => PostService.queryPostsList(),
 		},
-		tag: {
-			type: TagType,
+		tags: {
+			type: new GraphQLList(TagType),
 			args: {
 				name: {
 					type: GraphQLString
 				}
 			},
-			resolve: (blog, { name }) => TagService.getTagByName(name),
-		},
-		tags: {
-			type: new GraphQLList(TagType),
-			resolve: () => TagService.queryTags()
+			resolve: (blog, { name }) => !name ? TagService.queryTags() : [TagService.getTagByName(name)]
 		}
 	})
 });

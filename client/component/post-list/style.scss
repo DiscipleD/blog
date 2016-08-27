@@ -6,32 +6,33 @@
   padding: 0;
 
   .post-preview {
-    > a {
+    .title-link {
       color: $gray-dark;
       &:hover,
       &:focus {
         text-decoration: none;
         color: $brand-primary;
       }
-      > .post-title {
+      .post-title {
         font-size: 30px;
         margin-top: 30px;
         margin-bottom: 10px;
       }
-      > .post-subtitle {
-        margin: 0 0 10px 0;
+      .post-subtitle {
+        margin-bottom: 10px;
         font-weight: 300;
       }
     }
-    > .post-meta {
+    .post-meta {
       color: $gray;
+      display: inline-block;
       font-size: 18px;
       font-style: italic;
-      line-height: 1.2;
-      margin-top: 0;
-      > a {
+      line-height: 1.25;
+      margin: 0;
+      .tag-link {
         text-decoration: none;
-        color: $gray-dark;
+        color: $gray;
         &:hover,
         &:focus {
           color: $brand-primary;
@@ -40,8 +41,8 @@
       }
     }
     @media only screen and (min-width: 768px) {
-      > a {
-        > .post-title {
+      .title-link {
+        .post-title {
           font-size: 36px;
         }
       }

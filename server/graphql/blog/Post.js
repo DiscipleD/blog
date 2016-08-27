@@ -16,10 +16,10 @@ import TagService from '../../queries/TagService';
 
 /**
  * type Post {
- *   id: String,
- *   name: String,
+ *   id: String!,
+ *   name: String!,
  *   createDate: String,
- *   title: String,
+ *   title: String!,
  *   subtitle: String,
  *   content: String,
  *   tags: [Tag]
@@ -35,7 +35,7 @@ const Post = new GraphQLObjectType({
 			type: new GraphQLNonNull(GraphQLString)
 		},
 		createdDate: {
-			type: new GraphQLNonNull(GraphQLString)
+			type: GraphQLString
 		},
 		title: {
 			type: new GraphQLNonNull(GraphQLString)

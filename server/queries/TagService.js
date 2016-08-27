@@ -3,6 +3,7 @@
  */
 
 import Data from '../data';
+import * as DataService from '../common/DataService';
 import PostService from './PostService';
 
 class TagService {
@@ -13,7 +14,7 @@ class TagService {
 	}
 
 	queryTags(){
-		return Object.values(Data.tags);
+		return Object.values(Data.tags).sort(DataService.sortFn(object => PostService.queryPostsListByTagName(object.name).length));
 	}
 
 	queryTagsByPostId(postId = 1) {

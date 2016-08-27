@@ -24,6 +24,7 @@ app.use(middleware.logger);
 // redirect /post/* call to home page, that vue-router will handle the path
 app.use(rewrite('/about', '/'));
 app.use(rewrite('/posts/*', '/'));
+app.use(rewrite('/tag*', '/'));
 // koa static
 app.use(mount('/', staticServer));
 

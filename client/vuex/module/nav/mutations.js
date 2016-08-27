@@ -10,6 +10,7 @@ const initNavList = () => {
 	let navList = [];
 	addNavItemToList(navList, new NavItem('home', 'Home', '/'));
 	addNavItemToList(navList, new NavItem('aboutMe', 'About', '/about'));
+	addNavItemToList(navList, new NavItem('tags', 'Tags', '/tags'));
 	return navList;
 };
 

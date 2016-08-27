@@ -15,7 +15,8 @@ const readMarkdownFile = (path = '', encoding = 'utf8') => {
 	});
 };
 
-const sortFn = (name = '', order = 1) => (curr, next) => curr[name] > next[name] ? -order : +order;
+const sortFn = (key = '', order = 1) => (curr, next) =>
+	(typeof key === 'function' ? key(curr) > key(next) : curr[key] > next[key]) ? -order : +order;
 
 const normalize = data => Array.isArray(data)
 	? data.reduce((prev, curr) => ({...prev, [curr.id]: curr}), {}) : data;

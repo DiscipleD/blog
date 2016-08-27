@@ -1,7 +1,7 @@
 <ul class="post-list">
-	<li v-for="post of postList">
+	<li v-for="(post, index) of postList" track-by="index">
 		<div class="post-preview">
-			<router-link :to="{ path: '/posts/' + post.name }">
+			<router-link class="title-link" :to="{ path: '/posts/' + post.name }">
 				<h2 class="post-title">
 					{{ post.title }}
 				</h2>
@@ -10,7 +10,11 @@
 				</h3>
 			</router-link>
 			<p class="post-meta">
-				Posted on {{ post.createdDate }}<br/>
+				<span v-for="(tag, index) of post.tags" track-by="index">
+					<span v-if="index > 0">, </span>
+					<router-link class="tag-link" :to="{ path: '/tags/' + tag.name }">{{tag.label}}</router-link>
+				</span><br>
+				Posted on {{ post.createdDate }}<br>
 				<span class="disqus-comment-count" :data-disqus-identifier="post.name"></span>
 			</p>
 		</div>

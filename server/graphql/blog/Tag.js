@@ -11,15 +11,15 @@ import {
 } from 'graphql';
 
 import PostType from './Post';
-
 import PostService from '../../queries/PostService';
+import {sortFn} from '../../common/DataService';
 
 /**
  * type Tag {
  *   id: ID!,
  *   name: String!,
  *   label: String!,
- *   createDate: String!,
+ *   createDate: String,
  *   posts: [Post]
  * }
  */
@@ -35,12 +35,12 @@ const Tag = new GraphQLObjectType({
 		label: {
 			type: new GraphQLNonNull(GraphQLString)
 		},
-		createDate: {
-			type: new GraphQLNonNull(GraphQLString)
+		createdDate: {
+			type: GraphQLString
 		},
 		posts: {
 			type: new GraphQLList(PostType),
-			resolve: tag => PostService.queryPostsListByTagName(tag.name)
+			resolve: tag => PostService.queryPostsListByTagName(tag.name).sort(sortFn('createdDate'))
 		}
 	})
 });

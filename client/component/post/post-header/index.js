@@ -5,7 +5,7 @@
 import Vue from 'vue';
 import template from './post-header.html';
 
-import _defaultImg from '../../../assets/img/contact-bg.jpg';
+import _defaultImg from '../../../assets/img/tags-bg.jpg';
 
 const postHeader = Vue.component('postHeader', {
 	template,
@@ -19,6 +19,9 @@ const postHeader = Vue.component('postHeader', {
 		},
 		subtitle: {
 			type: String
+		},
+		tags: {
+			type: Array
 		},
 		createdDate: {
 			type: String

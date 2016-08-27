@@ -1,0 +1,9 @@
+<div class="tags-block">
+	<dl v-for="(tag, index) of tagsList" track-by="index">
+		<dt><h2>{{tag.label}}</h2></dt>
+		<dd v-for="(post, index) of tag.posts" track-by="index">
+			<router-link class="post-title__link" :to="{ path: '/posts/' + post.name }">{{post.title}}</router-link>
+		</dd>
+		<hr>
+	</dl>
+</div>
