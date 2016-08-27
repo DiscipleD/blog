@@ -13,7 +13,7 @@ class PostService {
 	}
 
 	getPostByName(name){
-		return Object.values(Data.posts).filter(post => post.name === name)[0] || {};
+		return Object.values(Data.posts).filter(post => post.name === name)[0];
 	}
 
 	queryPostsList() {
