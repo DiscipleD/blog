@@ -3,8 +3,9 @@
  */
 
 import Vue from 'vue';
-import template from './post-header.html';
 
+import './style.scss';
+import template from './post-header.html';
 import _defaultImg from '../../../assets/img/tags-bg.jpg';
 
 const postHeader = Vue.component('postHeader', {

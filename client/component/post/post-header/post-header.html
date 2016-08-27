@@ -5,11 +5,13 @@
 				<div class="post-heading">
 					<h1>{{title}}</h1>
 					<h2 class="subheading">{{subtitle}}</h2>
-					<span v-for="(tag, index) of tags" track-by="index">
-						<span v-if="index > 0">, </span>
-						<router-link class="tag-link" :to="{ path: '/tags/' + tag.name }">{{tag.label}}</router-link>
-					</span><br>
-					<span class="meta">Posted on {{createdDate}}</span>
+					<span class="meta">
+						<span v-for="(tag, index) of tags" track-by="index">
+							<span v-if="index > 0">, </span>
+							<router-link class="tag-link" :to="{ path: '/tags/' + tag.name }">{{tag.label}}</router-link>
+						</span><br>
+						Posted on {{createdDate}}
+					</span>
 				</div>
 			</div>
 		</div>

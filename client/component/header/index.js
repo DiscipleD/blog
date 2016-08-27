@@ -3,6 +3,8 @@
  */
 
 import Vue from 'vue';
+
+import './style.scss';
 import template from './template.html';
 import _defaultImg from '../../assets/img/tags-bg.jpg';
 

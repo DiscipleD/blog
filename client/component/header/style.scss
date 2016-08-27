@@ -1,0 +1,39 @@
+@import "../../assets/scss/variables";
+
+.intro-header {
+  background-color: $gray;
+  background: no-repeat center center;
+  background-attachment: scroll;
+  background-size: cover;
+  // NOTE: Background images are set within the HTML using inline CSS!
+  margin-bottom: 50px;
+
+  .page-heading {
+    padding: 100px 0 50px;
+    color: white;
+    @media only screen and (min-width: 768px) {
+      padding: 150px 0;
+    }
+  }
+
+  .page-heading {
+    text-align: center;
+    h1 {
+      margin-top: 0;
+      font-size: 50px;
+    }
+    .subheading {
+      font-size: 24px;
+      line-height: 1.1;
+      display: block;
+      font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 300;
+      margin: 10px 0 0;
+    }
+    @media only screen and (min-width: 768px) {
+      h1 {
+        font-size: 80px;
+      }
+    }
+  }
+}
