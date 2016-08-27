@@ -1,7 +1,7 @@
 > 系列文章：
 >
 > 1. GraphQL 核心概念(本文)
-> 2. [graphql-js 浅尝](http://discipled.daoapp.io/#!/posts/graphql-js-entry)
+> 2. [graphql-js 浅尝](http://discipled.daoapp.io/posts/graphql-js-entry)
 
 最近因为工作上新产品的需要，让我有机会了解和尝试 [GraphQL](https://github.com/facebook/graphql)。按照套路，在介绍一项新技术的时候总要回答 3 个问题：What, Why & How。
 

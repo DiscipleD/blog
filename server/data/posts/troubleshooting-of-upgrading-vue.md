@@ -1,6 +1,6 @@
 > 系列文章:
 > 1. Vue 2.0 升（cai）级（keng）之旅 (本文)
-> 2. [Vuex — The core of Vue application](http://discipled.daoapp.io/#/posts/vuex-core-of-vue-application)
+> 2. [Vuex — The core of Vue application](http://discipled.daoapp.io/posts/vuex-core-of-vue-application)
 
 > 本文不包含 Vue 2.0 所有新特性，如 SSR 等，本文并没有涉及，本文只包含[个人博客项目]((https://github.com/DiscipleD/blog))升级中所遇到的经验分享，如有兴趣，可以查看 Vue 2.0 [changes log](https://github.com/vuejs/vue/issues/2873)。
 

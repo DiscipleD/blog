@@ -1,11 +1,11 @@
 > 系列文章：
 >
-> 1. [GraphQL 核心概念](http://discipled.daoapp.io/#!/posts/graphql-core-concepts)
+> 1. [GraphQL 核心概念](http://discipled.daoapp.io/posts/graphql-core-concepts)
 > 2. graphql-js 浅尝(本文)
 
 **常言道，实践是检验真理的唯一标准。**
 
-[上一篇文章](http://discipled.daoapp.io/#!/posts/graphql-core-concepts)讲了 GraphQL 的核心概念，所提到的一些例子都是理论化的，并没有实际代码做支撑，就好像在画一个大饼，总是让人不那么信服。
+[上一篇文章](http://discipled.daoapp.io/posts/graphql-core-concepts)讲了 GraphQL 的核心概念，所提到的一些例子都是理论化的，并没有实际代码做支撑，就好像在画一个大饼，总是让人不那么信服。
 
 它真的有那么神奇吗？那就同我一起看下去，用事实说话。
 
@@ -109,7 +109,7 @@ app
 当当当当~完成，去 Postman 里查询 `http://localhost:3000/graphql?query={hello}` 看看吧。
 
 ### Blog System
-在[上一篇文章](http://discipled.daoapp.io/#!/posts/graphql-core-concepts)里，我们设计了一个博客的查询 schema，这次我们就来动手实现它。（下面就开始讲例子啦，不愿听我唠叨的可以直接看[代码](https://github.com/DiscipleD/graphql-demo)）
+在[上一篇文章](http://discipled.daoapp.io/posts/graphql-core-concepts)里，我们设计了一个博客的查询 schema，这次我们就来动手实现它。（下面就开始讲例子啦，不愿听我唠叨的可以直接看[代码](https://github.com/DiscipleD/graphql-demo)）
 
 前面 HelloWorld 的例子讲的比较详细，现在大家熟悉了语法，接下来的案例就会过得快一些。
 
@@ -252,7 +252,7 @@ const schema = new GraphQLSchema({
 	query: queryType
 });
 ```
-OK。这样整个 Demo 就完成了([查看源码戳这里](https://github.com/DiscipleD/graphql-demo))，快去 Postman 试试各种查询，体验 GraphQL 的神奇吧。（不知道怎么写查询语句的就看[上一篇](http://discipled.daoapp.io/#!/posts/graphql-core-concepts)吧）
+OK。这样整个 Demo 就完成了([查看源码戳这里](https://github.com/DiscipleD/graphql-demo))，快去 Postman 试试各种查询，体验 GraphQL 的神奇吧。（不知道怎么写查询语句的就看[上一篇](http://discipled.daoapp.io/posts/graphql-core-concepts)吧）
 
 ![](http://o7nu3cbe9.bkt.clouddn.com/blog/graphql-js-entry/convinced.jpeg)
 
