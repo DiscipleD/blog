@@ -21,15 +21,15 @@ app.use(middleware.pageNotFound);
 app.use(middleware.responseTime);
 app.use(middleware.logger);
 
-// redirect /post/* call to home page, that vue-router will handle the path
-app.use(rewrite('/about', '/'));
-app.use(rewrite('/posts/*', '/'));
-app.use(rewrite('/tag*', '/'));
-// koa static
-app.use(mount('/', staticServer));
-
 // koa graphql
 app.use(mount('/graphql', convert(graphQLHTTP({ schema, pretty: true }))));
+
+// redirect request which path not including .|__ to home page
+// . for static file, __ for webpack hot loader
+// vue-router will handle the path
+app.use(rewrite(/^\/[^(.|__)]*$/, '/'));
+// koa static
+app.use(mount('/', staticServer));
 
 app.on('error', function(err){
 	console.log('server error', err);
