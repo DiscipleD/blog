@@ -1,13 +1,4 @@
-@import "../../../assets/scss/variables";
-
 .intro-header {
-  background-color: $gray;
-  background: no-repeat center center;
-  background-attachment: scroll;
-  background-size: cover;
-  // NOTE: Background images are set within the HTML using inline CSS!
-  margin-bottom: 50px;
-
   .post-heading {
     padding: 100px 0 50px;
     color: white;

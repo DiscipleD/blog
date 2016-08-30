@@ -8,7 +8,7 @@ import actions from './actions';
 export default {
 	state: {
 		header: {},
-		content: ''
+		introduction: ''
 	},
 	actions,
 	mutations

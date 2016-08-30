@@ -11,7 +11,7 @@ const About = Vue.extend({
 	template,
 	computed: mapState({
 		header: state => state.aboutMe.header,
-		content: state => state.aboutMe.content
+		introduction: state => state.aboutMe.introduction
 	}),
 	methods: mapActions(['initAboutPage']),
 	created() {

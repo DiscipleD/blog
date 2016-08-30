@@ -1,1 +1,23 @@
-<div v-html="content"></div>
+<div class="about-me-block">
+	<ul class="about-me-ul">
+		<li v-for="(item, key) of introduction" track-by="key">
+			<label class="about-me-label">{{item.label}}</label><br>
+			<p class="about-me-p" v-if="item.type !== 'list'">{{item.value}}</p>
+			<div class="about-me-skill" v-if="item.type === 'list'">
+				<dl class="about-me-skill__dl" v-for="(skillSet, skillSet_key) of item.value" track-by="skillSet_key">
+					<dt>{{skillSet.label}}</dt>
+					<dd class="about-me-skill__dd" v-for="(skill, skill_key) of skillSet.value" track-by="skill_key">
+						<a class="skill-link" :title="skill.label" :href="skill.link">{{ skill.label }}</a>
+						<div class="skill-score">
+							<span class="skill-score__span" v-for="value in 5">
+								<i class="fa fa-star" v-if="skill.value >= value" aria-hidden="true"></i>
+								<i class="fa fa-star-half-o" v-if="skill.value < value && skill.value > value - 1" aria-hidden="true"></i>
+								<i class="fa fa-star-o" v-if="Math.ceil(skill.value) < value" aria-hidden="true"></i>
+							</span>
+						</div>
+					</dd>
+				</dl>
+			</div>
+		</li>
+	</ul>
+</div>

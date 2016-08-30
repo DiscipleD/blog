@@ -5,7 +5,7 @@
 import {createAction} from '../../common/actionHelper';
 import {INIT_ABOUT_ME_PAGE} from './mutation_types';
 import image from 'assets/img/about-bg.jpg';
-import content from '../../../data/about.md';
+import introduction from './introductions';
 
 const initAboutPage = ({commit}) => {
 	commit(createAction(INIT_ABOUT_ME_PAGE, {
@@ -14,7 +14,7 @@ const initAboutPage = ({commit}) => {
 			title: 'About D.D',
 			subtitle: 'Disciple.Ding'
 		},
-		content
+		introduction
 	}));
 };
 
