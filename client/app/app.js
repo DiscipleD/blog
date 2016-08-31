@@ -8,6 +8,9 @@ import { sync } from 'vuex-router-sync';
 // Clean-log less transform to Clean-log cass
 import '../assets/scss/clean-blog.scss';
 
+// Fetch service polyfill
+import 'whatwg-fetch';
+
 import store from '../vuex';
 import router from './router';
 import './blog';
