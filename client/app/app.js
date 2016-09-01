@@ -10,6 +10,7 @@ import '../assets/scss/clean-blog.scss';
 
 // Fetch service polyfill
 import 'whatwg-fetch';
+import 'core-js/modules/es6.promise';
 
 import store from '../vuex';
 import router from './router';
