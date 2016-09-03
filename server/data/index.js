@@ -18,7 +18,7 @@ const Data = {
 };
 
 // read .md file
-Promise.all(POSTS.map(post => DataService.readMarkdownFile(POST_DICTIONARY + post.fileName)))
+Promise.all(POSTS.map(post => DataService.readMarkdownFile(POST_DICTIONARY + post.name + '.md')))
 	.then(postContentList => POSTS.map((config, index) => new Post({
 		...config,
 		content: postContentList[index]
