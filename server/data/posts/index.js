@@ -8,7 +8,7 @@ const POSTS_LIST = [{
 	subtitle: '使用 ES2015 在 Angular 1.5 中的最佳实践',
 	createdDate: '2016-06-22',
 	tags: ['javascript', 'es6', 'angular-1.x', 'styleguide'],
-	fileName: 'angular1.5-styleguide.md'
+	fileName: 'angular1.5-with-ES6-styleguide.md'
 }, {
 	name: 'angular-provide',
 	title: 'Angular $provide',
@@ -53,7 +53,7 @@ const POSTS_LIST = [{
 	subtitle: 'ECMAScript 6 学习总结',
 	createdDate: '2015-10-30',
 	tags: ['javascript', 'es6'],
-	fileName: 'ecma-script6.md'
+	fileName: 'es2015.md'
 }, {
 	name: 'getting-started-with-redux',
 	title: 'Redux 入门',
@@ -121,8 +121,14 @@ const POSTS_LIST = [{
 	name: 'why-curry-helps',
 	title: '为什么使用柯里化？（译）',
 	createdDate: '2016-05-05',
-	fileName: 'why-curry-helps.md',
-	tags: ['javascript', 'es6', 'translate']
+	tags: ['javascript', 'es6', 'translate'],
+	fileName: 'why-curry-helps.md'
+}, {
+	name: 'remote-debugging-devices',
+	title: 'Remote Debugging Devices',
+	createdDate: '2016-09-03',
+	tags: ['tool', 'browsersync', 'debug', 'wechat'],
+	fileName: 'remote-debugging-devices.md',
 }];
 
 export default POSTS_LIST;

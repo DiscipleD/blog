@@ -106,6 +106,14 @@ const TAGS_LIST = [{
 	name: 'vuex',
 	label: 'vuex',
 	createdDate: '2016-08-21'
+}, {
+	name: 'debug',
+	label: 'Debug',
+	createdDate: '2016-09-03'
+}, {
+	name: 'wechat',
+	label: 'wechat',
+	createdDate: '2016-09-03'
 }];
 
 export default TAGS_LIST;
