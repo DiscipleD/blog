@@ -7,7 +7,8 @@
 				<dl class="about-me-skill__dl" v-for="(skillSet, skillSet_key) of item.value" track-by="skillSet_key">
 					<dt>{{skillSet.label}}</dt>
 					<dd class="about-me-skill__dd" v-for="(skill, skill_key) of skillSet.value" track-by="skill_key">
-						<a class="skill-link" target="_blank" :title="skill.label" :href="skill.link">{{ skill.label }}</a>
+						<a class="skill-link" target="_blank" rel="noopener noreferrer"
+						   :title="skill.label" :href="skill.link">{{ skill.label }}</a>
 						<div class="skill-score">
 							<span class="skill-score__span" v-for="value in 5">
 								<i class="fa fa-star" v-if="skill.value >= value" aria-hidden="true"></i>
