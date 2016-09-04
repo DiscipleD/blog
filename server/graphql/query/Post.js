@@ -10,18 +10,21 @@ import {
 	GraphQLList,
 } from 'graphql';
 
-import TagType from './Tag';
-
+import Tag from './Tag';
+import PostService from '../../queries/PostService';
 import TagService from '../../queries/TagService';
 
 /**
  * type Post {
  *   id: String!,
  *   name: String!,
- *   createDate: String,
+ *   createdDate: String,
  *   title: String!,
  *   subtitle: String,
+ *   headerImgName: String,
  *   content: String,
+ *   prevPost: Post,
+ *   nextPost: Post,
  *   tags: [Tag]
  * }
  */
@@ -49,8 +52,16 @@ const Post = new GraphQLObjectType({
 		content: {
 			type: GraphQLString
 		},
+		prevPost: {
+			type: Post,
+			resolve: post => PostService.getPreviousPost(post.id)
+		},
+		nextPost: {
+			type: Post,
+			resolve: post => PostService.getNextPost(post.id)
+		},
 		tags: {
-			type: new GraphQLList(TagType),
+			type: new GraphQLList(Tag),
 			resolve: post => TagService.queryTagsByPostId(post.id)
 		}
 	})

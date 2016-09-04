@@ -24,9 +24,9 @@ Promise.all(POSTS.map(post => DataService.readMarkdownFile(POST_DICTIONARY + pos
 		content: postContentList[index]
 	})))
 	.then(DataService.normalize)
-	.then(posts => Data.posts = posts)
+	.then(posts => Object.assign(Data.posts, posts))
 	.catch(console.error);
 
-Data.tags = DataService.normalize(TAGS.map(tag => new Tag(tag)));
+Object.assign(Data.tags, DataService.normalize(TAGS.map(tag => new Tag(tag))));
 
 export default Data;

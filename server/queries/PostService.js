@@ -6,22 +6,32 @@ import Data from '../data';
 import * as DataService from '../common/DataService';
 
 class PostService {
-	constructor() {}
-
-	getPostById(id) {
-		return Data.posts[id];
+	constructor() {
+		this.posts = Data.posts;
 	}
 
-	getPostByName(name){
-		return Object.values(Data.posts).filter(post => post.name === name)[0];
+	getPostById(id) {
+		return this.posts[id];
+	}
+
+	getPostByName(name) {
+		return Object.values(this.posts).filter(post => post.name === name)[0];
+	}
+
+	getPreviousPost(id) {
+		return id > 0 ? this.getPostById(id - 1) : null;
+	}
+
+	getNextPost(id) {
+		return id < Object.keys(this.posts).length - 1 ? this.getPostById(id + 1) : null;
 	}
 
 	queryPostsList() {
-		return Object.values(Data.posts).sort(DataService.sortFn('createdDate'));
+		return Object.values(this.posts).sort(DataService.sortFn('createdDate', -1));
 	}
 
 	queryPostsListByTagName(tagName = '') {
-		return Object.values(Data.posts).filter(post => post.tags.indexOf(tagName) > -1);
+		return Object.values(this.posts).filter(post => post.tags.indexOf(tagName) > -1);
 	}
 }
 

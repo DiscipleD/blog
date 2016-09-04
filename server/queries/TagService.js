@@ -7,14 +7,16 @@ import * as DataService from '../common/DataService';
 import PostService from './PostService';
 
 class TagService {
-	constructor() {}
+	constructor() {
+		this.tags = Data.tags;
+	}
 
 	getTagByName(name = '') {
-		return Object.values(Data.tags).filter(tag => tag.name === name)[0] || {};
+		return Object.values(this.tags).filter(tag => tag.name === name)[0] || {};
 	}
 
 	queryTags(){
-		return Object.values(Data.tags).sort(DataService.sortFn(object => PostService.queryPostsListByTagName(object.name).length));
+		return Object.values(this.tags).sort(DataService.sortFn(object => PostService.queryPostsListByTagName(object.name).length, -1));
 	}
 
 	queryTagsByPostId(postId = 1) {

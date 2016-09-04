@@ -10,8 +10,8 @@ import {GET_POST} from './mutation_types';
 const getPost = ({commit}, {postName, router}) => {
 	new PostService().getPostByName(postName)
 		.then(result => {
-			if (result.data.blog && result.data.blog.post) {
-				return result.data.blog;
+			if (result.data && result.data.post) {
+				return result.data;
 			} else {
 				throw new Error('Post not found!');
 			}

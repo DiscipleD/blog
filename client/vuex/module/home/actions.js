@@ -23,7 +23,7 @@ const loadPostList = ({commit}) => {
 	new PostService().queryPostList()
 		.then((result = {}) => {
 			commit(createAction(LOAD_POST_LIST, {
-				postsList: result.data.blog.posts
+				postsList: result.data.posts
 			}));
 		})
 		.catch(console.error);

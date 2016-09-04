@@ -2,6 +2,8 @@
  * Created by jack on 16-8-23.
  */
 
+import {sortFn} from '../../common/DataService';
+
 const POSTS_LIST = [{
 	name: 'angular1.5-with-ES6-styleguide',
 	title: 'Angular 1.5 Styleguide (ES2015)',
@@ -112,4 +114,4 @@ const POSTS_LIST = [{
 	tags: ['tool', 'browsersync', 'debug', 'wechat']
 }];
 
-export default POSTS_LIST;
+export default POSTS_LIST.sort(sortFn('createdDate'));

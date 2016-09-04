@@ -21,8 +21,8 @@ const initTagsPage = ({commit}) => {
 const queryTagsList = ({commit}, {tagName, router}) => {
 	TagService.queryTagsList(tagName)
 		.then(result => {
-			if (result.data.blog.tags && result.data.blog.tags.length > 0) {
-				return result.data.blog;
+			if (result.data.tags && result.data.tags.length > 0) {
+				return result.data;
 			} else {
 				throw new Error('Tag not found!');
 			}

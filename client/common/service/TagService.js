@@ -10,7 +10,7 @@ class TagService {
 	constructor() {}
 
 	queryTagsList(tagName = '') {
-		const QUERY_POST_LIST_GRAPHQL = `query={blog{tags(name: "${tagName}"){id,name,createdDate,label,posts{name,title}}}}`;
+		const QUERY_POST_LIST_GRAPHQL = `query={tags(name: "${tagName}"){id,name,createdDate,label,posts{name,title}}}`;
 		return httpFetch(FetchService.generatorUrl(GRAPHQL_URL_PREFIX, QUERY_POST_LIST_GRAPHQL));
 	}
 }

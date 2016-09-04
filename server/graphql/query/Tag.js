@@ -19,7 +19,7 @@ import {sortFn} from '../../common/DataService';
  *   id: ID!,
  *   name: String!,
  *   label: String!,
- *   createDate: String,
+ *   createdDate: String,
  *   posts: [Post]
  * }
  */
@@ -40,7 +40,7 @@ const Tag = new GraphQLObjectType({
 		},
 		posts: {
 			type: new GraphQLList(PostType),
-			resolve: tag => PostService.queryPostsListByTagName(tag.name).sort(sortFn('createdDate'))
+			resolve: tag => PostService.queryPostsListByTagName(tag.name).sort(sortFn('createdDate', -1))
 		}
 	})
 });

@@ -3,7 +3,7 @@
  * Post Object Module
  */
 
-let POST_ID = 1;
+let POST_ID = 0;
 
 export default class Post {
 	constructor({name, title, content, subtitle = '', createdDate = '', imageType = '.jpg', tags = []} = {}) {

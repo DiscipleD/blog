@@ -2,6 +2,8 @@
  * Created by jack on 16-8-22.
  */
 
+import {sortFn} from '../../common/DataService';
+
 const TAGS_LIST = [{
 	name: 'angular-1.x',
 	label: 'Angular 1.x',
@@ -116,4 +118,4 @@ const TAGS_LIST = [{
 	createdDate: '2016-09-03'
 }];
 
-export default TAGS_LIST;
+export default TAGS_LIST.sort(sortFn('createdDate'));

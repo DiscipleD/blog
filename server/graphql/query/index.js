@@ -8,26 +8,23 @@ import {
 	GraphQLList,
 } from 'graphql';
 
-import PostType from './Post';
-import TagType from './Tag';
-
-// import { getPostByName, getPostsList, getTagByName, getTagsList } from '../../data';
+import Post from './Post';
+import Tag from './Tag';
 import PostService from '../../queries/PostService';
 import TagService from '../../queries/TagService';
 
 /**
- * type Blog {
+ * type RootQueryType {
  *   post: Post,	// 查询一篇文章
  *   posts: [Post],	// 查询一组文章，用于博客首页
- *   tag: Tag,		// 查询一个标签
- *   tags: [Tag],	// 查询所有标签，用于博客标签页
+ *   tags: [Tag],	// 查询标签，用于博客标签页
  * }
  */
-const BlogType = new GraphQLObjectType({
-	name: 'BlogType',
+const rootQueryType = new GraphQLObjectType({
+	name: 'RootQueryType',
 	fields: () => ({
 		post: {
-			type: PostType,
+			type: Post,
 			args: {
 				name: {
 					type: GraphQLString
@@ -36,11 +33,11 @@ const BlogType = new GraphQLObjectType({
 			resolve: (blog, { name }) => PostService.getPostByName(name),
 		},
 		posts: {
-			type: new GraphQLList(PostType),
+			type: new GraphQLList(Post),
 			resolve: () => PostService.queryPostsList(),
 		},
 		tags: {
-			type: new GraphQLList(TagType),
+			type: new GraphQLList(Tag),
 			args: {
 				name: {
 					type: GraphQLString
@@ -51,4 +48,4 @@ const BlogType = new GraphQLObjectType({
 	})
 });
 
-export default BlogType;
+export default rootQueryType;
