@@ -119,45 +119,6 @@ form .row:first-child .floating-label-form-group {
   }
 }
 
-// Pager Styling
-
-.pager {
-
-  margin: 20px 0 0;
-
-  li {
-    > a,
-    > span {
-      font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      text-transform: uppercase;
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      padding: 15px 25px;
-      background-color: white;
-      border-radius: 0;
-    }
-
-    > a:hover,
-    > a:focus {
-      color: white;
-      background-color: $brand-primary;
-      border: 1px solid $brand-primary;
-    }
-  }
-
-  .disabled {
-    > a,
-    > a:hover,
-    > a:focus,
-    > span {
-      color: $gray;
-      background-color: $gray-dark;
-      cursor: not-allowed;
-    }
-  }
-}
-
 // -- Highlight Color Customization
 
 ::selection {

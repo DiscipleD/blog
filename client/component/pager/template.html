@@ -1,0 +1,8 @@
+<div class="pager">
+	<span class="prev" v-if="prev">
+		<router-link class="nav-link" :to="{ path: prev.name}" :title="prev.title">&larr; {{prev.text}}</router-link>
+	</span>
+	<span class="next" v-if="next">
+		<router-link class="nav-link" :to="{ path: next.name}" :title="next.title">{{next.text}} &rarr;</router-link>
+	</span>
+</div>

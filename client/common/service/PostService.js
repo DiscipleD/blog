@@ -20,7 +20,8 @@ export default class PostService {
 	}
 
 	getPostByName(postName) {
-		const GET_POST_BY_NAME_GRAPHQL = `query={post(name: "${postName}"){id,name,createdDate,title,subtitle,headerImgName,content,tags{name,label}}}`;
+		const GET_POST_BY_NAME_GRAPHQL = `query={post(name: "${postName}"){id,name,createdDate,title,subtitle,headerImgName,
+			content,prevPost{name,title},nextPost{name,title},tags{name,label}}}`;
 		return httpFetch(FetchService.generatorUrl(GRAPHQL_URL_PREFIX, GET_POST_BY_NAME_GRAPHQL));
 	}
 }

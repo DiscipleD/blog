@@ -16,6 +16,16 @@ const PostComponent = Vue.component('post', {
 		headerUrl: function() {
 			const imgStorage = 'http://o7nu3cbe9.bkt.clouddn.com/blog/';
 			return imgStorage + this.post.name + '/' + this.post.headerImgName;
+		},
+		prev: function() {
+			return this.post.prevPost
+				? { ...this.post.prevPost, text: 'prev post' }
+				: null;
+		},
+		next: function() {
+			return this.post.nextPost
+				? { ...this.post.nextPost, text: 'next post' }
+				: null;
 		}
 	},
 	mounted: function() {

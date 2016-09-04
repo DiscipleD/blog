@@ -10,6 +10,7 @@ import AboutMe from './about';
 import Post from './post';
 import PostList from './post-list';
 import Tags from './tags';
+import Pager from './pager';
 
 const Components = {
 	Header,
@@ -19,7 +20,8 @@ const Components = {
 	AboutMe,
 	Post,
 	PostList,
-	Tags
+	Tags,
+	Pager
 };
 
 export default Components;
