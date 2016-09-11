@@ -116,6 +116,10 @@ const TAGS_LIST = [{
 	name: 'wechat',
 	label: 'wechat',
 	createdDate: '2016-09-03'
+}, {
+	name: 'material-design',
+	label: 'Material Design',
+	createdDate: '2016-09-11'
 }];
 
 export default TAGS_LIST.sort(sortFn('createdDate'));

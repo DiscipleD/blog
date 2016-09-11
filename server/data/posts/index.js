@@ -112,6 +112,12 @@ const POSTS_LIST = [{
 	title: 'Remote Debugging Devices',
 	createdDate: '2016-09-03',
 	tags: ['tool', 'browsersync', 'debug', 'wechat']
+}, {
+	name: 'material-loading',
+	title: 'Loading of Material Design',
+	subtitle: 'Imitate Material Design implement loading component with SVG',
+	createdDate: '2016-09-11',
+	tags: ['css', 'material-design']
 }];
 
 export default POSTS_LIST.sort(sortFn('createdDate'));
