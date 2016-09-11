@@ -5,10 +5,10 @@
 import PostService from 'common/service/PostService';
 
 import {createAction} from '../../common/actionHelper';
-import {INIT_HOME_PAGE, LOAD_POST_LIST} from './mutation_types';
+import {INIT_HOME_PAGE, QUERY_POSTS_LIST, RECEIVE_POSTS_LIST} from './mutation_types';
 import image from 'assets/img/home-bg.jpg';
 
-const initHomePage = ({dispatch, commit}) => {
+const initHomePage = ({commit}) => {
 	commit(createAction(INIT_HOME_PAGE, {
 		header: {
 			image,
@@ -16,13 +16,18 @@ const initHomePage = ({dispatch, commit}) => {
 			subtitle: 'Share More, Gain More.'
 		}
 	}));
-	dispatch('loadPostList');
 };
 
-const loadPostList = ({commit}) => {
-	new PostService().queryPostList()
+const loadPostList = ({state, commit}) => {
+	if (state.posts.isFinished) return;
+	commit(QUERY_POSTS_LIST);
+	const pager = {
+		...state.posts.pager,
+		number: state.posts.pager.number + 1
+	};
+	new PostService().queryPostList(pager)
 		.then((result = {}) => {
-			commit(createAction(LOAD_POST_LIST, {
+			commit(createAction(RECEIVE_POSTS_LIST, {
 				postsList: result.data.posts
 			}));
 		})

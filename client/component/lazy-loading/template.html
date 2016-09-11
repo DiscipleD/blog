@@ -1,0 +1,7 @@
+<section class="lazy-loading-block">
+	<slot></slot>
+	<div class="lazy-loading-container" v-if="isLoading">
+		<loading></loading>
+	</div>
+	<div class="lazy-loading-container" v-if="isFinished">{{finishedMessage}}</div>
+</section>

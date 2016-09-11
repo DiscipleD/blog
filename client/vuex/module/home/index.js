@@ -8,10 +8,18 @@ import actions from './actions';
 export default {
 	state: {
 		header: {},
-		postsList: []
+		posts: {
+			list: [],
+			pager: {
+				number: -1,
+				size: 5
+			},
+			isFinished: false,
+			isLoading: false
+		}
 	},
 	getters: {
-		postsList: state => state.postsList
+		posts: state => state.posts
 	},
 	actions,
 	mutations

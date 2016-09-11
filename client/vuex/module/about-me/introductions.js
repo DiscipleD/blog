@@ -44,7 +44,7 @@ const introduction = [
 			}, {
 				name: 'react',
 				label: 'React',
-				value: 1,
+				value: 2,
 				link: 'https://facebook.github.io/react/docs/getting-started.html'
 			}],
 			type: 'list'

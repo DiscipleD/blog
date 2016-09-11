@@ -1,0 +1,23 @@
+@keyframes circle-dash{
+  0% {
+    stroke-dasharray: 1, 125;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 100, 125;
+    stroke-dashoffset: -25px;
+  }
+  100% {
+    stroke-dasharray: 100, 125;
+    stroke-dashoffset: -125px;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

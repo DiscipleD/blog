@@ -1,6 +1,12 @@
-@import "variables.scss";
+@import "variables";
+@import "animation";
 
 // Global Components
+
+html,
+body{
+  height: 100%;
+}
 
 body {
   font-family: 'Lora', 'Times New Roman', serif;

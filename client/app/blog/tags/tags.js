@@ -11,7 +11,8 @@ const Tags = vue.extend({
 	template,
 	computed: mapState({
 		header: state => state.tags.header,
-		tagsList: state => state.tags.tagsList,
+		tagsList: state => state.tags.list,
+		isLoading: state => state.tags.isLoading,
 		tagName: state => state.route.params.tagName
 	}),
 	methods: mapActions(['initTagsPage', 'queryTagsList']),

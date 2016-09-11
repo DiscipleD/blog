@@ -4,6 +4,9 @@
 
 	<!-- Main Content -->
 	<main-content>
-		<tags :tags-list="tagsList"></tags>
+		<div style="text-align: center" v-if="isLoading">
+			<loading></loading>
+		</div>
+		<tags v-else :tags-list="tagsList"></tags>
 	</main-content>
 </section>

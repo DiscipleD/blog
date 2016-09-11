@@ -10,12 +10,12 @@ export default class PostService {
 	constructor() {}
 
 	getLatestPost() {
-		const GET_LATEST_POST_GRAPHQL = `query={posts{id,name,createdDate,title,subtitle,headerImgName,tags{name,label}}}`;
+		const GET_LATEST_POST_GRAPHQL = `query={posts(pager:{number:0,size:1}){id,name,createdDate,title,subtitle,headerImgName,tags{name,label}}}`;
 		return httpFetch(FetchService.generatorUrl(GRAPHQL_URL_PREFIX, GET_LATEST_POST_GRAPHQL));
 	}
 
-	queryPostList() {
-		const QUERY_POST_LIST_GRAPHQL = `query={posts{id,name,createdDate,title,subtitle,tags{name,label}}}`;
+	queryPostList({number = 0, size = 5} = {}) {
+		const QUERY_POST_LIST_GRAPHQL = `query={posts(pager:{number:${number},size:${size}}){id,name,createdDate,title,subtitle,tags{name,label}}}`;
 		return httpFetch(FetchService.generatorUrl(GRAPHQL_URL_PREFIX, QUERY_POST_LIST_GRAPHQL));
 	}
 

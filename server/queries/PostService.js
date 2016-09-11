@@ -26,8 +26,11 @@ class PostService {
 		return id < Object.keys(this.posts).length - 1 ? this.getPostById(id + 1) : null;
 	}
 
-	queryPostsList() {
-		return Object.values(this.posts).sort(DataService.sortFn('createdDate', -1));
+	queryPostsList({number: pageNumber = 0, size: pageSize = 5} = {}) {
+		const postsList = Object.values(this.posts).sort(DataService.sortFn('createdDate', -1));
+		const startIndex = pageNumber * pageSize;
+		const endIndex = startIndex + pageSize > postsList.length ? postsList.length : startIndex + pageSize;
+		return postsList.slice(startIndex, endIndex);
 	}
 
 	queryPostsListByTagName(tagName = '') {

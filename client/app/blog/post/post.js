@@ -11,6 +11,7 @@ const Post = Vue.extend({
 	template,
 	computed: mapState({
 		post: state => state.post.post,
+		isLoading: state => state.post.isLoading,
 		postName: state => state.route.params.postName
 	}),
 	methods: mapActions(['getPost']),

@@ -7,7 +7,8 @@ import actions from './actions';
 
 export default {
 	state: {
-		post: {}
+		post: {},
+		isLoading: false
 	},
 	actions,
 	mutations

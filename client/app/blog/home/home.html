@@ -4,13 +4,12 @@
 
 	<!-- Main Content -->
 	<main-content>
-		<post-list :post-list="postsList"></post-list>
-		<!-- Pager -->
-		<!-- TODO: not support in V1.0.0
-		<ul class="pager">
-			<li class="next">
-				<a href="#">Older Posts &rarr;</a>
-			</li>
-		</ul>-->
+		<lazy-loading
+				:load-fn="loadPostList"
+				:is-loading="posts.isLoading"
+				:is-finished="posts.isFinished"
+				listener-target-selector="document">
+			<post-list :post-list="posts.list"></post-list>
+		</lazy-loading>
 	</main-content>
 </section>

@@ -10,6 +10,7 @@ import {
 
 import Post from './Post';
 import Tag from './Tag';
+import PagerInput from './Pager';
 import PostService from '../../queries/PostService';
 import TagService from '../../queries/TagService';
 
@@ -34,7 +35,12 @@ const rootQueryType = new GraphQLObjectType({
 		},
 		posts: {
 			type: new GraphQLList(Post),
-			resolve: () => PostService.queryPostsList(),
+			args: {
+				pager: {
+					type: PagerInput
+				}
+			},
+			resolve: (blog, { pager }) => PostService.queryPostsList(pager),
 		},
 		tags: {
 			type: new GraphQLList(Tag),

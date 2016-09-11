@@ -1,0 +1,22 @@
+.loader{
+  width: 50px;
+  position: relative;
+  display: inline-block;;
+
+  &:before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+
+  .circular{
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: rotate 2s linear infinite;
+  }
+
+  circle{
+    animation: circle-dash 1.5s ease-in-out infinite;
+  }
+}

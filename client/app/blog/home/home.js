@@ -13,9 +13,9 @@ const Home = vue.extend({
 		...mapState({
 			header: state => state.home.header
 		}),
-		...mapGetters(['postsList'])
+		...mapGetters(['posts'])
 	},
-	methods: mapActions(['initHomePage']),
+	methods: mapActions(['initHomePage', 'loadPostList']),
 	created() {
 		this.initHomePage();
 	}

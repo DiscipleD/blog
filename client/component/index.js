@@ -11,6 +11,8 @@ import Post from './post';
 import PostList from './post-list';
 import Tags from './tags';
 import Pager from './pager';
+import Loading from './loading';
+import LazyLoading from './lazy-loading';
 
 const Components = {
 	Header,
@@ -21,7 +23,9 @@ const Components = {
 	Post,
 	PostList,
 	Tags,
-	Pager
+	Pager,
+	Loading,
+	LazyLoading
 };
 
 export default Components;

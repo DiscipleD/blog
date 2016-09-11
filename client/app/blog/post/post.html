@@ -1,1 +1,6 @@
-<post v-if="post.name" :post="post"></post>
+<section>
+	<div style="text-align: center" v-if="isLoading">
+		<loading></loading>
+	</div>
+	<post v-if="!isLoading" :post="post"></post>
+</section>
