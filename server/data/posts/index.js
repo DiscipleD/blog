@@ -118,6 +118,11 @@ const POSTS_LIST = [{
 	subtitle: 'Imitate Material Design implement loading component with SVG',
 	createdDate: '2016-09-11',
 	tags: ['css', 'material-design']
+}, {
+	name: 'you-might-not-need-redux',
+	title: '【译】也许你不必使用 Redux',
+	createdDate: '2016-09-23',
+	tags: ['redux', 'react', 'translate']
 }];
 
 export default POSTS_LIST.sort(sortFn('createdDate'));

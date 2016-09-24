@@ -41,12 +41,12 @@ viewBox 的值是 4 个数字并用逗号分割，分别对应原 svg 图的 x �
 
 `svg` 提供了一些预定义形状，除了之前用到的 `circle`，还有：
 
-* [矩形 \<rect\>](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/rect)
-* [椭圆 \<ellipse\>](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/ellipse)
-* [线 \<line\>](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line)
-* [折线 \<polyline\>](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/polyline)
-* [多边形 \<polygon\>](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/polygon)
-* [路径 \<path\>](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path)
+* [矩形 &lt;rect&gt;](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/rect)
+* [椭圆 &lt;ellipse&gt;](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/ellipse)
+* [线 &lt;line&gt;](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line)
+* [折线 &lt;polyline&gt;](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/polyline)
+* [多边形 &lt;polygon&gt;](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/polygon)
+* [路径 &lt;path&gt;](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path)
 
 这里只用到了 [`circle`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle)，对其他有兴趣的可以直接点链接了解。
 

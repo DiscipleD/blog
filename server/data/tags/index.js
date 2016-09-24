@@ -120,6 +120,10 @@ const TAGS_LIST = [{
 	name: 'material-design',
 	label: 'Material Design',
 	createdDate: '2016-09-11'
+}, {
+	name: 'react',
+	label: 'React',
+	createdDate: '2016-09-23'
 }];
 
 export default TAGS_LIST.sort(sortFn('createdDate'));
