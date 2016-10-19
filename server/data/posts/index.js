@@ -123,6 +123,11 @@ const POSTS_LIST = [{
 	title: '【译】也许你不必使用 Redux',
 	createdDate: '2016-09-23',
 	tags: ['redux', 'react', 'translate']
+}, {
+	name: 'ci-solution',
+	title: '前端持续集成解决方案',
+	createdDate: '2016-10-19',
+	tags: ['ci', 'travis', 'codecov', 'nightwatch', 'saucelabs']
 }];
 
 export default POSTS_LIST.sort(sortFn('createdDate'));
