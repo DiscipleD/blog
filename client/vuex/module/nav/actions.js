@@ -5,7 +5,7 @@
 import PostService from 'common/service/PostService';
 
 import {createAction} from '../../common/actionHelper';
-import {LOAD_NAV_LIST, INIT_NAV_ELEMENT, BODY_SCROLL_LISTENER_OF_NAV, TOGGLE_NAV_SHOWN} from './mutation_types';
+import {LOAD_NAV_LIST, INIT_NAV_ELEMENT, BODY_SCROLL_LISTENER_OF_NAV} from './mutation_types';
 
 const loadNavList = ({commit}) => {
 	new PostService().getLatestPost()
@@ -24,6 +24,4 @@ const initNavContainer = ({commit}, isDesktop) => {
 
 const bodyScrollListenerOfNav = ({commit}) => commit(createAction(BODY_SCROLL_LISTENER_OF_NAV, document.body.scrollTop));
 
-const toggleNavShown = ({commit}) => commit(createAction(TOGGLE_NAV_SHOWN));
-
-export default {loadNavList, initNavContainer, bodyScrollListenerOfNav, toggleNavShown};
+export default {loadNavList, initNavContainer, bodyScrollListenerOfNav};

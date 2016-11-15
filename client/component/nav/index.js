@@ -3,7 +3,6 @@
  */
 
 import Vue from 'vue';
-import {mapActions} from 'vuex';
 
 import template from './template.html';
 import './style.scss';
@@ -11,5 +10,20 @@ import './style.scss';
 export default Vue.component('navigation', {
 	template,
 	props: ['navList', 'isShown'],
-	methods: mapActions(['toggleNavShown'])
+	data: () => ({
+		isShow: false
+	}),
+	watch: {
+		isShown(newVal) {
+			this.isShow = newVal;
+		}
+	},
+	mounted() {
+		this.isShow = this.isShown;
+	},
+	methods: {
+		toggleNavShown: function() {
+			this.isShow = !this.isShow;
+		}
+	}
 });

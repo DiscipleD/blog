@@ -4,7 +4,7 @@
 
 import NavItem from 'common/model/NavItemClass';
 
-import {LOAD_NAV_LIST, INIT_NAV_ELEMENT, BODY_SCROLL_LISTENER_OF_NAV, TOGGLE_NAV_SHOWN} from './mutation_types';
+import {LOAD_NAV_LIST, INIT_NAV_ELEMENT, BODY_SCROLL_LISTENER_OF_NAV} from './mutation_types';
 
 const initNavList = () => {
 	let navList = [];
@@ -48,9 +48,5 @@ export default {
 			currentTop > state.navElementHeight && (state.isFixed = true);
 		}
 		state.bodyScrollTop = currentTop;
-	},
-
-	[TOGGLE_NAV_SHOWN](state = {}) {
-		state.isShown = !state.isShown;
 	}
 };
