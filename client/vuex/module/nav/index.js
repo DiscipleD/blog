@@ -7,12 +7,7 @@ import actions from './actions';
 
 export default {
 	state: {
-		navList: [],
-		navElementHeight: 0,
-		bodyScrollTop: 0,
-		isShown: false,
-		isVisible: false,
-		isFixed: false
+		navList: []
 	},
 	getters: {
 		navList: state => state.navList

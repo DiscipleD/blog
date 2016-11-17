@@ -4,7 +4,7 @@
 
 import NavItem from 'common/model/NavItemClass';
 
-import {LOAD_NAV_LIST, INIT_NAV_ELEMENT, BODY_SCROLL_LISTENER_OF_NAV} from './mutation_types';
+import {LOAD_NAV_LIST} from './mutation_types';
 
 const initNavList = () => {
 	let navList = [];
@@ -23,30 +23,5 @@ export default {
 		let navList = initNavList();
 		addNavItemToList(navList, new NavItem('latestPost', 'Latest Post', '/posts/' + mutation.payload.name));
 		state.navList = navList;
-	},
-
-	[INIT_NAV_ELEMENT](state = {}, mutation = {}) {
-		state.navElementHeight = mutation.payload.height;
-		state.isShown = mutation.payload.isDesktop;
-	},
-
-	[BODY_SCROLL_LISTENER_OF_NAV](state = {}, mutation = {}) {
-		const currentTop = mutation.payload;
-
-		// check if user is scrolling up
-		if (currentTop < state.bodyScrollTop) {
-			// if scrolling up...
-			if (currentTop > 0 && state.isFixed) {
-				state.isVisible = true;
-			} else {
-				state.isVisible = false;
-				state.isFixed = false;
-			}
-		} else if (currentTop > state.bodyScrollTop) {
-			// if scrolling down...
-			state.isVisible = false;
-			currentTop > state.navElementHeight && (state.isFixed = true);
-		}
-		state.bodyScrollTop = currentTop;
 	}
 };

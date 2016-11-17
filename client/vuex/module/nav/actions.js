@@ -5,7 +5,7 @@
 import PostService from 'common/service/PostService';
 
 import {createAction} from '../../common/actionHelper';
-import {LOAD_NAV_LIST, INIT_NAV_ELEMENT, BODY_SCROLL_LISTENER_OF_NAV} from './mutation_types';
+import {LOAD_NAV_LIST} from './mutation_types';
 
 const loadNavList = ({commit}) => {
 	new PostService().getLatestPost()
@@ -14,14 +14,4 @@ const loadNavList = ({commit}) => {
 		});
 };
 
-const initNavContainer = ({commit}, isDesktop) => {
-	const height = document.querySelector('.navbar-custom').clientHeight;
-	commit(createAction(INIT_NAV_ELEMENT, {
-		height,
-		isDesktop
-	}));
-};
-
-const bodyScrollListenerOfNav = ({commit}) => commit(createAction(BODY_SCROLL_LISTENER_OF_NAV, document.body.scrollTop));
-
-export default {loadNavList, initNavContainer, bodyScrollListenerOfNav};
+export default {loadNavList};
