@@ -5,6 +5,7 @@
 import Vue from 'vue';
 import throttle from 'lodash/throttle';
 
+import * as DOMUtil from 'common/util/DOM';
 import './style.scss';
 import template from './template.html';
 
@@ -35,15 +36,18 @@ export default Vue.component('lazyLoading', {
 			this.listener = throttle(this.scrollFn, 200);
 			element.addEventListener('scroll', this.listener);
 		},
-		getDOMElement() {
-			return this.listenerElement === document ? document.body : this.listenerElement;
-		},
-		isScrollBottom() {
-			const element = this.getDOMElement();
-			return element.scrollTop + element.offsetHeight >= element.scrollHeight;
+		isScrollBottom(element) {
+			let scrollTop;
+			if (element === document) {
+				element = document.body;
+				scrollTop = DOMUtil.getDocumentScrollTop();
+			} else {
+				scrollTop = element.scrollTop;
+			}
+			return scrollTop + element.offsetHeight >= element.scrollHeight;
 		},
 		scrollFn() {
-			!this.isFinished && this.isScrollBottom() && this.loadFn();
+			!this.isFinished && this.isScrollBottom(this.listenerElement) && this.loadFn();
 		},
 		removeListener(element) {
 			element.removeEventListener('scroll', this.listener);
