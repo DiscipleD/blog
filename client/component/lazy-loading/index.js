@@ -47,10 +47,22 @@ export default Vue.component('lazyLoading', {
 			return scrollTop + element.offsetHeight >= element.scrollHeight;
 		},
 		scrollFn() {
+			// when loading, don't call loadFn again
+			if (this.isLoading) return;
 			!this.isFinished && this.isScrollBottom(this.listenerElement) && this.loadFn();
 		},
 		removeListener(element) {
 			element.removeEventListener('scroll', this.listener);
+		}
+	},
+	watch: {
+		isLoading: function(newValue) {
+			// when load finished, call scrollFn to test element is filled the target element
+			// if not call loadFn another time
+			if (newValue === false) {
+				// give vue time to render element.
+				setTimeout(this.scrollFn, 0);
+			}
 		}
 	},
 	mounted: function() {
