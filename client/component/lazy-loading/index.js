@@ -56,7 +56,7 @@ export default Vue.component('lazyLoading', {
 	mounted: function() {
 		this.listenerElement = this.listenerTargetSelector ? document.querySelector(this.listenerTargetSelector) || document : this.$el;
 		this.addListener(this.listenerElement);
-		this.loadFn();
+		this.scrollFn();
 	},
 	destroyed() {
 		this.removeListener(this.listenerElement);
