@@ -5,10 +5,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Home from './blog/home/home';
-import About from './blog/about/about';
-import Post from './blog/post/post';
-import Tags from './blog/tags/tags';
+import Home from 'containers/home';
+import About from 'containers/about';
+import Post from 'containers/post';
+import Tags from 'containers/tags';
 
 // Inject vue plugin
 Vue.use(VueRouter);

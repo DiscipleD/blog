@@ -15,7 +15,7 @@ const defaultWebpackConfig = {
 	devtool: 'source-map',
 	entry: {
 		common: ['vue', 'vue-router', 'vuex'],
-		main: [SOURCEPATH + '/app/app.js']
+		app: [SOURCEPATH + '/index.js']
 	},
 	output: {
 		filename: '[name].[hash:8].js',
@@ -66,8 +66,10 @@ const defaultWebpackConfig = {
 	resolve: {
 		alias: {
 			'vue': 'vue/dist/vue.js',
+			'assets': SOURCEPATH + '/assets',
 			'common': SOURCEPATH + '/common',
-			'assets': SOURCEPATH + '/assets'
+			'components': SOURCEPATH + '/components',
+			'containers': SOURCEPATH + '/containers'
 		},
 		extensions: ['', '.js']
 	},
@@ -152,7 +154,7 @@ if (process.env.NODE_ENV === 'production') {
 		}
 	}));
 } else {
-	webpackConfig.entry['main'].unshift('webpack-hot-middleware/client?path=/__webpack_hmr&reload=true&timeout=20000');
+	webpackConfig.entry['app'].unshift('webpack-hot-middleware/client?path=/__webpack_hmr&reload=true&timeout=20000');
 	webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 

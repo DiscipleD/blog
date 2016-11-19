@@ -5,17 +5,17 @@
 import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
 
-// Clean-log less transform to Clean-log cass
-import '../assets/scss/clean-blog.scss';
+// Clean-blog less transform to Clean-blog cass
+import 'assets/scss/clean-blog.scss';
 
 // Fetch service polyfill
 import 'whatwg-fetch';
 import 'core-js/modules/es6.promise';
 
-import store from '../vuex';
+import store from './vuex';
 import router from './router';
-import './blog';
-import '../component';
+import 'containers/blog';
+import 'components';
 
 sync(store, router);
 
