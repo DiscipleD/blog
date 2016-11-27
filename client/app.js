@@ -19,8 +19,10 @@ import 'components';
 
 sync(store, router);
 
-new Vue({
+const app = new Vue({
 	store,
 	router,
-	template: '<blog></blog>'
-}).$mount('#app');
+	render: h => h('blog')
+});
+
+export { app, router, store };

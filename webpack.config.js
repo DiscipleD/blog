@@ -15,10 +15,10 @@ const defaultWebpackConfig = {
 	devtool: 'source-map',
 	entry: {
 		common: ['vue', 'vue-router', 'vuex'],
-		app: [SOURCEPATH + '/index.js']
+		app: [SOURCEPATH + '/client-entry.js']
 	},
 	output: {
-		filename: '[name].[hash:8].js',
+		filename: '[name].js',
 		path: DISTPATH,
 		publicPath: '/',
 		// The JSONP function used by webpack for asnyc loading of chunks.

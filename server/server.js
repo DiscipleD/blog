@@ -10,6 +10,7 @@ import convert from 'koa-convert';
 import rewrite from 'koa-rewrite';
 
 import schema from './graphql'
+import serverRender from './server-render';
 import staticServer from './staticServer';
 import * as middleware from './middleware';
 
@@ -24,12 +25,11 @@ app.use(middleware.logger);
 // koa graphql
 app.use(mount('/graphql', convert(graphQLHTTP({ schema, pretty: true }))));
 
-// redirect request which path not including .|__ to home page
-// . for static file, __ for webpack hot loader
-// vue-router will handle the path
-app.use(rewrite(/^\/[^(.|__)]*$/, '/'));
 // koa static
 app.use(mount('/', staticServer));
+
+// server app
+app.use(mount('/', serverRender));
 
 app.on('error', function(err){
 	console.log('server error', err);
