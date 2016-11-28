@@ -15,6 +15,7 @@ const render = createBundleRenderer(fs.readFileSync(PUBLIC_PATH + '/server.app.j
 
 const renderServer = async ctx => {
 	console.log('~~~~~~~~~~~~~~~~~' + ctx.url + '~~~~~~~~~~~~');
+	// Have to create a promise, because koa don't wait for render callback
 	await new Promise((resolve, reject) => {
 		render.renderToString(
 			{ url: ctx.url },
@@ -29,7 +30,6 @@ const renderServer = async ctx => {
 
 					reject(error);
 				}
-				console.log(indexHTML.replace('<div id=app></div>', vueApp));
 				ctx.body = indexHTML.replace('<div id=app></div>', vueApp);
 				resolve();
 			});

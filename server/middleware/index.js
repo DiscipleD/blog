@@ -2,6 +2,8 @@
  * Created by jack on 16-8-22.
  */
 
+export * from './webpack-middleware';
+
 // server error catcher
 const serverErrorHandler = async (ctx, next) => {
 	try {

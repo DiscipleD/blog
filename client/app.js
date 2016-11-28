@@ -22,7 +22,16 @@ sync(store, router);
 const app = new Vue({
 	store,
 	router,
-	render: h => h('blog')
+	render: h =>
+		h(
+			'div',
+			{
+				attrs: {
+					id: 'app'
+				}
+			},
+			[h('blog')]
+		)
 });
 
-export { app, router, store };
+export {app, router, store};
