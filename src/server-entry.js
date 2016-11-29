@@ -2,7 +2,7 @@
  * Created by jack on 16-11-27.
  */
 
-import { app, router, store } from './app';
+import { app, router, store } from './client/app';
 
 // Add global variables for node environment.
 const jsdom = require('jsdom').jsdom;

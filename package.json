@@ -66,13 +66,12 @@
   },
   "scripts": {
     "clean": "rm -rf build",
-    "copy:posts": "npm run clean && mkdir build && mkdir build/server && mkdir build/server/data && cp -r server/data/posts build/server/data",
-    "start": "babel server -w -d build/server & nodemon --watch build --delay 2 build/server/server.js",
+    "copy:posts": "npm run clean && mkdir build && mkdir build/server && mkdir build/server/data && cp -r src/server/data/posts build/server/data",
+    "start": "babel src/server -w -d build/server & nodemon --watch build --delay 2 build/server/server.js",
     "build": "npm run copy:posts && NODE_ENV=production npm run build:server && NODE_ENV=production npm run build:client",
-    "build:client": "webpack",
-    "build:serverApp": "webpack --config webpack.server.config.js",
-    "build:clientDll": "webpack --config webpack.dll.config.js",
-    "build:server": "babel server -d build/server",
+    "build:client": "webpack --config config/webpack/client.js && webpack --config config/webpack/server.js",
+    "build:clientDll": "webpack --config config/webpack/dll.js",
+    "build:server": "babel src/server -d build/server",
     "start:server": "NODE_ENV=production pm2 start build/server/server.js --name blog --output /usr/app/log/out.log --error /usr/app/log/error.log --no-daemon",
     "stop:server": "pm2 stop blog"
   }

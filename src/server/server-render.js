@@ -9,7 +9,7 @@ import { createRenderer, createBundleRenderer } from 'vue-server-renderer';
 
 const app = new Koa();
 
-const PUBLIC_PATH = path.resolve(__dirname, '../public');
+const PUBLIC_PATH = path.resolve(__dirname, '../client');
 const indexHTML = fs.readFileSync(PUBLIC_PATH + '/index.html', 'utf8');
 const render = createBundleRenderer(fs.readFileSync(PUBLIC_PATH + '/server.app.js', 'utf-8'));
 

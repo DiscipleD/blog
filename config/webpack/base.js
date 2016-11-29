@@ -6,47 +6,40 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const SOURCEPATH = path.join(__dirname, 'client');
-const DISTPATH = path.join(__dirname, 'build/public');
+const SOURCE_PATH = path.join(__dirname, '../../src');
 
 const webpackConfig = {
-	target: 'node',
-	entry: {
-		app: SOURCEPATH + '/server-entry.js'
-	},
-	output: {
-		filename: 'server.[name].js',
-		path: DISTPATH,
-		libraryTarget: 'commonjs2'
-	},
-	// externals can be used when sources loaded by other project or remote system, like CDN.
-	externals: Object.keys(require('./package.json').dependencies),
-	plugins: [
-		// the plugin need be added in loader
-		new ExtractTextPlugin('style-[contenthash:8].css'),
-		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-		}),
-		new webpack.NoErrorsPlugin()
-	],
+	// http://mp.weixin.qq.com/s?__biz=MzI3NTE2NjYxNw==&mid=2650600472&idx=1&sn=d4bf85c1bb26a32aff144e81d652582f
+	devtool: 'source-map',
 	resolve: {
 		alias: {
 			'vue': 'vue/dist/vue.js',
-			'assets': SOURCEPATH + '/assets',
-			'common': SOURCEPATH + '/common',
-			'components': SOURCEPATH + '/components',
-			'containers': SOURCEPATH + '/containers'
+			'assets': SOURCE_PATH + '/client/assets',
+			'common': SOURCE_PATH + '/client/common',
+			'components': SOURCE_PATH + '/client/components',
+			'containers': SOURCE_PATH + '/client/containers'
 		},
 		extensions: ['', '.js']
 	},
+	eslint: {
+		configFile: '.eslintrc',
+		emitWarning: true,
+		emitError: true,
+		formatter: require('eslint-friendly-formatter')
+	},
 	postcss: [autoprefixer({browsers: ['last 2 versions']})],
+	plugins: [
+		// the plugin need be added in loader
+		new ExtractTextPlugin('style-[contenthash:8].css'),
+		new webpack.NoErrorsPlugin()
+	],
 	module: {
 		preLoaders: [
 			{
 				test: /[^(\.min)]\.js$/,
 				loader: 'eslint-loader',
 				exclude: /node_modules/,
-				include: SOURCEPATH
+				include: SOURCE_PATH
 			}
 		],
 		loaders: [
@@ -54,25 +47,15 @@ const webpackConfig = {
 				test: /[^(\.min)]\.js$/,
 				loaders: ['babel'],
 				exclude: /node_modules/,
-				include: SOURCEPATH
+				include: SOURCE_PATH
 			},
 			{
 				test: /\.html$/,
 				loader: 'html',
 				query: {interpolate: true},
 				exclude: /node_modules/,
-				include: SOURCEPATH
+				include: SOURCE_PATH
 			},
-			{
-				test: /\.md$/,
-				loader: "html!markdown"
-			},
-			/*{
-			 test: /\.html$/,
-			 loader: 'file?name=[path][name]-[hash:8].[ext]',
-			 exclude: /node_modules/,
-			 include: SOURCEPATH
-			 },*/
 			{
 				test: /\.(sc|c)ss$/,
 				// extract css file from js file, that will reduce the js file size and optimize page loading.

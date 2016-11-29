@@ -4,7 +4,7 @@
 
 import webpack from 'webpack';
 import { devMiddleware, hotMiddleware } from 'koa-webpack-middleware';
-import devConfig from '../../../webpack.config.js';
+import devConfig from '../../../config/webpack/client';
 
 const compile = webpack(devConfig);
 

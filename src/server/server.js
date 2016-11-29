@@ -17,7 +17,7 @@ import * as middleware from './middleware';
 const app = new Koa();
 
 const PORT = parseInt(process.env.PORT || 8080);
-const PUBLIC_PATH = path.resolve(__dirname, '../public');
+const PUBLIC_PATH = path.resolve(__dirname, '../client');
 const staticServer = serve(PUBLIC_PATH);
 
 app.use(middleware.serverErrorHandler);

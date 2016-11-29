@@ -5,25 +5,26 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const DISTPATH = path.join(__dirname, 'build/public');
+const DIST_PATH = path.join(__dirname, '../../build/client');
 
 module.exports = {
 	entry: {
 		'VueStuff': [
 			'vue',
-			'vue-router'
+			'vue-router',
+			'vuex'
 		]
 	},
 	output: {
 		filename: '[name].[hash:8].dll.js',
-		path: DISTPATH,
+		path: DIST_PATH,
 		library: '[name]_library'
 	},
 
 	plugins: [
 		new webpack.DllPlugin({
 			name: '[name]_library',
-			path: DISTPATH + '/[name].manifest.json'
+			path: DIST_PATH + '/[name].manifest.json'
 		})
 	]
 };
