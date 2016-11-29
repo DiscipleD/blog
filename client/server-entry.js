@@ -12,8 +12,6 @@ global.navigator = window.navigator;
 global.fetch = require('node-fetch');
 
 export default context => {
-	console.log(context);
-
 	// set router's location
 	router.push(context.url);
 	const matchedComponents = router.getMatchedComponents();

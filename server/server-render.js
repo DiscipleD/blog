@@ -13,12 +13,17 @@ const PUBLIC_PATH = path.resolve(__dirname, '../public');
 const indexHTML = fs.readFileSync(PUBLIC_PATH + '/index.html', 'utf8');
 const render = createBundleRenderer(fs.readFileSync(PUBLIC_PATH + '/server.app.js', 'utf-8'));
 
+const generatorHtml = (str, initState) => {
+	const [header, footer] = indexHTML.split('<div id=app></div>');
+	return `${header}${str}<script>window.__INITIAL_STATE__=${JSON.stringify(initState)}</script>${footer}`;
+};
+
 const renderServer = async ctx => {
-	console.log('~~~~~~~~~~~~~~~~~' + ctx.url + '~~~~~~~~~~~~');
 	// Have to create a promise, because koa don't wait for render callback
 	await new Promise((resolve, reject) => {
+		const context = { url: ctx.url };
 		render.renderToString(
-			{ url: ctx.url },
+			context,
 			(error, vueApp) => {
 				if (error) {
 					// server console
@@ -30,7 +35,7 @@ const renderServer = async ctx => {
 
 					reject(error);
 				}
-				ctx.body = indexHTML.replace('<div id=app></div>', vueApp);
+				ctx.body = generatorHtml(vueApp, context.initialState);
 				resolve();
 			});
 	});
