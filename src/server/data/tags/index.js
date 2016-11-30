@@ -144,6 +144,14 @@ const TAGS_LIST = [{
 	name: 'saucelabs',
 	label: 'Sauce Labs',
 	createdDate: '2016-10-19'
+}, {
+	name: 'ssr',
+	label: 'Server Side Render',
+	createdDate: '2016-11-30'
+}, {
+	name: 'seo',
+	label: 'SEO',
+	createdDate: '2016-11-30'
 }];
 
 export default TAGS_LIST.sort(sortFn('createdDate'));

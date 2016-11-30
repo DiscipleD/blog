@@ -128,6 +128,12 @@ const POSTS_LIST = [{
 	title: '前端持续集成解决方案',
 	createdDate: '2016-10-19',
 	tags: ['ci', 'travis', 'codecov', 'nightwatch', 'saucelabs']
+}, {
+	name: 'ssr',
+	title: 'From SPA to SSR',
+	subtitle: '从单页应用到服务器渲染',
+	createdDate: '2016-11-30',
+	tags: ['ssr', 'seo', 'vue2']
 }];
 
 export default POSTS_LIST.sort(sortFn('createdDate'));
