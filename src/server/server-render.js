@@ -10,11 +10,11 @@ import { createRenderer, createBundleRenderer } from 'vue-server-renderer';
 const app = new Koa();
 
 const PUBLIC_PATH = path.resolve(__dirname, '../client');
-const indexHTML = fs.readFileSync(PUBLIC_PATH + '/index.html', 'utf8');
+const indexHTML = fs.readFileSync(PUBLIC_PATH + '/index.temp.html', 'utf8');
 const render = createBundleRenderer(fs.readFileSync(PUBLIC_PATH + '/server.app.js', 'utf-8'));
 
 const generatorHtml = (str, initState) => {
-	const [header, footer] = indexHTML.split('<div id=app></div>');
+	const [header, footer] = indexHTML.split('<blog></blog>');
 	return `${header}${str}<script>window.__INITIAL_STATE__=${JSON.stringify(initState)}</script>${footer}`;
 };
 

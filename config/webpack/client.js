@@ -42,6 +42,7 @@ const webpackConfig = Object.assign({}, baseWebpackConfig, {
 		 manifest: require(DIST_PATH + '/VueStuff.manifest.json')
 		 }),*/
 		new HtmlWebpackPlugin({
+			filename: 'index.temp.html',
 			template: SOURCE_PATH + '/index.html'
 		}),
 		// create another 404.html file
