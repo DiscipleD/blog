@@ -12,11 +12,9 @@ const DIST_PATH = ROOT + 'build/client';
 const webpackConfig = Object.assign({}, baseWebpackConfig, {
 	devtool: false,
 	target: 'node',
-	entry: {
-		app: SOURCE_PATH + '/server-entry.js'
-	},
+	entry: SOURCE_PATH + '/server-entry.js',
 	output: {
-		filename: 'server.[name].js',
+		filename: 'server.bundle.js',
 		path: DIST_PATH,
 		libraryTarget: 'commonjs2'
 	},

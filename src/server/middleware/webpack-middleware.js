@@ -1,24 +1,80 @@
 /**
  * Created by jack on 16-11-28.
  */
+import fs from 'fs';
 
+import path from 'path';
 import webpack from 'webpack';
-import { devMiddleware, hotMiddleware } from 'koa-webpack-middleware';
-import devConfig from '../../../config/webpack/client';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import MFS from 'memory-fs';
+import { PassThrough } from 'stream';
 
-const compile = webpack(devConfig);
+import clientConfig from '../../../config/webpack/client';
+import serverConfig from '../../../config/webpack/server';
+import { createIndexHTML, createRenderer } from './server-render';
 
-const webpackDevMiddleware = devMiddleware(compile, {
+let expressDevMiddleware;
+
+const koaWebpackDevMiddleware = (compiler, opts) => {
+	expressDevMiddleware = webpackDevMiddleware(compiler, opts);
+	return async (ctx, next) => {
+		await expressDevMiddleware(ctx.req, {
+			end: (content) => {
+				ctx.body = content
+			},
+			setHeader: ctx.set.bind(ctx)
+		}, next);
+	};
+};
+
+const koaWebpackHotMiddleware = (compiler, opts) => {
+	const expressMiddleware = webpackHotMiddleware(compiler, opts)
+	return async (ctx, next) => {
+		let stream = new PassThrough();
+		ctx.body = stream;
+		await expressMiddleware(ctx.req, {
+			write: stream.write.bind(stream),
+			writeHead: (state, headers) => {
+				ctx.state = state;
+				ctx.set(headers);
+			}
+		}, next);
+	}
+};
+
+const clientCompiler = webpack(clientConfig);
+
+const devMiddleware = koaWebpackDevMiddleware(clientCompiler, {
 	// display no info to console (only warnings and errors)
 	noInfo: false,
 	stats: {
 		colors: true,
 		cached: false
 	},
-	contentBase: devConfig.output.path,
-	publicPath: devConfig.output.publicPath
+	contentBase: clientConfig.output.path,
+	publicPath: clientConfig.output.publicPath
 });
 
-const webpackHotMiddleware = hotMiddleware(compile, {});
+clientCompiler.plugin('done', () => {
+	const filePath = path.join(clientConfig.output.path, 'index.temp.html');
+	createIndexHTML(expressDevMiddleware.fileSystem.readFileSync(filePath, 'utf-8'));
+});
 
-export {webpackDevMiddleware, webpackHotMiddleware};
+const hotMiddleware = koaWebpackHotMiddleware(clientCompiler, {});
+
+// watch and update server renderer
+const serverCompiler = webpack(serverConfig);
+const mfs = new MFS();
+const outputPath = path.join(serverConfig.output.path, serverConfig.output.filename);
+serverCompiler.outputFileSystem = mfs;
+serverCompiler.watch({}, (err, stats) => {
+	if (err) throw err;
+	stats = stats.toJson();
+	stats.errors.forEach(err => console.error(err));
+	stats.warnings.forEach(err => console.warn(err));
+	createRenderer(mfs.readFileSync(outputPath, 'utf-8'));
+	console.log('server side bundle is now VALID.');
+});
+
+export {devMiddleware, hotMiddleware};

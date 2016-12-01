@@ -4,14 +4,27 @@
 
 import fs from 'fs';
 import path from 'path';
-import Koa from 'koa';
-import { createRenderer, createBundleRenderer } from 'vue-server-renderer';
+import { createBundleRenderer } from 'vue-server-renderer';
 
-const app = new Koa();
+import serverConfig from '../../../config/webpack/server';
 
-const PUBLIC_PATH = path.resolve(__dirname, '../client');
-const indexHTML = fs.readFileSync(PUBLIC_PATH + '/index.temp.html', 'utf8');
-const render = createBundleRenderer(fs.readFileSync(PUBLIC_PATH + '/server.app.js', 'utf-8'));
+const serverBundlePath = path.join(serverConfig.output.path, serverConfig.output.filename);
+
+let indexHTML;
+let renderer;
+
+export const createIndexHTML = html => {
+	indexHTML = html;
+};
+
+export const createRenderer = bundle => {
+	renderer = createBundleRenderer(bundle);
+};
+
+if (process.env.NODE_ENV === 'production') {
+	indexHTML = fs.readFileSync(serverConfig.output.path + '/index.temp.html', 'utf8');
+	createRenderer(fs.readFileSync(serverBundlePath, 'utf-8'));
+}
 
 const generatorHtml = (str, initState) => {
 	const [header, footer] = indexHTML.split('<blog></blog>');
@@ -22,7 +35,7 @@ const renderServer = async ctx => {
 	// Have to create a promise, because koa don't wait for render callback
 	await new Promise((resolve, reject) => {
 		const context = { url: ctx.url };
-		render.renderToString(
+		renderer.renderToString(
 			context,
 			(error, vueApp) => {
 				if (error) {
@@ -35,12 +48,11 @@ const renderServer = async ctx => {
 
 					reject(error);
 				}
+				console.log(ctx.path);
 				ctx.body = generatorHtml(vueApp, context.initialState);
 				resolve();
 			});
 	});
 };
 
-app.use(renderServer);
-
-export default app;
+export default renderServer;

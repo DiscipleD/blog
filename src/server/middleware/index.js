@@ -3,6 +3,7 @@
  */
 
 export * from './webpack-middleware';
+import serverRender from './server-render';
 
 // server error catcher
 const serverErrorHandler = async (ctx, next) => {
@@ -55,4 +56,4 @@ const logger = async (ctx, next) => {
 	console.log('%s %s - %s', ctx.method, ctx.url, `${ms}ms`);
 };
 
-export {serverErrorHandler, pageNotFound, responseTime, logger};
+export {serverRender, serverErrorHandler, pageNotFound, responseTime, logger};

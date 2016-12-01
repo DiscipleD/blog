@@ -11,7 +11,6 @@ import convert from 'koa-convert';
 import serve from 'koa-static';
 
 import schema from './graphql'
-import serverRender from './server-render';
 import * as middleware from './middleware';
 
 const app = new Koa();
@@ -32,12 +31,12 @@ app.use(mount('/graphql', convert(graphQLHTTP({ schema, pretty: true }))));
 app.use(staticServer);
 
 // server render
-app.use(mount('/', serverRender));
+app.use(middleware.serverRender);
 
-// WebpackMiddleware have to add at the end of all middleware
+// KoaWebpackMiddleware have to add at the end of all middleware
 if (process.env.NODE_ENV !== 'production') {
-	app.use(middleware.webpackDevMiddleware);
-	app.use(middleware.webpackHotMiddleware);
+	app.use(middleware.devMiddleware);
+	app.use(middleware.hotMiddleware);
 }
 
 app.on('error', function(err){
