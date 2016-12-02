@@ -1,7 +1,6 @@
 /**
  * Created by jack on 16-11-28.
  */
-import fs from 'fs';
 
 import path from 'path';
 import webpack from 'webpack';
@@ -19,17 +18,20 @@ let expressDevMiddleware;
 const koaWebpackDevMiddleware = (compiler, opts) => {
 	expressDevMiddleware = webpackDevMiddleware(compiler, opts);
 	return async (ctx, next) => {
-		await expressDevMiddleware(ctx.req, {
-			end: (content) => {
-				ctx.body = content
-			},
-			setHeader: ctx.set.bind(ctx)
-		}, next);
+		await new Promise(resolve =>
+			expressDevMiddleware(ctx.req, {
+				end: (content) => {
+					ctx.body = content;
+					resolve();
+				},
+				setHeader: ctx.set.bind(ctx)
+			}, () => resolve(next()))
+		);
 	};
 };
 
 const koaWebpackHotMiddleware = (compiler, opts) => {
-	const expressMiddleware = webpackHotMiddleware(compiler, opts)
+	const expressMiddleware = webpackHotMiddleware(compiler, opts);
 	return async (ctx, next) => {
 		let stream = new PassThrough();
 		ctx.body = stream;

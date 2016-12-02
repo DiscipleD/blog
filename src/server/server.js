@@ -30,14 +30,14 @@ app.use(mount('/graphql', convert(graphQLHTTP({ schema, pretty: true }))));
 // koa static
 app.use(staticServer);
 
-// server render
-app.use(middleware.serverRender);
-
 // KoaWebpackMiddleware have to add at the end of all middleware
 if (process.env.NODE_ENV !== 'production') {
 	app.use(middleware.devMiddleware);
 	app.use(middleware.hotMiddleware);
 }
+
+// server render
+app.use(middleware.serverRender);
 
 app.on('error', function(err){
 	console.log('server error', err);

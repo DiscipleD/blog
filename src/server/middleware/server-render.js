@@ -32,9 +32,9 @@ const generatorHtml = (str, initState) => {
 };
 
 const renderServer = async ctx => {
+	const context = { url: ctx.url };
 	// Have to create a promise, because koa don't wait for render callback
 	await new Promise((resolve, reject) => {
-		const context = { url: ctx.url };
 		renderer.renderToString(
 			context,
 			(error, vueApp) => {
@@ -48,7 +48,7 @@ const renderServer = async ctx => {
 
 					reject(error);
 				}
-				console.log(ctx.path);
+				ctx.type = 'text/html';
 				ctx.body = generatorHtml(vueApp, context.initialState);
 				resolve();
 			});
