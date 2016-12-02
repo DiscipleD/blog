@@ -75,6 +75,19 @@ OK。它俩的事就做完啦，是不是很简单。
 
 用 koa 2 作为服务器时，在 `renderToString` 或 `renderToStream` 时，记得外面要加 `await`，否则，程序就不等组件渲染好，就直接跑下个 middleware 去了。
 
+(奉劝大家不要用 koa 作 SSR 服务器，koa 和 webpack-dev-middleware 天生水土不服，不要问我为什么~😭)
+
+* document
+
+在 Server 端渲染时，node 环境下是没有 document 对象的。当一个界面的显示依赖于 document 对象（比如，页面滚动监听事件），那么，在 node 端运行时就会报错。
+
+这时，有两个解决的办法。
+
+1. 根据运行时的环境变量，通过添加逻辑来判断是否依赖 document
+2. 使用 jsdom mock document 对象（个人偷懒的做法）
+
+当然，从设计的角度移除对 document 的依赖就最好啦。
+
 ### 完成
 这样当浏览器请求时，返回的页面是服务器渲染之后的，浏览器解析后，页面仍就是一个单页应用。
 

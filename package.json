@@ -70,7 +70,7 @@
   "scripts": {
     "clean": "rm -rf build",
     "copy:posts": "npm run clean && mkdir build && mkdir build/server && mkdir build/server/data && cp -r src/server/data/posts build/server/data",
-    "start": "babel src/server -w -d build/server & nodemon --watch build --delay 2 build/server/server.js",
+    "start": "npm run copy:posts && babel src/server -w -d build/server & nodemon --watch build --delay 2 build/server/server.js",
     "build": "npm run copy:posts && NODE_ENV=production npm run build:server && NODE_ENV=production npm run build:client",
     "build:client": "webpack --config config/webpack/client.js && webpack --config config/webpack/server.js",
     "build:clientDll": "webpack --config config/webpack/dll.js",
