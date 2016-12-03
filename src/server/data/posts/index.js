@@ -133,7 +133,7 @@ const POSTS_LIST = [{
 	title: 'From SPA to SSR',
 	subtitle: '从单页应用到服务器渲染',
 	createdDate: '2016-11-30',
-	tags: ['ssr', 'seo', 'vue2']
+	tags: ['ssr', 'seo', 'vue2', 'koa2']
 }];
 
 export default POSTS_LIST.sort(sortFn('createdDate'));

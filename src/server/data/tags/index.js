@@ -152,6 +152,10 @@ const TAGS_LIST = [{
 	name: 'seo',
 	label: 'SEO',
 	createdDate: '2016-11-30'
+}, {
+	name: 'koa2',
+	label: 'KOA 2',
+	createdDate: '2016-11-30'
 }];
 
 export default TAGS_LIST.sort(sortFn('createdDate'));
