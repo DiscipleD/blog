@@ -2,6 +2,9 @@
  * Created by jack on 16-8-24.
  */
 
+import fetch from '../util/Fetch';
+import { SERVER_URL } from '../config/url';
+
 export const generatorUrl = (url = '', params = '') =>
 	params ? url + '?' + generatorQueryString(params) : url;
 
@@ -10,18 +13,9 @@ export const generatorQueryString = params =>
 		? Object.keys(params).map(key => key + '=' + JSON.stringify(params[key])).join('&')
 		: params;
 
-export const status = response => {
-	if (response.status >= 200 && response.status < 300) {
-		return Promise.resolve(response);
-	} else {
-		return Promise.reject(new Error(response.statusText));
-	}
+const httpFetch = (url, options) => {
+	url = SERVER_URL + url;
+	return fetch(url, options);
 };
-
-export const json = response => response.json();
-
-const httpFetch = (url, options) => fetch(url, options)
-	.then(status)
-	.then(json);
 
 export default httpFetch;
