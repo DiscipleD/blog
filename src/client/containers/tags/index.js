@@ -6,6 +6,7 @@ import vue from 'vue';
 import { mapState, mapActions } from 'vuex';
 
 import template from './tags.html';
+import tagsActions from 'vuexModule/tags/actions';
 
 const Tags = vue.extend({
 	template,
@@ -18,12 +19,26 @@ const Tags = vue.extend({
 	methods: mapActions(['initTagsPage', 'queryTagsList']),
 	watch: {
 		'tagName': function() {
-			this.queryTagsList({ tagName: this.tagName, router: this.$router });
+			this.queryTagsList({
+				tagName: this.tagName,
+				router: this.$router
+			});
 		}
 	},
 	created() {
 		this.initTagsPage();
-		this.queryTagsList({ tagName: this.tagName, router: this.$router });
+		this.queryTagsList({
+			tagName: this.tagName,
+			enableLoading: this.$root._isMounted,
+			router: this.$router
+		});
+	},
+	preFetch(store) {
+		return tagsActions.queryTagsList(store, {
+			postName: store.state.route.params.postName,
+			enableLoading: false,
+			router: this.$router
+		});
 	}
 });
 

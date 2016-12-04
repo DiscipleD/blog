@@ -12,15 +12,15 @@ const initTagsPage = ({commit}) => {
 	commit(createAction(INIT_TAGS_PAGE, {
 		header: {
 			image,
-			title: 'Tag',
+			title: 'Tags',
 			subtitle: ''
 		}
 	}));
 };
 
-const queryTagsList = ({commit}, {tagName, router}) => {
-	commit(QUERY_TAGS);
-	TagService.queryTagsList(tagName)
+const queryTagsList = ({commit}, {tagName, enableLoading = true, router}) => {
+	enableLoading && commit(QUERY_TAGS);
+	return TagService.queryTagsList(tagName)
 		.then(result => {
 			if (result.data.tags && result.data.tags.length > 0) {
 				return result.data;
@@ -28,7 +28,7 @@ const queryTagsList = ({commit}, {tagName, router}) => {
 				throw new Error('Tag not found!');
 			}
 		})
-		.then(blog => commit(createAction(RECEIVE_TAGS, blog)))
+		.then(tags => commit(createAction(RECEIVE_TAGS, tags)))
 		.catch(err => {
 			commit(createAction(RECEIVE_TAGS));
 			console.error(err + ' Page will redirect to the Home page.');

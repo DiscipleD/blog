@@ -6,6 +6,7 @@ import vue from 'vue';
 import { mapState, mapGetters, mapActions } from 'vuex';
 
 import template from './home.html';
+import homeActions from 'vuexModule/home/actions';
 
 const Home = vue.extend({
 	template,
@@ -17,7 +18,10 @@ const Home = vue.extend({
 	},
 	methods: mapActions(['initHomePage', 'loadPostList']),
 	created() {
-		this.initHomePage();
+		this.initHomePage().catch(console.log);
+	},
+	preFetch(store) {
+		return homeActions.loadPostList(store).catch(console.log);
 	}
 });
 

@@ -6,6 +6,7 @@ import Vue from 'vue';
 import {mapActions, mapState} from 'vuex';
 
 import template from './post.html';
+import postActions from 'vuexModule/post/actions';
 
 const Post = Vue.extend({
 	template,
@@ -16,12 +17,26 @@ const Post = Vue.extend({
 	}),
 	methods: mapActions(['getPost']),
 	created() {
-		this.getPost({ postName: this.postName, router: this.$router });
+		this.getPost({
+			postName: this.postName,
+			enableLoading: this.$root._isMounted,
+			router: this.$router
+		});
 	},
 	watch: {
 		'postName': function() {
-			this.getPost({ postName: this.postName, router: this.$router });
+			this.getPost({
+				postName: this.postName,
+				router: this.$router
+			});
 		}
+	},
+	preFetch(store) {
+		return postActions.getPost(store, {
+			postName: store.state.route.params.postName,
+			enableLoading: false,
+			router: this.$router
+		});
 	}
 });
 

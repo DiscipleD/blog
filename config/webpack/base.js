@@ -17,7 +17,8 @@ const webpackConfig = {
 			'assets': SOURCE_PATH + '/client/assets',
 			'common': SOURCE_PATH + '/client/common',
 			'components': SOURCE_PATH + '/client/components',
-			'containers': SOURCE_PATH + '/client/containers'
+			'containers': SOURCE_PATH + '/client/containers',
+			'vuexModule': SOURCE_PATH + '/client/vuex/module'
 		},
 		extensions: ['', '.js']
 	},

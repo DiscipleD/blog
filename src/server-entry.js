@@ -26,8 +26,8 @@ export default context => {
 	// which is resolved when the action is complete and store state has been
 	// updated.
 	return Promise.all(matchedComponents.map(component => {
-		if (component.preFetch) {
-			return component.preFetch(store);
+		if (component.options.preFetch) {
+			return component.options.preFetch(store);
 		}
 	})).then(() => {
 		// After all preFetch hooks are resolved, our store is now

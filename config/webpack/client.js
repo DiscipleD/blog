@@ -12,7 +12,7 @@ const SOURCE_PATH = path.join(__dirname, '../../src');
 const DIST_PATH = path.join(__dirname, '../../build/client');
 
 const webpackConfig = Object.assign({}, baseWebpackConfig, {
-	devtool: isProduction ? 'cheap-source-map' : 'cheap-module-source-map',
+	devtool: isProduction ? 'cheap-source-map' : 'module-source-map',
 	entry: {
 		common: ['vue', 'vue-router', 'vuex'],
 		app: [SOURCE_PATH + '/client-entry.js']

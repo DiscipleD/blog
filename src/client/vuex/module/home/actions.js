@@ -19,19 +19,23 @@ const initHomePage = ({commit}) => {
 };
 
 const loadPostList = ({state, commit}) => {
-	if (state.posts.isFinished) return;
-	commit(QUERY_POSTS_LIST);
+	// TODO Abstract whole page loading event
+	if (process.env.VUE_ENV !== 'server') {
+		commit(QUERY_POSTS_LIST);
+	} else {
+		state = state.home;
+	}
 	const pager = {
 		...state.posts.pager,
 		number: state.posts.pager.number + 1
 	};
-	new PostService().queryPostList(pager)
+	return new PostService().queryPostList(pager)
 		.then((result = {}) => {
 			commit(createAction(RECEIVE_POSTS_LIST, {
 				postsList: result.data.posts
 			}));
-		})
-		.catch(console.error);
+		});
 };
+
 
 export default {initHomePage, loadPostList};
