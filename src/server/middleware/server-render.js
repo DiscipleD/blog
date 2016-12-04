@@ -39,17 +39,15 @@ const renderServer = async ctx => {
 			context,
 			(error, vueApp) => {
 				if (error) {
-					// server console
-					console.error(error);
-
-					// response error message
-					ctx.status = 500;
-					ctx.body = error;
-
-					reject(error);
+					if (error.code === '404') {
+						ctx.status = 404;
+					} else {
+						reject(error);
+					}
+				} else {
+					ctx.type = 'text/html';
+					ctx.body = generatorHtml(vueApp, context.initialState);
 				}
-				ctx.type = 'text/html';
-				ctx.body = generatorHtml(vueApp, context.initialState);
 				resolve();
 			});
 	});

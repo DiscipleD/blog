@@ -20,9 +20,10 @@ const ROUTER_SETTING = {
 		{path: '/about', component: About},
 		{path: '/posts/:postName', component: Post},
 		{path: '/tags', component: Tags},
-		{path: '/tags/:tagName', component: Tags},
+		{path: '/tags/:tagName', component: Tags}
+		// Using 404 page, when page not found.
 		// catch all redirect, not matched path will be redirected to the home path
-		{path: '*', redirect: '/'}
+		// {path: '*', redirect: '/'}
 	]
 };
 
