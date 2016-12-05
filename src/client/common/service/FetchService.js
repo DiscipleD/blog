@@ -3,7 +3,7 @@
  */
 
 import fetch from '../util/Fetch';
-import { SERVER_URL } from '../config/url';
+import SERVER from '../config/server';
 
 export const generatorUrl = (url = '', params = '') =>
 	params ? url + '?' + generatorQueryString(params) : url;
@@ -14,7 +14,7 @@ export const generatorQueryString = params =>
 		: params;
 
 const httpFetch = (url, options) => {
-	url = SERVER_URL + url;
+	url = SERVER.HOST + url;
 	return fetch(url, options);
 };
 
