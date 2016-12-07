@@ -19,11 +19,6 @@ const webpackConfig = Object.assign({}, baseWebpackConfig, {
 		libraryTarget: 'commonjs2'
 	},
 	externals: Object.keys(require(ROOT + 'package.json').dependencies),
-	plugins: baseWebpackConfig.plugins.concat([
-		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
-		}),
-	]),
 });
 
 module.exports = webpackConfig;
