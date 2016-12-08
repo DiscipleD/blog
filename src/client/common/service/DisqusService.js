@@ -47,7 +47,7 @@ class DisqusService {
 					config: function() {
 						this.page.identifier = identifier;
 						this.page.title = title;
-						this.page.url = 'http://discipled.daoapp.io/#!/posts/' + identifier;
+						this.page.url = 'http://discipled.me/posts/' + identifier;
 					}
 				});
 			} catch (e) {
