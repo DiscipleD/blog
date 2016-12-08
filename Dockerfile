@@ -8,10 +8,14 @@ MAINTAINER Disciple.Ding <disciple.ding@gmail.com>
 RUN mkdir -p /usr/app
 WORKDIR /usr/app
 
+
+# node-sass install error in docker environment
+# Install node-sass in single process.
+RUN npm install node-sass
+
 # We add package.json first so that the  docker image build
 # can use the cache as long as contents of package.json
 # hasn't changed.
-
 COPY package.json /usr/app/
 RUN npm install
 
