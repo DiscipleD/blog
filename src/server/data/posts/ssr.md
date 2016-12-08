@@ -1,3 +1,9 @@
+> 系列文章:
+> 
+> 1. [Vue 2.0 升（cai）级（keng）之旅](http://discipled.me/posts/troubleshooting-of-upgrading-vue)
+> 2. [Vuex — The core of Vue application](http://discipled.me/posts/vuex-core-of-vue-application)
+> 3. From SPA to SSR (本文)
+
 个人博客之前已经将 vue-router 的模式改为了 `history`，即 url 中不包含 `hash`，再通过将所有的静态请求转发到 index.html，使它看上去似乎像一个静态多页的网站。
 
 然而，它其实和其他的 SPA (Single Page Application 单页应用)来说没有任何的区别，最终是通过前端的路由去控制页面的显示。单页应用虽然在交互体验上比传统多页更友好，但它也有一个天生的缺陷，就是对搜索引擎不友好，不利于爬虫爬取数据。
@@ -93,7 +99,7 @@ OK。它俩的事就做完啦，是不是很简单。
 ### 完成
 这样当浏览器请求时，返回的页面是服务器渲染之后的，浏览器解析后，页面仍就是一个单页应用。
 
-最后，看效果的戳[这里](http://discipled.daoapp.io/)，看代码的戳[这里](https://github.com/DiscipleD/blog)，原先 SPA 的代码依旧保留在了 [SPA 分支](https://github.com/DiscipleD/blog/tree/SPA)。
+最后，看效果的戳[这里](http://discipled.me/)，看代码的戳[这里](https://github.com/DiscipleD/blog)，原先 SPA 的代码依旧保留在了 [SPA 分支](https://github.com/DiscipleD/blog/tree/SPA)。
 
 对 Vue SSR 有兴趣的童鞋，一定要看看 [vue hackernews 2.0](https://github.com/vuejs/vue-hackernews-2.0)，大神的水准比我可是高多了。
 

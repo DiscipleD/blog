@@ -1,14 +1,15 @@
 > 系列文章:
 > 
-> 1. [Vue 2.0 升（cai）级（keng）之旅](http://discipled.daoapp.io/posts/troubleshooting-of-upgrading-vue)
+> 1. [Vue 2.0 升（cai）级（keng）之旅](http://discipled.me/posts/troubleshooting-of-upgrading-vue)
 > 2. Vuex — The core of Vue application (本文)
+> 3. [From SPA to SSR](http://discipled.me/posts/ssr)
 
 > 当今，谈到状态管理首先想到的肯定是 Redux，而随着 Vue 2.0 的发布，Vuex 也伴随着推出了最新版，本文就带你对照 Redux 来看看刚刚出炉的 Vuex 2.0。
 > 
 > 有关 Redux 的基础概念在本文中会简要略过，如再一一赘述篇幅就太长了，不了解的可以看一下本人之前写的有关 Redux 的两篇文章：
 > 
-> 1. [Redux 入门](http://discipled.daoapp.io/posts/getting-started-with-redux)
-> 2. [Redux 进阶](http://discipled.daoapp.io/posts/redux-advanced)
+> 1. [Redux 入门](http://discipled.me/posts/getting-started-with-redux)
+> 2. [Redux 进阶](http://discipled.me/posts/redux-advanced)
 
 ### 为什么说 Vuex 是 Vue 应用的核心？
 众所周知，一个应用的外观可以千变万化，但无论如何变化，它都需要一样东西去支撑，那就是——**数据**。这个数据是广义上的，可以是数据库中的数据，也可以是当前应用所处的状态，甚至可以是 [WebRTC](https://webrtc.org/), [Web Bluetooth](https://developers.google.com/web/updates/2015/07/interact-with-ble-devices-on-the-web) 等一系列实时数据。
@@ -17,7 +18,7 @@
 
 既然，明确了以 vuex 为核心，那么就来看看如何在 vue 应用中使用 vuex？
 
-随着 Vue 2.0 的发布，Vuex 在近期也随之推出 2.0 版。在[上一篇文章](http://discipled.daoapp.io/posts/troubleshooting-of-upgrading-vue)中有提到作者的博客是用 vue 2.0 搭建的，但之前并没有添加 vuex，现在正可以借此机会将 vuex 添加到项目中。
+随着 Vue 2.0 的发布，Vuex 在近期也随之推出 2.0 版。在[上一篇文章](http://discipled.me/posts/troubleshooting-of-upgrading-vue)中有提到作者的博客是用 vue 2.0 搭建的，但之前并没有添加 vuex，现在正可以借此机会将 vuex 添加到项目中。
 
 本文将介绍 Vuex 2.0 的同时，分享一些本人在这个过程中的一些心得。
 
@@ -418,7 +419,7 @@ const Home = vue.extend({
 ![](http://o7nu3cbe9.bkt.clouddn.com/blog/vuex-core-of-vue-application/handsome.jpg)
 
 ### 容器组件和展示组件
-容器组件和展示组件这个概念在 [Redux 入门](http://discipled.daoapp.io/posts/getting-started-with-redux)一文中已有提到。然而，这个概念并不只服务于 react，在 vue 中也可以用到。
+容器组件和展示组件这个概念在 [Redux 入门](http://discipled.me/posts/getting-started-with-redux)一文中已有提到。然而，这个概念并不只服务于 react，在 vue 中也可以用到。
 
 简单来说，容器组件就是用于包裹展示组件的组件，它和界面展示无关，它负责数据的获取和传递，之前的 home 组件就是一个容器组件，再来看看它的 template，你会发现它除了根元素以外，不包含其他任何的 html 标签。
 
@@ -566,4 +567,4 @@ OK，这样就大功告成了。
 
 PS: 一下把 vuex 有关的一股脑都过了，可能过得太快，如有不明白的就留言吧。
 
-最后的最后，当然是继续安利下自己的 [Blog](http://discipled.daoapp.io/)，以及 [Source Code](https://github.com/DiscipleD/blog)。
+最后的最后，当然是继续安利下自己的 [Blog](http://discipled.me/)，以及 [Source Code](https://github.com/DiscipleD/blog)。

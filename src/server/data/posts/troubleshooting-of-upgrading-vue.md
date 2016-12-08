@@ -1,6 +1,7 @@
 > 系列文章:
 > 1. Vue 2.0 升（cai）级（keng）之旅 (本文)
-> 2. [Vuex — The core of Vue application](http://discipled.daoapp.io/posts/vuex-core-of-vue-application)
+> 2. [Vuex — The core of Vue application](http://discipled.me/posts/vuex-core-of-vue-application)
+> 3. [From SPA to SSR](http://discipled.me/posts/ssr)
 
 > 本文不包含 Vue 2.0 所有新特性，如 SSR 等，本文并没有涉及，本文只包含[个人博客项目]((https://github.com/DiscipleD/blog))升级中所遇到的经验分享，如有兴趣，可以查看 Vue 2.0 [changes log](https://github.com/vuejs/vue/issues/2873)。
 
@@ -17,7 +18,7 @@
 
 Why？因为，后者更轻量级，也更贴近我熟悉的 [Angular](https://angularjs.org/) 的语法，还有，那时网上就有说今年 4 月 Vue 会升级到 2.0 和 Vue 兼具 React 和 Angular 的优点等等。（好吧，老实说，不选 React 只是因为不喜欢 JSX 而已。-_-||）
 
-So，我就用 Vue 1.10+ 搭建了自己的新博客——[Disciple.Ding Blog](http://discipled.daoapp.io/)(点这里看[源码](https://github.com/DiscipleD/blog))，并渐渐地往里添加一些新学到的东西，[ES6](https://babeljs.io/docs/learn-es2015/), [webpack](http://webpack.github.io/docs/), [docker](https://www.docker.com/) 等，并在 [DAOcloud](https://www.daocloud.io/) 上发布了。(免费用了人家那么久的服务，在这里做个硬广也是应该的，DAOcloud 的确很好用，特别和 Github 绑定之后能自动构建，应用更新也及其简单，只是有个缺点就是有带宽限制。)
+So，我就用 Vue 1.10+ 搭建了自己的新博客——[Disciple.Ding Blog](http://discipled.me/)(点这里看[源码](https://github.com/DiscipleD/blog))，并渐渐地往里添加一些新学到的东西，[ES6](https://babeljs.io/docs/learn-es2015/), [webpack](http://webpack.github.io/docs/), [docker](https://www.docker.com/) 等，并在 [DAOcloud](https://www.daocloud.io/) 上发布了。(免费用了人家那么久的服务，在这里做个硬广也是应该的，DAOcloud 的确很好用，特别和 Github 绑定之后能自动构建，应用更新也及其简单，只是有个缺点就是有带宽限制。)
 
 在不久之前，Vue 如约发布了 2.0 版本。正如计划之初，博客 Vue 的版本也将升级到 2.0。
 
@@ -224,7 +225,7 @@ destoryed | destoryed | 组件销毁后调用
 
 剩余其他小点，看控制台报错信息，然后查查 [Release Note](https://github.com/vuejs/vue-router/releases/tag/v2.0.0-beta.1) 都能轻松处理啦~
 
-> 至此，我的整个 [Blog](http://discipled.daoapp.io/) 也升级完成了，欢迎来访。（查看源码戳[这里](https://github.com/DiscipleD/blog)）
+> 至此，我的整个 [Blog](http://discipled.me/) 也升级完成了，欢迎来访。（查看源码戳[这里](https://github.com/DiscipleD/blog)）
 
 ### 写在最后
 如果现在再让我选一个技术来搭博客的话，我会选 React。为啥？
@@ -237,6 +238,6 @@ destoryed | destoryed | 组件销毁后调用
 
 这也是我自己搭博客，而不是直接使用博客系统的主要原因。
 
-最后的最后，安利下自己的 [Blog](http://discipled.daoapp.io/)，以及 [Source Code](https://github.com/DiscipleD/blog)。
+最后的最后，安利下自己的 [Blog](http://discipled.me/)，以及 [Source Code](https://github.com/DiscipleD/blog)。
 
 欢迎交流，喷子绕道。

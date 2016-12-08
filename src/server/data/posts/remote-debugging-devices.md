@@ -67,7 +67,7 @@ Safari 和 Chrome 都了解完了，是不是就结束了？当然不是，别�
 但，再如何方便不还得装么，而且还要修改当前的代码，那能不能有更好的办法？
 
 ### BrowserSync
-BrowserSync 或许大家都有所了解，不了解的可以看一下我之前介绍它的[文章](http://discipled.daoapp.io/posts/browsersync)。
+BrowserSync 或许大家都有所了解，不了解的可以看一下我之前介绍它的[文章](http://discipled.me/posts/browsersync)。
 
 BrowserSync v2.0.0 之后就默认提供了对 weinre 的支持，当你使用 BrowserSync 启动 server 时，可以访问 browsersync 的系统面板来开启 remote debugger。
 
@@ -78,7 +78,7 @@ BrowserSync v2.0.0 之后就默认提供了对 weinre 的支持，当你使用 B
 这样，既不用修改任何一行代码，又能在任何机器的任何浏览器上使用，是不是很完美？
 
 ### 写在最后
-最后，当然还是继续安利下自己的 [Blog](http://discipled.daoapp.io/)。
+最后，当然还是继续安利下自己的 [Blog](http://discipled.me/)。
 
 在之前将 vue 升级到 vue 2.0 并加入 vuex 之后，现又加入 graphql-js，并将 vue-router 切换到了 `history` 模式（点击查看[源码](https://github.com/DiscipleD/blog)）。
 

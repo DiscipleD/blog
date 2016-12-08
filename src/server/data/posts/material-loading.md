@@ -192,7 +192,7 @@ Finish！来看看最后的结果。
 `stroke` 还有几个其他相关的属性，比如，[`stroke-linecap`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linecap) 可以用来改变线头的形状，其他还有 [stroke-linejoin](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linejoin), [stroke-miterlimit](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit), [stroke-opacity](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-opacity)。
 
 ### 最后
-模拟 Material Design 的 loading 就这样完成了，并应用到了我的[博客](http://discipled.daoapp.io/)中，比如，首页的文章列表的懒加载。
+模拟 Material Design 的 loading 就这样完成了，并应用到了我的[博客](http://discipled.me/)中，比如，首页的文章列表的懒加载。
 
 > 最近，因工作需要搭了一个 React 全家桶 + Ant.Design 的脚手架，有兴趣的可以[看看](https://github.com/DiscipleD/react-redux-antd-starter)。
 

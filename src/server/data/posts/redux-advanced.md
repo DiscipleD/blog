@@ -1,13 +1,13 @@
 > 系列文章:
-> 1. [Redux 入门](http://discipled.daoapp.io/posts/getting-started-with-redux)
+> 1. [Redux 入门](http://discipled.me/posts/getting-started-with-redux)
 > 2. Redux 进阶(本文)
-> 3. [番外篇: Vuex — The core of Vue application](http://discipled.daoapp.io/posts/vuex-core-of-vue-application)
+> 3. [番外篇: Vuex — The core of Vue application](http://discipled.me/posts/vuex-core-of-vue-application)
 
-在之前的[文章](http://discipled.daoapp.io/posts/getting-started-with-redux)中，我们已经了解了 Redux 到底是什么，用来处理什么样的问题，并创建了一个简单的 [TodoMVC Demo](https://github.com/DiscipleD/angular-redux-todoMVC)。但是，我们同样遗留了一些问题没有处理，比如：异步处理、中间件、模板绑定等，这些问题我们将在这篇文章中通过一个简单的天气预报 Demo 来一一梳理（[查看源码点这里](https://github.com/DiscipleD/Redux-demo/tree/master/src/weather-forecast)）。
+在之前的[文章](http://discipled.me/posts/getting-started-with-redux)中，我们已经了解了 Redux 到底是什么，用来处理什么样的问题，并创建了一个简单的 [TodoMVC Demo](https://github.com/DiscipleD/angular-redux-todoMVC)。但是，我们同样遗留了一些问题没有处理，比如：异步处理、中间件、模板绑定等，这些问题我们将在这篇文章中通过一个简单的天气预报 Demo 来一一梳理（[查看源码点这里](https://github.com/DiscipleD/Redux-demo/tree/master/src/weather-forecast)）。
 
 ![Demo preview](http://o7nu3cbe9.bkt.clouddn.com/blog/redux-advanced/weather-forecast-demo.png)
 
-在开始新的内容之前，先快速回顾一下[上一篇](http://discipled.daoapp.io/posts/getting-started-with-redux)的内容。
+在开始新的内容之前，先快速回顾一下[上一篇](http://discipled.me/posts/getting-started-with-redux)的内容。
 
 ### Action, Reducer & Store
 创建一个基于 Redux 状态管理的应用时，我们还是从创建 Redux 的核心开始。
