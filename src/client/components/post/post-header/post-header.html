@@ -9,9 +9,7 @@
 						<span v-for="(tag, index) of tags" track-by="index">
 							<span v-if="index > 0">, </span>
 							<router-link class="tag-link" :to="{ path: '/tags/' + tag.name }">{{tag.label}}</router-link>
-						</span><br>
-						Posted on {{createdDate}}
-					</span>
+						</span><br>Posted on {{createdDate}}</span>
 				</div>
 			</div>
 		</div>

@@ -1,8 +1,6 @@
 <section>
-	<!-- Content Header -->
 	<post-header :board-img="headerUrl" :title="post.title" :sub-title="post.subtitle"
 	             :tags="post.tags" :created-date="post.createdDate"></post-header>
-	<!-- Post Content -->
 	<article class="container">
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-content" v-html="post.content"></div>
