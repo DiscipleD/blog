@@ -5,6 +5,7 @@
 import fs from 'fs';
 import path from 'path';
 import { createBundleRenderer } from 'vue-server-renderer';
+import serialize from 'serialize-javascript';
 
 import serverConfig from '../../../config/webpack/server';
 
@@ -28,7 +29,9 @@ if (process.env.NODE_ENV === 'production') {
 
 const generatorHtml = (str, initState) => {
 	const [header, footer] = indexHTML.split('<blog></blog>');
-	return `${header}${str}<script>window.__INITIAL_STATE__=${JSON.stringify(initState)}</script>${footer}`;
+	// Fix XSS Vulnerability by SSR init state.
+	// Ref: https://medium.com/node-security/the-most-common-xss-vulnerability-in-react-js-applications-2bdffbcc1fa0
+	return `${header}${str}<script>window.__INITIAL_STATE__=${serialize(initState, { isJSON: true })}</script>${footer}`;
 };
 
 const renderServer = async ctx => {
