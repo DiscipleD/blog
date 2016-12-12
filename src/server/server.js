@@ -8,6 +8,7 @@ import Koa from 'koa';
 import mount from 'koa-mount';
 import graphQLHTTP from 'koa-graphql';
 import convert from 'koa-convert';
+import compress from "koa-compress";
 import serve from 'koa-static';
 
 import schema from './graphql'
@@ -26,6 +27,12 @@ app.use(middleware.logger);
 
 // koa graphql
 app.use(mount('/graphql', convert(graphQLHTTP({ schema, pretty: true }))));
+
+// koa compress -- gzip
+app.use(compress({
+	threshold: 2048,
+	flush: require("zlib").Z_SYNC_FLUSH
+}));
 
 // koa static
 app.use(staticServer);
