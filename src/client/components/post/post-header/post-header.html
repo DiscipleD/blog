@@ -3,13 +3,15 @@
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 				<div class="post-heading">
-					<h1>{{title}}</h1>
-					<h2 class="subheading">{{subtitle}}</h2>
+					<h1 property="headline">{{title}}</h1>
+					<h2 class="subheading" property="alternativeHeadline">{{subtitle}}</h2>
 					<span class="meta">
-						<span v-for="(tag, index) of tags" track-by="index">
-							<span v-if="index > 0">, </span>
-							<router-link class="tag-link" :to="{ path: '/tags/' + tag.name }">{{tag.label}}</router-link>
-						</span><br>Posted on {{createdDate}}</span>
+						<span property="keywords">
+							<span v-for="(tag, index) of tags" track-by="index">
+								<span v-if="index > 0">, </span>
+								<router-link class="tag-link" :to="{ path: '/tags/' + tag.name }">{{tag.label}}</router-link>
+							</span>
+						</span><br>Posted on <span property="dateCreated">{{createdDate}}</span></span>
 				</div>
 			</div>
 		</div>

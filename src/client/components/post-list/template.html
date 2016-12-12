@@ -1,16 +1,19 @@
-<ul class="post-list">
+<ul class="post-list" typeof="ItemList CreativeWork">
 	<li v-for="(post, index) of postList" track-by="index">
-		<div class="post-preview">
-			<router-link class="title-link" :to="{ path: '/posts/' + post.name }">
-				<h2 class="post-title">{{ post.title }}</h2>
-				<h3 class="post-subtitle">{{ post.subtitle }}</h3>
+		<div class="post-preview" property="itemListElement" typeof="Blog">
+			<router-link class="title-link" :to="{ path: '/posts/' + post.name }" property="url">
+				<h2 class="post-title" property="headline">{{ post.title }}</h2>
+				<h3 class="post-subtitle" property="alternativeHeadline">{{ post.subtitle }}</h3>
 			</router-link>
 			<p class="post-meta">
-				<span v-for="(tag, index) of post.tags" track-by="index">
-					<span v-if="index > 0">, </span>
-					<router-link class="tag-link" :to="{ path: '/tags/' + tag.name }">{{tag.label}}</router-link>
-				</span><br>Posted on {{ post.createdDate }}<br>
+				<span property="keywords">
+					<span v-for="(tag, index) of post.tags" track-by="index">
+						<span v-if="index > 0">, </span>
+						<router-link class="tag-link" :to="{ path: '/tags/' + tag.name }">{{tag.label}}</router-link>
+					</span>
+				</span><br>Posted on <span property="dateCreated">{{ post.createdDate }}</span><br>
 				<span class="disqus-comment-count" :data-disqus-identifier="post.name"></span>
+				<meta property="position" :content="index">
 			</p>
 		</div>
 		<hr>

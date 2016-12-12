@@ -1,9 +1,9 @@
-<section>
-	<post-header :board-img="headerUrl" :title="post.title" :sub-title="post.subtitle"
+<article typeof="Blog">
+	<post-header :board-img="headerUrl" :title="post.title" :subtitle="post.subtitle"
 	             :tags="post.tags" :created-date="post.createdDate"></post-header>
-	<article class="container">
+	<div class="container">
 		<div class="row">
-			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-content" v-html="post.content"></div>
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 post-content" v-html="post.content" property="text"></div>
 		</div>
 		<div class="row">
 			<div id="disqus_thread" class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"></div>
@@ -11,5 +11,5 @@
 		<div class="row">
 			<pager class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" :prev="prev" :next="next"></pager>
 		</div>
-	</article>
-</section>
+	</div>
+</article>
