@@ -37,7 +37,6 @@ app.use(compress({
 // koa static
 app.use(staticServer);
 
-// KoaWebpackMiddleware have to add at the end of all middleware
 if (process.env.NODE_ENV !== 'production') {
 	app.use(middleware.devMiddleware);
 	app.use(middleware.hotMiddleware);

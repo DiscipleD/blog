@@ -18,10 +18,10 @@ const Home = vue.extend({
 	},
 	methods: mapActions(['initHomePage', 'loadPostList']),
 	created() {
-		this.initHomePage().catch(console.log);
+		this.initHomePage();
 	},
 	preFetch(store) {
-		return homeActions.loadPostList(store).catch(console.log);
+		return homeActions.loadPostList(store);
 	}
 });
 

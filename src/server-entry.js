@@ -2,7 +2,8 @@
  * Created by jack on 16-11-27.
  */
 
-import { app, router, store } from './client/app';
+import {app, router, store} from './client/app';
+import navActions from './client/vuex/module/nav/actions';
 
 // Add global variables for node environment.
 const jsdom = require('jsdom').jsdom;
@@ -18,7 +19,7 @@ export default context => {
 
 	// no matched routes
 	if (!matchedComponents.length) {
-		return Promise.reject({ code: '404' });
+		return Promise.reject({code: '404'});
 	}
 
 	// Call preFetch hooks on components matched by the route.
@@ -29,15 +30,18 @@ export default context => {
 		if (component.options.preFetch) {
 			return component.options.preFetch(store);
 		}
-	})).then(() => {
-		// After all preFetch hooks are resolved, our store is now
-		// filled with the state needed to render the app.
-		// Expose the state on the render context, and let the request handler
-		// inline the state in the HTML response. This allows the client-side
-		// store to pick-up the server-side state without having to duplicate
-		// the initial data fetching on the client.
-		context.initialState = store.state;
-		return app;
-	});
+	}))
+		// special handle nav state load, which can't be added in preFetch hook
+		.then(() => navActions.loadNavList(store))
+		.then(() => {
+			// After all preFetch hooks are resolved, our store is now
+			// filled with the state needed to render the app.
+			// Expose the state on the render context, and let the request handler
+			// inline the state in the HTML response. This allows the client-side
+			// store to pick-up the server-side state without having to duplicate
+			// the initial data fetching on the client.
+			context.initialState = store.state;
+			return app;
+		});
 
 };
