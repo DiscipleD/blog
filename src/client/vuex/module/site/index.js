@@ -7,9 +7,11 @@ import actions from './actions';
 
 export default {
 	state: {
+		navList: [],
 		socialLinkList: []
 	},
 	getters: {
+		navList: state => state.navList,
 		socialLinkList: state => state.socialLinkList
 	},
 	actions,

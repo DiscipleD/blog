@@ -5,7 +5,8 @@
 import PostService from 'common/service/PostService';
 
 import {createAction} from '../../common/actionHelper';
-import {LOAD_NAV_LIST} from './mutation_types';
+import {LOAD_NAV_LIST, LOAD_SOCIAL_LINK} from './mutation_types';
+import SocialLinkSetting from './setting';
 
 const loadNavList = ({commit}) => {
 	return new PostService().getLatestPost()
@@ -14,4 +15,6 @@ const loadNavList = ({commit}) => {
 		});
 };
 
-export default {loadNavList};
+const loadSocialLink = ({commit}) => commit(createAction(LOAD_SOCIAL_LINK, SocialLinkSetting));
+
+export default {loadNavList, loadSocialLink};

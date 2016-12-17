@@ -3,17 +3,15 @@
  */
 
 import browser from './browser';
-import socialLink from './social-link';
-import nav from './nav';
 import home from './home';
 import aboutMe from './about-me';
 import post from './post';
+import site from './site';
 import tags from './tags';
 
 export default {
 	browser,
-	nav,
-	socialLink,
+	site,
 	aboutMe,
 	home,
 	post,

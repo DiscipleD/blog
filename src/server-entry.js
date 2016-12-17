@@ -3,7 +3,7 @@
  */
 
 import {app, router, store} from './client/app';
-import navActions from './client/vuex/module/nav/actions';
+import siteActions from './client/vuex/module/site/actions';
 
 // Add global variables for node environment.
 const jsdom = require('jsdom').jsdom;
@@ -32,7 +32,7 @@ export default context => {
 		}
 	}))
 		// special handle nav state load, which can't be added in preFetch hook
-		.then(() => navActions.loadNavList(store))
+		.then(() => siteActions.loadNavList(store))
 		.then(() => {
 			// After all preFetch hooks are resolved, our store is now
 			// filled with the state needed to render the app.
