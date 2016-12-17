@@ -3,7 +3,7 @@
  */
 
 import fetch from '../util/Fetch';
-import SERVER from '../config/server';
+import SERVER from '../constant/server';
 
 export const generatorUrl = (url = '', params = '') =>
 	params ? url + '?' + generatorQueryString(params) : url;

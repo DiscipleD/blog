@@ -5,3 +5,7 @@
 export const getDocumentScrollTop = () => {
 	return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 };
+
+export const setPageTitle = title => {
+	document.title = title;
+};

@@ -34,6 +34,7 @@ export default context => {
 		// special handle nav state load, which can't be added in preFetch hook
 		.then(() => siteActions.loadNavList(store))
 		.then(() => {
+			context.pageTitle = store.state.site.title;
 			// After all preFetch hooks are resolved, our store is now
 			// filled with the state needed to render the app.
 			// Expose the state on the render context, and let the request handler

@@ -5,10 +5,12 @@
 import PostService from 'common/service/PostService';
 
 import {createAction} from '../../common/actionHelper';
+import { SET_BLOG_TITLE } from '../site/mutation_types';
 import {INIT_HOME_PAGE, QUERY_POSTS_LIST, RECEIVE_POSTS_LIST} from './mutation_types';
 import image from 'assets/img/home-bg.jpg';
 
 const initHomePage = ({commit}) => {
+	commit(createAction(SET_BLOG_TITLE));
 	commit(createAction(INIT_HOME_PAGE, {
 		header: {
 			image,

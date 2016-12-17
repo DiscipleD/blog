@@ -6,6 +6,7 @@ import TagService from 'common/service/TagService';
 
 import image from 'assets/img/tags-bg.jpg';
 import {createAction} from '../../common/actionHelper';
+import { SET_BLOG_TITLE } from '../site/mutation_types';
 import {INIT_TAGS_PAGE, QUERY_TAGS, RECEIVE_TAGS} from './mutation_types';
 
 const initTagsPage = ({commit}) => {
@@ -28,7 +29,10 @@ const queryTagsList = ({commit}, {tagName, enableLoading = true, router}) => {
 				throw new Error('Tag not found!');
 			}
 		})
-		.then(tags => commit(createAction(RECEIVE_TAGS, tags)))
+		.then(data => {
+			commit(createAction(RECEIVE_TAGS, data));
+			commit(createAction(SET_BLOG_TITLE, data.tags.length === 1 ? data.tags[0].label : 'Tags'));
+		})
 		.catch(err => {
 			commit(createAction(RECEIVE_TAGS));
 			console.error(err + ' Page will redirect to the Home page.');

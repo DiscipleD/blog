@@ -5,6 +5,7 @@
 import Vue from 'vue';
 import { mapState, mapActions } from 'vuex';
 
+import aboutActions from 'vuexModule/about-me/actions';
 import template from './about.html';
 
 const About = Vue.extend({
@@ -16,6 +17,9 @@ const About = Vue.extend({
 	methods: mapActions(['initAboutPage']),
 	created() {
 		this.initAboutPage();
+	},
+	preFetch(store) {
+		return aboutActions.initAboutPage(store);
 	}
 });
 

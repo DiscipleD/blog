@@ -27,7 +27,8 @@ if (process.env.NODE_ENV === 'production') {
 	createRenderer(fs.readFileSync(serverBundlePath, 'utf-8'));
 }
 
-const generatorHtml = (str, initState) => {
+const generatorHtml = (str, pageTitle, initState) => {
+	indexHTML = indexHTML.replace(/<title>.*?<\/title>/, `<title>${pageTitle}</title>`);
 	const [header, footer] = indexHTML.split('<blog></blog>');
 	// Fix XSS Vulnerability by SSR init state.
 	// Ref: https://medium.com/node-security/the-most-common-xss-vulnerability-in-react-js-applications-2bdffbcc1fa0
@@ -49,7 +50,7 @@ const renderServer = async ctx => {
 					}
 				} else {
 					ctx.type = 'text/html';
-					ctx.body = generatorHtml(vueApp, context.initialState);
+					ctx.body = generatorHtml(vueApp, context.pageTitle, context.initialState);
 				}
 				resolve();
 			});

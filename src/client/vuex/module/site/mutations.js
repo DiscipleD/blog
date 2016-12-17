@@ -4,7 +4,7 @@
 
 import svgPath from './social-link.svg';
 import NavItem from 'common/model/NavItemClass';
-import {LOAD_NAV_LIST, LOAD_SOCIAL_LINK} from './mutation_types';
+import {LOAD_NAV_LIST, LOAD_SOCIAL_LINK, SET_BLOG_TITLE} from './mutation_types';
 
 const initNavList = () => {
 	let navList = [];
@@ -32,5 +32,9 @@ export default {
 				...item,
 				svgPath: svgPath + '#' + item.name
 			}));
+	},
+
+	[SET_BLOG_TITLE](state = {}, mutation = {}) {
+		state.title = mutation.payload;
 	}
 };
