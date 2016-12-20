@@ -1,6 +1,6 @@
-<ul class="post-list" typeof="ItemList CreativeWork">
+<ul class="post-list" typeof="ItemList">
 	<li v-for="(post, index) of postList" track-by="index">
-		<div class="post-preview" property="itemListElement" typeof="Blog">
+		<div class="post-preview" property="itemListElement" typeof="CreativeWork">
 			<router-link class="title-link" :to="{ path: '/posts/' + post.name }" property="url">
 				<h2 class="post-title" property="headline">{{ post.title }}</h2>
 				<h3 class="post-subtitle" property="alternativeHeadline">{{ post.subtitle }}</h3>
