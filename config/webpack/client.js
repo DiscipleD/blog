@@ -5,6 +5,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const baseWebpackConfig = require('./base');
 const isProduction = process.env.NODE_ENV === 'production';
@@ -51,6 +52,9 @@ const webpackConfig = Object.assign({}, baseWebpackConfig, {
 			template: SOURCE_PATH + '/404.html',
 			inject: false
 		}),
+		new CopyWebpackPlugin([
+			{ from: SOURCE_PATH + '/sitemap.xml' }
+		]),
 		// Define NODE_ENV
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
