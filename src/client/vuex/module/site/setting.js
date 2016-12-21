@@ -4,7 +4,7 @@
 
 const SocialLinkSetting = [{
 	name: 'douban',
-	link: ''
+	link: 'https://book.douban.com/mine?icn=index-nav'
 }, {
 	name: 'facebook',
 	link: ''

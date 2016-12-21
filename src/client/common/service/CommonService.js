@@ -5,8 +5,11 @@
 import { BLOG_TITLE } from 'common/constant/site';
 import {setPageTitle} from 'common/util/DOM';
 
+export const getBlogTitle = str => {
+	if (!str || str === BLOG_TITLE) return BLOG_TITLE;
+	else return `${str} | ${BLOG_TITLE}`;
+};
 
 export const setBlogTitle = str => {
-	if (!str) setPageTitle(BLOG_TITLE);
-	else setPageTitle(`${str} | ${BLOG_TITLE}`);
+	setPageTitle(getBlogTitle(str));
 };
