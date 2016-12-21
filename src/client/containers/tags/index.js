@@ -35,7 +35,7 @@ const Tags = vue.extend({
 	},
 	preFetch(store) {
 		return tagsActions.queryTagsList(store, {
-			postName: store.state.route.params.postName,
+			tagName: store.state.route.params.tagName,
 			enableLoading: false,
 			router: this.$router
 		});
