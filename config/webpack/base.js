@@ -1,16 +1,22 @@
 /**
  * Created by jack on 16-11-27.
  */
+
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const SOURCE_PATH = path.join(__dirname, '../../src');
+const DIST_PATH = path.join(__dirname, '../../build/client');
 
 const webpackConfig = {
 	// http://mp.weixin.qq.com/s?__biz=MzI3NTE2NjYxNw==&mid=2650600472&idx=1&sn=d4bf85c1bb26a32aff144e81d652582f
 	devtool: 'source-map',
+	output: {
+		path: DIST_PATH,
+		publicPath: '/'
+	},
 	resolve: {
 		alias: {
 			'vue': 'vue/dist/vue.js',

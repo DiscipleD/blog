@@ -18,15 +18,13 @@ const webpackConfig = Object.assign({}, baseWebpackConfig, {
 		common: ['vue', 'vue-router', 'vuex'],
 		app: [SOURCE_PATH + '/client-entry.js']
 	},
-	output: {
+	output: Object.assign({}, baseWebpackConfig.output, {
 		filename: '[name].[hash:8].js',
-		path: DIST_PATH,
-		publicPath: '/',
 		// The JSONP function used by webpack for asnyc loading of chunks.
 		// Must Using different identifier, when having multiple webpack instances on a single page.
 		// If not, that will cause reference error.
 		jsonpFunction: 'blogJsonp'
-	},
+	}),
 	plugins: baseWebpackConfig.plugins.concat([
 		// Common Chunk Plugin should be used when project has several entries for common lib file.
 		new webpack.optimize.CommonsChunkPlugin({
