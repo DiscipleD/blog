@@ -156,6 +156,14 @@ const TAGS_LIST = [{
 	name: 'koa2',
 	label: 'KOA 2',
 	createdDate: '2016-11-30'
+}, {
+	name: 'structure-data',
+	label: 'Structure data',
+	createdDate: '2016-12-21'
+}, {
+	name: 'rdfa-lite',
+	label: 'RDFa Lite',
+	createdDate: '2016-12-21'
 }];
 
 export default TAGS_LIST.sort(sortFn('createdDate'));

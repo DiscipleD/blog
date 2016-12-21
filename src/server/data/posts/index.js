@@ -134,6 +134,11 @@ const POSTS_LIST = [{
 	subtitle: '从单页应用到服务器渲染',
 	createdDate: '2016-11-30',
 	tags: ['ssr', 'seo', 'vue2', 'koa2']
+}, {
+	name: 'structure-data',
+	title: '结构化数据让 SEO 更上一层楼',
+	createdDate: '2016-12-21',
+	tags: ['seo', 'structure-data', 'rdfa-lite']
 }];
 
 export default POSTS_LIST.sort(sortFn('createdDate'));

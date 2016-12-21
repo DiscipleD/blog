@@ -19,48 +19,16 @@
     <priority>0.80</priority>
   </url>
   <url>
+    <loc>http://discipled.me/posts/structure-data</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
     <loc>http://discipled.me/posts/ssr</loc>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>http://discipled.me/tags/ssr</loc>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://discipled.me/tags/seo</loc>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://discipled.me/tags/vue2</loc>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://discipled.me/tags/koa2</loc>
-    <priority>0.51</priority>
-  </url>
-  <url>
     <loc>http://discipled.me/posts/ci-solution</loc>
     <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://discipled.me/tags/ci</loc>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://discipled.me/tags/travis</loc>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://discipled.me/tags/codecov</loc>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://discipled.me/tags/nightwatch</loc>
-    <priority>0.51</priority>
-  </url>
-  <url>
-    <loc>http://discipled.me/tags/saucelabs</loc>
-    <priority>0.51</priority>
   </url>
   <url>
     <loc>http://discipled.me/posts/you-might-not-need-redux</loc>
@@ -76,6 +44,14 @@
   </url>
   <url>
     <loc>http://discipled.me/tags/translate</loc>
+    <priority>0.51</priority>
+  </url>
+  <url>
+    <loc>http://discipled.me/tags/rdfa-lite</loc>
+    <priority>0.51</priority>
+  </url>
+  <url>
+    <loc>http://discipled.me/tags/structure-data</loc>
     <priority>0.51</priority>
   </url>
   <url>
@@ -181,6 +157,42 @@
   <url>
     <loc>http://discipled.me/posts/graphql-core-concepts</loc>
     <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://discipled.me/tags/ssr</loc>
+    <priority>0.51</priority>
+  </url>
+  <url>
+    <loc>http://discipled.me/tags/seo</loc>
+    <priority>0.51</priority>
+  </url>
+  <url>
+    <loc>http://discipled.me/tags/vue2</loc>
+    <priority>0.51</priority>
+  </url>
+  <url>
+    <loc>http://discipled.me/tags/koa2</loc>
+    <priority>0.51</priority>
+  </url>
+  <url>
+    <loc>http://discipled.me/tags/ci</loc>
+    <priority>0.51</priority>
+  </url>
+  <url>
+    <loc>http://discipled.me/tags/travis</loc>
+    <priority>0.51</priority>
+  </url>
+  <url>
+    <loc>http://discipled.me/tags/codecov</loc>
+    <priority>0.51</priority>
+  </url>
+  <url>
+    <loc>http://discipled.me/tags/nightwatch</loc>
+    <priority>0.51</priority>
+  </url>
+  <url>
+    <loc>http://discipled.me/tags/saucelabs</loc>
+    <priority>0.51</priority>
   </url>
   <url>
     <loc>http://discipled.me/tags/javascript</loc>
