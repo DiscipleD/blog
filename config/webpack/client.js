@@ -61,7 +61,7 @@ const webpackConfig = Object.assign({}, baseWebpackConfig, {
 });
 
 if (isProduction) {
-	webpackConfig.plugins.unshift(new CleanPlugin([DIST_PATH]));
+	webpackConfig.plugins.unshift(new CleanPlugin([DIST_PATH], { root: process.cwd() }));
 	webpackConfig.plugins.push(new webpack.optimize.OccurenceOrderPlugin());
 	webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
 		compress: {
