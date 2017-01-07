@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  node:
+    build: .
+    container_name: node-service
+    # node service port export for test
+    ports:
+     - "8080:8080"
+    volumes:
+     - app:/usr/app/
+  nginx:
+    image: nginx:stable
+    container_name: nginx-service
+    volumes:
+      - ./config/nginx:/etc/nginx/conf.d:ro
+      - ./log:/var/log/nginx
+    ports:
+      - '80:80'
+    restart: always
+volumes:
+  app:
