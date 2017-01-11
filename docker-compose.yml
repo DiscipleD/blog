@@ -8,13 +8,17 @@ services:
     ports:
      - "8080:8080"
     volumes:
-     - app:/usr/app/
+     - app:/usr/app
   nginx:
     image: nginx:stable
     container_name: nginx-service
+    depends_on:
+      - node
     volumes:
       - ./config/nginx:/etc/nginx/conf.d:ro
       - ./log:/var/log/nginx
+    volumes_from:
+      - node:ro
     ports:
       - '80:80'
     restart: always
