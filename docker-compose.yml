@@ -16,7 +16,7 @@ services:
       - node
     volumes:
       - ./config/nginx:/etc/nginx/conf.d:ro
-      - ./log:/var/log/nginx
+      - /usr/log/blog:/var/log/nginx
     volumes_from:
       - node:ro
     ports:

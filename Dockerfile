@@ -10,8 +10,7 @@ RUN cd $(npm root -g)/npm \
  && npm install fs-extra --silent \
  && sed -i -e s/graceful-fs/fs-extra/ -e s/fs\.rename/fs.move/ ./lib/utils/rename.js
 
-# Create app directory
-RUN mkdir -p /usr/app
+# Set app work directory
 WORKDIR /usr/app
 
 # Use the cache as long as contents of package.json hasn't changed.
@@ -21,10 +20,9 @@ RUN npm install --silent
 # Bundle app source
 COPY . /usr/app
 
+# Build Source
 RUN npm run build
 
 EXPOSE 8080
-
-VOLUME /usr/app
 
 CMD [ "npm", "run", "start:server" ]
