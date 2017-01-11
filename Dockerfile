@@ -6,16 +6,24 @@ MAINTAINER Disciple.Ding <disciple.ding@gmail.com>
 
 # Solve npm preinstall error
 # https://github.com/npm/npm/issues/9863
-RUN cd $(npm root -g)/npm \
- && npm install fs-extra --silent \
- && sed -i -e s/graceful-fs/fs-extra/ -e s/fs\.rename/fs.move/ ./lib/utils/rename.js
+# RUN cd $(npm root -g)/npm \
+#  && npm install fs-extra --silent \
+#  && sed -i -e s/graceful-fs/fs-extra/ -e s/fs\.rename/fs.move/ ./lib/utils/rename.js
 
-# Set app work directory
+# Create app work directory
+RUN mkdir -p /usr/app
 WORKDIR /usr/app
 
 # Use the cache as long as contents of package.json hasn't changed.
 COPY package.json /usr/app/
-RUN npm install --silent
+
+RUN npm install node-sass
+RUN npm install gifsicle
+RUN npm install pngquant-bin
+RUN npm install jpegtran-bin
+RUN npm install optipng-bin
+
+RUN npm install
 
 # Bundle app source
 COPY . /usr/app

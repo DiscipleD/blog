@@ -20,7 +20,7 @@ services:
     volumes_from:
       - node:ro
     ports:
-      - '80:80'
+      - "80:80"
     restart: always
 volumes:
   app:
