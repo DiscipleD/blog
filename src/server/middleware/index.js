@@ -2,7 +2,6 @@
  * Created by jack on 16-8-22.
  */
 
-export * from './webpack-middleware';
 import serverRender from './server-render';
 
 // server error catcher

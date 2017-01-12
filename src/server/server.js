@@ -31,8 +31,11 @@ if (process.env.NODE_ENV !== 'production') {
 	// koa static
 	app.use(staticServer);
 
-	app.use(middleware.devMiddleware);
-	app.use(middleware.hotMiddleware);
+	const devMiddleware = require('./middleware/webpack-middleware').devMiddleware;
+	const hotMiddleware = require('./middleware/webpack-middleware').hotMiddleware;
+
+	app.use(devMiddleware);
+	app.use(hotMiddleware);
 }
 
 // server render
