@@ -78,7 +78,7 @@
     "build:client": "webpack --config config/webpack/client.js && webpack --config config/webpack/server.js",
     "build:clientDll": "webpack --config config/webpack/dll.js",
     "build:server": "babel src/server -d build/server",
-    "start:server": "NODE_ENV=production pm2 start build/server/server.js --name blog --output /usr/app/log/out.log --error /usr/app/log/error.log --no-daemon",
+    "start:server": "NODE_ENV=production pm2 start build/server/server.js --name blog -i 2 --output /usr/log/node/out.log --error /usr/log/node/error.log --no-daemon",
     "stop:server": "pm2 stop blog"
   }
 }
