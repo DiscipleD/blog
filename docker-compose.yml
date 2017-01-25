@@ -3,27 +3,40 @@ version: '2'
 services:
   node:
     build: .
-    container_name: node-service
+    image: "blog:${TAG_NAME}"
+    container_name: node
     # node service port export for test
     ports:
      - "8080:8080"
     volumes:
-     - /usr/log/node:/usr/log/node
+     - ./log/node:/var/log/node
      - app:/usr/app
 
   nginx:
     image: nginx:stable
-    container_name: nginx-service
+    container_name: nginx
     depends_on:
       - node
     volumes:
       - ./config/nginx:/etc/nginx/conf.d:ro
-      - /usr/log/nginx:/var/log/nginx
+      - ./letsencrypt/etc/letsencrypt:/etc/letsencrypt
+      - ./letsencrypt/lib/letsencrypt:/var/lib/letsencrypt
+      - ./letsencrypt/challenge:/usr/share/nginx/html
+      - ./log/nginx:/var/log/nginx
     volumes_from:
       - node:ro
     ports:
       - "80:80"
     restart: always
+
+  letsencrypt:
+    image: deliverous/certbot
+    container_name: certbot
+    volumes:
+      - ./letsencrypt/etc/letsencrypt:/etc/letsencrypt
+      - ./letsencrypt/lib/letsencrypt:/var/lib/letsencrypt
+      - ./letsencrypt/challenge:/usr/share/nginx/html
+    command: certonly --webroot --force-renewal -n -w /usr/share/nginx/html -d discipled.me -m discipled.ding@gmail.com
 
 volumes:
   app:
