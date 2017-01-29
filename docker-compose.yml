@@ -28,6 +28,7 @@ services:
       - node:ro
     ports:
       - "80:80"
+      - "443:443"
     restart: always
 
   letsencrypt:
@@ -38,7 +39,7 @@ services:
       - ./letsencrypt/lib/letsencrypt:/var/lib/letsencrypt
       - ./letsencrypt/challenge:/usr/share/nginx/html
       - ./log/letsencrypt:/var/log/letsencrypt
-    command: certonly --webroot --agree-tos --force-renewal -n -w /usr/share/nginx/html -d discipled.me -m discipled.ding@gmail.com
+    command: certonly --webroot --agree-tos --force-renewal -n -w /usr/share/nginx/html -d discipled.me -d www.discipled.me -m discipled.ding@gmail.com
 
 volumes:
   app:
