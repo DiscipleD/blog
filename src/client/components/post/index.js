@@ -7,6 +7,7 @@ import Vue from 'vue';
 import './post-header';
 import template from './template.html';
 import './style.scss';
+import { IMAGE_SERVER_PREFIX } from '../../common/constant/site';
 import DisqusService from '../../common/service/DisqusService';
 
 const PostComponent = Vue.component('post', {
@@ -14,8 +15,7 @@ const PostComponent = Vue.component('post', {
 	props: ['post'],
 	computed: {
 		headerUrl: function() {
-			const imgStorage = 'http://o7nu3cbe9.bkt.clouddn.com/blog/';
-			return imgStorage + this.post.name + '/' + this.post.headerImgName;
+			return IMAGE_SERVER_PREFIX + this.post.name + '/' + this.post.headerImgName;
 		},
 		prev: function() {
 			return this.post.prevPost

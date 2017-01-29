@@ -5,7 +5,7 @@
 
 最近因为工作上新产品的需要，让我有机会了解和尝试 [GraphQL](https://github.com/facebook/graphql)。按照套路，在介绍一项新技术的时候总要回答 3 个问题：What, Why & How。
 
-![tradition](http://o7nu3cbe9.bkt.clouddn.com/blog/graphql-core-concepts/traditional.jpg)
+![tradition](https://o7nu3cbe9.bkt.clouddn.com/blog/graphql-core-concepts/traditional.jpg)
 
 ### What is GraphQL?
 正如副标题所说，GraphQL 是由 Facebook 创造的用于描述复杂数据模型的一种查询语言。这里查询语言所指的并不是常规意义上的类似 sql 语句的查询语言，而是一种用于前后端数据查询方式的规范。
@@ -269,7 +269,7 @@ query FetchPostQuery {
 
 这样，一个 GraphQL 的接口，满足了一个简单博客网站的所有需求，是不是很神奇？
 
-![萌呆](http://o7nu3cbe9.bkt.clouddn.com/blog/graphql-core-concepts/tim.png)
+![萌呆](https://o7nu3cbe9.bkt.clouddn.com/blog/graphql-core-concepts/tim.png)
 
 #### Validation
 由于 GraphQL 是一个强类型语言，所以它可以在执行查询之前检查每个查询语句是否满足事先设定的 schema，符合则合法，如果查询语句不合法则不进行查询。

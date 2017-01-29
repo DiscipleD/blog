@@ -2,7 +2,7 @@
 最近我有机会研究使用不同的方法在JavaScript中实现[装饰者模式（又称为包装模式）](https://en.wikipedia.org/wiki/Decorator_pattern)。我觉得有必要分享我所学到的，关于使用这些技术来实现装饰者模式的利弊。
 
 **"当然不是这种装饰者..."**
-![当然不是这种装饰者...](http://o7nu3cbe9.bkt.clouddn.com/blog/decorator-design-pattern/decorator.png)
+![当然不是这种装饰者...](https://o7nu3cbe9.bkt.clouddn.com/blog/decorator-design-pattern/decorator.png)
 
 这5种不同的实现方式分别是：
 
@@ -43,12 +43,12 @@ component.printValue('My Value')
 
 （注意：下图表明，我们可以在原始调用之后返回过程时，给我们的装饰器添加额外的行为，而本文并没有涉及这些。）
 
-![组件装饰设计图](http://o7nu3cbe9.bkt.clouddn.com/blog/decorator-design-pattern/design-picture.png)
+![组件装饰设计图](https://o7nu3cbe9.bkt.clouddn.com/blog/decorator-design-pattern/design-picture.png)
 
 ### 方法一： 闭包
 我能想到最原生实现装饰者模式的方法就是用一个对象来包装需要被装饰的对象，并返回一个新对象，在这个新对象中执行一些处理后再调用原始的方法。
 
-![简单](http://o7nu3cbe9.bkt.clouddn.com/blog/decorator-design-pattern/simple.png)
+![简单](https://o7nu3cbe9.bkt.clouddn.com/blog/decorator-design-pattern/simple.png)
 > “简单！”
 
 **上代码！**
@@ -114,7 +114,7 @@ function toLowerDecorator(inner) {
 
 然后，我们可以继续在对象的创建上添加装饰工厂方法并等待调用，这就像是在打开一个俄罗斯套娃。
 
-![俄罗斯套娃](http://o7nu3cbe9.bkt.clouddn.com/blog/decorator-design-pattern/Matryoshka-doll.jpg)
+![俄罗斯套娃](https://o7nu3cbe9.bkt.clouddn.com/blog/decorator-design-pattern/Matryoshka-doll.jpg)
 
 在完成了对象的创建和装饰之后，我们运行我们的测试代码：
 
@@ -136,7 +136,7 @@ not valid man...
 #### 验证装饰器为何要设置定时？
 
 ![[(服务生比喻是解释异步代码最好的方法)](http://www.roidna.com/blog/what-is-node-js-benefits-overview/)
-](http://o7nu3cbe9.bkt.clouddn.com/blog/decorator-design-pattern/waiters.jpg)
+](https://o7nu3cbe9.bkt.clouddn.com/blog/decorator-design-pattern/waiters.jpg)
 
 我在包装方法中添加一些异步的代码，因为我们在 JavaScript 的世界里：一个单线程，无阻塞，异步为王的语言世界。如果你的代码无法处理异步，那么它就失去了大部分 JavaScript 语言设计的特点。
 
@@ -190,7 +190,7 @@ value => inner.printValue(value.tolowercase())
 
 闭包是 JavaScript 最重要和实用的特性之一，所以确保你现在已经领悟它了。
 
-![私有](http://o7nu3cbe9.bkt.clouddn.com/blog/decorator-design-pattern/soldiers_privates.jpg)
+![私有](https://o7nu3cbe9.bkt.clouddn.com/blog/decorator-design-pattern/soldiers_privates.jpg)
 
 #### 优缺点
 
@@ -285,7 +285,7 @@ decorateWithValidator(component)
 
 人们讨厌猴子补丁通常有着好的理由。
 
-![猴子](http://o7nu3cbe9.bkt.clouddn.com/blog/decorator-design-pattern/monkeys.jpg)
+![猴子](https://o7nu3cbe9.bkt.clouddn.com/blog/decorator-design-pattern/monkeys.jpg)
 
 额......
 
@@ -310,7 +310,7 @@ decorateWithValidator(component)
 
 **委托**
 
-![委托](http://o7nu3cbe9.bkt.clouddn.com/blog/decorator-design-pattern/delegation.jpg)
+![委托](https://o7nu3cbe9.bkt.clouddn.com/blog/decorator-design-pattern/delegation.jpg)
 
 你可以通过设置对象的原型声明一个对象基于另一个对象。这就意味着：如果需要访问一个对象成员，对象首先会在自身之中查找，但如果没有找到，它会去它的原型上继续查找，并一直按照这个方式查找到原型链的终点。
 
@@ -452,7 +452,7 @@ function toLowerDecorator(inner) {
 ```
 代理赋予你无比强大的力量，值得你阅读 [MDN](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Proxy) 上代理部分。
 
-![代理](http://o7nu3cbe9.bkt.clouddn.com/blog/decorator-design-pattern/spiderman_proxies.jpg)
+![代理](https://o7nu3cbe9.bkt.clouddn.com/blog/decorator-design-pattern/spiderman_proxies.jpg)
 
 在这里，装饰器将内部对象作为参数输入，并返回它的代理。在代理中，我们只处理一件事：属性访问。我们通过为 “get” 处理程序添加自定义行为来做到这点。
 

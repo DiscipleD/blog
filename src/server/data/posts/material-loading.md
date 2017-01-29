@@ -1,8 +1,8 @@
-![material loading](http://o7nu3cbe9.bkt.clouddn.com/blog/material-loading/material-loading.gif)
+![material loading](https://o7nu3cbe9.bkt.clouddn.com/blog/material-loading/material-loading.gif)
 
 相信这个 loading 的标志大家都很熟悉，是不是很和谐？
 
-![对着发呆...](http://o7nu3cbe9.bkt.clouddn.com/blog/material-loading/trance.jpg)
+![对着发呆...](https://o7nu3cbe9.bkt.clouddn.com/blog/material-loading/trance.jpg)
 
 额...有毒，看得停不下来。既然，那么神奇，我就好奇地研(goo)究(gle)了一下。
 
@@ -64,7 +64,7 @@ ok。这样圆就完成了，但如果你也在一边尝试的话会发现，界
 
 别着急，刚刚只是前戏，正戏现在才开始。
 
-![](http://o7nu3cbe9.bkt.clouddn.com/blog/material-loading/666.jpg)
+![](https://o7nu3cbe9.bkt.clouddn.com/blog/material-loading/666.jpg)
 
 ### stroke
 从最初的图中可以看到，并不是要画一个圆，而是画一段线，这段线围绕一个圆来运动。
@@ -187,7 +187,7 @@ Finish！来看看最后的结果。
 <iframe height='265' scrolling='no' src='//codepen.io/discipled/embed/XjbNvW/?height=265&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/discipled/pen/XjbNvW/'>Loading of Material Design</a> by Disciple_D (<a href='http://codepen.io/discipled'>@discipled</a>) on <a href='http://codepen.io'>CodePen</a>.
 </iframe>
 
-![](http://o7nu3cbe9.bkt.clouddn.com/blog/material-loading/interview.jpeg)
+![](https://o7nu3cbe9.bkt.clouddn.com/blog/material-loading/interview.jpeg)
 
 `stroke` 还有几个其他相关的属性，比如，[`stroke-linecap`](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linecap) 可以用来改变线头的形状，其他还有 [stroke-linejoin](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linejoin), [stroke-miterlimit](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit), [stroke-opacity](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-opacity)。
 

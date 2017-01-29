@@ -8,7 +8,7 @@ const SERVER = {
 };
 
 if (process.env.NODE_ENV === 'production') {
-	SERVER.HOST = 'http://discipled.me';
+	SERVER.HOST = 'https://discipled.me';
 }
 
 export default SERVER;

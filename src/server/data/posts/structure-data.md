@@ -12,7 +12,7 @@
 
 尽管，它俩总体来说区别不大，并且 [Google Search](https://developers.google.com/search/docs/guides/intro-structured-data) 和 [Schema.org](http://schema.org/) 默认的 DEMO 都是 Microdata 格式，但是，RDFa Lite 还是更胜一筹，起决定性的因素是 [W3C 标准](https://www.w3.org/standards/)。[RDFa Lite](https://www.w3.org/TR/rdfa-lite/#the-attributes) 已被收录进了 W3C 的标准，而 [Microdata](https://en.wikipedia.org/wiki/Microdata_(HTML)) 却没有。
 
-![](http://o7nu3cbe9.bkt.clouddn.com/blog/structure-data/no-compare-no-hurts.jpg)
+![](https://o7nu3cbe9.bkt.clouddn.com/blog/structure-data/no-compare-no-hurts.jpg)
 
 更详细的对比可以参考这个[问题](http://stackoverflow.com/questions/8957902/microdata-vs-rdfa)的高票回答。
 
@@ -51,7 +51,7 @@ Schema.org 包含 583 种类型（`typeof`），以及 846 个属性（`property
 
 谷哥提供了一个简单的[工具](https://search.google.com/structured-data/testing-tool/u/0/)，只需填上网站的地址或 html 代码就可以知道添加结构化数据是否成功，是否有错误。
 
-![Structure data Test](http://o7nu3cbe9.bkt.clouddn.com/blog/structure-data/structure-data-test.jpg)
+![Structure data Test](https://o7nu3cbe9.bkt.clouddn.com/blog/structure-data/structure-data-test.jpg)
 
 点击右边的任何一项，测试工具都会自动定位到设置该属性的位置并高亮显示。
 

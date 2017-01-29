@@ -47,7 +47,7 @@ import vue from 'vue'
 ```
 同样的 `import` 语句，却有不一样的结果，vue-router 中引的是 vue.js，而在我的项目中引的竟然是 vue.common.js...common...mon...n...
 
-![懵逼](http://o7nu3cbe9.bkt.clouddn.com/blog/troubleshooting-of-upgrading-vue/mengbi.jpg)
+![懵逼](https://o7nu3cbe9.bkt.clouddn.com/blog/troubleshooting-of-upgrading-vue/mengbi.jpg)
 
 为什么会引 vue.common.js，`from 'vue'` 不该引的是 vue.js 么？这就要引入另一个知识点：package.json。
 
@@ -215,7 +215,7 @@ destoryed | destoryed | 组件销毁后调用
 
 在 1.0 版本中，我通过 `transition.redirect('/');` 就轻松的回到了首页，由于 2.0 中没有 `transition` 参数，而 `$route` 只包含当前路由的信息，并不包换路由切换的操作。那该怎么做哪？再一次谷哥和查阅文档，然而一无所获。
 
-![i choose death](http://o7nu3cbe9.bkt.clouddn.com/blog/troubleshooting-of-upgrading-vue/i-choose-death.jpg)
+![i choose death](https://o7nu3cbe9.bkt.clouddn.com/blog/troubleshooting-of-upgrading-vue/i-choose-death.jpg)
 
 最后在 vue-router 的例子中找到了解决问题的钥匙——`$router`。
 

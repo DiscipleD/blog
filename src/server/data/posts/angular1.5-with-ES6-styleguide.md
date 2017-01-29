@@ -27,7 +27,7 @@
 * component：同原文的一样，包含所有可重用的模块组件
 * common：公用代码模块，包含可公用的代码，如 service 和 filter
 
-![附一张项目中的代码结构图](http://o7nu3cbe9.bkt.clouddn.com/blog/angular1.5-with-ES6-styleguide/module-file-structure.jpg)
+![附一张项目中的代码结构图](https://o7nu3cbe9.bkt.clouddn.com/blog/angular1.5-with-ES6-styleguide/module-file-structure.jpg)
 
 #### 模块导出
 使用 ES6 肯定会使用强大的模块语法，在同 Angular 一同使用时，一定要注意导出的是模块的名字，而非是 Angular 的模块对象，这样才能再另一处被其他模块注入。
@@ -52,7 +52,7 @@ export default calendar;
 
 我完全同意第一个观点，但第二个中的模块名就没有添加的必要，因为文件夹名已经很好的体现了模块名这个含义。
 
-![再附一张项目中的模块结构图](http://o7nu3cbe9.bkt.clouddn.com/blog/angular1.5-with-ES6-styleguide/component-file-structure.jpg)
+![再附一张项目中的模块结构图](https://o7nu3cbe9.bkt.clouddn.com/blog/angular1.5-with-ES6-styleguide/component-file-structure.jpg)
 
 ### 组件(Component)
 组件是 Angular 1.5 新提出的，是一种特殊的指令，Augular 的源码中也彰显了这一点。
