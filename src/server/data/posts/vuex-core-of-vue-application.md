@@ -162,7 +162,7 @@ export default {
 
 但随着项目的增长，你会发现将 Actions, Mutations, Getters 全都写在一起非常难以维护，这时你会想念 Redux 中将 state 划分处理的 `combineReducers`。
 
-![Wake up!](https://o7nu3cbe9.bkt.clouddn.com/blog/vuex-core-of-vue-application/wake_up.jpeg)
+![Wake up!](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/vuex-core-of-vue-application/wake_up.jpeg)
 
 醒醒！别想 Redux 啦，Vuex 也可以划分处理 state 树，它就是接着就要提到的 `modules`。
 
@@ -213,7 +213,7 @@ export default {
 
 当你运行你的应用的时候，你会发现，如果 navList 的变化是由一个同步的方法返回的就没有问题，但如果，它是通过异步方法返回的，你会发现虽然控制台上的 mutation log 输出正确，但你的组件中并没有得到正确的值。
 
-![What happened?](https://o7nu3cbe9.bkt.clouddn.com/blog/vuex-core-of-vue-application/question.jpeg)
+![What happened?](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/vuex-core-of-vue-application/question.jpeg)
 
 因为，当 action 调用之后会计算一次 getter，如果是同步的，那么此时 getter 的 state 中已经保存着最新的数据。
 
@@ -256,7 +256,7 @@ vuex 1.0 之前如何将 vuex 连接到组件在这里就不说了，有兴趣�
 
 主要来看看如何使用 vue 2.0 新增的 4 个 helper 方法**优雅**地将 vuex 连接到组件。
 
-![](https://o7nu3cbe9.bkt.clouddn.com/blog/vuex-core-of-vue-application/move_back.jpeg)
+![](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/vuex-core-of-vue-application/move_back.jpeg)
 
 这 4 个 helper 方法，分别是：
 
@@ -416,7 +416,7 @@ const Home = vue.extend({
 
 是不是很简洁，很优雅~
 
-![](https://o7nu3cbe9.bkt.clouddn.com/blog/vuex-core-of-vue-application/handsome.jpg)
+![](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/vuex-core-of-vue-application/handsome.jpg)
 
 ### 容器组件和展示组件
 容器组件和展示组件这个概念在 [Redux 入门](http://discipled.me/posts/getting-started-with-redux)一文中已有提到。然而，这个概念并不只服务于 react，在 vue 中也可以用到。
@@ -563,7 +563,7 @@ OK，这样就大功告成了。
 
 总的来看，vuex 同 vue 一样使用起来相当方便，集成了许多方法，但似乎缺少了 redux 的那份优雅，而我喜欢比较优雅的...（看在全篇我都在安利 vue 的情面上，尤大大请不要打我~）
 
-![逃~](https://o7nu3cbe9.bkt.clouddn.com/blog/vuex-core-of-vue-application/run.jpg)
+![逃~](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/vuex-core-of-vue-application/run.jpg)
 
 PS: 一下把 vuex 有关的一股脑都过了，可能过得太快，如有不明白的就留言吧。
 

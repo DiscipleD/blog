@@ -6,11 +6,11 @@
 
 其次，如果 Browsersync 只是单单实现 gulp-livereload 的功能，那它不值一书。它当然还有其他优势，**Browsersync 可以同时在 PC、平板、手机 等设备下进项调试**，这就意味着任何一次改动都会实时地应用到这些设备中，这将大大提升多设备开发的效率。
 
-![官网示例1](https://o7nu3cbe9.bkt.clouddn.com/blog/browsersync/browsersync-in-different-browser.gif)
+![官网示例1](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/browsersync/browsersync-in-different-browser.gif)
 
 还不仅如此，它还能**在不同的浏览器不同的设备上同步所有页面上的操作**，这绝对是多浏览器兼容性测试的福音啊！
 
-![官网示例2](https://o7nu3cbe9.bkt.clouddn.com/blog/browsersync/browsersync-in-different-divice.gif)
+![官网示例2](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/browsersync/browsersync-in-different-divice.gif)
 
 Amazing？
 

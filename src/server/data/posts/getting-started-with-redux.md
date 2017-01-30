@@ -249,7 +249,7 @@ const todoApp = combineReducers(reducers)
 export default todoApp
 ```
 
-![](https://o7nu3cbe9.bkt.clouddn.com/blog/getting-started-with-redux/to_heaven.jpeg)
+![](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/getting-started-with-redux/to_heaven.jpeg)
 
 #### Store
 `Store` 用来存放整个应用的 `state`，并将 `action` 和 `reducer` 联系起来。它主要有以下几个职能：
@@ -291,7 +291,7 @@ unsubscribe();
 ```
 运行代码，控制台中就能看到下面的输出。
 
-![控制台输出](https://o7nu3cbe9.bkt.clouddn.com/blog/getting-started-with-redux/redux_console_output.png)
+![控制台输出](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/getting-started-with-redux/redux_console_output.png)
 
 ### Data flow
 时刻谨记一点：**严格的单向数据流是 Redux 架构的设计核心**。

@@ -91,7 +91,7 @@ const schema = new GraphQLSchema({
 ```
 schema 设置好了，是不是想查询看看哪？
 
-![万事俱备，只欠东风](https://o7nu3cbe9.bkt.clouddn.com/blog/graphql-js-entry/sanguo.jpeg)
+![万事俱备，只欠东风](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/graphql-js-entry/sanguo.jpeg)
 
 东风当然是服务器啦。GraphQL 官方提供 [express-graphql](https://github.com/graphql/express-graphql) 这个中间件来支持基于 GraphQL 的查询，所以，这里选用 [Express](http://expressjs.com/) 作为服务器。
 
@@ -254,7 +254,7 @@ const schema = new GraphQLSchema({
 ```
 OK。这样整个 Demo 就完成了([查看源码戳这里](https://github.com/DiscipleD/graphql-demo))，快去 Postman 试试各种查询，体验 GraphQL 的神奇吧。（不知道怎么写查询语句的就看[上一篇](http://discipled.me/posts/graphql-core-concepts)吧）
 
-![](https://o7nu3cbe9.bkt.clouddn.com/blog/graphql-js-entry/convinced.jpeg)
+![](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/graphql-js-entry/convinced.jpeg)
 
 ### 最后
 如果，你不喜欢 GET 方法或查询字符串过长，express-graphql 也支持 POST 方法，服务器会先查看请求的 URL 中是否包含查询字符串，如果不包含就会去 request body 中获取，只需在 request header 中将 `Content-Type` 设置为 `application/graphql` 就可以了。

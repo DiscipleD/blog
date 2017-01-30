@@ -22,11 +22,11 @@
 
 额...该选哪个哪？
 
-![选择困难啊~](https://o7nu3cbe9.bkt.clouddn.com/blog/ci-solution/hard-to-choice.jpeg)
+![选择困难啊~](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/ci-solution/hard-to-choice.jpeg)
 
 分别粗略地了解了这两个产品，它俩的网站的都非常简洁，文档也很清晰，功能上也大致相同。虽然，circleci 比 travis-ci 多了 Bitbucket 源码库的支持，但是，有一大硬伤 circleci 只对**一个** container 免费，而且，若使用 OS X 需要**额外收费**。与之相反，travis-ci 只要是 Github 上的开源项目**全部免费**，且支持在 OS X 运行。
 
-![决定是你了](https://o7nu3cbe9.bkt.clouddn.com/blog/ci-solution/choose-you.png)
+![决定是你了](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/ci-solution/choose-you.png)
 
 Travis-ci。
 
@@ -87,17 +87,17 @@ codecov 的使用相当简单，甚至不用看文档就可以轻易配置。
 
 授权成功之后，就能看到类似下面的图，分别对应你的个人账户以及你所加入的组织。
 
-![codecov dashboard](https://o7nu3cbe9.bkt.clouddn.com/blog/ci-solution/codecov-dashboard.png)
+![codecov dashboard](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/ci-solution/codecov-dashboard.png)
 
 第一次使用时，默认是没有 repository 的，需要通过点击 `+ Add my first repository` 来添加需要 codecov 管理的 repository。
 
 选择相应的 repository 之后，你可以看到一个类似下面的页面。当然，数据什么肯定是没有的。
 
-![codecov repository detail](https://o7nu3cbe9.bkt.clouddn.com/blog/ci-solution/codecov-repository-detail.png)
+![codecov repository detail](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/ci-solution/codecov-repository-detail.png)
 
 前几个 tab 是用来展示信息的，在配置完成并运行之前是没有信息的，配置的时候只需要看最后一个 setting tab。
 
-![codecov repository setting](https://o7nu3cbe9.bkt.clouddn.com/blog/ci-solution/codecov-setting.png)
+![codecov repository setting](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/ci-solution/codecov-setting.png)
 
 切换左侧的菜单，就能分别看到 setting 和 badge 的信息，是不是超级赞？
 
@@ -137,7 +137,7 @@ os:
 
 不要问我为什么，就是这么任(jue)性(jiang)。
 
-![](https://o7nu3cbe9.bkt.clouddn.com/blog/ci-solution/not-ask-me-why.jpg)
+![](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/ci-solution/not-ask-me-why.jpg)
 
 你真不问么？那我就说了吧。因为现有的测试框架 JEST 已经可以完成 karma 的大部分工作，单纯为 end-to-end 测试单独引入 karma 就没有必要了。
 
@@ -293,7 +293,7 @@ addons:
 
 最后，不要忘(tian)了(jia)初(hui)衷(zhang)。这可以在 saucelabs 的 Dashboard -> Automated Builds 下看到。
 
-![](https://o7nu3cbe9.bkt.clouddn.com/blog/ci-solution/saucelabs-badge.png)
+![](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/ci-solution/saucelabs-badge.png)
 
 总的来说，nigthwatch + saucelabs + travis 来做跨浏览器自动测试还是比较方便的，只是一开始不熟悉，相应的资料也比较少，saucelabs 的文档也不够友好，耗费了些时间。覆盖率测试时， JEST 占的那点小便宜全都还回来了。
 
@@ -418,14 +418,14 @@ Jenkins 那成千上万的 Plugin，相信总有一款适合你。比如，老�
 
 来看看成(hui)果(zhang)吧。查看源码点[这里](https://github.com/DiscipleD/react-redux-antd-starter/tree/real-world)。
 
-![](https://o7nu3cbe9.bkt.clouddn.com/blog/ci-solution/readme.png)
+![](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/ci-solution/readme.png)
 
 ### 关于徽章
 所有的徽章信息都可以在 [shields.io](http://shields.io/) 中查看，甚至可以自定义徽章，就像这样 ![custom badge](https://img.shields.io/badge/Disciple-D-blue.svg)。哈哈哈~
 
 少年们，想要集徽章么？快把测试补起来吧~
 
-![](https://o7nu3cbe9.bkt.clouddn.com/blog/ci-solution/study.jpg)
+![](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/ci-solution/study.jpg)
 
 **参考文章：**
 

@@ -5,7 +5,7 @@
 
 在之前的[文章](http://discipled.me/posts/getting-started-with-redux)中，我们已经了解了 Redux 到底是什么，用来处理什么样的问题，并创建了一个简单的 [TodoMVC Demo](https://github.com/DiscipleD/angular-redux-todoMVC)。但是，我们同样遗留了一些问题没有处理，比如：异步处理、中间件、模板绑定等，这些问题我们将在这篇文章中通过一个简单的天气预报 Demo 来一一梳理（[查看源码点这里](https://github.com/DiscipleD/Redux-demo/tree/master/src/weather-forecast)）。
 
-![Demo preview](https://o7nu3cbe9.bkt.clouddn.com/blog/redux-advanced/weather-forecast-demo.png)
+![Demo preview](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/redux-advanced/weather-forecast-demo.png)
 
 在开始新的内容之前，先快速回顾一下[上一篇](http://discipled.me/posts/getting-started-with-redux)的内容。
 
@@ -69,7 +69,7 @@ export default store
 ```
 启动应用之后，就能在控制台中看到一下的输出。
 
-![控制台输出](https://o7nu3cbe9.bkt.clouddn.com/blog/redux-advanced/base_redux_console.png)
+![控制台输出](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/redux-advanced/base_redux_console.png)
 
 回顾了之前的内容以后，那我们就进入正题，来看一些新概念。
 
@@ -153,7 +153,7 @@ export default store
 
 这时，再看看应用的控制台。
 
-![添加中间件后，控制台输出](https://o7nu3cbe9.bkt.clouddn.com/blog/redux-advanced/middleware_redux_console.png)
+![添加中间件后，控制台输出](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/redux-advanced/middleware_redux_console.png)
 
 OK，Redux 核心的功能我们基本完成，我们继续看看如何将它同界面绑定在一起。
 
@@ -230,13 +230,13 @@ export default class TodayWeatherBoardCtrl {
 ```
 这样，controller 是不是变得很简洁？
 
-![上天咯](https://o7nu3cbe9.bkt.clouddn.com/blog/redux-advanced/go_to_heaven.png)
+![上天咯](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/redux-advanced/go_to_heaven.png)
 
 Weather Forecast 部分基本和之前的部分相同，唯一的一处小修改就是把 QueryCity 控制器里添加一个方法，在方法里调用 2 个不同的 action 来替换之前按钮上直接绑定的 action。
 
 于是，我们的天气预报应用就成了这样。
 
-![应用预览](https://o7nu3cbe9.bkt.clouddn.com/blog/redux-advanced/connect_template.png)
+![应用预览](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/redux-advanced/connect_template.png)
 
 ### 路由切换
 一个真实的项目肯定会用到路由切换，路由状态也是应用状态的一部分，那么它也应当由 Redux 来统一管理。

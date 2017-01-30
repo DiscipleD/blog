@@ -14,7 +14,7 @@
 
 那什么对搜索引擎和爬虫友好的哪？答案就是静态页，而非浏览器渲染，这就需要服务器直接渲染，也就 SSR(Server Side Render)。
 
-![当然不是这个 SSR](https://o7nu3cbe9.bkt.clouddn.com/blog/ssr/ssr.jpg) 
+![当然不是这个 SSR](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/ssr/ssr.jpg) 
 
 SSR，服务器渲染。简单来说就是，服务器将每个要展示的页面都运行完成后，将整个相应流传送给浏览器，所有的运算在服务器端都已经完成，浏览器只需要解析 HTML 就行。
 
@@ -28,7 +28,7 @@ SSR，服务器渲染。简单来说就是，服务器将每个要展示的页�
 
 一个普通的单页应用通常是通过 webpack 将源代码打包后插入到 html 中，当页面请求时，返回 html 再加载打包后的 js 文件，也就是下图中的 Application Code，Webpack build 和 browser 这三大块。
 
-![SSR Architecture](https://o7nu3cbe9.bkt.clouddn.com/blog/ssr/ssr-architecture.png)
+![SSR Architecture](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/ssr/ssr-architecture.png)
 
 剩下的那几部分就是 SSR 需要额外新加的部分，一个个来看。
 
@@ -107,6 +107,6 @@ OK。它俩的事就做完啦，是不是很简单。
 
 自己写完，看看感觉好简单，为什么还搞了那么久...
 
-![](https://o7nu3cbe9.bkt.clouddn.com/blog/ssr/transfixed.jpg)
+![](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/ssr/transfixed.jpg)
 
 常言道：饭不能一日不吃，博客不能一月不发...差点就破例了（🏃

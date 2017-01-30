@@ -2,7 +2,7 @@
 
 人们常常在正真需要 Redux 之前，就选择使用它。“如果不使用 Redux，我们的应用无法扩展怎么办？”应用接入 Redux 之后，开发者就开始头疼了。“为什么为了开发一个简单的功能需要创建 3 个文件？”为什么！
 
-![为什么！(配图译者加)](https://o7nu3cbe9.bkt.clouddn.com/blog/you-might-not-need-redux/wtf.png)
+![为什么！(配图译者加)](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/you-might-not-need-redux/wtf.png)
 
 人们痛苦地抱怨 Redux, React, FP, 不可变数据和一些别的东西，但我理解他们。那些不需要一系列代码来更新应用状态的方法自然比使用 Redux 更为简单。这说的没错，设计上也是如此。
 

@@ -76,12 +76,12 @@ cnpm 默认的两个访问端口是：
 5. npm install
 6. npm start // 启动cnpm服务
     1. 启动成功  
-    ![success log](https://o7nu3cbe9.bkt.clouddn.com/blog/private-npm-server/cnpm-server-start.jpg)
+    ![success log](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/private-npm-server/cnpm-server-start.jpg)
     1. 验证：访问 http://localhost:7001/
-    ![cnpm 的 registry 信息](https://o7nu3cbe9.bkt.clouddn.com/blog/private-npm-server/cnpm-repositry.jpg)
+    ![cnpm 的 registry 信息](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/private-npm-server/cnpm-repositry.jpg)
 
     2. 验证：访问 http://localhost:7002/
-    ![web访问](https://o7nu3cbe9.bkt.clouddn.com/blog/private-npm-server/cnpm-web.jpg)
+    ![web访问](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/private-npm-server/cnpm-web.jpg)
 
 至此，cnpm 的安装已经完成了。
 
@@ -141,7 +141,7 @@ cnpm 默认的两个访问端口是：
 
 看到以下信息就发布成功了。
 
-![发布成功](https://o7nu3cbe9.bkt.clouddn.com/blog/private-npm-server/cnpm-publish-package.jpg)
+![发布成功](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/private-npm-server/cnpm-publish-package.jpg)
 
 当然，其他机器也已经能通过
 
@@ -153,7 +153,7 @@ cnpm 默认的两个访问端口是：
 
 与此同时，还可以访问 http://192.168.80.130:7002/package/@mycompany/test 来查看发布包的详细信息。
 
-![npm 包的基本信息和下载信息](https://o7nu3cbe9.bkt.clouddn.com/blog/private-npm-server/cnpm-package-web.jpg)
+![npm 包的基本信息和下载信息](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/private-npm-server/cnpm-package-web.jpg)
 
 至此，cnpm 的搭建和使用已经全部完成，接下来我们看看 sinopia。
 
@@ -175,14 +175,14 @@ Ok. 这就安装好啦，就这么简单。启动服务：
 
 看到以下图就启动成功：
 
-![启动成功](https://o7nu3cbe9.bkt.clouddn.com/blog/private-npm-server/sinopia-server-start.jpg)
+![启动成功](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/private-npm-server/sinopia-server-start.jpg)
 
 **注意：**上面输出的两条信息相当重要
 
 1. 服务器中 sinopia 的配置文件存放的位置，后期的配置都需要修改这个文件
 2. sinopia 提供服务的地址，默认4873
 
-![访问localhost:4873](https://o7nu3cbe9.bkt.clouddn.com/blog/private-npm-server/sinopia-web.jpg)
+![访问localhost:4873](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/private-npm-server/sinopia-web.jpg)
 
 sinopia 就搭建完成了，还能更简单么？No。
 
