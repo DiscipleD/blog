@@ -164,6 +164,26 @@ const TAGS_LIST = [{
 	name: 'rdfa-lite',
 	label: 'RDFa Lite',
 	createdDate: '2016-12-21'
+}, {
+	name: 'docker',
+	label: 'Docker',
+	createdDate: '2017-01-30'
+}, {
+	name: 'docker-compose',
+	label: 'Docker Compose',
+	createdDate: '2017-01-30'
+}, {
+	name: 'nginx',
+	label: 'Nginx',
+	createdDate: '2017-01-30'
+}, {
+	name: 'https',
+	label: 'Https',
+	createdDate: '2017-01-30'
+}, {
+	name: 'certbot',
+	label: 'Certbot / Let’s Encrypt',
+	createdDate: '2017-01-30'
 }];
 
 export default TAGS_LIST.sort(sortFn('createdDate'));

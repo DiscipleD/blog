@@ -139,6 +139,12 @@ const POSTS_LIST = [{
 	title: '结构化数据让 SEO 更上一层楼',
 	createdDate: '2016-12-21',
 	tags: ['seo', 'structure-data', 'rdfa-lite']
+}, {
+	name: 'docker-compose',
+	title: 'Transformer: Docker Compose',
+	subtitle: '整合发布应用相关全部服务',
+	createdDate: '2017-01-30',
+	tags: ['docker', 'docker-compose', 'nginx', 'https', 'certbot']
 }];
 
 export default POSTS_LIST.sort(sortFn('createdDate'));
