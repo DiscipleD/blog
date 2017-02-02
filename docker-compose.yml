@@ -10,7 +10,6 @@ services:
      - "8080:8080"
     volumes:
      - ./log/node:/var/log/node
-     - app:/usr/app
 
   nginx:
     image: nginx:stable
@@ -40,6 +39,3 @@ services:
       - ./letsencrypt/challenge:/usr/share/nginx/html
       - ./log/letsencrypt:/var/log/letsencrypt
     command: certonly --webroot --agree-tos --force-renewal -n -w /usr/share/nginx/html -d discipled.me -d www.discipled.me -m discipled.ding@gmail.com
-
-volumes:
-  app:

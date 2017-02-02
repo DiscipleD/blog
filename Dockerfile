@@ -33,4 +33,6 @@ RUN npm run build
 
 EXPOSE 8080
 
+VOLUME /usr/app
+
 CMD [ "npm", "run", "start:server" ]
