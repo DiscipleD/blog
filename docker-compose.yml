@@ -12,7 +12,7 @@ services:
      - ./log/node:/var/log/node
 
   nginx:
-    image: nginx:stable
+    image: nginx:alpine
     container_name: nginx
     depends_on:
       - node
