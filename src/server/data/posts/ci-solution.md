@@ -133,6 +133,8 @@ os:
 ## SAUCELABS vs BrowserStack
 跨浏览器测试同样有 2 个选择，这次我同三剑客的作者站在了同一战线，选择使用 [SAUCELABS](https://saucelabs.com/)。
 
+> SAUCELABS 开源免费账号注册方式隐藏得比较好，找不到的可以点[这里](https://saucelabs.com/beta/signup/OSS/None)。
+
 不过，由于 JEST 不支持 end-to-end 测试，所以，为了做跨浏览器测试我们不得不寻求其他的测试框架来帮助完成这一工作。这里我并不打算使用 [karma](https://karma-runner.github.io/1.0/index.html)，即使是 karma 同 SAUCELABS 有现成的集成插件 [karma-sauce-launcher](https://github.com/karma-runner/karma-sauce-launcher) 可以使用。
 
 不要问我为什么，就是这么任(jue)性(jiang)。

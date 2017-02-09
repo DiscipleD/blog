@@ -57,7 +57,7 @@ const POSTS_LIST = [{
 }, {
 	name: 'graphql-core-concepts',
 	title: 'GraphQL 核心概念',
-	subtitle: 'A query language created by Facebook for decribing data requirements on complex application data models',
+	subtitle: 'A query language created by Facebook for describing data requirements on complex application data models',
 	createdDate: '2016-08-01',
 	tags: ['graphql']
 }, {
