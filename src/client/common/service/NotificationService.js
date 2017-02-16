@@ -36,8 +36,8 @@ const registerNotification = () => {
 	}
 };
 
-if(isSupportNotification()) {
-	if(isPermissionGranted(getPermission())) {
+if (isSupportNotification()) {
+	if (isPermissionGranted(getPermission())) {
 		registerNotification();
 	} else {
 		Notification
