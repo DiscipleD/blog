@@ -51,7 +51,7 @@ const webpackConfig = Object.assign({}, baseWebpackConfig, {
 			inject: false
 		}),
 		new CopyWebpackPlugin([
-			{ from: SOURCE_PATH + '/sitemap.xml' }
+			{ from: SOURCE_PATH + '/client/assets/img/favicon.ico' }
 		]),
 		// Define NODE_ENV
 		new webpack.DefinePlugin({
