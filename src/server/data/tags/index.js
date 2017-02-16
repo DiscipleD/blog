@@ -184,6 +184,14 @@ const TAGS_LIST = [{
 	name: 'certbot',
 	label: 'Certbot / Let’s Encrypt',
 	createdDate: '2017-01-30'
+}, {
+	name: 'ui',
+	label: 'UI',
+	createdDate: '2017-02-16'
+}, {
+	name: 'design',
+	label: 'Design',
+	createdDate: '2017-02-16'
 }];
 
 export default TAGS_LIST.sort(sortFn('createdDate'));

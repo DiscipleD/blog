@@ -145,6 +145,11 @@ const POSTS_LIST = [{
 	subtitle: '整合发布应用相关全部服务',
 	createdDate: '2017-01-30',
 	tags: ['docker', 'docker-compose', 'nginx', 'https', 'certbot']
+}, {
+	name: 'how-to-use-colors-in-ui',
+	title: 'UI 设计中颜色正确的打开方式',
+	createdDate: '2017-02-16',
+	tags: ['translate', 'ui', 'design']
 }];
 
 export default POSTS_LIST.sort(sortFn('createdDate'));
