@@ -59,12 +59,17 @@ const isNeedCache = function(url) {
 	});
 };
 
+const isCORSRequest = function(url, host) {
+	return url.search(host) === -1;
+};
+
 const isValidResponse = function(response) {
 	return response && response.status >= 200 && response.status < 400;
 };
 
-const handleFetchRequest = function(request) {
-	if (isNeedCache(request.url)) {
+const handleFetchRequest = function(req) {
+	if (isNeedCache(req.url)) {
+		const request = isCORSRequest(req.url, HOST_NAME) ? new Request(req.url, {mode: 'cors'}) : req;
 		return caches.match(request)
 			.then(function(response) {
 				// Cache hit - return response directly
@@ -93,7 +98,7 @@ const handleFetchRequest = function(request) {
 				// Return fetch response
 				return fetch(request)
 					.then(function(response) {
-						// Check if we received a valid response
+						// Check if we received an unvalid response
 						if(!isValidResponse(response)) {
 							return response;
 						}
@@ -110,7 +115,7 @@ const handleFetchRequest = function(request) {
 					});
 			});
 	} else {
-		return fetch(request);
+		return fetch(req);
 	}
 };
 
