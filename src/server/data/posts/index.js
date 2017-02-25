@@ -150,6 +150,11 @@ const POSTS_LIST = [{
 	title: 'UI 设计中颜色正确的打开方式',
 	createdDate: '2017-02-16',
 	tags: ['translate', 'ui', 'design']
+}, {
+	name: 'service-workers',
+	title: 'Service Workers 和离线缓存',
+	createdDate: '2017-02-25',
+	tags: ['service-workers']
 }];
 
 export default POSTS_LIST.sort(sortFn('createdDate'));
