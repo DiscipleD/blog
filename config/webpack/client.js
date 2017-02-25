@@ -53,6 +53,9 @@ const webpackConfig = Object.assign({}, baseWebpackConfig, {
 		new CopyWebpackPlugin([
 			{ from: SOURCE_PATH + '/client/assets/img/favicon.ico' }
 		]),
+		new CopyWebpackPlugin([
+			{ from: SOURCE_PATH + '/service-worker.js' }
+		]),
 		// Define NODE_ENV
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
