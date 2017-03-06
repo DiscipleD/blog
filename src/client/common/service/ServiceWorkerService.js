@@ -7,7 +7,7 @@
 import httpFetch from './FetchService';
 
 const SERVICE_WORKER_API = 'serviceWorker';
-const SERVICE_WORKER_FILE_PATH = 'service-worker.js';
+const SERVICE_WORKER_FILE_PATH = '/service-worker.js';
 const SUBSCRIBE_API = '/publish/subscribe';
 
 const isSupportServiceWorker = () => SERVICE_WORKER_API in navigator;
