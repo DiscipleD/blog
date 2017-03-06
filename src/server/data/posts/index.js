@@ -147,7 +147,7 @@ const POSTS_LIST = [{
 	tags: ['docker', 'docker-compose', 'nginx', 'https', 'certbot']
 }, {
 	name: 'how-to-use-colors-in-ui',
-	title: 'UI 设计中颜色正确的打开方式',
+	title: '[译] UI 设计中颜色正确的打开方式',
 	createdDate: '2017-02-16',
 	tags: ['translate', 'ui', 'design']
 }, {

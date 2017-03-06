@@ -11,7 +11,7 @@ const NOTIFICATION_END_TIME = 6;
 const DELAY_MINUTES = 5;
 const NOTIFICATION = {
 	title: '夜深了',
-	delay: DELAY_MINUTES * 1000, // 5 minutes
+	delay: DELAY_MINUTES * 60 * 1000, // 5 minutes
 	options: {
 		body: '该睡觉了...',
 		icon: 'src/client/assets/img/favicon.ico'
