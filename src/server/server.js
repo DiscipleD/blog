@@ -10,8 +10,9 @@ import graphQLHTTP from 'koa-graphql';
 import convert from 'koa-convert';
 import serve from 'koa-static';
 
-import schema from './graphql'
 import * as middleware from './middleware';
+import schema from './graphql';
+import publish from './publish';
 
 const app = new Koa();
 
@@ -26,6 +27,9 @@ app.use(middleware.logger);
 
 // koa graphql
 app.use(mount('/graphql', convert(graphQLHTTP({ schema, pretty: true }))));
+
+// Publish service
+app.use(mount('/publish', publish));
 
 if (process.env.NODE_ENV !== 'production') {
 	// koa static

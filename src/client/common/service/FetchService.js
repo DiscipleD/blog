@@ -2,7 +2,7 @@
  * Created by jack on 16-8-24.
  */
 
-import fetch from '../util/Fetch';
+import fetchUtil from '../util/Fetch';
 import SERVER from '../constant/server';
 
 export const generatorUrl = (url = '', params = '') =>
@@ -13,9 +13,10 @@ export const generatorQueryString = params =>
 		? Object.keys(params).map(key => key + '=' + JSON.stringify(params[key])).join('&')
 		: params;
 
+// TODO
 const httpFetch = (url, options) => {
 	url = SERVER.HOST + url;
-	return fetch(url, options);
+	return fetchUtil(url, options);
 };
 
 export default httpFetch;

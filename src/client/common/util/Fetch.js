@@ -14,9 +14,9 @@ export const json = response => response.json();
 
 export const error = (err, url, options) => {
 	console.log('Fetch Error:');
-	console.log('Message: ' + err);
-	console.log('Url: ' + url);
-	console.log('Options: ' + options);
+	console.log('Message: ', err);
+	console.log('Url: ', url);
+	console.log('Options: ', options);
 };
 
 const httpFetch = (url, options) => fetch(url, options)
