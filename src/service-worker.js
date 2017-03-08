@@ -123,6 +123,23 @@ const onFetch = function(event) {
 	event.respondWith(handleFetchRequest(event.request));
 };
 
+const onPush = function(event) {
+	const payload = event.data ? event.data.text() : '{}';
+	const { body, link } = JSON.parse(payload);
+
+	event.waitUntil(_self.registration.showNotification('New Post Arrival', {
+		body,
+		data: link,
+		icon: '/logo.png'
+	}));
+};
+
+const onNotificationClick = function(event) {
+	event.notification.close();
+
+	event.waitUntil(clients.openWindow(event.notification.data));
+};
+
 _self.addEventListener('install', onInstall);
 
 _self.addEventListener('activate', onActive);
@@ -130,3 +147,7 @@ _self.addEventListener('activate', onActive);
 _self.addEventListener('message', onMessage);
 
 _self.addEventListener('fetch', onFetch);
+
+_self.addEventListener('push', onPush);
+
+_self.addEventListener('notificationclick', onNotificationClick);

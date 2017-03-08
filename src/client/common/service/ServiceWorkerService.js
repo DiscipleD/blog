@@ -23,6 +23,8 @@ const sendMessageToSW = msg => new Promise((resolve, reject) => {
 
 	navigator.serviceWorker.controller && navigator.serviceWorker.controller.postMessage(msg, [messageChannel.port2]);
 });
+const encodeStr = str => btoa(String.fromCharCode.apply(null, new Uint8Array(str)));
+const getEncodeSubscriptionInfo = (subscription, type) => subscription.getKey ? encodeStr(subscription.getKey(type)) : '';
 
 if (isSupportServiceWorker()) {
 	const sw = navigator.serviceWorker;
@@ -30,6 +32,7 @@ if (isSupportServiceWorker()) {
 	sw.addEventListener('message', e => console.log(e.data));
 
 	sw.register(SERVICE_WORKER_FILE_PATH)
+		.catch(() => console.error('Load service worker fail'))
 		.then(registration =>
 			registration
 				.pushManager
@@ -37,20 +40,22 @@ if (isSupportServiceWorker()) {
 				.then(subscription => subscription || registration.pushManager.subscribe({ userVisibleOnly: true })))
 		.then(subscription => {
 			const endpoint = subscription.endpoint;
+			const p256dh = getEncodeSubscriptionInfo(subscription, 'p256dh');
+			const auth = getEncodeSubscriptionInfo(subscription, 'auth');
+
+			const clientSubscription = { endpoint, keys: { p256dh, auth } };
 
 			const options = {
 				method: 'post',
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify({ endpoint })
+				body: JSON.stringify(clientSubscription)
 			};
 
 			return httpFetch(SUBSCRIBE_API, options);
 		})
 		.catch(error => console.error('Subscribe Failure: ', error.message))
-		.then(() => console.log('Load service worker Success.'))
-		.catch(() => console.error('Load service worker fail'))
 		.then(() => sendMessageToSW('Hello, service worker.'))
 		.catch(() => console.error('Send message error.'));
 } else {
