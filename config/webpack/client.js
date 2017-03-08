@@ -54,6 +54,9 @@ const webpackConfig = Object.assign({}, baseWebpackConfig, {
 			{ from: SOURCE_PATH + '/client/assets/img/favicon.ico' }
 		]),
 		new CopyWebpackPlugin([
+			{ from: SOURCE_PATH + '/client/assets/img/logo.png' }
+		]),
+		new CopyWebpackPlugin([
 			{ from: SOURCE_PATH + '/service-worker.js' }
 		]),
 		// Define NODE_ENV

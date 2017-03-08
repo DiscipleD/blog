@@ -14,7 +14,7 @@ const NOTIFICATION = {
 	delay: DELAY_MINUTES * 60 * 1000, // 5 minutes
 	options: {
 		body: '该睡觉了...',
-		icon: 'src/client/assets/img/favicon.ico'
+		icon: '/favicon.ico'
 	}
 };
 
