@@ -16,66 +16,57 @@ const router = new Router();
 
 const SUBSCRIPTION_FILE = path.resolve(__dirname, './subscriptions.txt');
 
-const getSubscriptionFromString = string => string.split('\n').filter(item => !!item).map(item => JSON.parse(item));
-const addSubscription = (subscriptions, subscription) => {
-	if (!subscriptions.find(item => item.endpoint === subscription.endpoint)) {
-		subscriptions.push(subscription);
-	}
-
-	return subscriptions;
-};
-
-const removeSubscription = (subscriptions, subscription) => {
-	const index = subscriptions.findIndex(item => item.endpoint === subscription.endpoint);
-	if (index > -1) {
-		subscriptions.splice(index, 1);
-	}
-
-	return subscriptions;
-};
-
-const operatorSubscription = (subscription, operate) =>
-	new Promise((resolve, reject) => {
-		fs.open(SUBSCRIPTION_FILE, 'w+', (err, fd) => {
-			if (err) reject(err);
-
-			fs.fstat(fd, (err, stats) => {
-				if (err) reject(err);
-
-				const bufferSize = stats.size;
-				let buffer = new Buffer(bufferSize);
-
-				fs.read(fd, buffer, 0, bufferSize, 0, (err, bytesRead, buffer) => {
-					if (err) reject(err);
-
-					const string = buffer.toString('utf8');
-					const subscriptions = operate(getSubscriptionFromString(string), subscription);
-
-					fs.writeSync(fd, subscriptions.map(item => JSON.stringify(item)).join('\n'), 0, 'utf8');
-
-					fs.close(fd, resolve);
-				});
-			});
-		});
-	});
+const parseSubscriptions = string => string.split('\n').filter(item => !!item).map(item => JSON.parse(item));
+const stringifySubscriptions = subscriptions => subscriptions.map(item => JSON.stringify(item)).join('\n');
 
 const readSubscriptions = () =>
 	new Promise((resolve, reject) => {
-		fs.readFile(SUBSCRIPTION_FILE, (err, buffer) => {
+		fs.readFile(SUBSCRIPTION_FILE, 'utf8', (err, buffer) => {
 			if (err) reject(err);
 
 			const string = buffer.toString();
-			const subscriptions = getSubscriptionFromString(string);
+			const subscriptions = parseSubscriptions(string);
 
 			resolve(subscriptions);
 		});
 	});
 
+const writeSubscription = subscriptions =>
+	new Promise((resolve, reject) => {
+		fs.writeFile(SUBSCRIPTION_FILE, stringifySubscriptions(subscriptions), 'utf8', err => {
+			if (err) reject(err);
+
+			resolve();
+		});
+	});
+
+const addSubscription = subscription =>
+	readSubscriptions()
+		.then(subscriptions => {
+			if (!subscriptions.find(item => item.endpoint === subscription.endpoint)) {
+				subscriptions.push(subscription);
+			}
+			return subscriptions;
+		})
+		.then(writeSubscription);
+
+const removeSubscription = subscription =>
+	readSubscriptions()
+		.then(subscriptions => {
+			const index = subscriptions.findIndex(item => item.endpoint === subscription.endpoint);
+			if (index > -1) {
+				subscriptions.splice(index, 1);
+			}
+
+			return subscriptions;
+		})
+		.then(writeSubscription);
+
 router
 	.post('/subscribe', async ctx => {
 		const body = await bodyParser(ctx.request);
 
-		await operatorSubscription(body, addSubscription)
+		await addSubscription(body)
 			.then(() => {
 				ctx.status = 200;
 				ctx.body = {};
@@ -88,7 +79,7 @@ router
 	.post('/unsubscribe', async ctx => {
 		const body = await bodyParser(ctx.request);
 
-		await operatorSubscription(body, removeSubscription)
+		await removeSubscription(body)
 			.then(() => {
 				ctx.status = 200;
 				ctx.body = {};
