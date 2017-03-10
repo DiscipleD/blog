@@ -11,6 +11,8 @@ import Router from 'koa-router';
 import bodyParser from 'co-body';
 import webPush from 'web-push';
 
+import { gcmAPIKey } from '../config';
+
 const publishApp = new Koa();
 const router = new Router();
 
@@ -98,7 +100,7 @@ router
 				ctx.body = {};
 
 				subscriptions.forEach(subscription => {
-					webPush.sendNotification(subscription, JSON.stringify(body))
+					webPush.sendNotification(subscription, JSON.stringify(body), { gcmAPIKey })
 						.catch(console.error);
 				});
 			})
