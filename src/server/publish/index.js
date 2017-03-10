@@ -16,20 +16,23 @@ import { gcmAPIKey } from '../config';
 const publishApp = new Koa();
 const router = new Router();
 
-const SUBSCRIPTION_FILE = path.resolve(__dirname, './subscriptions.txt');
+const SUBSCRIPTION_FILE = path.resolve(__dirname, '../../../data/subscriptions.txt');
 
 const parseSubscriptions = string => string.split('\n').filter(item => !!item).map(item => JSON.parse(item));
 const stringifySubscriptions = subscriptions => subscriptions.map(item => JSON.stringify(item)).join('\n');
 
 const readSubscriptions = () =>
-	new Promise((resolve, reject) => {
+	new Promise(resolve => {
 		fs.readFile(SUBSCRIPTION_FILE, 'utf8', (err, buffer) => {
-			if (err) reject(err);
+			if (err) {
+				resolve([]);
+			}
+			else {
+				const string = buffer.toString();
+				const subscriptions = parseSubscriptions(string);
 
-			const string = buffer.toString();
-			const subscriptions = parseSubscriptions(string);
-
-			resolve(subscriptions);
+				resolve(subscriptions);
+			}
 		});
 	});
 
