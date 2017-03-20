@@ -9,6 +9,7 @@ const HOST_NAME = location.host;
 const VERSION_NAME = 'CACHE-v1';
 const CACHE_NAME = HOST_NAME + '-' + VERSION_NAME;
 const CACHE_HOST = [HOST_NAME, 'cdn.bootcss.com'];
+const SUBSCRIBE_API = '/publish/subscribe';
 
 const sentMessage = function(msg) {
 	_self.clients.matchAll().then(function(clients) {
@@ -134,6 +135,31 @@ const onPush = function(event) {
 	}));
 };
 
+const encodeStr = str => btoa(String.fromCharCode.apply(null, new Uint8Array(str)));
+const getEncodeSubscriptionInfo = (subscription, type) => subscription.getKey ? encodeStr(subscription.getKey(type)) : '';
+const onPushSubscriptionChange = function(event) {
+	event.waitUntil(
+		_self.registration.pushManager.subscribe({ userVisibleOnly: true })
+			.then(function(subscription) {
+				const endpoint = subscription.endpoint;
+				const p256dh = getEncodeSubscriptionInfo(subscription, 'p256dh');
+				const auth = getEncodeSubscriptionInfo(subscription, 'auth');
+
+				const clientSubscription = { endpoint, keys: { p256dh, auth } };
+
+				const options = {
+					method: 'post',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(clientSubscription)
+				};
+
+				return fetch(SUBSCRIBE_API, options);
+			})
+	);
+};
+
 const onNotificationClick = function(event) {
 	event.notification.close();
 
@@ -151,3 +177,5 @@ _self.addEventListener('fetch', onFetch);
 _self.addEventListener('push', onPush);
 
 _self.addEventListener('notificationclick', onNotificationClick);
+
+_self.addEventListener('pushsubscriptionchange', onPushSubscriptionChange);
