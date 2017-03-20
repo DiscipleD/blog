@@ -13,7 +13,7 @@ const NOTIFICATION = {
 	title: '夜深了',
 	delay: DELAY_MINUTES * 60 * 1000, // 5 minutes
 	options: {
-		body: '该睡觉了...',
+		body: '亲，工作之余，也要注意身体噢...',
 		icon: '/favicon.ico'
 	}
 };

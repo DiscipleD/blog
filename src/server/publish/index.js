@@ -104,7 +104,11 @@ router
 
 				subscriptions.forEach(subscription => {
 					webPush.sendNotification(subscription, JSON.stringify(body), { gcmAPIKey })
-						.catch(console.error);
+						.catch(err => {
+							console.error(err);
+							// retain the subscription, if the error cause by network not access (GREAT WALL)
+							if (err.code !== 'ETIMEDOUT') removeSubscription(subscription);
+						});
 				});
 			})
 			.catch(err => {
