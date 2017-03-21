@@ -155,6 +155,11 @@ const POSTS_LIST = [{
 	title: 'Service Workers 和离线缓存',
 	createdDate: '2017-02-25',
 	tags: ['service-workers']
+}, {
+	name: 'notification-with-sw-push-events',
+	title: 'Notification with Service Workers push events ',
+	createdDate: '2017-03-21',
+	tags: ['service-workers', 'notification']
 }];
 
 export default POSTS_LIST.sort(sortFn('createdDate'));

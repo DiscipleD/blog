@@ -6,7 +6,7 @@
 
 const _self = this;
 const HOST_NAME = location.host;
-const VERSION_NAME = 'CACHE-v1';
+const VERSION_NAME = 'CACHE-v2';
 const CACHE_NAME = HOST_NAME + '-' + VERSION_NAME;
 const CACHE_HOST = [HOST_NAME, 'cdn.bootcss.com'];
 const SUBSCRIBE_API = '/publish/subscribe';

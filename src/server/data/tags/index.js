@@ -196,6 +196,10 @@ const TAGS_LIST = [{
 	name: 'service-workers',
 	label: 'Service Workers',
 	createdDate: '2017-02-25'
+}, {
+	name: 'notification',
+	label: 'Notification',
+	createdDate: '2017-03-21'
 }];
 
 export default TAGS_LIST.sort(sortFn('createdDate'));

@@ -1,7 +1,7 @@
 node_modules
 
 # subscribe data
-data
+/data
 
 # build source
 build
