@@ -4,7 +4,7 @@
  * @since 20/02/2017
  */
 
-import SubscritpionService from './SubscriptionService';
+import SubscriptionService from './SubscriptionService';
 
 const SERVICE_WORKER_API = 'serviceWorker';
 const SERVICE_WORKER_FILE_PATH = '/service-worker.js';
@@ -35,7 +35,7 @@ if (isSupportServiceWorker()) {
 				.pushManager
 				.getSubscription()
 				.then(subscription => subscription || registration.pushManager.subscribe({ userVisibleOnly: true })))
-		.then(subscription => SubscritpionService.subscript(subscription))
+		.then(subscription => SubscriptionService.subscript(subscription))
 		.catch(error => console.error('Subscribe Failure: ', error.message))
 		.then(() => sendMessageToSW('Hello, service worker.'))
 		.catch(() => console.error('Send message error.'));

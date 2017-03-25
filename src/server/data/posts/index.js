@@ -157,7 +157,7 @@ const POSTS_LIST = [{
 	tags: ['service-workers']
 }, {
 	name: 'notification-with-sw-push-events',
-	title: 'Notification with Service Workers push events ',
+	title: 'Notification with Service Workers push events',
 	createdDate: '2017-03-21',
 	tags: ['service-workers', 'notification']
 }];

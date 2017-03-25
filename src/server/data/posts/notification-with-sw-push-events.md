@@ -10,7 +10,7 @@ HTML5 Notification 已经推出挺久了，它可以用来给用户发送通知�
 一直想试一试给自己的博客用上这个功能。[上一篇](https://discipled.me/posts/docker-compose#Letsencrypt)成功升级 https 之后，终于可以来捣鼓一下了。捣鼓之前，还是先来看一下浏览器支持情况。
 
 ### Notification 浏览器支持情况
-![Can I use Notificatioin](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/notification-with-sw-push-events/can-i-use-notification.png)
+![Can I use Notification](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/notification-with-sw-push-events/can-i-use-notification.png)
 
 从上图中可以看到，除了我行我素的 IE 之外，其他桌面浏览器都已经支持 Notification；与之相反，移动端一片血红，几乎全军覆没。自己玩就不用在意这些了，而且 Notification 已加入标准，移动端浏览器最终也会响应号召的🙃。
 
