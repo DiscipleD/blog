@@ -132,7 +132,7 @@ const onPush = function(event) {
 	event.waitUntil(_self.registration.showNotification('New Post Arrival', {
 		body,
 		data: link,
-		icon: '/logo.png'
+		icon: '/assets/img/logo/size-48.png'
 	}));
 };
 

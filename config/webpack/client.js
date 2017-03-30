@@ -41,20 +41,22 @@ const webpackConfig = Object.assign({}, baseWebpackConfig, {
 		 manifest: require(DIST_PATH + '/VueStuff.manifest.json')
 		 }),*/
 		new HtmlWebpackPlugin({
+			favicon: SOURCE_PATH + '/client/assets/img/favicon.ico',
 			filename: 'index.temp.html',
 			template: SOURCE_PATH + '/index.html'
 		}),
 		// create another 404.html file
 		new HtmlWebpackPlugin({
+			favicon: SOURCE_PATH + '/client/assets/img/favicon.ico',
 			filename: '404.html',
 			template: SOURCE_PATH + '/404.html',
 			inject: false
 		}),
 		new CopyWebpackPlugin([
-			{ from: SOURCE_PATH + '/client/assets/img/favicon.ico' }
-		]),
-		new CopyWebpackPlugin([
-			{ from: SOURCE_PATH + '/client/assets/img/logo.png' }
+			{
+				from: SOURCE_PATH + '/client/assets/img/logo',
+				to: 'assets/img/logo'
+			}
 		]),
 		new CopyWebpackPlugin([
 			{ from: SOURCE_PATH + '/manifest.json' }
