@@ -54,8 +54,9 @@ const onMessage = function(event) {
 	event.ports[0].postMessage('Hi, buddy.');
 };
 
-const isNeedCache = function(url) {
-	return CACHE_HOST.some(function(host) {
+const isNeedCache = function(req) {
+	const { method, url } = req;
+	return method.toUpperCase() === 'GET' && CACHE_HOST.some(function(host) {
 		return url.search(host) !== -1;
 	});
 };
@@ -69,7 +70,7 @@ const isValidResponse = function(response) {
 };
 
 const handleFetchRequest = function(req) {
-	if (isNeedCache(req.url)) {
+	if (isNeedCache(req)) {
 		const request = isCORSRequest(req.url, HOST_NAME) ? new Request(req.url, {mode: 'cors'}) : req;
 		return caches.match(request)
 			.then(function(response) {
