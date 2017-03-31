@@ -6,7 +6,8 @@
 		</router-link>
 		<ul class="nav navbar-nav pull-md-right" v-show="isShowList" transition="nav-expand">
 			<li class="nav-item" v-for="item of navList">
-				<router-link class="nav-link" :to="{ path: item.path}" exact>{{ item.title }}</router-link>
+				<router-link class="nav-link" v-if="item.path" :to="{ path: item.path}" exact>{{ item.title }}</router-link>
+				<span class="nav-link" v-else-if="typeof item.event === 'function'" @click="item.event">{{ item.title }}</span>
 			</li>
 		</ul>
 	</div>

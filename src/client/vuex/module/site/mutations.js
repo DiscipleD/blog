@@ -5,23 +5,21 @@
 import svgPath from './social-link.svg';
 import NavItem from 'common/model/NavItemClass';
 import {LOAD_NAV_LIST, LOAD_SOCIAL_LINK, SET_BLOG_TITLE} from './mutation_types';
+import { isSupportShareAPI, sharePage } from 'common/service/CommonService';
 
 const initNavList = () => {
 	let navList = [];
-	addNavItemToList(navList, new NavItem('home', 'Home', '/'));
-	addNavItemToList(navList, new NavItem('aboutMe', 'About', '/about'));
-	addNavItemToList(navList, new NavItem('tags', 'Tags', '/tags'));
+	navList.push(new NavItem('home', 'Home', '/'));
+	navList.push(new NavItem('aboutMe', 'About', '/about'));
+	navList.push(new NavItem('tags', 'Tags', '/tags'));
+	isSupportShareAPI() && navList.push(new NavItem('share', 'Share', '', sharePage));
 	return navList;
-};
-
-const addNavItemToList = (list = [], {name = '', title = '', path = ''} = {}) => {
-	list.push({name, title, path});
 };
 
 export default {
 	[LOAD_NAV_LIST](state = {}, mutation = {}) {
 		const navList = initNavList();
-		addNavItemToList(navList, new NavItem('latestPost', 'Latest Post', '/posts/' + mutation.payload.name));
+		navList.push(new NavItem('latestPost', 'Latest Post', '/posts/' + mutation.payload.name));
 		state.navList = navList;
 	},
 

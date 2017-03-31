@@ -32,7 +32,8 @@ const generatorHtml = (str, pageTitle, initState) => {
 	const [header, footer] = indexHTML.split('<blog></blog>');
 	// Fix XSS Vulnerability by SSR init state.
 	// Ref: https://medium.com/node-security/the-most-common-xss-vulnerability-in-react-js-applications-2bdffbcc1fa0
-	return `${header}${str}<script>window.__INITIAL_STATE__=${serialize(initState, { isJSON: true })}</script>${footer}`;
+	// Remove second param {isJSON: true} to provide function capability.
+	return `${header}${str}<script>window.__INITIAL_STATE__=${serialize(initState)}</script>${footer}`;
 };
 
 const renderServer = async ctx => {
