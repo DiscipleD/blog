@@ -154,12 +154,17 @@ const POSTS_LIST = [{
 	name: 'service-workers',
 	title: 'Service Workers 和离线缓存',
 	createdDate: '2017-02-25',
-	tags: ['service-workers']
+	tags: ['pwa', 'service-workers']
 }, {
 	name: 'notification-with-sw-push-events',
 	title: 'Notification with Service Workers push events',
 	createdDate: '2017-03-21',
-	tags: ['service-workers', 'notification']
+	tags: ['pwa', 'service-workers', 'notification']
+}, {
+	name: 'pwa-installable-and-share',
+	title: 'PWA：添加应用至桌面及分享',
+	createdDate: '2017-04-01',
+	tags: ['pwa', 'installable', 'webshare']
 }];
 
 export default POSTS_LIST.sort(sortFn('createdDate'));

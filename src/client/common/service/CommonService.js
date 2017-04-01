@@ -20,6 +20,7 @@ export const sharePage = () => {
 	navigator
 		.share({
 			title: document.title,
+			text: document.title,
 			url: window.location.href
 		})
 		.then(() => console.info('Successful share.'))

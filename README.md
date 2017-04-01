@@ -13,6 +13,7 @@ libraries and frameworks. Current buzzwords:
     - scss
     - Koa 2
     - GraphQL
+    - PWA(progressive web apps)
 * style & template
     - bootstrap v4
     - [Start Bootstrap](http://startbootstrap.com/) - [Clean Blog](http://startbootstrap.com/template-overviews/clean-blog/)
@@ -21,6 +22,7 @@ libraries and frameworks. Current buzzwords:
     - postcss
 * publish
     - docker
+    - docker-compose
 
 ### Dev env
 #### INSTALL

@@ -2,7 +2,8 @@
 > 
 > 1. [Service Workers 和离线缓存](https://discipled.me/posts/service-workers)
 > 2. Notification with Service Workers push events (本文)
-> 
+> 3. [PWA：添加应用至桌面及分享](https://discipled.me/posts/pwa-installable-and-share)
+>
 
 ## Notification
 HTML5 Notification 已经推出挺久了，它可以用来给用户发送通知提示。

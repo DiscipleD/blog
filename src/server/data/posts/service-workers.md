@@ -2,7 +2,8 @@
 > 
 > 1. Service Workers 和离线缓存 (本文)
 > 2. [Notification with Service Workers push events](https://discipled.me/posts/notification-with-sw-push-evetns)
-> 
+> 3. [PWA：添加应用至桌面及分享](https://discipled.me/posts/pwa-installable-and-share)
+>
 
 第一次听到 Service Workers 这个词还是在去年 Google 来安利 Angular 2 的时候，那时就觉得很惊艳，想搞一搞，但是因为没把网站升级成 https 一直拖到现在。[不久前](https://discipled.me/posts/docker-compose)，把网站升级成了 https，终于可以搞一发了。
 

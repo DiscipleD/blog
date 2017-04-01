@@ -193,6 +193,10 @@ const TAGS_LIST = [{
 	label: 'Design',
 	createdDate: '2017-02-16'
 }, {
+	name: 'pwa',
+	label: 'Progressive web apps',
+	createdDate: '2017-02-25'
+}, {
 	name: 'service-workers',
 	label: 'Service Workers',
 	createdDate: '2017-02-25'
@@ -200,6 +204,14 @@ const TAGS_LIST = [{
 	name: 'notification',
 	label: 'Notification',
 	createdDate: '2017-03-21'
+}, {
+	name: 'installable',
+	label: 'Add to home screen',
+	createdDate: '2017-04-01'
+}, {
+	name: 'webshare',
+	label: 'Web Share',
+	createdDate: '2017-04-01'
 }];
 
 export default TAGS_LIST.sort(sortFn('createdDate'));
