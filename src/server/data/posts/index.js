@@ -165,6 +165,12 @@ const POSTS_LIST = [{
 	title: 'PWA：添加应用至桌面及分享',
 	createdDate: '2017-04-01',
 	tags: ['pwa', 'installable', 'webshare']
+}, {
+	name: 'simple-chess-ai-step-by-step',
+	title: '[译]手把手教你创建国际象棋 AI',
+	createdDate: '2017-04-04',
+	tags: ['translate', 'minimax', 'alpha-beta'],
+	imageType: '.jpeg'
 }];
 
 export default POSTS_LIST.sort(sortFn('createdDate'));

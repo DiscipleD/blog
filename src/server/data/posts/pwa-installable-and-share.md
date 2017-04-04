@@ -3,6 +3,7 @@
 > 1. [Service Workers 和离线缓存](https://discipled.me/posts/service-workers)
 > 2. [Notification with Service Workers push events](https://discipled.me/posts/notification-with-sw-push-events) 
 > 3. PWA：添加应用至桌面及分享(本文)
+>
 
 继上两篇[离线缓存](https://discipled.me/posts/notification-with-sw-push-events)和[发送通知](https://discipled.me/posts/service-workers)之后，这篇是 PWA([progressive web apps](https://developer.mozilla.org/en-US/docs/Web/Apps/Progressive)) 相关的第三篇，也是计划中的最后一篇。
 
@@ -94,11 +95,11 @@
 
 生成后的文件可以通过 [Web Manifest Validator](https://manifest-validator.appspot.com/) 进行验证。验证通过后，把它加入到项目，再次访问就会有添加到桌面的提示。
 
-![](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/pwa-installable-and-share/add-to-home-screen.jpeg)
+![Add to home screen](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/pwa-installable-and-share/add-to-home-screen.jpeg)
 
 确定之后就能在桌面上看到了应用图标了。失手点了关闭也没有关系，可以通过 chrome 右上角的 `...` -> `Add to Home sceen` 手动添加。
 
-![](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/pwa-installable-and-share/home-screen.jpeg)
+![Home screen](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/pwa-installable-and-share/home-screen.jpeg)
 
 点击添加桌面后，如果发现桌面没有应用图标，确认 chrome 是否有添加桌面快捷方式的权限。
 
@@ -137,7 +138,7 @@ export const sharePage = () => {
 };
 ```
 
-![](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/pwa-installable-and-share/web-share.jpeg)
+![Web share](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/pwa-installable-and-share/web-share.jpeg)
 
 如果，你的网站设有[元数据](https://discipled.me/posts/structure-data)，那么，分享的内容可以从网页元数据中获取。
 
@@ -155,7 +156,7 @@ export const sharePage = () => {
 
 ![](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/pwa-installable-and-share/ditou.jpg)
 
-倘若，苹果也加入到 PWA 的行列，浏览器兼容性不再成为障碍时，JS 必然会正真改变前端与移动端之间的格局，再加之 [AOT(ahead-of-time)](http://asmjs.org/spec/latest/) 与 [WebAssembly](http://webassembly.org/) 为 JS 带来的性能上的突破，JS 将撼动所有领域，从移动端（PWA），到[桌面应用](https://github.com/electron/electron)，[物联网](https://www.postscapes.com/javascript-and-the-internet-of-things/)，[VR](https://github.com/mrdoob/three.js)，[AR](https://github.com/aframevr/aframe)，[游戏](http://www.jianshu.com/p/0469cd7b1711)，乃至[人工智能](https://github.com/karpathy/convnetjs)[等等](https://www.zhihu.com/question/20796866)，画美不看。
+倘若，苹果也加入到 PWA 的行列，浏览器兼容性不再成为障碍时，PWA 必然会改变前端与移动端之间的格局，再加之 [AOT(ahead-of-time)](http://asmjs.org/spec/latest/) 与 [WebAssembly](http://webassembly.org/) 为 JS 带来的性能上的突破，JS 将撼动所有领域，从移动端（PWA），到[桌面应用](https://github.com/electron/electron)，[物联网](https://www.postscapes.com/javascript-and-the-internet-of-things/)，[VR](https://github.com/mrdoob/three.js)，[AR](https://github.com/aframevr/aframe)，[游戏](http://www.jianshu.com/p/0469cd7b1711)，乃至[人工智能](https://github.com/karpathy/convnetjs)[等等](https://www.zhihu.com/question/20796866)，画美不看。
 
 妄言或许会成预言。
 
@@ -163,6 +164,6 @@ export const sharePage = () => {
 
 我们正处于一个前端最好的时代，未来可期...
 
-扯了这么多，最后当然还是希望对本人博客有兴趣的小伙伴可以试一试这次分享的两个功能，把我的博客添加到桌面并分享给自己的小伙伴们。🤗
+扯了这么多，最后当然还是希望对[本人博客](https://discipled.me)有兴趣的小伙伴可以试一试这次分享的两个功能，把[本人博客](https://discipled.me)添加到桌面并分享给自己的小伙伴们。🤗
 
 支持离线查看噢（得先访问过），没网的时候也能涨姿势了哪...(不用连啥花生 wifi 之类的了[手动滑稽])

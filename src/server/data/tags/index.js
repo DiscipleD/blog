@@ -212,6 +212,14 @@ const TAGS_LIST = [{
 	name: 'webshare',
 	label: 'Web Share',
 	createdDate: '2017-04-01'
+}, {
+	name: 'minimax',
+	label: 'Minimax',
+	createdDate: '2017-04-04'
+}, {
+	name: 'alpha-beta',
+	label: 'Alpha beta pruning',
+	createdDate: '2017-04-04'
 }];
 
 export default TAGS_LIST.sort(sortFn('createdDate'));
