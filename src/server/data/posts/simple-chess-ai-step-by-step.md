@@ -32,7 +32,7 @@ var calculateBestMove =function(game) {
 
 尽管，这个 AI 像一个刚懂规则的新手，但是，我们已经可以和它下棋了，这是一个好的开始。
 
-![随机移动，[地址点击](https://jsfiddle.net/lhartikk/m14epfwb/4)](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/simple-chess-ai-step-by-step/play-with-random-moves.gif)
+![随机移动，[点击试玩](https://jsfiddle.net/lhartikk/m14epfwb/4)](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/simple-chess-ai-step-by-step/play-with-random-moves.gif)
 
 ## 第二步：棋盘状态评估
 现在，我们试着计算在棋局某一状态下哪边更具优势，最简单的方法就是根据下表来统计棋局剩余棋子权重。
