@@ -8,18 +8,18 @@ the latest and buzziest tech, so that I can stay up to date on these
 libraries and frameworks. Current buzzwords:
 
 * main tech
-    - vue 2 & vue-router & vuex 
+    - Vue 2 & vue-router & vuex 
     - ES2015
-    - scss
     - Koa 2
     - GraphQL
     - PWA(progressive web apps)
 * style & template
     - bootstrap v4
     - [Start Bootstrap](http://startbootstrap.com/) - [Clean Blog](http://startbootstrap.com/template-overviews/clean-blog/)
+    - scss
+    - postcss (Autoprefixer)
 * package
-    - webpack
-    - postcss
+    - Webpack 2
 * publish
     - docker
     - docker-compose

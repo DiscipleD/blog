@@ -24,7 +24,7 @@ const introduction = [
 			value: [{
 				name: 'es6',
 				label: 'EcmaScript2015',
-				value: 3.5,
+				value: 4,
 				link: 'https://babeljs.io/docs/learn-es2015/'
 			}, {
 				name: 'angular1.x',
@@ -44,7 +44,7 @@ const introduction = [
 			}, {
 				name: 'react',
 				label: 'React',
-				value: 2,
+				value: 3.5,
 				link: 'https://facebook.github.io/react/docs/getting-started.html'
 			}],
 			type: 'list'
@@ -104,7 +104,7 @@ const introduction = [
 			}, {
 				name: 'webpack',
 				label: 'webpack',
-				value: 3.5,
+				value: 4,
 				link: 'http://webpack.github.io/docs/'
 			}],
 			type: 'list'
@@ -119,7 +119,7 @@ const introduction = [
 			}, {
 				name: 'koa',
 				label: 'Koa',
-				value: 1.5,
+				value: 2,
 				link: 'http://koajs.com/'
 			}],
 			type: 'list'
@@ -144,7 +144,7 @@ const introduction = [
 			value: [{
 				name: 'docker',
 				label: 'Docker',
-				value: 2,
+				value: 3,
 				link: 'https://www.docker.com/'
 			}],
 			type: 'list'
@@ -154,7 +154,7 @@ const introduction = [
 			value: [{
 				name: 'nginx',
 				label: 'Nginx',
-				value: 1,
+				value: 2,
 				link: 'https://nginx.org/en/docs/'
 			}],
 			type: 'list'
