@@ -73,11 +73,11 @@ const webpackConfig = Object.assign({}, baseWebpackConfig, {
 
 if (isProduction) {
 	webpackConfig.plugins.unshift(new CleanPlugin([DIST_PATH], { root: process.cwd() }));
-	webpackConfig.plugins.push(new webpack.optimize.OccurenceOrderPlugin());
+	webpackConfig.plugins.push(new webpack.LoaderOptionsPlugin({
+		minimize: true
+	}));
 	webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin({
-		compress: {
-			warnings: false
-		}
+		sourceMap: true
 	}));
 } else {
 	webpackConfig.entry['app'].unshift('webpack-hot-middleware/client?path=/__webpack_hmr&reload=true&timeout=20000');

@@ -8,6 +8,7 @@ const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const SOURCE_PATH = path.join(__dirname, '../../src');
+const PUBLIC_PATH = '/';
 const DIST_PATH = path.join(__dirname, '../../build/client');
 
 const webpackConfig = {
@@ -15,7 +16,7 @@ const webpackConfig = {
 	devtool: 'source-map',
 	output: {
 		path: DIST_PATH,
-		publicPath: '/'
+		publicPath: PUBLIC_PATH
 	},
 	resolve: {
 		alias: {
@@ -25,69 +26,72 @@ const webpackConfig = {
 			'components': SOURCE_PATH + '/client/components',
 			'containers': SOURCE_PATH + '/client/containers',
 			'vuexModule': SOURCE_PATH + '/client/vuex/module'
-		},
-		extensions: ['', '.js']
+		}
 	},
-	eslint: {
-		configFile: '.eslintrc',
-		emitWarning: true,
-		emitError: true,
-		formatter: require('eslint-friendly-formatter')
-	},
-	postcss: [autoprefixer({browsers: ['last 2 versions']})],
 	plugins: [
 		// the plugin need be added in loader
 		new ExtractTextPlugin('style-[contenthash:8].css'),
-		new webpack.NoErrorsPlugin()
+		new webpack.NoEmitOnErrorsPlugin()
 	],
 	module: {
-		preLoaders: [
+		rules: [
 			{
-				test: /[^(\.min)]\.js$/,
+				test: /\.js$/,
 				loader: 'eslint-loader',
+				enforce: 'pre',
 				exclude: /node_modules/,
-				include: SOURCE_PATH
-			}
-		],
-		loaders: [
+				options: {
+					emitWarning: true,
+					emitError: true,
+					formatter: require('eslint-friendly-formatter')
+				}
+			},
 			{
-				test: /[^(\.min)]\.js$/,
-				loaders: ['babel'],
-				exclude: /node_modules/,
-				include: SOURCE_PATH
+				test: /\.js$/,
+				loader: 'babel-loader',
+				exclude: /node_modules/
 			},
 			{
 				test: /\.html$/,
-				loader: 'html',
-				query: {interpolate: true},
-				exclude: /node_modules/,
-				include: SOURCE_PATH
+				loader: 'html-loader?interpolate',
+				exclude: /node_modules/
 			},
 			{
 				test: /\.(sc|c)ss$/,
 				// extract css file from js file, that will reduce the js file size and optimize page loading.
 				// but it will increase the package time, so it should be only used in build file.
-				loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader')
-				// loaders: ['style', 'css', 'postcss', 'sass']
+				use: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: [
+						'css-loader?sourceMap',
+						{
+							loader: 'postcss-loader?sourceMap',
+							options: {
+								plugins: () => [autoprefixer({browsers: ['last 2 versions']})]
+							}
+						},
+						'sass-loader'
+					]
+				})
 			},
 			{
 				test: /\.(jpe?g|png|gif|svg)$/i,
-				loaders: [
-					'file?hash=sha512&digest=hex&name=[path][name]-[hash:8].[ext]',
-					'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+				use: [
+					'file-loader?hash=sha512&digest=hex&name=[path][name]-[hash:8].[ext]',
+					'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false'
 				]
 			},
 			{
 				test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-				loader: 'url?limit=10000&mimetype=application/font-woff&prefix=fonts'
+				loader: 'url-loader?limit=10000&mimetype=application/font-woff&prefix=fonts'
 			},
 			{
 				test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-				loader: 'url?limit=10000&mimetype=application/octet-stream&prefix=fonts'
+				loader: 'url-loader?limit=10000&mimetype=application/octet-stream&prefix=fonts'
 			},
 			{
 				test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-				loader: 'url?limit=10000&mimetype=application/vnd.ms-fontobject&prefix=fonts'
+				loader: 'url-loader?limit=10000&mimetype=application/vnd.ms-fontobject&prefix=fonts'
 			}
 		]
 	}
