@@ -171,6 +171,11 @@ const POSTS_LIST = [{
 	createdDate: '2017-04-04',
 	tags: ['translate', 'minimax', 'alpha-beta'],
 	imageType: '.jpeg'
+}, {
+	name: 'upgrade-to-webpack2',
+	title: '升级 webpack 至 v2.2.x',
+	createdDate: '2017-04-09',
+	tags: ['webpack']
 }];
 
 export default POSTS_LIST.sort(sortFn('createdDate'));
