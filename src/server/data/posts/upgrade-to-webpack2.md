@@ -235,7 +235,7 @@ const webpackConfig = {
 
 ![build with webpack2](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/upgrade-to-webpack2/build-with-webpack2.png)
 
-可以看到，app.js 小了不到 8kb，减小了 10%，而 common.js 反而大了 12kb，都没改代码啊~[捂脸]
+可以看到，app.js 小了不到 8kb，减小了 10%，还是比较可观的，而 common.js 反而大了 12kb，应该是因为我升级了依赖的关系~[捂脸]
 
 总得来说，将 webpack 从 v1 升级至 v2，主要修改 `resolve`, `module` 和 `plugin` 这 3 个属性，而且基本是一些字段名的修改，整体结构上没有大的变化，升级还是比较简单的，是个耐心活。
 

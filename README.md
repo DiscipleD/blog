@@ -1,7 +1,7 @@
 Disciple.Ding blog
 ====
 
-The source code for my blog, [http://discipled.me](http://discipled.me)
+The source code for my blog, [discipled.me](https://discipled.me)
 
 I'm constantly rewriting / refactoring this silly little blog using
 the latest and buzziest tech, so that I can stay up to date on these
