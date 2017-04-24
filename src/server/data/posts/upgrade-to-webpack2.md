@@ -225,6 +225,22 @@ const webpackConfig = {
 
 不过，这修改起来也很简单，只需修改 babel 的配置文件 `.babelrc`，将原先的 `es2015` 改为 `["es2015", { "modules": false }]` 就可以了。
 
+但是（再次转折...），改起来虽然简单，但修改这个全局的配置会影响到许多方面：
+
+* 假如你和我一样将服务器端和客户端放在一个项目中，那么这个修改会影响到服务器端代码的解析；
+* 假如你的项目中加入了单元测试，比如 Jest，那么，修改这个配置同样会影响到测试代码的运行
+
+这也可以解决的，还是修改 `.babelrc` 配置，根据环境来运用不同的插件，比如运行测试时就可以添加以下配置
+
+```JSON
+// .babelrc
+  "env": {
+    "test": {
+      "plugins": ["transform-es2015-modules-commonjs"]
+    }
+  }
+```
+
 在公司项目升级 webpack 修改模块引入方式时，还遇到过 `Module build failed: some file... TypeError: Cannot read property '0' of null` 这样一个问题，折腾了半天。最后发现是因为 `babel-plugin-antd` 报出的问题，`babel-plugin-antd` 前一阵就升级成 `babel-plugin-import` 了，项目里也升级一下问题就解决了.
 
 > 升级 webpack 后，记得同时升级所用到的 loader 和 plugin。
@@ -235,7 +251,7 @@ const webpackConfig = {
 
 ![build with webpack2](https://raw.githubusercontent.com/DiscipleD/image-storage/master/blog/upgrade-to-webpack2/build-with-webpack2.png)
 
-可以看到，app.js 小了不到 8kb，减小了 10%，还是比较可观的，而 common.js 反而大了 12kb，应该是因为我升级了依赖的关系~[捂脸]
+可以看到，app.js 小了不到 8kb，减小了 10%，还是比较可观的，而 common.js 反而大了 12kb，应该是因为升级了依赖的关系~[捂脸]
 
 总得来说，将 webpack 从 v1 升级至 v2，主要修改 `resolve`, `module` 和 `plugin` 这 3 个属性，而且基本是一些字段名的修改，整体结构上没有大的变化，升级还是比较简单的，是个耐心活。
 
