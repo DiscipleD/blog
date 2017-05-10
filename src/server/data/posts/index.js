@@ -176,6 +176,11 @@ const POSTS_LIST = [{
 	title: '升级 webpack 至 v2.2.x',
 	createdDate: '2017-04-09',
 	tags: ['webpack']
+}, {
+	name: 'upgrade-ssr-of-vue',
+	title: 'Vue v2.3.0 ssr 升级手册',
+	createdDate: '2017-05-10',
+	tags: ['vue2', 'ssr', 'webpack']
 }];
 
 export default POSTS_LIST.sort(sortFn('createdDate'));
