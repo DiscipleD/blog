@@ -2,7 +2,7 @@
  * Created by jack on 16-11-27.
  */
 
-import {app, router, store} from './client/app';
+import createApp from './client/app';
 import { getBlogTitle } from 'common/service/CommonService';
 import siteActions from 'vuexModule/site/actions';
 
@@ -14,6 +14,7 @@ global.navigator = window.navigator;
 global.fetch = require('node-fetch');
 
 export default context => {
+	const { app, router, store } = createApp();
 	// set router's location
 	router.push(context.url);
 	const matchedComponents = router.getMatchedComponents();
@@ -28,21 +29,21 @@ export default context => {
 	// which is resolved when the action is complete and store state has been
 	// updated.
 	return Promise.all(matchedComponents.map(component => {
-		if (component.options.preFetch) {
-			return component.options.preFetch(store);
+		if (component.preFetch) {
+			return component.preFetch(store);
 		}
 	}))
 		// special handle nav state load, which can't be added in preFetch hook
 		.then(() => siteActions.loadNavList(store))
 		.then(() => {
-			context.pageTitle = getBlogTitle(store.state.site.title);
+			context.title = getBlogTitle(store.state.site.title);
 			// After all preFetch hooks are resolved, our store is now
 			// filled with the state needed to render the app.
 			// Expose the state on the render context, and let the request handler
 			// inline the state in the HTML response. This allows the client-side
 			// store to pick-up the server-side state without having to duplicate
 			// the initial data fetching on the client.
-			context.initialState = store.state;
+			context.state = store.state;
 			return app;
 		});
 

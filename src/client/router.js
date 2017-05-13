@@ -27,17 +27,22 @@ const ROUTER_SETTING = {
 	]
 };
 
-const router = new VueRouter(ROUTER_SETTING);
+const createRouter = () => {
+	const router = new VueRouter(ROUTER_SETTING);
 
-// manually hook: page not scroll to top when router changes
-// github issue: https://github.com/vuejs/vue-router/issues/173
-router.beforeEach((route, redirect, next) => {
-	window.scrollTo(0, 0);
-	next();
-});
+	// manually hook: page not scroll to top when router changes
+	// github issue: https://github.com/vuejs/vue-router/issues/173
+	router.beforeEach((route, redirect, next) => {
+		window.scrollTo(0, 0);
+		next();
+	});
 
-router.afterEach(route => {
-	console.info(`${new Date()}: ${route.path}`);
-});
+	router.afterEach(route => {
+		console.info(`${new Date()}: ${route.path}`);
+	});
 
-export default router;
+	return router;
+};
+
+
+export default createRouter;

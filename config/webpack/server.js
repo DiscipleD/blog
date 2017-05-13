@@ -3,20 +3,25 @@
  */
 const path = require('path');
 const webpack = require('webpack');
+// const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 
+const PATH = require('./path');
 const baseWebpackConfig = require('./base');
-const ROOT = path.join(__dirname, '../../');
-const SOURCE_PATH = ROOT + 'src';
 
 const webpackConfig = Object.assign({}, baseWebpackConfig, {
 	devtool: false,
 	target: 'node',
-	entry: SOURCE_PATH + '/server-entry.js',
+	entry: PATH.SOURCE_PATH + '/server-entry.js',
 	output: Object.assign({}, baseWebpackConfig.output, {
 		filename: 'server.bundle.js',
 		libraryTarget: 'commonjs2'
 	}),
-	externals: Object.keys(require(ROOT + 'package.json').dependencies),
+	externals: Object.keys(require(PATH.ROOT + 'package.json').dependencies)
+	/* VueSSRServerPlugin work fail with webpack-middleware
+	plugins: baseWebpackConfig.plugins.concat([
+		new VueSSRServerPlugin()
+	])
+	*/
 });
 
 module.exports = webpackConfig;

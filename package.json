@@ -47,24 +47,26 @@
     "koa-router": "^7.1.1",
     "koa-static": "^2.1.0",
     "lodash": "^4.17.4",
+    "lru-cache": "^4.0.2",
     "marked": "^0.3.6",
     "node-fetch": "^1.6.3",
     "node-sass": "^4.5.2",
     "nodemon": "^1.11.0",
-    "pm2": "^2.4.4",
+    "pm2": "^2.4.6",
     "postcss-loader": "^1.3.3",
-    "sass-loader": "^6.0.3",
+    "sass-loader": "^6.0.5",
     "serialize-javascript": "^1.3.0",
     "style-loader": "^0.13.2",
     "url-loader": "^0.5.8",
-    "vue": "^2.2.6",
+    "vue": "^2.3.3",
     "vue-loader": "^9.9.5",
-    "vue-router": "^2.4.0",
-    "vue-server-renderer": "^2.2.6",
-    "vuex": "^2.2.1",
+    "vue-router": "^2.5.3",
+    "vue-server-renderer": "^2.3.3",
+    "vuex": "^2.3.1",
     "vuex-router-sync": "^3.0.0",
     "web-push": "^3.2.2",
-    "webpack": "^2.3.3",
+    "webpack": "^2.5.1",
+    "webpack-dev-middleware": "^1.10.2",
     "whatwg-fetch": "^1.1.0"
   },
   "repository": {
@@ -80,6 +82,7 @@
     "build:clientDll": "webpack --config config/webpack/dll.js",
     "build:server": "babel src/server -d build/server --no-babelrc --presets=es2015,stage-3",
     "start:server": "NODE_ENV=production pm2 start build/server/server.js --name blog -i 2 --output /var/log/node/out.log --error /var/log/node/error.log --no-daemon",
-    "stop:server": "pm2 stop blog"
+    "stop:server": "pm2 stop blog",
+    "log": "pm2 logs"
   }
 }

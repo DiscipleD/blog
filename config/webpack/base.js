@@ -7,25 +7,23 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const SOURCE_PATH = path.join(__dirname, '../../src');
-const PUBLIC_PATH = '/';
-const DIST_PATH = path.join(__dirname, '../../build/client');
+const PATH = require('./path');
 
 const webpackConfig = {
 	// http://mp.weixin.qq.com/s?__biz=MzI3NTE2NjYxNw==&mid=2650600472&idx=1&sn=d4bf85c1bb26a32aff144e81d652582f
 	devtool: 'source-map',
 	output: {
-		path: DIST_PATH,
-		publicPath: PUBLIC_PATH
+		path: PATH.DIST_PATH + '/client',
+		publicPath: PATH.PUBLIC_PATH
 	},
 	resolve: {
 		alias: {
 			'vue': 'vue/dist/vue.js',
-			'assets': SOURCE_PATH + '/client/assets',
-			'common': SOURCE_PATH + '/client/common',
-			'components': SOURCE_PATH + '/client/components',
-			'containers': SOURCE_PATH + '/client/containers',
-			'vuexModule': SOURCE_PATH + '/client/vuex/module'
+			'assets': PATH.SOURCE_PATH + '/client/assets',
+			'common': PATH.SOURCE_PATH + '/client/common',
+			'components': PATH.SOURCE_PATH + '/client/components',
+			'containers': PATH.SOURCE_PATH + '/client/containers',
+			'vuexModule': PATH.SOURCE_PATH + '/client/vuex/module'
 		}
 	},
 	plugins: [

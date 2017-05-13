@@ -5,36 +5,32 @@
 import fs from 'fs';
 import path from 'path';
 import { createBundleRenderer } from 'vue-server-renderer';
-import serialize from 'serialize-javascript';
+import LRU from 'lru-cache';
 
+import PATH from '../../../config/webpack/path';
 import serverConfig from '../../../config/webpack/server';
 
 const serverBundlePath = path.join(serverConfig.output.path, serverConfig.output.filename);
+const clientManifestFileName = 'vue-ssr-client-manifest.json';
+const template = fs.readFileSync(PATH.SOURCE_PATH + '/index.html', 'utf8');
 
-let indexHTML;
 let renderer;
 
-export const createIndexHTML = html => {
-	indexHTML = html;
-};
-
-export const createRenderer = bundle => {
-	renderer = createBundleRenderer(bundle);
+export const createRenderer = (bundle, options = {}) => {
+	renderer = createBundleRenderer(bundle, Object.assign({
+		template,
+		cache: LRU({
+			max: 1000
+		}),
+		runInNewContext: false
+	}, options));
 };
 
 if (process.env.NODE_ENV === 'production') {
-	indexHTML = fs.readFileSync(serverConfig.output.path + '/index.temp.html', 'utf8');
-	createRenderer(fs.readFileSync(serverBundlePath, 'utf-8'));
+	createRenderer(fs.readFileSync(serverBundlePath, 'utf-8'), {
+		clientManifest: require(`${PATH.DIST_PATH}/client/${clientManifestFileName}`),
+	});
 }
-
-const generatorHtml = (str, pageTitle, initState) => {
-	indexHTML = indexHTML.replace(/<title>.*?<\/title>/, `<title>${pageTitle}</title>`);
-	const [header, footer] = indexHTML.split('<blog></blog>');
-	// Fix XSS Vulnerability by SSR init state.
-	// Ref: https://medium.com/node-security/the-most-common-xss-vulnerability-in-react-js-applications-2bdffbcc1fa0
-	// Remove second param {isJSON: true} to provide function capability.
-	return `${header}${str}<script>window.__INITIAL_STATE__=${serialize(initState)}</script>${footer}`;
-};
 
 const renderServer = async ctx => {
 	const context = { url: ctx.url };
@@ -51,7 +47,7 @@ const renderServer = async ctx => {
 					}
 				} else {
 					ctx.type = 'text/html';
-					ctx.body = generatorHtml(vueApp, context.pageTitle, context.initialState);
+					ctx.body = vueApp;
 				}
 				resolve();
 			});

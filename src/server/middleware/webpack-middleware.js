@@ -11,7 +11,7 @@ import { PassThrough } from 'stream';
 
 import clientConfig from '../../../config/webpack/client';
 import serverConfig from '../../../config/webpack/server';
-import { createIndexHTML, createRenderer } from './server-render';
+import { setClientManifest, createRenderer } from './server-render';
 
 let expressDevMiddleware;
 
@@ -59,8 +59,12 @@ const devMiddleware = koaWebpackDevMiddleware(clientCompiler, {
 });
 
 clientCompiler.plugin('done', () => {
-	const filePath = path.join(clientConfig.output.path, 'index.temp.html');
-	createIndexHTML(expressDevMiddleware.fileSystem.readFileSync(filePath, 'utf-8'));
+	const clientManifestFileName = 'vue-ssr-client-manifest.json';
+	const filePath = path.join(clientConfig.output.path, clientManifestFileName);
+	const options = {
+		clientManifest: JSON.parse(expressDevMiddleware.fileSystem.readFileSync(filePath, 'utf-8'))
+	};
+	createRenderer(mfs.readFileSync(outputPath, 'utf-8'), options);
 });
 
 const hotMiddleware = koaWebpackHotMiddleware(clientCompiler, {});

@@ -6,17 +6,17 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
 
+const PATH = require('./path');
 const baseWebpackConfig = require('./base');
 const isProduction = process.env.NODE_ENV === 'production';
-const SOURCE_PATH = path.join(__dirname, '../../src');
-const DIST_PATH = path.join(__dirname, '../../build/client');
 
 const webpackConfig = Object.assign({}, baseWebpackConfig, {
 	devtool: isProduction ? 'cheap-source-map' : 'module-source-map',
 	entry: {
 		common: ['vue', 'vue-router', 'vuex'],
-		app: [SOURCE_PATH + '/client-entry.js']
+		app: [PATH.SOURCE_PATH + '/client-entry.js']
 	},
 	output: Object.assign({}, baseWebpackConfig.output, {
 		filename: '[name].[hash:8].js',
@@ -38,31 +38,33 @@ const webpackConfig = Object.assign({}, baseWebpackConfig, {
 		 * That problem causes the plugin is useless.
 		 new webpack.DllReferencePlugin({
 		 context: path.join(__dirname),
-		 manifest: require(DIST_PATH + '/VueStuff.manifest.json')
+		 manifest: require(PATH.DIST_PATH + '/VueStuff.manifest.json')
 		 }),*/
+		new VueSSRClientPlugin(),
+		/* replace by VueSSRClientPlugin
 		new HtmlWebpackPlugin({
-			favicon: SOURCE_PATH + '/client/assets/img/favicon.ico',
+			favicon: PATH.SOURCE_PATH + '/client/assets/img/favicon.ico',
 			filename: 'index.temp.html',
-			template: SOURCE_PATH + '/index.html'
-		}),
+			template: PATH.SOURCE_PATH + '/index.html'
+		}), */
 		// create another 404.html file
 		new HtmlWebpackPlugin({
-			favicon: SOURCE_PATH + '/client/assets/img/favicon.ico',
+			favicon: PATH.SOURCE_PATH + '/client/assets/img/favicon.ico',
 			filename: '404.html',
-			template: SOURCE_PATH + '/404.html',
+			template: PATH.SOURCE_PATH + '/404.html',
 			inject: false
 		}),
 		new CopyWebpackPlugin([
 			{
-				from: SOURCE_PATH + '/client/assets/img/logo',
+				from: PATH.SOURCE_PATH + '/client/assets/img/logo',
 				to: 'assets/img/logo'
 			}
 		]),
 		new CopyWebpackPlugin([
-			{ from: SOURCE_PATH + '/manifest.json' }
+			{ from: PATH.SOURCE_PATH + '/manifest.json' }
 		]),
 		new CopyWebpackPlugin([
-			{ from: SOURCE_PATH + '/service-worker.js' }
+			{ from: PATH.SOURCE_PATH + '/service-worker.js' }
 		]),
 		// Define NODE_ENV
 		new webpack.DefinePlugin({
@@ -72,7 +74,7 @@ const webpackConfig = Object.assign({}, baseWebpackConfig, {
 });
 
 if (isProduction) {
-	webpackConfig.plugins.unshift(new CleanPlugin([DIST_PATH], { root: process.cwd() }));
+	webpackConfig.plugins.unshift(new CleanPlugin([`${PATH.DIST_PATH}/client`], { root: process.cwd() }));
 	webpackConfig.plugins.push(new webpack.LoaderOptionsPlugin({
 		minimize: true
 	}));

@@ -12,26 +12,33 @@ import 'assets/scss/clean-blog.scss';
 import 'whatwg-fetch';
 import 'core-js/modules/es6.promise';
 
-import store from './vuex';
-import router from './router';
+import createStore from './vuex';
+import createRouter from './router';
 import 'containers/blog';
 import 'components';
 
-sync(store, router);
+const createApp = () => {
+	const store = createStore();
+	const router = createRouter();
 
-const app = new Vue({
-	store,
-	router,
-	render: h =>
-		h(
-			'div',
-			{
-				attrs: {
-					id: 'app'
-				}
-			},
-			[h('blog')]
-		)
-});
+	sync(store, router);
 
-export {app, router, store};
+	const app = new Vue({
+		store,
+		router,
+		render: h =>
+			h(
+				'div',
+				{
+					attrs: {
+						id: 'app'
+					}
+				},
+				[h('blog')]
+			)
+	});
+
+	return {app, router, store};
+};
+
+export default createApp;

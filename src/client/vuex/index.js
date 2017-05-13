@@ -4,16 +4,18 @@
 
 import Vue from 'vue';
 import Vuex from 'vuex';
-// import createLogger from 'vuex/logger';
+import createLogger from 'vuex/dist/logger';
 
 import modules from './module';
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
-	state: {},
-	// can not judge run time environment
-	// plugins: process.env.NODE_ENV !== 'production' ? [createLogger()] : [],
-	modules,
-	strict: true
-});
+const createStore = () =>
+	new Vuex.Store({
+		state: {},
+		plugins: process.env.NODE_ENV !== 'production' ? [createLogger()] : [],
+		modules,
+		strict: true
+	});
+
+export default createStore;
