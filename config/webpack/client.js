@@ -75,6 +75,11 @@ const webpackConfig = Object.assign({}, baseWebpackConfig, {
 
 if (isProduction) {
 	webpackConfig.plugins.unshift(new CleanPlugin([`${PATH.DIST_PATH}/client`], { root: process.cwd() }));
+	webpackConfig.plugins.push(new webpack.DefinePlugin({
+		'process.env': {
+			NODE_ENV: '"production"'
+		}
+	}));
 	webpackConfig.plugins.push(new webpack.LoaderOptionsPlugin({
 		minimize: true
 	}));
