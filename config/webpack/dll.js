@@ -2,10 +2,9 @@
  * Created by jack on 16-8-3.
  */
 
-const path = require('path');
 const webpack = require('webpack');
 
-const DIST_PATH = path.join(__dirname, '../../build/client');
+const PATH = require('config/webpack/setting');
 
 module.exports = {
 	entry: {
@@ -17,14 +16,14 @@ module.exports = {
 	},
 	output: {
 		filename: '[name].[hash:8].dll.js',
-		path: DIST_PATH,
+		path: PATH.DIST_PATH,
 		library: '[name]_library'
 	},
 
 	plugins: [
 		new webpack.DllPlugin({
 			name: '[name]_library',
-			path: DIST_PATH + '/[name].manifest.json'
+			path: PATH.DIST_PATH + '/[name].manifest.json'
 		})
 	]
 };

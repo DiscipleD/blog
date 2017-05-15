@@ -7,14 +7,10 @@ import path from 'path';
 import { createBundleRenderer } from 'vue-server-renderer';
 import LRU from 'lru-cache';
 
-import PATH from '../../../config/webpack/path';
+import { indexTemplatePath, clientManifestFileName, serverBundleFileName } from '../../../config/webpack/setting';
 import serverConfig from '../../../config/webpack/server';
 
-const clientManifestFileName = 'vue-ssr-client-manifest.json';
-const serverBundleFileName = 'vue-ssr-server-bundle.json';
-const serverBundlePath = path.join(serverConfig.output.path, serverBundleFileName);
-const template = fs.readFileSync(PATH.SOURCE_PATH + '/index.html', 'utf8');
-
+const template = fs.readFileSync(indexTemplatePath, 'utf8');
 let renderer;
 
 export const createRenderer = (bundle, options = {}) => {
@@ -28,8 +24,9 @@ export const createRenderer = (bundle, options = {}) => {
 };
 
 if (process.env.NODE_ENV === 'production') {
+	const serverBundlePath = path.join(serverConfig.output.path, serverBundleFileName);
 	createRenderer(require(serverBundlePath), {
-		clientManifest: require(`${PATH.DIST_PATH}/client/${clientManifestFileName}`),
+		clientManifest: require(`${serverConfig.output.path}/${clientManifestFileName}`),
 	});
 }
 

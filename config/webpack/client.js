@@ -1,14 +1,13 @@
 /**
  * Created by jack on 16-4-16.
  */
-const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
 
-const PATH = require('./path');
+const PATH = require('./setting');
 const baseWebpackConfig = require('./base');
 const isProduction = process.env.NODE_ENV === 'production';
 

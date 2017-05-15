@@ -1,11 +1,10 @@
 /**
  * Created by jack on 16-11-27.
  */
-const path = require('path');
 const webpack = require('webpack');
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
 
-const PATH = require('./path');
+const PATH = require('./setting');
 const baseWebpackConfig = require('./base');
 
 const webpackConfig = Object.assign({}, baseWebpackConfig, {

@@ -9,11 +9,31 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import MFS from 'memory-fs';
 import { PassThrough } from 'stream';
 
+import { serverBundleFileName, clientManifestFileName } from '../../../config/webpack/setting';
 import clientConfig from '../../../config/webpack/client';
 import serverConfig from '../../../config/webpack/server';
-import { setClientManifest, createRenderer } from './server-render';
+import { createRenderer } from './server-render';
 
+const mfs = new MFS();
+const clientManifestFilePath = path.join(clientConfig.output.path, clientManifestFileName);
+const serverBundleFilePath = path.join(serverConfig.output.path, serverBundleFileName);
 let expressDevMiddleware;
+
+/**
+ * setRenderer
+ * whenever client file or server file change, renderer should be update
+ */
+const updateRenderer = () => {
+	try {
+		const options = {
+			clientManifest: JSON.parse(expressDevMiddleware.fileSystem.readFileSync(clientManifestFilePath, 'utf-8'))
+		};
+		createRenderer(JSON.parse(mfs.readFileSync(serverBundleFilePath, 'utf-8')), options);
+	} catch(e) {
+		createRenderer(JSON.parse(mfs.readFileSync(serverBundleFilePath, 'utf-8')));
+	}
+	console.log('Renderer is updated.');
+};
 
 const koaWebpackDevMiddleware = (compiler, opts) => {
 	expressDevMiddleware = webpackDevMiddleware(compiler, opts);
@@ -58,30 +78,19 @@ const devMiddleware = koaWebpackDevMiddleware(clientCompiler, {
 	publicPath: clientConfig.output.publicPath
 });
 
-clientCompiler.plugin('done', () => {
-	const clientManifestFileName = 'vue-ssr-client-manifest.json';
-	const filePath = path.join(clientConfig.output.path, clientManifestFileName);
-	const options = {
-		clientManifest: JSON.parse(expressDevMiddleware.fileSystem.readFileSync(filePath, 'utf-8'))
-	};
-	createRenderer(JSON.parse(mfs.readFileSync(outputPath, 'utf-8')), options);
-});
+clientCompiler.plugin('done', updateRenderer);
 
 const hotMiddleware = koaWebpackHotMiddleware(clientCompiler, {});
 
 // watch and update server renderer
 const serverCompiler = webpack(serverConfig);
-const mfs = new MFS();
-const serverBundleFileName = 'vue-ssr-server-bundle.json';
-const outputPath = path.join(serverConfig.output.path, serverBundleFileName);
 serverCompiler.outputFileSystem = mfs;
 serverCompiler.watch({}, (err, stats) => {
 	if (err) throw err;
 	stats = stats.toJson();
 	stats.errors.forEach(err => console.error(err));
 	stats.warnings.forEach(err => console.warn(err));
-	createRenderer(JSON.parse(mfs.readFileSync(outputPath, 'utf-8')));
-	console.log('server side bundle is now VALID.');
+	updateRenderer();
 });
 
 export {devMiddleware, hotMiddleware};
