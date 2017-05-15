@@ -64,7 +64,7 @@ clientCompiler.plugin('done', () => {
 	const options = {
 		clientManifest: JSON.parse(expressDevMiddleware.fileSystem.readFileSync(filePath, 'utf-8'))
 	};
-	createRenderer(mfs.readFileSync(outputPath, 'utf-8'), options);
+	createRenderer(JSON.parse(mfs.readFileSync(outputPath, 'utf-8')), options);
 });
 
 const hotMiddleware = koaWebpackHotMiddleware(clientCompiler, {});
@@ -72,14 +72,15 @@ const hotMiddleware = koaWebpackHotMiddleware(clientCompiler, {});
 // watch and update server renderer
 const serverCompiler = webpack(serverConfig);
 const mfs = new MFS();
-const outputPath = path.join(serverConfig.output.path, serverConfig.output.filename);
+const serverBundleFileName = 'vue-ssr-server-bundle.json';
+const outputPath = path.join(serverConfig.output.path, serverBundleFileName);
 serverCompiler.outputFileSystem = mfs;
 serverCompiler.watch({}, (err, stats) => {
 	if (err) throw err;
 	stats = stats.toJson();
 	stats.errors.forEach(err => console.error(err));
 	stats.warnings.forEach(err => console.warn(err));
-	createRenderer(mfs.readFileSync(outputPath, 'utf-8'));
+	createRenderer(JSON.parse(mfs.readFileSync(outputPath, 'utf-8')));
 	console.log('server side bundle is now VALID.');
 });
 

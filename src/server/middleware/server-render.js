@@ -10,8 +10,9 @@ import LRU from 'lru-cache';
 import PATH from '../../../config/webpack/path';
 import serverConfig from '../../../config/webpack/server';
 
-const serverBundlePath = path.join(serverConfig.output.path, serverConfig.output.filename);
 const clientManifestFileName = 'vue-ssr-client-manifest.json';
+const serverBundleFileName = 'vue-ssr-server-bundle.json';
+const serverBundlePath = path.join(serverConfig.output.path, serverBundleFileName);
 const template = fs.readFileSync(PATH.SOURCE_PATH + '/index.html', 'utf8');
 
 let renderer;
@@ -27,7 +28,7 @@ export const createRenderer = (bundle, options = {}) => {
 };
 
 if (process.env.NODE_ENV === 'production') {
-	createRenderer(fs.readFileSync(serverBundlePath, 'utf-8'), {
+	createRenderer(require(serverBundlePath), {
 		clientManifest: require(`${PATH.DIST_PATH}/client/${clientManifestFileName}`),
 	});
 }
