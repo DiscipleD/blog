@@ -224,6 +224,10 @@ const TAGS_LIST = [{
 	name: 'webpack',
 	label: 'Webpack',
 	createdDate: '2017-04-09'
+}, {
+	name: 'fp',
+	label: 'Functional Programming',
+	createdDate: '2017-04-09'
 }];
 
 export default TAGS_LIST.sort(sortFn('createdDate'));

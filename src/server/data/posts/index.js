@@ -181,6 +181,12 @@ const POSTS_LIST = [{
 	title: 'Vue v2.3.0 ssr 升级手册',
 	createdDate: '2017-05-10',
 	tags: ['vue2', 'ssr', 'webpack']
+}, {
+	name: 'functional-mixins',
+	title: '[译]Mixin 函数',
+	subtitle: '软件构建系列',
+	createdDate: '2017-06-21',
+	tags: ['translate', 'javascript', 'fp']
 }];
 
 export default POSTS_LIST.sort(sortFn('createdDate'));
