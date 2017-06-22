@@ -1,7 +1,7 @@
 > 系列文章：
 > 
 > 1. Service Workers 和离线缓存 (本文)
-> 2. [Notification with Service Workers push events](https://discipled.me/posts/notification-with-sw-push-evetns)
+> 2. [Notification with Service Workers push events](https://discipled.me/posts/notification-with-sw-push-events)
 > 3. [PWA：添加应用至桌面及分享](https://discipled.me/posts/pwa-installable-and-share)
 >
 
