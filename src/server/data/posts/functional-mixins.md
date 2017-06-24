@@ -1,7 +1,9 @@
+> 原文链接：[Functional Mixins](https://medium.com/javascript-scene/functional-mixins-composing-software-ffb66d5e731c)  
+> 译者注：在编程中，mixin 类似于一个固有名词，可以理解为混合或混入，通常不进行直译，本文也是同样。
+
+
 > 这是“软件构建”系列教程的一部分，该系列主要从 JavaScript ES6+ 中学习函数式编程，以及软件构建技术。敬请关注。  
 > [上一篇](https://medium.com/javascript-scene/functors-categories-61e031bac53f) | [第一篇](https://medium.com/javascript-scene/composing-software-an-introduction-27b72500d6ea)
-
-> 译者注：在编程中，mixin 类似于一个固有名词，可以理解为混合或混入，通常不进行直译，本文也是同样。
 
 **Mixin 函数** 是指能够给对象添加属性或行为，并可以通过管道连接在一起的组合工厂函数，就如同流水线上的工人。Mixin 函数不依赖或要求一个基础工厂或构造函数：简单地将任意一个对象传入一个 mixin，就会得到一个增强之后的对象。
 
