@@ -12,6 +12,7 @@ libraries and frameworks. Current buzzwords:
     - ES2015
     - Koa 2
     - GraphQL
+    - SSR(Server side render)
     - PWA(progressive web apps)
 * style & template
     - bootstrap v4
@@ -19,7 +20,7 @@ libraries and frameworks. Current buzzwords:
     - scss
     - postcss (Autoprefixer)
 * package
-    - Webpack 2
+    - Webpack 3
 * publish
     - docker
     - docker-compose

@@ -28,6 +28,7 @@ const webpackConfig = {
 	plugins: [
 		// the plugin need be added in loader
 		new ExtractTextPlugin('style-[contenthash:8].css'),
+		new webpack.optimize.ModuleConcatenationPlugin(),
 		new webpack.NoEmitOnErrorsPlugin()
 	],
 	module: {
