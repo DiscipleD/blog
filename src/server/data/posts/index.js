@@ -187,6 +187,12 @@ const POSTS_LIST = [{
 	subtitle: '软件构建系列',
 	createdDate: '2017-06-21',
 	tags: ['translate', 'javascript', 'fp']
+}, {
+	name: 'webpack3-release',
+	title: 'Webpack3 正式版发布',
+	subtitle: '继 Node, React, Angular 版本失控之后，Webpack 的版本也坐上了🚀',
+	createdDate: '2017-06-27',
+	tags: ['webpack']
 }];
 
 export default POSTS_LIST.sort(sortFn('createdDate'));
