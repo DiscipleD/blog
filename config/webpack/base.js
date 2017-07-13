@@ -23,7 +23,8 @@ const webpackConfig = {
 			'components': PATH.SOURCE_PATH + '/client/components',
 			'containers': PATH.SOURCE_PATH + '/client/containers',
 			'vuexModule': PATH.SOURCE_PATH + '/client/vuex/module'
-		}
+		},
+		extensions: [".ts", ".js", ".json"]
 	},
 	plugins: [
 		// the plugin need be added in loader
@@ -34,7 +35,11 @@ const webpackConfig = {
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
+				test: /\.tsx?$/,
+				loader: "awesome-typescript-loader"
+			},
+			{
+				test: /\.jsx?$/,
 				loader: 'eslint-loader',
 				enforce: 'pre',
 				exclude: /node_modules/,
@@ -45,7 +50,7 @@ const webpackConfig = {
 				}
 			},
 			{
-				test: /\.js$/,
+				test: /\.jsx?$/,
 				loader: 'babel-loader',
 				exclude: /node_modules/
 			},
