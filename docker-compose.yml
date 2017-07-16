@@ -24,6 +24,8 @@ services:
       - ./letsencrypt/lib/letsencrypt:/var/lib/letsencrypt
       - ./letsencrypt/challenge:/usr/share/nginx/html
       - ./log/nginx:/var/log/nginx
+      # David Blog
+      - /var/www/blog:/var/www/blog
     volumes_from:
       - node:ro
     ports:
