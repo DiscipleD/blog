@@ -3,7 +3,7 @@
  */
 
 import Vue from 'vue';
-import VueRouter from 'vue-router';
+import VueRouter, { RouterOptions } from 'vue-router';
 
 import Home from 'containers/home';
 import About from 'containers/about';
@@ -13,7 +13,7 @@ import Tags from 'containers/tags';
 // Inject vue plugin
 Vue.use(VueRouter);
 
-const ROUTER_SETTING = {
+const ROUTER_SETTING: RouterOptions = {
 	mode: 'history', // default value 'hash'
 	routes: [
 		{path: '/', component: Home},
@@ -43,6 +43,5 @@ const createRouter = () => {
 
 	return router;
 };
-
 
 export default createRouter;
