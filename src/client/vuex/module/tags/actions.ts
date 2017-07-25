@@ -1,15 +1,25 @@
 /**
  * Created by jack on 16-8-27.
  */
-
+import { Store } from 'vuex';
+import VueRouter from 'vue-router';
 import TagService from 'common/service/TagService';
 
 import image from 'assets/img/tags-bg.jpg';
-import {createAction} from '../../common/actionHelper';
+import { createAction } from '../../common/actionHelper';
 import { SET_BLOG_TITLE } from '../site/mutation_types';
-import {INIT_TAGS_PAGE, QUERY_TAGS, RECEIVE_TAGS} from './mutation_types';
 
-const initTagsPage = ({commit}) => {
+interface TagQueryParam {
+	tagName: string,
+	router: VueRouter,
+	enableLoading?: boolean
+}
+
+export const INIT_TAGS_PAGE = 'INIT_TAGS_PAGE';
+export const QUERY_TAGS = 'QUERY_TAGS';
+export const RECEIVE_TAGS = 'RECEIVE_TAGS';
+
+const initTagsPage = ({commit}: Store<object>) => {
 	commit(createAction(INIT_TAGS_PAGE, {
 		header: {
 			image,
@@ -19,7 +29,7 @@ const initTagsPage = ({commit}) => {
 	}));
 };
 
-const queryTagsList = ({commit}, {tagName, enableLoading = true, router}) => {
+const queryTagsList = ({commit}: Store<object>, {tagName, router, enableLoading = true}: TagQueryParam) => {
 	enableLoading && commit(QUERY_TAGS);
 	return TagService.queryTagsList(tagName)
 		.then(result => {
