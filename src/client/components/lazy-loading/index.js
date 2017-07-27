@@ -36,7 +36,7 @@ export default Vue.component('lazyLoading', {
 			this.listener = throttle(this.scrollFn, 200);
 			element.addEventListener('scroll', this.listener);
 		},
-		isScrollBottom(element) {
+		isScrollBottom(element, triggerOffset = 50) {
 			let scrollTop;
 			if (element === document) {
 				element = document.body;
@@ -44,7 +44,7 @@ export default Vue.component('lazyLoading', {
 			} else {
 				scrollTop = element.scrollTop;
 			}
-			return scrollTop + element.offsetHeight >= element.scrollHeight;
+			return scrollTop + element.offsetHeight > element.scrollHeight - triggerOffset;
 		},
 		scrollFn() {
 			// when loading, don't call loadFn again
