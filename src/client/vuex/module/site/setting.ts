@@ -2,7 +2,12 @@
  * Created by jack on 16-5-15.
  */
 
-const SocialLinkSetting = [{
+export interface SocialLink {
+	name: string,
+	link: string
+}
+
+const SocialLinkSetting: Array<SocialLink> = [{
 	name: 'douban',
 	link: 'https://book.douban.com/mine?icn=index-nav'
 }, {

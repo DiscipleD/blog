@@ -44,7 +44,7 @@ export default Vue.component('lazyLoading', {
 			} else {
 				scrollTop = element.scrollTop;
 			}
-			return scrollTop + element.offsetHeight >= element.scrollHeight;
+			return scrollTop + element.offsetHeight >= element.scrollHeight - 50;
 		},
 		scrollFn() {
 			// when loading, don't call loadFn again

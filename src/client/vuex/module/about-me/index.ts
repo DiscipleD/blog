@@ -4,22 +4,17 @@
 
 import mutations from './mutations';
 import actions from './actions';
+import { Title } from 'types/page';
+
+export interface AboutMeState {
+	header: Title,
+	introduction: any[]
+}
 
 export default {
 	state: {
 		header: {},
-		posts: {
-			list: [],
-			pager: {
-				number: -1,
-				size: 5
-			},
-			isFinished: false,
-			isLoading: false
-		}
-	},
-	getters: {
-		posts: state => state.posts
+		introduction: null
 	},
 	actions,
 	mutations

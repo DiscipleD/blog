@@ -7,7 +7,7 @@ import TagService from 'common/service/TagService';
 
 import image from 'assets/img/tags-bg.jpg';
 import { createAction } from '../../common/actionHelper';
-import { SET_BLOG_TITLE } from '../site/mutation_types';
+import { SET_BLOG_TITLE } from '../site/actions';
 
 interface TagQueryParam {
 	tagName: string,
@@ -19,7 +19,7 @@ export const INIT_TAGS_PAGE = 'INIT_TAGS_PAGE';
 export const QUERY_TAGS = 'QUERY_TAGS';
 export const RECEIVE_TAGS = 'RECEIVE_TAGS';
 
-const initTagsPage = ({commit}: Store<object>) => {
+const initTagsPage = ({commit}: Store<any>) => {
 	commit(createAction(INIT_TAGS_PAGE, {
 		header: {
 			image,
@@ -29,7 +29,7 @@ const initTagsPage = ({commit}: Store<object>) => {
 	}));
 };
 
-const queryTagsList = ({commit}: Store<object>, {tagName, router, enableLoading = true}: TagQueryParam) => {
+const queryTagsList = ({commit}: Store<any>, {tagName, router, enableLoading = true}: TagQueryParam) => {
 	enableLoading && commit(QUERY_TAGS);
 	return TagService.queryTagsList(tagName)
 		.then(result => {
