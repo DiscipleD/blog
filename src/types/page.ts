@@ -4,5 +4,5 @@
 export interface Title {
 	image: string,
 	title: string,
-	subtitle: string
+	subtitle?: string
 }

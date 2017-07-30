@@ -2,12 +2,14 @@
  * Created by jack on 16-8-16.
  */
 
-import { Store } from 'vuex';
+import { ActionContext } from 'vuex';
 import VueRouter from 'vue-router';
 
 import PostService from 'common/service/PostService';
 
 import {createAction} from '../../common/actionHelper';
+import { RootState } from '../index';
+import { PostState } from './index';
 import { SET_BLOG_TITLE } from '../site/actions';
 
 export const GET_POST = 'GET_POST';
@@ -19,7 +21,7 @@ interface PostQueryParam {
 	enableLoading?: boolean
 }
 
-const getPost = ({commit}: Store<any>, {postName, enableLoading = true, router}: PostQueryParam) => {
+const getPost = ({commit}: ActionContext<PostState, RootState>, {postName, enableLoading = true, router}: PostQueryParam) => {
 	enableLoading && commit(GET_POST);
 	return new PostService().getPostByName(postName)
 		.then(result => {

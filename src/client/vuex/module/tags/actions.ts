@@ -1,12 +1,14 @@
 /**
  * Created by jack on 16-8-27.
  */
-import { Store } from 'vuex';
+import { ActionContext } from 'vuex';
 import VueRouter from 'vue-router';
 import TagService from 'common/service/TagService';
 
 import image from 'assets/img/tags-bg.jpg';
 import { createAction } from '../../common/actionHelper';
+import { RootState } from '../index';
+import { TagsState } from './index';
 import { SET_BLOG_TITLE } from '../site/actions';
 
 interface TagQueryParam {
@@ -19,7 +21,7 @@ export const INIT_TAGS_PAGE = 'INIT_TAGS_PAGE';
 export const QUERY_TAGS = 'QUERY_TAGS';
 export const RECEIVE_TAGS = 'RECEIVE_TAGS';
 
-const initTagsPage = ({commit}: Store<any>) => {
+const initTagsPage = ({commit}: ActionContext<TagsState, RootState>) => {
 	commit(createAction(INIT_TAGS_PAGE, {
 		header: {
 			image,
@@ -29,7 +31,7 @@ const initTagsPage = ({commit}: Store<any>) => {
 	}));
 };
 
-const queryTagsList = ({commit}: Store<any>, {tagName, router, enableLoading = true}: TagQueryParam) => {
+const queryTagsList = ({commit}: ActionContext<TagsState, RootState>, {tagName, router, enableLoading = true}: TagQueryParam) => {
 	enableLoading && commit(QUERY_TAGS);
 	return TagService.queryTagsList(tagName)
 		.then(result => {
