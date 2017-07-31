@@ -193,6 +193,11 @@ const POSTS_LIST = [{
 	subtitle: '继 Node, React, Angular 版本失控之后，Webpack 的版本也坐上了🚀',
 	createdDate: '2017-06-27',
 	tags: ['webpack']
+}, {
+	name: 'npm-package-locks',
+	title: 'Npm 5 package locks',
+	createdDate: '2017-07-31',
+	tags: ['npm']
 }];
 
 export default POSTS_LIST.sort(sortFn('createdDate'));
