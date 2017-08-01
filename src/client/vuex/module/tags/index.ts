@@ -9,7 +9,10 @@ import actions from './actions';
 export class TagsState {
 	header: Title;
 	list: Array<any>;
-	isLoading: boolean
+	isLoading: boolean;
+	constructor() {
+		this.isLoading = false;
+	}
 }
 
 export default {

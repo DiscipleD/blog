@@ -8,7 +8,10 @@ import actions from './actions';
 
 export class PostState {
 	post: Post;
-	isLoading: boolean
+	isLoading: boolean;
+	constructor() {
+		this.isLoading = false;
+	}
 }
 
 export default {

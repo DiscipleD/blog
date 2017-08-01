@@ -7,6 +7,9 @@ import actions from './actions';
 
 export class BrowserState {
 	clientWidth: number;
+	constructor() {
+		this.clientWidth = 0;
+	}
 }
 
 const MIN_SCREEN_WIDTH: number = 768;
