@@ -8,29 +8,29 @@ import Post from 'types/post'
 import mutations from './mutations';
 import actions from './actions';
 
-export interface HomeState {
-	header: Title,
+export class HomeState {
+	header: Title;
 	posts: {
 		list: Post[],
 		pager: Pager,
 		isFinished: boolean,
 		isLoading: boolean
-	}
-}
-
-export default {
-	state: {
-		header: {},
-		posts: {
+	};
+	constructor() {
+		this.posts = {
+			isFinished: false,
+			isLoading: false,
 			list: [],
 			pager: {
 				number: -1,
 				size: 5
-			},
-			isFinished: false,
-			isLoading: false
+			}
 		}
-	},
+	}
+}
+
+export default {
+	state: new HomeState(),
 	getters: {
 		posts: (state: HomeState) => state.posts
 	},

@@ -5,16 +5,14 @@
 import mutations from './mutations';
 import actions from './actions';
 
-export interface BrowserState {
-	clientWidth: number
+export class BrowserState {
+	clientWidth: number;
 }
 
 const MIN_SCREEN_WIDTH: number = 768;
 
 export default {
-	state: {
-		clientWidth: 0
-	},
+	state: new BrowserState(),
 	getters: {
 		isDesktop: (state: BrowserState) => state.clientWidth >= MIN_SCREEN_WIDTH
 	},

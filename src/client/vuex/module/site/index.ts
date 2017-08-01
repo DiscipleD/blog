@@ -8,18 +8,17 @@ import { SocialLink } from './setting';
 import mutations from './mutations';
 import actions from './actions';
 
-export interface SiteState {
-	title: string,
-	navList: Array<Item>,
+export class SiteState {
+	title: string;
+	navList: Array<Item>;
 	socialLinkList: Array<SocialLink>
+	constructor(title: string) {
+		this.title = title;
+	}
 }
 
 export default {
-	state: {
-		title: BLOG_TITLE,
-		navList: [],
-		socialLinkList: []
-	},
+	state: new SiteState(BLOG_TITLE),
 	getters: {
 		title: (state: SiteState) => state.title,
 		navList: (state: SiteState) => state.navList,

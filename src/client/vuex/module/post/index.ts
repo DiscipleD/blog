@@ -6,16 +6,13 @@ import Post from 'types/post';
 import mutations from './mutations';
 import actions from './actions';
 
-export interface PostState {
-	post: Post,
+export class PostState {
+	post: Post;
 	isLoading: boolean
 }
 
 export default {
-	state: {
-		post: {},
-		isLoading: false
-	},
+	state: new PostState(),
 	actions,
 	mutations
 };
