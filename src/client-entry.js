@@ -3,8 +3,8 @@
  */
 
 import createApp from './client/app';
-import './client/common/service/ServiceWorkerService';
-import './client/common/service/NotificationService';
+import './client/common/service/pwa/ServiceWorkerService';
+import './client/common/service/pwa/NotificationService';
 
 const { app, router, store } = createApp();
 

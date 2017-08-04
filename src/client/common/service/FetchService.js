@@ -2,7 +2,7 @@
  * Created by jack on 16-8-24.
  */
 
-import fetchUtil from '../util/Fetch';
+import fetchUtil from '../util/fetch';
 import SERVER from '../constant/server';
 
 export const generatorUrl = (url = '', params = '') =>

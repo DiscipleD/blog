@@ -8,7 +8,7 @@ import { Mutation } from '../../common/actionHelper';
 import { SiteState } from './index'
 import { SocialLink } from './setting';
 import { LOAD_NAV_LIST, LOAD_SOCIAL_LINK, SET_BLOG_TITLE } from './actions';
-import { isSupportShareAPI, sharePage } from 'common/service/CommonService';
+import { isSupportShareAPI, sharePage } from 'common/service/pwa/ShareService';
 
 const initNavList = () => {
 	const navList: Item[] = [];

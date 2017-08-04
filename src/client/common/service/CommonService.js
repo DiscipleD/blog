@@ -13,16 +13,3 @@ export const getBlogTitle = str => {
 export const setBlogTitle = str => {
 	setPageTitle(getBlogTitle(str));
 };
-
-export const isSupportShareAPI = () => !!navigator.share;
-
-export const sharePage = () => {
-	navigator
-		.share({
-			title: document.title,
-			text: document.title,
-			url: window.location.href
-		})
-		.then(() => console.info('Successful share.'))
-		.catch(error => console.log('Error sharing:', error));
-};

@@ -19,8 +19,8 @@ const NOTIFICATION = {
 };
 
 const isSupportNotification = () => NOTIFICATION_API in window;
-const getPermission = () => Notification.permission;
-const isPermissionGranted = permission => permission === PERMISSION_GRANTED;
+const getPermission = () => Notification.prototype.permission;
+const isPermissionGranted = (permission: NotificationPermission) => permission === PERMISSION_GRANTED;
 
 const registerNotification = () => {
 	const now = new Date();

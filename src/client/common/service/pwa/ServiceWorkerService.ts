@@ -10,7 +10,7 @@ const SERVICE_WORKER_API = 'serviceWorker';
 const SERVICE_WORKER_FILE_PATH = '/service-worker.js';
 
 const isSupportServiceWorker = () => SERVICE_WORKER_API in navigator;
-const sendMessageToSW = msg => new Promise((resolve, reject) => {
+const sendMessageToSW = (msg: string) => new Promise((resolve, reject) => {
 	const messageChannel = new MessageChannel();
 	messageChannel.port1.onmessage = event => {
 		if (event.data.error) {
@@ -29,7 +29,6 @@ if (isSupportServiceWorker()) {
 	sw.addEventListener('message', e => console.log(e.data));
 
 	sw.register(SERVICE_WORKER_FILE_PATH)
-		.catch(console.error)
 		.then(registration =>
 			registration
 				.pushManager
