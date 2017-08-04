@@ -2,7 +2,7 @@
  * Created by d.d on 18/07/2017.
  */
 
-export const queryUrlParams: (url: string) => object = (url: string = '') => {
+export const queryUrlParams = (url: string = '') => {
   const reg = /([^\/&=]+)(=([^\/&=]+)?)/g;
   let params: {[key: string]: string} = {};
   const searchIndex: number = url.indexOf('?');
@@ -14,7 +14,7 @@ export const queryUrlParams: (url: string) => object = (url: string = '') => {
   return params;
 };
 
-export const setUrlParams: (url: string, params: {[key: string]: string}) => string = (url: string, params: {[key: string]: string} = {}) => {
+export const setUrlParams = (url: string, params: {[key: string]: string} = {}) => {
   const searchIndex: number = url.indexOf('?');
   const path: string = searchIndex < 0 ? url : url.slice(0, searchIndex);
   const newParams: {[key: string]: string} = {

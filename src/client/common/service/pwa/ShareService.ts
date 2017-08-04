@@ -2,9 +2,9 @@
  * Created by d.d on 18/07/2017.
  */
 
-export const isSupportShareAPI: () => boolean = () => !!navigator.share;
+export const isSupportShareAPI = () => !!navigator.share;
 
-export const sharePage: () => void = () => {
+export const sharePage = () => {
     navigator
         .share({
             title: document.title,

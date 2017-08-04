@@ -2,7 +2,7 @@
  * Created by jack on 16-12-3.
  */
 
-export const status: (response: Response) => Promise<Response | Error> = (response: Response) => {
+export const status = (response: Response) => {
 	if (response.status >= 200 && response.status < 300) {
 		return Promise.resolve(response);
 	} else {
@@ -10,16 +10,16 @@ export const status: (response: Response) => Promise<Response | Error> = (respon
 	}
 };
 
-export const json: (response: Response) => Promise<JSON> = (response: Response) => response.json();
+export const json = (response: Response) => response.json();
 
-export const error = (err: Error, url: string, options?: object) => {
+export const error = (err: Error, url: RequestInfo, options?: RequestInit) => {
 	console.log('Fetch Error:');
 	console.log('Message: ', err);
 	console.log('Url: ', url);
 	console.log('Options: ', options);
 };
 
-const fetchRequest: (url: string, options?: object) => Promise<any> = (url: string, options?: object) => fetch(url, options)
+const fetchRequest = (url: RequestInfo, options?: RequestInit) => fetch(url, options)
 	.then(status)
 	.then(json)
 	.catch(err => error(err, url, options));

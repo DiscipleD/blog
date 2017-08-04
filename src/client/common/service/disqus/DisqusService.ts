@@ -2,6 +2,11 @@
  * Created by jack on 16-5-19.
  */
 
+import Server from '../../constant/server';
+
+declare var DISQUS: any;
+declare var DISQUSWIDGETS: any;
+
 class DisqusService {
 	constructor() {}
 
@@ -15,7 +20,7 @@ class DisqusService {
 
 			s.src = '//discipled.disqus.com/embed.js';
 
-			s.setAttribute('data-timestamp', +new Date());
+			s.setAttribute('data-timestamp', `${+new Date()}`);
 			(d.head || d.body).appendChild(s);
 		}
 	}
@@ -35,7 +40,7 @@ class DisqusService {
 
 	}
 
-	resetDisqusPlugin(identifier, title) {
+	resetDisqusPlugin(identifier: string, title: string) {
 		if (typeof DISQUS === 'undefined') {
 			setTimeout(() => {
 				this.resetDisqusPlugin(identifier, title);
@@ -47,7 +52,7 @@ class DisqusService {
 					config: function() {
 						this.page.identifier = identifier;
 						this.page.title = title;
-						this.page.url = 'http://discipled.me/posts/' + identifier;
+						this.page.url = `${Server.HOST}${identifier}`;
 					}
 				});
 			} catch (e) {

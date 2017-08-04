@@ -1,3 +1,9 @@
+interface ShareInfo {
+    title: string,
+    url?: string,
+    text?: string
+}
+
 interface Navigator {
-    readonly share: any
+    readonly share: (o: ShareInfo) => Promise<void>
 }

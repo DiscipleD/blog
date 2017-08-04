@@ -6,7 +6,7 @@ import Vue from 'vue';
 
 import template from './template.html';
 import './style.scss';
-import DisqusService from '../../common/service/DisqusService';
+import DisqusService from '../../common/service/disqus/DisqusService';
 
 const PostListComponent = Vue.component('postList', {
 	template,

@@ -8,7 +8,7 @@ import './post-header';
 import template from './template.html';
 import './style.scss';
 import { IMAGE_SERVER_PREFIX } from '../../common/constant/site';
-import DisqusService from '../../common/service/DisqusService';
+import DisqusService from '../../common/service/disqus/DisqusService';
 
 const PostComponent = Vue.component('post', {
 	template,
