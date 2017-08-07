@@ -11,7 +11,7 @@ import { RootState } from '../index';
 import { TagsState } from './index';
 import { SET_BLOG_TITLE } from '../site/actions';
 
-interface TagQueryParam {
+export interface TagQueryParam {
 	tagName: string,
 	router: VueRouter,
 	enableLoading?: boolean

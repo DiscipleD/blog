@@ -2,13 +2,20 @@
  * Created by jack on 16-8-14.
  */
 
-import vue from 'vue';
+import Vue, { ComponentOptions } from 'vue';
 import { mapGetters, mapActions } from 'vuex';
 
 import {setBlogTitle} from 'common/service/CommonService';
 import template from './blog.html';
 
-export default vue.component('blog', {
+export interface BlogContainer extends Vue {
+	title: string,
+	loadBrowserSetting: () => void,
+	loadNavList: () => void,
+	loadSocialLink: () => void,
+}
+
+export default Vue.component('blog', {
 	template,
 	created() {
 		this.loadBrowserSetting();
@@ -22,4 +29,4 @@ export default vue.component('blog', {
 			setBlogTitle(this.title);
 		}
 	}
-});
+} as ComponentOptions<BlogContainer>);

@@ -2,7 +2,7 @@
  * Created by jack on 16-8-16.
  */
 
-import { ActionContext } from 'vuex';
+import { ActionContext, Store } from 'vuex';
 import VueRouter from 'vue-router';
 
 import PostService from 'common/service/PostService';
@@ -15,9 +15,9 @@ import { SET_BLOG_TITLE } from '../site/actions';
 export const GET_POST = 'GET_POST';
 export const RECEIVE_POST = 'RECEIVE_POST';
 
-interface PostQueryParam {
+export interface PostQueryParam {
 	postName: string,
-	router: VueRouter,
+	router?: VueRouter,
 	enableLoading?: boolean
 }
 
@@ -38,7 +38,7 @@ const getPost = ({commit}: ActionContext<PostState, RootState>, {postName, enabl
 		.catch(err => {
 			commit(RECEIVE_POST);
 			console.error(err + ' Page will redirect to the Home page.');
-			router.replace('/');
+			router && router.replace('/');
 		});
 };
 

@@ -2,6 +2,10 @@
  * Created by jack on 16-8-16.
  */
 
+import { Store, ActionContext } from 'vuex';
+
+import { RootState } from '../module';
+
 export interface Mutation {
     type: string,
     payload: any
@@ -9,4 +13,15 @@ export interface Mutation {
 
 const createAction = (typeName: string = '', data?: any): Mutation => ({ type: typeName, payload: data });
 
-export { createAction };
+const getActionContext = <T, S>(module: string, store: any): ActionContext<T, S> => {
+    return {
+        dispatch: (key: string, payload: any) => store.dispatch(key, payload, module),
+        commit: (key: string, payload: any) => store.commit(key, payload, module),
+        state: store.state[module],
+        getters: store.getters,
+        rootState: store.state,
+        rootGetters: store.getters
+    };
+}
+
+export { createAction, getActionContext };

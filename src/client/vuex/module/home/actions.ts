@@ -27,28 +27,7 @@ const initHomePage = ({commit}: ActionContext<HomeState, RootState>) => {
 };
 
 const loadPostList = ({state, commit}: ActionContext<HomeState, RootState>) => {
-	// TODO Abstract whole page loading event
-	if (process.env.VUE_ENV !== 'server') {
-		// state in Client is HomeState
-		commit(QUERY_POSTS_LIST);
-	} else {
-		// state in SSR is RootState
-		state = {
-			header: {
-				image: '',
-				title: ''
-			},
-			posts: {
-				list: [],
-				pager: {
-					number: -1,
-					size: 5
-				},
-				isFinished: false,
-				isLoading: false
-			}
-		};
-	}
+	commit(QUERY_POSTS_LIST);
 	const pager = {
 		...state.posts.pager,
 		number: state.posts.pager.number + 1
@@ -60,6 +39,5 @@ const loadPostList = ({state, commit}: ActionContext<HomeState, RootState>) => {
 			}));
 		});
 };
-
 
 export default {initHomePage, loadPostList};

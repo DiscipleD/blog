@@ -1,6 +1,7 @@
 /**
  * Created by jack on 16-8-27.
  */
+import { Route } from 'vue-router';
 
 import browser, { BrowserState } from './browser';
 import home, { HomeState } from './home';
@@ -16,6 +17,7 @@ export interface RootState {
 	post: PostState,
 	site: SiteState,
 	tags: TagsState
+	route: Route
 }
 
 export default {
