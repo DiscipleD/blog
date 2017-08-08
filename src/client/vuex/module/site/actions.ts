@@ -19,7 +19,7 @@ const setBlogTitle = ({commit}: ActionContext<SiteState, RootState>, title: stri
 const loadNavList = ({commit}: ActionContext<SiteState, RootState>) => {
 	return new PostService().getLatestPost()
 		.then((result = {}) => {
-			commit(createAction(LOAD_NAV_LIST, result.data.posts[0]));
+			commit(createAction(LOAD_NAV_LIST, result.data ? result.data.posts[0] : {}));
 		});
 };
 

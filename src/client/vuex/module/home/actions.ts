@@ -35,7 +35,7 @@ const loadPostList = ({state, commit}: ActionContext<HomeState, RootState>) => {
 	return new PostService().queryPostList(pager)
 		.then((result = {}) => {
 			commit(createAction(RECEIVE_POSTS_LIST, {
-				postsList: result.data.posts
+				postsList: result.data ? result.data.posts : []
 			}));
 		});
 };

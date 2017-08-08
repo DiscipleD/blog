@@ -35,7 +35,7 @@ const queryTagsList = ({commit}: ActionContext<TagsState, RootState>, {tagName, 
 	enableLoading && commit(QUERY_TAGS);
 	return TagService.queryTagsList(tagName)
 		.then(result => {
-			if (result.data.tags && result.data.tags.length > 0) {
+			if (result.data && result.data.tags && result.data.tags.length > 0) {
 				return result.data;
 			} else {
 				throw new Error('Tag not found!');
