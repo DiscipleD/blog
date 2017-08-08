@@ -4,8 +4,8 @@
 
 import Server from '../../constant/server';
 
-declare var DISQUS: any;
-declare var DISQUSWIDGETS: any;
+declare const DISQUS: any;
+declare const DISQUSWIDGETS: any;
 
 class DisqusService {
 	constructor() {}

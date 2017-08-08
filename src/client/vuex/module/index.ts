@@ -3,12 +3,12 @@
  */
 import { Route } from 'vue-router';
 
-import browser, { BrowserState } from './browser';
-import home, { HomeState } from './home';
-import aboutMe, { AboutMeState } from './about-me';
-import post, { PostState } from './post';
-import site, { SiteState } from './site';
-import tags, { TagsState } from './tags';
+import createBrowserModule, { BrowserState } from './browser';
+import createHomeModule, { HomeState } from './home';
+import createAboutMeModule, { AboutMeState } from './about-me';
+import createPostModule, { PostState } from './post';
+import createSiteModule, { SiteState } from './site';
+import createTagsModule, { TagsState } from './tags';
 
 export interface RootState {
 	browser: BrowserState,
@@ -20,11 +20,11 @@ export interface RootState {
 	route: Route
 }
 
-export default {
-	browser,
-	site,
-	aboutMe,
-	home,
-	post,
-	tags
-};
+export default () => ({
+	browser: createBrowserModule(),
+	site: createSiteModule(),
+	aboutMe: createAboutMeModule(),
+	home: createHomeModule(),
+	post: createPostModule(),
+	tags: createTagsModule()
+});

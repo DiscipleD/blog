@@ -17,7 +17,7 @@ export class SiteState {
 	}
 }
 
-export default {
+export default () => ({
 	state: new SiteState(BLOG_TITLE),
 	getters: {
 		title: (state: SiteState) => state.title,
@@ -26,4 +26,4 @@ export default {
 	},
 	actions,
 	mutations
-};
+});

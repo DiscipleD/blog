@@ -14,12 +14,12 @@ export class BrowserState {
 
 const MIN_SCREEN_WIDTH: number = 768;
 
-export default {
+export default () => ({
 	state: new BrowserState(),
 	getters: {
 		isDesktop: (state: BrowserState) => state.clientWidth >= MIN_SCREEN_WIDTH
 	},
 	actions,
 	mutations
-};
+});
 

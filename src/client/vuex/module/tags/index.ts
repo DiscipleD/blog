@@ -15,8 +15,8 @@ export class TagsState {
 	}
 }
 
-export default {
+export default () => ({
 	state: new TagsState(),
 	actions,
 	mutations
-};
+});

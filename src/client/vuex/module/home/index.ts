@@ -29,11 +29,11 @@ export class HomeState {
 	}
 }
 
-export default {
+export default () => ({
 	state: new HomeState(),
 	getters: {
 		posts: (state: HomeState) => state.posts
 	},
 	actions,
 	mutations
-};
+});

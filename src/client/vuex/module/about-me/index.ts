@@ -11,8 +11,8 @@ export class AboutMeState {
 	introduction: any[];
 }
 
-export default {
+export default () => ({
 	state: new AboutMeState(),
 	actions,
 	mutations
-};
+});
