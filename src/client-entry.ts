@@ -2,6 +2,7 @@
  * Created by jack on 16-11-27.
  */
 
+import Vue, { ComponentOptions } from 'vue';
 import createApp from './client/app';
 import './client/common/service/pwa/ServiceWorkerService';
 import './client/common/service/pwa/NotificationService';
@@ -32,9 +33,9 @@ router.onReady(() => {
 
 		// this is where we should trigger a loading indicator if there is one
 
-		Promise.all(activated.map(component => {
-			if (component.prefetch) {
-				return component.prefetch(store);
+		Promise.all(activated.map((component: ComponentOptions<Vue>) => {
+			if (component.preFetch) {
+				return component.preFetch(store);
 			}
 		})).then(() => {
 			next();

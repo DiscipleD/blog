@@ -4,6 +4,14 @@ import VueRouter from 'vue-router';
 
 import { RootState } from 'vuexModule/index';
 
-interface ComponentOptions<V extends Vue> {
-  preFetch?: (store: Store<RootState>, router?: VueRouter) => Promise<any>
+declare global {
+  interface Window {
+    __INITIAL_STATE__: any
+  }
+}
+
+declare module 'vue/types/options' {
+  interface ComponentOptions<V extends Vue> {
+    preFetch?: (store: Store<RootState>, router?: VueRouter) => Promise<any>
+  }
 }
