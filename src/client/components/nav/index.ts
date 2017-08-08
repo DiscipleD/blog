@@ -2,7 +2,7 @@
  * Created by jack on 16-4-21.
  */
 
-import Vue from 'vue';
+import Vue, { ComponentOptions } from 'vue';
 import throttle from 'lodash/throttle';
 
 import './style.scss';
@@ -10,6 +10,18 @@ import * as DOMUtil from 'common/util/DOM';
 import template from './template.html';
 
 const DESKTOP_MODE = 'desktop';
+
+interface NavigationComponent extends Vue {
+	mode: string,
+	isShowList: boolean,
+	isVisible: boolean,
+	isFixed: boolean,
+	_navHeight: number,
+	_prevScrollTop: number,
+	_listener: () => void,
+	bodyScrollListener: () => void,
+	_initNav: (mode: string) => void
+}
 
 export default Vue.component('navigation', {
 	template,
@@ -61,4 +73,4 @@ export default Vue.component('navigation', {
 	destroyed() {
 		this.mode === DESKTOP_MODE && document.removeEventListener('scroll', this._listener);
 	}
-});
+} as ComponentOptions<NavigationComponent>);

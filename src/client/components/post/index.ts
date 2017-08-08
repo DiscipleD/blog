@@ -2,15 +2,20 @@
  * Created by jack on 16-4-25.
  */
 
-import Vue from 'vue';
+import Vue, { ComponentOptions } from 'vue';
 
+import { PostPage } from 'types/post';
 import './post-header';
 import template from './template.html';
 import './style.scss';
 import { IMAGE_SERVER_PREFIX } from '../../common/constant/site';
 import DisqusService from '../../common/service/disqus/DisqusService';
 
-const PostComponent = Vue.component('post', {
+interface PostComponent extends Vue {
+	post: PostPage
+}
+
+export default Vue.component('post', {
 	template,
 	props: ['post'],
 	computed: {
@@ -33,6 +38,4 @@ const PostComponent = Vue.component('post', {
 		const disqueService = new DisqusService();
 		disqueService.resetDisqusPlugin(this.post.name, this.post.title);
 	}
-});
-
-export default PostComponent;
+} as ComponentOptions<PostComponent>);

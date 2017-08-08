@@ -2,12 +2,25 @@
  * Created by jack on 16-9-11.
  */
 
-import Vue from 'vue';
+import Vue, { ComponentOptions } from 'vue';
 import throttle from 'lodash/throttle';
 
 import * as DOMUtil from 'common/util/DOM';
 import './style.scss';
 import template from './template.html';
+
+interface LazyLoadingComponent extends Vue {
+	listener: () => void,
+	loadFn: () => void,
+	scrollFn: () => void,
+	isLoading: boolean,
+	isFinished: boolean,
+	listenerElement: Element | Document,
+	listenerTargetSelector: string,
+	isScrollBottom: (element: Element | Document) => boolean,
+	addListener: (element: Element | Document) => void,
+	removeListener: (element: Element | Document) => void
+}
 
 export default Vue.component('lazyLoading', {
 	template,
@@ -73,4 +86,4 @@ export default Vue.component('lazyLoading', {
 	destroyed() {
 		this.removeListener(this.listenerElement);
 	}
-});
+} as ComponentOptions<LazyLoadingComponent>);
