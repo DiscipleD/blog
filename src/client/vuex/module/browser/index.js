@@ -7,7 +7,7 @@ import actions from './actions';
 
 const MIN_SCREEN_WIDTH = 768;
 
-export default {
+export default () => ({
 	state: {
 		clientWidth: 0
 	},
@@ -16,5 +16,5 @@ export default {
 	},
 	actions,
 	mutations
-};
+});
 

@@ -6,7 +6,7 @@ import { BLOG_TITLE } from 'common/constant/site';
 import mutations from './mutations';
 import actions from './actions';
 
-export default {
+export default () => ({
 	state: {
 		title: BLOG_TITLE,
 		navList: [],
@@ -19,4 +19,4 @@ export default {
 	},
 	actions,
 	mutations
-};
+});

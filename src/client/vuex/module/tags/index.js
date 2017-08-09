@@ -5,7 +5,7 @@
 import mutations from './mutations';
 import actions from './actions';
 
-export default {
+export default () => ({
 	state: {
 		header: {},
 		list: [],
@@ -13,4 +13,4 @@ export default {
 	},
 	actions,
 	mutations
-};
+});
