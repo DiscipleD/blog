@@ -14,8 +14,8 @@ const NOTIFICATION = {
 	delay: DELAY_MINUTES * 60 * 1000, // 5 minutes
 	options: {
 		body: '亲，工作之余，也要注意身体噢...',
-		icon: '/favicon.ico'
-	}
+		icon: '/favicon.ico',
+	},
 };
 
 const isSupportNotification = () => NOTIFICATION_API in window;
@@ -43,7 +43,7 @@ if (isSupportNotification()) {
 		Notification
 			.requestPermission()
 			.then(isPermissionGranted)
-			.then(granted => granted && registerNotification());
+			.then((granted: boolean) => granted && registerNotification());
 	}
 } else {
 	console.info('Browser not support Notification.');

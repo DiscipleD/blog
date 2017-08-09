@@ -12,7 +12,7 @@ const SERVICE_WORKER_FILE_PATH = '/service-worker.js';
 const isSupportServiceWorker = () => SERVICE_WORKER_API in navigator;
 const sendMessageToSW = (msg: string) => new Promise((resolve, reject) => {
 	const messageChannel = new MessageChannel();
-	messageChannel.port1.onmessage = event => {
+	messageChannel.port1.onmessage = (event: MessageEvent) => {
 		if (event.data.error) {
 			reject(event.data.error);
 		} else {
@@ -26,16 +26,17 @@ const sendMessageToSW = (msg: string) => new Promise((resolve, reject) => {
 if (isSupportServiceWorker()) {
 	const sw = navigator.serviceWorker;
 
-	sw.addEventListener('message', e => console.log(e.data));
+	sw.addEventListener('message', (e: ServiceWorkerMessageEvent) => console.log(e.data));
 
 	sw.register(SERVICE_WORKER_FILE_PATH)
-		.then(registration =>
+		.then((registration: ServiceWorkerRegistration) =>
 			registration
 				.pushManager
 				.getSubscription()
-				.then(subscription => subscription || registration.pushManager.subscribe({ userVisibleOnly: true })))
-		.then(subscription => SubscriptionService.subscript(subscription))
-		.catch(error => console.error('Subscribe Failure: ', error.message))
+				.then((subscription: PushSubscription) =>
+					subscription || registration.pushManager.subscribe({ userVisibleOnly: true })))
+		.then((subscription: PushSubscription) => SubscriptionService.subscript(subscription))
+		.catch((error: Error) => console.error('Subscribe Failure: ', error.message))
 		.then(() => sendMessageToSW('Hello, service worker.'))
 		.catch(() => console.error('Send message error.'));
 } else {

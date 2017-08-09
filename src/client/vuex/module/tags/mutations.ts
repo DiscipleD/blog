@@ -3,11 +3,11 @@
  */
 
 import { TagsState } from './index';
-import { Mutation } from '../../common/actionHelper';
+import { IMutation } from '../../common/actionHelper';
 import { INIT_TAGS_PAGE, QUERY_TAGS, RECEIVE_TAGS } from './actions';
 
 const mutations = {
-	[INIT_TAGS_PAGE](state: TagsState, mutation: Mutation) {
+	[INIT_TAGS_PAGE](state: TagsState, mutation: IMutation) {
 		Object.assign(state, mutation.payload);
 	},
 
@@ -15,10 +15,10 @@ const mutations = {
 		state.isLoading = true;
 	},
 
-	[RECEIVE_TAGS](state: TagsState, mutation: Mutation) {
+	[RECEIVE_TAGS](state: TagsState, mutation: IMutation) {
 		state.isLoading = false;
 		mutation && (state.list = mutation.payload.tags);
-	}
+	},
 };
 
 export default mutations;

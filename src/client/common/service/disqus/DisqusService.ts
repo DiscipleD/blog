@@ -8,12 +8,10 @@ declare const DISQUS: any;
 declare const DISQUSWIDGETS: any;
 
 class DisqusService {
-	constructor() {}
-
 	/**
 	 * load Disqus js file
 	 */
-	static loadDisqusPlugin() {
+	public static loadDisqusPlugin() {
 		if (typeof DISQUS === 'undefined') {
 			const d = document;
 			const s = d.createElement('script');
@@ -25,22 +23,23 @@ class DisqusService {
 		}
 	}
 
-	resetDisqusCountPlugin() {
+	constructor() { }
+
+	public resetDisqusCountPlugin() {
 		if (typeof DISQUSWIDGETS === 'undefined') {
 			setTimeout(() => {
 				this.resetDisqusCountPlugin();
 			}, 1000);
 		} else {
 			try {
-				DISQUSWIDGETS.getCount({reset: true});
+				DISQUSWIDGETS.getCount({ reset: true });
 			} catch (e) {
 				console.error(e);
 			}
 		}
-
 	}
 
-	resetDisqusPlugin(identifier: string, title: string) {
+	public resetDisqusPlugin(identifier: string, title: string) {
 		if (typeof DISQUS === 'undefined') {
 			setTimeout(() => {
 				this.resetDisqusPlugin(identifier, title);
@@ -49,17 +48,17 @@ class DisqusService {
 			try {
 				DISQUS.reset({
 					reload: true,
-					config: function() {
+					config() {
 						this.page.identifier = identifier;
 						this.page.title = title;
 						this.page.url = `${Server.HOST}${identifier}`;
-					}
+					},
 				});
 			} catch (e) {
 				console.error(e);
 			}
 		}
-	};
+	}
 }
 
 export default DisqusService;

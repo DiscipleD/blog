@@ -22,6 +22,6 @@ export const error = (err: Error, url: RequestInfo, options?: RequestInit) => {
 const fetchRequest = (url: RequestInfo, options?: RequestInit) => fetch(url, options)
 	.then(status)
 	.then(json)
-	.catch(err => error(err, url, options));
+	.catch((err: Error) => error(err, url, options));
 
 export default fetchRequest;

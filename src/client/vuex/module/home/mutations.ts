@@ -3,11 +3,11 @@
  */
 
 import { HomeState } from './index';
-import { Mutation } from '../../common/actionHelper';
+import { IMutation } from '../../common/actionHelper';
 import { INIT_HOME_PAGE, QUERY_POSTS_LIST, RECEIVE_POSTS_LIST } from './actions';
 
-const mutation = {
-	[INIT_HOME_PAGE](state: HomeState, mutation: Mutation) {
+const mutations = {
+	[INIT_HOME_PAGE](state: HomeState, mutation: IMutation) {
 		state.header = mutation.payload.header;
 	},
 
@@ -15,15 +15,15 @@ const mutation = {
 		state.posts.isLoading = true;
 	},
 
-	[RECEIVE_POSTS_LIST](state: HomeState, mutation: Mutation) {
+	[RECEIVE_POSTS_LIST](state: HomeState, mutation: IMutation) {
 		if (mutation.payload.postsList.length) {
-			state.posts.pager.number++;
+			state.posts.pager.num++;
 		} else {
 			state.posts.isFinished = true;
 		}
 		state.posts.list = state.posts.list.concat(mutation.payload.postsList);
 		state.posts.isLoading = false;
-	}
+	},
 };
 
-export default mutation;
+export default mutations;

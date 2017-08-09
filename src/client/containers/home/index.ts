@@ -7,28 +7,28 @@ import { mapState, mapGetters, mapActions, Store } from 'vuex';
 
 import { getActionContext } from 'vuexModule/../common/actionHelper';
 import template from './home.html';
-import { RootState } from 'vuexModule/index';
+import { IRootState } from 'vuexModule/index';
 import { HomeState } from 'vuexModule/home';
 import homeActions from 'vuexModule/home/actions';
 
-export interface HomeContainer extends Vue {
-	initHomePage: () => void
+export interface IHomeContainer extends Vue {
+	initHomePage: () => void;
 }
 
 export default Vue.extend({
 	template,
 	computed: {
 		...mapState({
-			header: (state: RootState) => state.home.header
+			header: (state: IRootState) => state.home.header,
 		}),
-		...mapGetters(['posts'])
+		...mapGetters(['posts']),
 	},
 	methods: mapActions(['initHomePage', 'loadPostList']),
 	created() {
 		this.initHomePage();
 	},
-	preFetch(store: Store<RootState>) {
-		const actionContext = getActionContext<HomeState, RootState>('home', store);
+	preFetch(store: Store<IRootState>) {
+		const actionContext = getActionContext<HomeState, IRootState>('home', store);
 		return homeActions.loadPostList(actionContext);
-	}
-} as ComponentOptions<HomeContainer>);
+	},
+} as ComponentOptions<IHomeContainer>);

@@ -9,5 +9,5 @@ import template from './template.html';
 
 export default vue.component('aboutMe', {
 	template,
-	props: ['introduction']
+	props: ['introduction'],
 });

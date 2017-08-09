@@ -13,14 +13,14 @@ export default Vue.component('contentHeader', {
 	props: {
 		boardImg: {
 			type: String,
-			default: _defaultImg
+			default: _defaultImg,
 		},
 		title: {
 			type: String,
-			required: true
+			required: true,
 		},
 		subtitle: {
-			type: String
-		}
-	}
+			type: String,
+		},
+	},
 });

@@ -14,7 +14,7 @@ const createStore = () =>
 	new Vuex.Store({
 		// plugins: process.env.NODE_ENV !== 'production' ? [createLogger()] : [],
 		modules: createModules(),
-		strict: true
+		strict: true,
 	});
 
 export default createStore;

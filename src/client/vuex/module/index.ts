@@ -3,28 +3,28 @@
  */
 import { Route } from 'vue-router';
 
-import createBrowserModule, { BrowserState } from './browser';
-import createHomeModule, { HomeState } from './home';
-import createAboutMeModule, { AboutMeState } from './about-me';
-import createPostModule, { PostState } from './post';
-import createSiteModule, { SiteState } from './site';
-import createTagsModule, { TagsState } from './tags';
+import BrowserModule, { BrowserState } from './browser';
+import HomeModule, { HomeState } from './home';
+import AboutMeModule, { AboutMeState } from './about-me';
+import PostModule, { PostState } from './post';
+import SiteModule, { SiteState } from './site';
+import TagsModule, { TagsState } from './tags';
 
-export interface RootState {
-	browser: BrowserState,
-	home: HomeState,
-	aboutMe: AboutMeState,
-	post: PostState,
-	site: SiteState,
-	tags: TagsState
-	route: Route
+export interface IRootState {
+	browser: BrowserState;
+	home: HomeState;
+	aboutMe: AboutMeState;
+	post: PostState;
+	site: SiteState;
+	tags: TagsState;
+	route: Route;
 }
 
 export default () => ({
-	browser: createBrowserModule(),
-	site: createSiteModule(),
-	aboutMe: createAboutMeModule(),
-	home: createHomeModule(),
-	post: createPostModule(),
-	tags: createTagsModule()
+	browser: new BrowserModule(),
+	site: new SiteModule(),
+	aboutMe: new AboutMeModule(),
+	home: new HomeModule(),
+	post: new PostModule(),
+	tags: new TagsModule(),
 });

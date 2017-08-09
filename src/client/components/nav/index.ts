@@ -11,16 +11,16 @@ import template from './template.html';
 
 const DESKTOP_MODE = 'desktop';
 
-interface NavigationComponent extends Vue {
-	mode: string,
-	isShowList: boolean,
-	isVisible: boolean,
-	isFixed: boolean,
-	_navHeight: number,
-	_prevScrollTop: number,
-	_listener: () => void,
-	bodyScrollListener: () => void,
-	_initNav: (mode: string) => void
+interface INavigationComponent extends Vue {
+	mode: string;
+	isShowList: boolean;
+	isVisible: boolean;
+	isFixed: boolean;
+	_navHeight: number;
+	_prevScrollTop: number;
+	_listener: () => void;
+	bodyScrollListener: () => void;
+	_initNav: (mode: string) => void;
 }
 
 export default Vue.component('navigation', {
@@ -31,7 +31,7 @@ export default Vue.component('navigation', {
 		isVisible: false,
 		isFixed: false,
 		_navHeight: 0,
-		_prevScrollTop: 0
+		_prevScrollTop: 0,
 	}),
 	methods: {
 		_initNav(mode = DESKTOP_MODE) {
@@ -63,14 +63,14 @@ export default Vue.component('navigation', {
 
 			this._prevScrollTop = currScrollTop;
 		},
-		toggleNavShown: function() {
+		toggleNavShown() {
 			this.isShowList = !this.isShowList;
-		}
+		},
 	},
 	mounted() {
 		this._initNav(this.mode);
 	},
 	destroyed() {
 		this.mode === DESKTOP_MODE && document.removeEventListener('scroll', this._listener);
-	}
-} as ComponentOptions<NavigationComponent>);
+	},
+} as ComponentOptions<INavigationComponent>);

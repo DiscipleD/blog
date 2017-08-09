@@ -5,14 +5,14 @@
 import { ActionContext } from 'vuex';
 
 import { createAction } from '../../common/actionHelper';
-import { RootState } from '../index';
+import { IRootState } from '../index';
 import { BrowserState } from './index';
 
 export const LOAD_BROWSER_SETTING = 'LOAD_BROWSER_SETTING';
 
-const loadBrowserSetting = ({commit}: ActionContext<BrowserState, RootState>) => {
+const loadBrowserSetting = ({ commit }: ActionContext<BrowserState, IRootState>) => {
 	const browser = {
-		clientWidth: document.body.clientWidth
+		clientWidth: document.body.clientWidth,
 	};
 	commit(createAction(LOAD_BROWSER_SETTING, browser));
 };

@@ -9,17 +9,17 @@ import * as DOMUtil from 'common/util/DOM';
 import './style.scss';
 import template from './template.html';
 
-interface LazyLoadingComponent extends Vue {
-	listener: () => void,
-	loadFn: () => void,
-	scrollFn: () => void,
-	isLoading: boolean,
-	isFinished: boolean,
-	listenerElement: Element | Document,
-	listenerTargetSelector: string,
-	isScrollBottom: (element: Element | Document) => boolean,
-	addListener: (element: Element | Document) => void,
-	removeListener: (element: Element | Document) => void
+interface ILazyLoadingComponent extends Vue {
+	listener: () => void;
+	loadFn: () => void;
+	scrollFn: () => void;
+	isLoading: boolean;
+	isFinished: boolean;
+	listenerElement: Element | Document;
+	listenerTargetSelector: string;
+	isScrollBottom: (element: Element | Document) => boolean;
+	addListener: (element: Element | Document) => void;
+	removeListener: (element: Element | Document) => void;
 }
 
 export default Vue.component('lazyLoading', {
@@ -27,22 +27,22 @@ export default Vue.component('lazyLoading', {
 	props: {
 		loadFn: {
 			type: Function,
-			require: true
+			require: true,
 		},
 		isLoading: {
 			type: Boolean,
-			require: true
+			require: true,
 		},
 		isFinished: {
-			type: Boolean
+			type: Boolean,
 		},
 		listenerTargetSelector: {
-			type: String
+			type: String,
 		},
 		finishedMessage: {
 			type: String,
-			default: '没有更多了...'
-		}
+			default: '没有更多了...',
+		},
 	},
 	methods: {
 		addListener(element) {
@@ -66,24 +66,26 @@ export default Vue.component('lazyLoading', {
 		},
 		removeListener(element) {
 			element.removeEventListener('scroll', this.listener);
-		}
+		},
 	},
 	watch: {
-		isLoading: function(newValue) {
+		isLoading(newValue) {
 			// when load finished, call scrollFn to test element is filled the target element
 			// if not call loadFn another time
 			if (newValue === false) {
 				// give vue time to render element.
 				setTimeout(this.scrollFn, 0);
 			}
-		}
+		},
 	},
-	mounted: function() {
-		this.listenerElement = this.listenerTargetSelector ? document.querySelector(this.listenerTargetSelector) || document : this.$el;
+	mounted() {
+		this.listenerElement = this.listenerTargetSelector ?
+			document.querySelector(this.listenerTargetSelector) || document :
+			this.$el;
 		this.addListener(this.listenerElement);
 		this.scrollFn();
 	},
 	destroyed() {
 		this.removeListener(this.listenerElement);
-	}
-} as ComponentOptions<LazyLoadingComponent>);
+	},
+} as ComponentOptions<ILazyLoadingComponent>);

@@ -13,7 +13,7 @@ const PostListComponent = Vue.component('postList', {
 	props: ['postList'],
 	mounted: () => {
 		new DisqusService().resetDisqusCountPlugin();
-	}
+	},
 });
 
 export default PostListComponent;

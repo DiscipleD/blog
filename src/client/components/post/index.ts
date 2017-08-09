@@ -4,38 +4,38 @@
 
 import Vue, { ComponentOptions } from 'vue';
 
-import { PostPage } from 'types/post';
+import { IPostPage } from 'types/post';
 import './post-header';
 import template from './template.html';
 import './style.scss';
 import { IMAGE_SERVER_PREFIX } from '../../common/constant/site';
 import DisqusService from '../../common/service/disqus/DisqusService';
 
-interface PostComponent extends Vue {
-	post: PostPage
+interface IPostComponent extends Vue {
+	post: IPostPage;
 }
 
 export default Vue.component('post', {
 	template,
 	props: ['post'],
 	computed: {
-		headerUrl: function() {
+		headerUrl() {
 			return IMAGE_SERVER_PREFIX + this.post.name + '/' + this.post.headerImgName;
 		},
-		prev: function() {
+		prev() {
 			return this.post.prevPost
 				? { ...this.post.prevPost, text: 'prev post' }
 				: null;
 		},
-		next: function() {
+		next() {
 			return this.post.nextPost
 				? { ...this.post.nextPost, text: 'next post' }
 				: null;
-		}
+		},
 	},
-	mounted: function() {
+	mounted() {
 		DisqusService.loadDisqusPlugin();
 		const disqueService = new DisqusService();
 		disqueService.resetDisqusPlugin(this.post.name, this.post.title);
-	}
-} as ComponentOptions<PostComponent>);
+	},
+} as ComponentOptions<IPostComponent>);

@@ -1,4 +1,4 @@
-export interface Pager {
-	number: number,
-	size: number
+export interface IPager {
+	num: number;
+	size: number;
 }

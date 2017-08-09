@@ -2,14 +2,14 @@
  * Created by jack on 16-8-16.
  */
 
-import { AboutMeState } from './index'; 
-import { Mutation } from '../../common/actionHelper'; 
+import { AboutMeState } from './index';
+import { IMutation } from '../../common/actionHelper';
 import { INIT_ABOUT_ME_PAGE } from './actions';
 
-const mutation = {
-	[INIT_ABOUT_ME_PAGE](state: AboutMeState, mutation: Mutation) {
+const mutations = {
+	[INIT_ABOUT_ME_PAGE](state: AboutMeState, mutation: IMutation) {
 		Object.assign(state, mutation.payload);
-	}
+	},
 };
 
-export default mutation;
+export default mutations;

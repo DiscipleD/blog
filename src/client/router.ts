@@ -3,7 +3,7 @@
  */
 
 import Vue from 'vue';
-import VueRouter, { RouterOptions } from 'vue-router';
+import VueRouter, { Route, RouterOptions } from 'vue-router';
 
 import Home from 'containers/home';
 import About from 'containers/about';
@@ -20,11 +20,11 @@ const ROUTER_SETTING: RouterOptions = {
 		{path: '/about', component: About},
 		{path: '/posts/:postName', component: Post},
 		{path: '/tags', component: Tags},
-		{path: '/tags/:tagName', component: Tags}
+		{path: '/tags/:tagName', component: Tags},
 		// Using 404 page, when page not found.
 		// catch all redirect, not matched path will be redirected to the home path
 		// {path: '*', redirect: '/'}
-	]
+	],
 };
 
 const createRouter = () => {
@@ -37,7 +37,7 @@ const createRouter = () => {
 		next();
 	});
 
-	router.afterEach(route => {
+	router.afterEach((route: Route) => {
 		console.info(`${new Date()}: ${route.path}`);
 	});
 

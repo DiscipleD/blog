@@ -8,46 +8,46 @@ import VueRouterstore from 'vue-router';
 
 import template from './tags.html';
 import { getActionContext } from 'vuexModule/../common/actionHelper';
-import { RootState } from 'vuexModule/index';
+import { IRootState } from 'vuexModule/index';
 import { TagsState } from 'vuexModule/tags';
-import tagsActions, { TagQueryParam } from 'vuexModule/tags/actions';
+import tagsActions, { ITagQueryParam } from 'vuexModule/tags/actions';
 
-export interface TagsContainer extends Vue {
-	tagName: string,
-	initTagsPage: () => void,
-	queryTagsList: (params: TagQueryParam) => void
+export interface ITagsContainer extends Vue {
+	tagName: string;
+	initTagsPage: () => void;
+	queryTagsList: (params: ITagQueryParam) => void;
 }
 
 export default Vue.extend({
 	template,
 	computed: mapState({
-		header: (state: RootState) => state.tags.header,
-		tagsList: (state: RootState) => state.tags.list,
-		isLoading: (state: RootState) => state.tags.isLoading,
-		tagName: (state: RootState) => state.route.params.tagName
+		header: (state: IRootState) => state.tags.header,
+		tagsList: (state: IRootState) => state.tags.list,
+		isLoading: (state: IRootState) => state.tags.isLoading,
+		tagName: (state: IRootState) => state.route.params.tagName,
 	}),
 	methods: mapActions(['initTagsPage', 'queryTagsList']),
 	watch: {
-		'tagName': function() {
+		tagName() {
 			this.queryTagsList({
 				tagName: this.tagName,
-				router: this.$router
+				router: this.$router,
 			});
-		}
+		},
 	},
 	created() {
 		this.initTagsPage();
 		this.queryTagsList({
 			tagName: this.tagName,
-			router: this.$router
+			router: this.$router,
 		});
 	},
-	preFetch(store: Store<RootState>, router: VueRouterstore) {
-		const actionContext = getActionContext<TagsState, RootState>('tags', store);
+	preFetch(store: Store<IRootState>, router: VueRouterstore) {
+		const actionContext = getActionContext<TagsState, IRootState>('tags', store);
 		return tagsActions.queryTagsList(actionContext, {
 			tagName: store.state.route.params.tagName,
 			enableLoading: false,
-			router
+			router,
 		});
-	}
-} as ComponentOptions<TagsContainer>);
+	},
+} as ComponentOptions<ITagsContainer>);

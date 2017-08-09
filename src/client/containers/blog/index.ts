@@ -5,14 +5,14 @@
 import Vue, { ComponentOptions } from 'vue';
 import { mapGetters, mapActions } from 'vuex';
 
-import {setBlogTitle} from 'common/service/CommonService';
+import { setBlogTitle } from 'common/service/CommonService';
 import template from './blog.html';
 
-export interface BlogContainer extends Vue {
-	title: string,
-	loadBrowserSetting: () => void,
-	loadNavList: () => void,
-	loadSocialLink: () => void,
+export interface IBlogContainer extends Vue {
+	title: string;
+	loadBrowserSetting: () => void;
+	loadNavList: () => void;
+	loadSocialLink: () => void;
 }
 
 export default Vue.component('blog', {
@@ -25,8 +25,8 @@ export default Vue.component('blog', {
 	computed: mapGetters(['isDesktop', 'navList', 'socialLinkList', 'title']),
 	methods: mapActions(['loadBrowserSetting', 'loadNavList', 'loadSocialLink']),
 	watch: {
-		'title': function() {
+		title() {
 			setBlogTitle(this.title);
-		}
-	}
-} as ComponentOptions<BlogContainer>);
+		},
+	},
+} as ComponentOptions<IBlogContainer>);

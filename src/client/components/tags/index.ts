@@ -9,7 +9,7 @@ import './style.scss';
 
 const TagsComponent = Vue.component('tags', {
 	template,
-	props: ['tagsList']
+	props: ['tagsList'],
 });
 
 export default TagsComponent;

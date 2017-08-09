@@ -2,15 +2,15 @@
  * Created by d.d on 18/07/2017.
  */
 
-import { TagShort } from './tag';
+import { ITagShort } from './tag';
 
 export default class Post {
-	name: string;
-	title: string;
-	content: string;
-	subtitle: string;
-	createdTime: string;
-	headerImgName: string;
+	public name: string;
+	public title: string;
+	public content: string;
+	public subtitle: string;
+	public createdTime: string;
+	public headerImgName: string;
 	constructor({ name = '', title = '', content = '', subtitle = '', createdTime = '', headerImageType = '.jpg' } = {}) {
 		this.name = name;
 		this.title = title;
@@ -21,13 +21,13 @@ export default class Post {
 	}
 }
 
-export interface PostShort {
-	name: string,
-	title: string
+export interface IPostShort {
+	name: string;
+	title: string;
 }
 
-export interface PostPage extends Post {
-	prevPost?: PostShort,
-	nextPost?: PostShort,
-	tags?: TagShort[]
+export interface IPostPage extends Post {
+	prevPost?: IPostShort;
+	nextPost?: IPostShort;
+	tags?: ITagShort[];
 }

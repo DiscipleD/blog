@@ -7,5 +7,5 @@ import vue from 'vue';
 import template from './template.html';
 
 export default vue.component('mainContent', {
-	template
+	template,
 });

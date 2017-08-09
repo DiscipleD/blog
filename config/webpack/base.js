@@ -36,7 +36,8 @@ const webpackConfig = {
 		rules: [
 			{
 				test: /\.tsx?$/,
-				loader: "awesome-typescript-loader"
+				enforce: 'pre',
+				loader: 'tslint-loader'
 			},
 			{
 				test: /\.jsx?$/,
@@ -48,6 +49,10 @@ const webpackConfig = {
 					emitError: true,
 					formatter: require('eslint-friendly-formatter')
 				}
+			},
+			{
+				test: /\.tsx?$/,
+				loader: "awesome-typescript-loader"
 			},
 			{
 				test: /\.jsx?$/,
@@ -70,7 +75,9 @@ const webpackConfig = {
 						{
 							loader: 'postcss-loader?sourceMap',
 							options: {
-								plugins: () => [autoprefixer({browsers: ['last 2 versions']})]
+								plugins: () => [autoprefixer({
+									browsers: ['last 2 versions']
+								})]
 							}
 						},
 						'sass-loader'

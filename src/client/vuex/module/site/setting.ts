@@ -2,47 +2,47 @@
  * Created by jack on 16-5-15.
  */
 
-export interface SocialLink {
-	name: string,
-	link: string
+export interface ISocialLink {
+	name: string;
+	link: string;
 }
 
-const SocialLinkSetting: Array<SocialLink> = [{
+const SocialLinkSetting: ISocialLink[] = [{
 	name: 'douban',
-	link: 'https://book.douban.com/mine?icn=index-nav'
+	link: 'https://book.douban.com/mine?icn=index-nav',
 }, {
 	name: 'facebook',
-	link: ''
+	link: '',
 }, {
 	name: 'github',
-	link: 'https://github.com/DiscipleD'
+	link: 'https://github.com/DiscipleD',
 }, {
 	name: 'gmail',
-	link: ''
+	link: '',
 }, {
 	name: 'jianshu',
-	link: 'http://www.jianshu.com/users/6ed7563919d4/latest_articles'
+	link: 'http://www.jianshu.com/users/6ed7563919d4/latest_articles',
 }, {
 	name: 'linkedin',
-	link: ''
+	link: '',
 }, {
 	name: 'medium',
-	link: ''
+	link: '',
 }, {
 	name: 'sina',
-	link: ''
+	link: '',
 }, {
 	name: 'twitter',
-	link: ''
+	link: '',
 }, {
 	name: 'xitujuejin',
-	link: ''
+	link: '',
 }, {
 	name: 'youtube',
-	link: ''
+	link: '',
 }, {
 	name: 'zhihu',
-	link: 'https://www.zhihu.com/people/discipled'
+	link: 'https://www.zhihu.com/people/discipled',
 }];
 
 export default SocialLinkSetting;

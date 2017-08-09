@@ -1,17 +1,17 @@
-import { PostShort } from './post';
+import { IPostShort } from './post';
 
-export interface TagShort {
-  name: string,
-  label: string
+export interface ITagShort {
+	name: string;
+	label: string;
 }
 
 export default class Tag {
-  id: number;
-  name: string;
-  createdDate: string;
-  label: string;
+	public id: number;
+	public name: string;
+	public createdDate: string;
+	public label: string;
 }
 
-export interface TagPage extends Tag {
-  posts: PostShort[]
+export interface ITagPage extends Tag {
+	posts: IPostShort[];
 }

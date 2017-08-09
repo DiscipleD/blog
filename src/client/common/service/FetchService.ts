@@ -10,7 +10,7 @@ export const generatorUrl = (url: string = '', params: string | { [key: string]:
 
 export const generatorQueryString = (params: string | { [key: string]: string }) =>
 	typeof params === 'object'
-		? Object.keys(params).map(key => `${key}=${encodeURIComponent(params[key])}`).join('&')
+		? Object.keys(params).map((key: string) => `${key}=${encodeURIComponent(params[key])}`).join('&')
 		: params;
 
 // TODO

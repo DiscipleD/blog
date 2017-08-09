@@ -25,7 +25,7 @@ const Components = {
 	Tags,
 	Pager,
 	Loading,
-	LazyLoading
+	LazyLoading,
 };
 
 export default Components;

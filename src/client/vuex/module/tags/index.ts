@@ -2,21 +2,30 @@
  * Created by jack on 16-8-15.
  */
 
-import { Title } from 'types/page';
+import { Module, ActionTree, MutationTree } from 'vuex';
+
+import { IRootState } from '../index';
+import { ITagPage } from 'types/tag';
+import { ITitle } from 'types/page';
 import mutations from './mutations';
 import actions from './actions';
 
 export class TagsState {
-	header: Title;
-	list: Array<any>;
-	isLoading: boolean;
+	public header: ITitle;
+	public list: ITagPage[];
+	public isLoading: boolean;
 	constructor() {
 		this.isLoading = false;
 	}
 }
 
-export default () => ({
-	state: new TagsState(),
-	actions,
-	mutations
-});
+export default class TagsModule implements Module<TagsState, IRootState> {
+	public state: TagsState;
+	public actions: ActionTree<TagsState, IRootState>;
+	public mutations: MutationTree<TagsState>;
+	constructor() {
+		this.state = new TagsState();
+		this.actions = actions;
+		this.mutations = mutations;
+	}
+}

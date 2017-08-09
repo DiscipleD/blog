@@ -26,16 +26,16 @@ const createApp = () => {
 	const app = new Vue({
 		store,
 		router,
-		render: h =>
+		render: (h) =>
 			h(
 				'div',
 				{
 					attrs: {
-						id: 'app'
-					}
+						id: 'app',
+					},
 				},
-				[h('blog')]
-			)
+				[h('blog')],
+			),
 	});
 
 	return {app, router, store};

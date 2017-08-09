@@ -9,44 +9,44 @@ import VueRouter from 'vue-router';
 import Post from 'types/post';
 import { getActionContext } from 'vuexModule/../common/actionHelper';
 import template from './post.html';
-import { RootState } from 'vuexModule/index';
+import { IRootState } from 'vuexModule/index';
 import { PostState } from 'vuexModule/post';
-import postActions, { PostQueryParam } from 'vuexModule/post/actions';
+import postActions, { IPostQueryParam } from 'vuexModule/post/actions';
 
-export interface PostContainer extends Vue {
-	post: Post,
-	postName: string,
-	getPost: (params: PostQueryParam) => void
+export interface IPostContainer extends Vue {
+	post: Post;
+	postName: string;
+	getPost: (params: IPostQueryParam) => void;
 }
 
 export default Vue.extend({
 	template,
 	computed: mapState({
-		post: (state: RootState) => state.post.post,
-		isLoading: (state: RootState) => state.post.isLoading,
-		postName: (state: RootState) => state.route.params.postName
+		post: (state: IRootState) => state.post.post,
+		isLoading: (state: IRootState) => state.post.isLoading,
+		postName: (state: IRootState) => state.route.params.postName,
 	}),
 	methods: mapActions(['getPost']),
 	created() {
 		this.getPost({
 			postName: this.postName,
-			router: this.$router
+			router: this.$router,
 		});
 	},
 	watch: {
-		'postName': function() {
+		postName() {
 			this.getPost({
 				postName: this.postName,
-				router: this.$router
+				router: this.$router,
 			});
-		}
+		},
 	},
-	preFetch(store: Store<RootState>, router: VueRouter) {
-		const actionContext = getActionContext<PostState, RootState>('post', store);
+	preFetch(store: Store<IRootState>, router: VueRouter) {
+		const actionContext = getActionContext<PostState, IRootState>('post', store);
 		return postActions.getPost(actionContext, {
 			postName: store.state.route.params.postName,
 			enableLoading: false,
-			router
+			router,
 		});
-	}
-} as ComponentOptions<PostContainer>);
+	},
+} as ComponentOptions<IPostContainer>);

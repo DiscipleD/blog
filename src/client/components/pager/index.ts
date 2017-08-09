@@ -9,7 +9,7 @@ import './style.scss';
 
 const PagerComponent = Vue.component('pager', {
 	template,
-	props: ['prev', 'next']
+	props: ['prev', 'next'],
 });
 
 export default PagerComponent;

@@ -2,7 +2,7 @@ import Vue from 'vue';
 import { Store } from 'vuex';
 import VueRouter from 'vue-router';
 
-import { RootState } from 'vuexModule/index';
+import { IRootState } from 'vuexModule/index';
 
 declare global {
   interface Window {
@@ -12,6 +12,6 @@ declare global {
 
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
-    preFetch?: (store: Store<RootState>, router?: VueRouter) => Promise<any>
+    preFetch?: (store: Store<IRootState>, router?: VueRouter) => Promise<any>
   }
 }

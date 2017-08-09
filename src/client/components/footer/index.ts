@@ -9,5 +9,5 @@ import template from './template.html';
 
 export default Vue.component('pageFooter', {
 	template,
-	props: ['socialLinkList']
+	props: ['socialLinkList'],
 });

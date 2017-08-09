@@ -1,0 +1,14 @@
+{
+  "extends": "tslint:recommended",
+  "rules": {
+    "curly": [true, "ignore-same-line"],
+    "quotemark": [true, "single", "jsx-double"],
+    "indent": [true, "tabs", 2],
+    "ordered-imports": [false],
+    "object-literal-sort-keys": false,
+    "max-classes-per-file": [true, 2],
+    "no-console": [false],
+    "no-empty": false,
+    "no-unused-expression": false
+  }
+}

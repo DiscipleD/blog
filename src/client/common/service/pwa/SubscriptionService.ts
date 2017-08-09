@@ -14,7 +14,7 @@ const getEncodeSubscriptionInfo = (subscription: PushSubscription, type: PushEnc
 };
 
 class SubscriptionService {
-	subscript(subscription: PushSubscription) {
+	public subscript(subscription: PushSubscription) {
 		const endpoint = subscription.endpoint;
 		const p256dh = getEncodeSubscriptionInfo(subscription, 'p256dh');
 		const auth = getEncodeSubscriptionInfo(subscription, 'auth');
@@ -24,9 +24,9 @@ class SubscriptionService {
 		const options = {
 			method: 'post',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(clientSubscription)
+			body: JSON.stringify(clientSubscription),
 		};
 
 		return fetchRequest(Server.HOST + SUBSCRIBE_API, options);

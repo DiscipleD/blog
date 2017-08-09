@@ -13,21 +13,21 @@ const postHeader = Vue.component('postHeader', {
 	props: {
 		boardImg: {
 			type: String,
-			default: _defaultImg
+			default: _defaultImg,
 		},
 		title: {
-			type: String
+			type: String,
 		},
 		subtitle: {
-			type: String
+			type: String,
 		},
 		tags: {
-			type: Array
+			type: Array,
 		},
 		createdDate: {
-			type: String
-		}
-	}
+			type: String,
+		},
+	},
 });
 
 export default postHeader;
