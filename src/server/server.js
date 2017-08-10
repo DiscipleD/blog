@@ -16,7 +16,7 @@ import publish from './publish';
 
 const app = new Koa();
 
-const PORT = parseInt(process.env.PORT || 8080);
+const PORT = Number.parseInt(process.env.PORT || '8080', 10);
 const PUBLIC_PATH = path.resolve(__dirname, '../client');
 const staticServer = serve(PUBLIC_PATH);
 
@@ -45,10 +45,10 @@ if (process.env.NODE_ENV !== 'production') {
 // server render
 app.use(middleware.serverRender);
 
-app.on('error', function(err){
+app.on('error', err => {
 	console.log('server error', err);
 });
 
 app.listen(PORT, () => {
-	console.log(`Blog is running, port: ${PORT}`)
+	console.log(`Blog is running, port: ${PORT}`);
 });

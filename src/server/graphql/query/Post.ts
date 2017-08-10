@@ -10,6 +10,7 @@ import {
 	GraphQLList,
 } from 'graphql';
 
+import PostType from '../../../types/post';
 import Tag from './Tag';
 import PostService from '../../queries/PostService';
 import TagService from '../../queries/TagService';
@@ -30,41 +31,41 @@ import TagService from '../../queries/TagService';
  */
 const Post = new GraphQLObjectType({
 	name: 'PostType',
-	fields: () => ({
+	fields: (): any => ({
 		id: {
-			type: new GraphQLNonNull(GraphQLID)
+			type: new GraphQLNonNull(GraphQLID),
 		},
 		name: {
-			type: new GraphQLNonNull(GraphQLString)
+			type: new GraphQLNonNull(GraphQLString),
 		},
 		createdDate: {
-			type: GraphQLString
+			type: GraphQLString,
 		},
 		title: {
-			type: new GraphQLNonNull(GraphQLString)
+			type: new GraphQLNonNull(GraphQLString),
 		},
 		subtitle: {
-			type: GraphQLString
+			type: GraphQLString,
 		},
 		headerImgName: {
-			type: GraphQLString
+			type: GraphQLString,
 		},
 		content: {
-			type: GraphQLString
+			type: GraphQLString,
 		},
 		prevPost: {
 			type: Post,
-			resolve: post => PostService.getPreviousPost(post.id)
+			resolve: (post: PostType) => PostService.getPreviousPost(post.id),
 		},
 		nextPost: {
 			type: Post,
-			resolve: post => PostService.getNextPost(post.id)
+			resolve: (post: PostType) => PostService.getNextPost(post.id),
 		},
 		tags: {
 			type: new GraphQLList(Tag),
-			resolve: post => TagService.queryTagsByPostId(post.id)
-		}
-	})
+			resolve: (post: PostType) => TagService.queryTagsByPostId(post.id),
+		},
+	}),
 });
 
 export default Post;

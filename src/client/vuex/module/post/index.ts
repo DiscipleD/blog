@@ -14,7 +14,14 @@ export class PostState {
 	public isLoading: boolean;
 	constructor() {
 		this.isLoading = false;
-		this.post = new Post();
+		this.post = new Post({
+			id: -1,
+			name: '',
+			title: '',
+			content: '',
+			createdTime: '',
+			tags: [],
+		});
 	}
 }
 

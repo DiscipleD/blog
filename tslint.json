@@ -9,6 +9,7 @@
     "max-classes-per-file": [true, 2],
     "no-console": [false],
     "no-empty": false,
-    "no-unused-expression": false
+    "no-unused-expression": false,
+    "no-var-requires": false
   }
 }

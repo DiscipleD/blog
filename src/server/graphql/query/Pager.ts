@@ -4,7 +4,7 @@
 
 import {
 	GraphQLInputObjectType,
-	GraphQLFloat
+	GraphQLFloat,
 } from 'graphql';
 
 /**
@@ -18,13 +18,13 @@ const Pager = new GraphQLInputObjectType({
 	fields: {
 		number: {
 			type: GraphQLFloat,
-			defaultValue: 0
+			defaultValue: 0,
 		},
 		size: {
 			type: GraphQLFloat,
-			defaultValue: 5
-		}
-	}
+			defaultValue: 5,
+		},
+	},
 });
 
 export default Pager;

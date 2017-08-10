@@ -12,7 +12,12 @@
     "webpack-hot-middleware": "^2.18.0"
   },
   "dependencies": {
+    "@types/graphql": "^0.10.2",
+    "@types/koa": "^2.0.39",
+    "@types/koa-router": "^7.0.22",
+    "@types/koa-static": "^3.0.0",
     "@types/lodash": "^4.14.71",
+    "@types/marked": "^0.3.0",
     "@types/node": "^8.0.17",
     "autoprefixer": "^6.7.7",
     "awesome-typescript-loader": "^3.2.1",
@@ -81,12 +86,13 @@
   },
   "scripts": {
     "clean": "rm -rf build",
-    "copy:posts": "npm run clean && mkdir build && mkdir build/server && mkdir build/server/data && cp -r src/server/data/posts build/server/data",
-    "start": "npm run copy:posts && babel src/server -w -d build/server --no-babelrc --presets=es2015,stage-3 & nodemon --watch build --delay 2 build/server/server.js",
+    "copy:posts": "npm run clean && mkdir build && mkdir build/server && mkdir build/server/data && mkdir build/server/data/posts && cp src/server/data/posts/*.md build/server/data/posts/",
+    "watch": "tsc -w -p tsconfig-server.json & babel src/server -w -d build/server --no-babelrc --presets=es2015,stage-3",
+    "start": "npm run copy:posts && npm run watch & nodemon --watch build/server --delay 2 build/server/server.js",
     "build": "npm run copy:posts && NODE_ENV=production npm run build:server && NODE_ENV=production npm run build:client",
     "build:client": "webpack --config config/webpack/client.js --display-optimization-bailout && webpack --config config/webpack/server.js",
     "build:clientDll": "webpack --config config/webpack/dll.js",
-    "build:server": "babel src/server -d build/server --no-babelrc --presets=es2015,stage-3",
+    "build:server": "tsc -p tsconfig-server.json && babel src/server -d build/server --no-babelrc --presets=es2015,stage-3",
     "start:server": "NODE_ENV=production pm2 start build/server/server.js --name blog -i 2 --output /var/log/node/out.log --error /var/log/node/error.log --no-daemon",
     "stop:server": "pm2 stop blog",
     "log": "pm2 logs"

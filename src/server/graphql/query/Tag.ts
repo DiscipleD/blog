@@ -10,9 +10,10 @@ import {
 	GraphQLList,
 } from 'graphql';
 
+import Tag from '../../../types/tag';
 import PostType from './Post';
 import PostService from '../../queries/PostService';
-import {sortFn} from '../../common/DataService';
+import { sortFn } from '../../common/DataService';
 
 /**
  * type Tag {
@@ -23,26 +24,24 @@ import {sortFn} from '../../common/DataService';
  *   posts: [Post]
  * }
  */
-const Tag = new GraphQLObjectType({
+export default new GraphQLObjectType({
 	name: 'TagType',
-	fields: () => ({
+	fields: (): any => ({
 		id: {
-			type: new GraphQLNonNull(GraphQLID)
+			type: new GraphQLNonNull(GraphQLID),
 		},
 		name: {
-			type: new GraphQLNonNull(GraphQLString)
+			type: new GraphQLNonNull(GraphQLString),
 		},
 		label: {
-			type: new GraphQLNonNull(GraphQLString)
+			type: new GraphQLNonNull(GraphQLString),
 		},
 		createdDate: {
-			type: GraphQLString
+			type: GraphQLString,
 		},
 		posts: {
 			type: new GraphQLList(PostType),
-			resolve: tag => PostService.queryPostsListByTagName(tag.name).sort(sortFn('createdDate', -1))
-		}
-	})
+			resolve: (tag: Tag) => PostService.queryPostsListByTagName(tag.name).sort(sortFn('createdDate', -1)),
+		},
+	}),
 });
-
-export default Tag;

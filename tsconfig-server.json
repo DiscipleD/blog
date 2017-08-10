@@ -10,13 +10,14 @@
       "containers/*": ["client/containers/*"],
       "vuexModule/*": ["client/vuex/module/*"]
     },
-    "module": "es2015",
+    "module": "commonjs",
     "moduleResolution": "node",
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
     "strict": true,
     "target": "es5",
+    "outDir": "./build",
     "lib": [
       "dom",
       "es5",
@@ -26,9 +27,7 @@
     ]
   },
   "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "src/server/**/*.ts"
+    "src/server/**/*.ts",
+    "src/types/*"
   ]
 }

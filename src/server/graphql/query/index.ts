@@ -28,8 +28,8 @@ const rootQueryType = new GraphQLObjectType({
 			type: Post,
 			args: {
 				name: {
-					type: GraphQLString
-				}
+					type: GraphQLString,
+				},
 			},
 			resolve: (blog, { name }) => PostService.getPostByName(name),
 		},
@@ -37,8 +37,8 @@ const rootQueryType = new GraphQLObjectType({
 			type: new GraphQLList(Post),
 			args: {
 				pager: {
-					type: PagerInput
-				}
+					type: PagerInput,
+				},
 			},
 			resolve: (blog, { pager }) => PostService.queryPostsList(pager),
 		},
@@ -46,12 +46,12 @@ const rootQueryType = new GraphQLObjectType({
 			type: new GraphQLList(Tag),
 			args: {
 				name: {
-					type: GraphQLString
-				}
+					type: GraphQLString,
+				},
 			},
-			resolve: (blog, { name }) => !name ? TagService.queryTags() : [TagService.getTagByName(name)]
-		}
-	})
+			resolve: (blog, { name }) => !name ? TagService.queryTags() : [TagService.getTagByName(name)],
+		},
+	}),
 });
 
 export default rootQueryType;
