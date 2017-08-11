@@ -228,7 +228,15 @@ const TAGS_LIST: ITagBase[] = [{
 }, {
 	name: 'fp',
 	label: 'Functional Programming',
-	createdTime: '2017-04-09',
+	createdTime: '2017-06-21',
+}, {
+	name: 'typescript',
+	label: 'TypeScript',
+	createdTime: '2017-08-11',
+}, {
+	name: 'tslint',
+	label: 'Tslint',
+	createdTime: '2017-08-11',
 }];
 
 export default TAGS_LIST.sort(sortFn('createdTime'));

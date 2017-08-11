@@ -199,6 +199,12 @@ const POSTS_LIST: IPostBase[] = [{
 	title: 'Npm 5 package locks',
 	createdTime: '2017-07-31',
 	tags: ['npm'],
+}, {
+	name: 'vue-with-typescript',
+	title: 'Vue with TypeScript',
+	subtitle: '如果说，2017 年计算机领域的潮流是人工智能的话，那么前端界的潮流想必就是 TypeScript 了',
+	createdTime: '2017-08-11',
+	tags: ['typescript', 'tslint', 'vue2', 'ssr', 'webpack'],
 }];
 
 export default POSTS_LIST.sort(sortFn('createdTime'));
