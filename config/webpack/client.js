@@ -15,7 +15,7 @@ const webpackConfig = Object.assign({}, baseWebpackConfig, {
 	devtool: isProduction ? 'cheap-source-map' : 'module-source-map',
 	entry: {
 		common: ['vue', 'vue-router', 'vuex'],
-		app: [PATH.SOURCE_PATH + '/client-entry.js']
+		app: [PATH.SOURCE_PATH + '/client-entry.ts']
 	},
 	output: Object.assign({}, baseWebpackConfig.output, {
 		filename: '[name].[hash:8].js',

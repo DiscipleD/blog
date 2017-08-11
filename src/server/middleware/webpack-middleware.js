@@ -18,22 +18,35 @@ const mfs = new MFS();
 const clientManifestFilePath = path.join(clientConfig.output.path, clientManifestFileName);
 const serverBundleFilePath = path.join(serverConfig.output.path, serverBundleFileName);
 let expressDevMiddleware;
+let serverBundleComplete = false;
 
 /**
  * setRenderer
  * whenever client file or server file change, renderer should be update
  */
 const updateRenderer = () => {
+	if (!serverBundleComplete) return;
 	try {
 		const options = {
 			clientManifest: JSON.parse(expressDevMiddleware.fileSystem.readFileSync(clientManifestFilePath, 'utf-8'))
 		};
 		createRenderer(JSON.parse(mfs.readFileSync(serverBundleFilePath, 'utf-8')), options);
-	} catch(e) {
+	} catch (e) {
 		createRenderer(JSON.parse(mfs.readFileSync(serverBundleFilePath, 'utf-8')));
 	}
-	console.log('Renderer is updated.');
 };
+
+// watch and update server renderer
+const serverCompiler = webpack(serverConfig);
+serverCompiler.outputFileSystem = mfs;
+serverCompiler.watch({}, (err, stats) => {
+	if (err) throw err;
+	stats = stats.toJson();
+	stats.errors.forEach(err => console.error(err));
+	stats.warnings.forEach(err => console.warn(err));
+	if (!serverBundleComplete) serverBundleComplete = true;
+	setImmediate(updateRenderer);
+});
 
 const koaWebpackDevMiddleware = (compiler, opts) => {
 	expressDevMiddleware = webpackDevMiddleware(compiler, opts);
@@ -81,16 +94,5 @@ const devMiddleware = koaWebpackDevMiddleware(clientCompiler, {
 clientCompiler.plugin('done', updateRenderer);
 
 const hotMiddleware = koaWebpackHotMiddleware(clientCompiler, {});
-
-// watch and update server renderer
-const serverCompiler = webpack(serverConfig);
-serverCompiler.outputFileSystem = mfs;
-serverCompiler.watch({}, (err, stats) => {
-	if (err) throw err;
-	stats = stats.toJson();
-	stats.errors.forEach(err => console.error(err));
-	stats.warnings.forEach(err => console.warn(err));
-	updateRenderer();
-});
 
 export {devMiddleware, hotMiddleware};

@@ -30,7 +30,7 @@ export default context => {
 	// updated.
 	return Promise.all(matchedComponents.map(component => {
 		if (component.options.preFetch) {
-			return component.options.preFetch(store);
+			return component.options.preFetch(store, router);
 		}
 	}))
 		// special handle nav state load, which can't be added in preFetch hook

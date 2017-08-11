@@ -11,7 +11,7 @@
 						<span v-if="index > 0">, </span>
 						<router-link class="tag-link" :to="{ path: '/tags/' + tag.name }">{{tag.label}}</router-link>
 					</span>
-				</span><br>Posted on <span property="dateCreated">{{ post.createdDate }}</span><br>
+				</span><br>Posted on <span property="dateCreated">{{ post.createdTime }}</span><br>
 				<span class="disqus-comment-count" :data-disqus-identifier="post.name"></span>
 				<meta property="position" :content="index">
 			</p>

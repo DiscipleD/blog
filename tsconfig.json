@@ -1,12 +1,35 @@
 {
   "compilerOptions": {
-    "module": "system",
-    "noImplicitAny": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./src",
+    "paths": {
+      "assets/*": ["client/assets/*"],
+      "common/*": ["client/common/*"],
+      "components/*": ["client/components/*"],
+      "containers/*": ["client/containers/*"],
+      "vuexModule/*": ["client/vuex/module/*"]
+    },
+    "module": "es2015",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "strict": true,
+    "target": "es5",
+    "lib": [
+      "dom",
+      "es5",
+      "es2015",
+      "es2017.object",
+      "esnext.asynciterable"
+    ]
   },
   "include": [
-    "src/**/*"
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "src/server/**/*.ts"
   ]
 }

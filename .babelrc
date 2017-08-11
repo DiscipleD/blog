@@ -3,5 +3,9 @@
     ["es2015", { "modules": false }],
     "stage-3"
   ],
-  "plugins": ["transform-object-rest-spread"]
+  "plugins": [
+    "transform-object-rest-spread",
+    "transform-decorators-legacy",
+    "transform-class-properties"
+  ]
 }

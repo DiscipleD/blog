@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./src",
+    "paths": {
+      "assets/*": ["client/assets/*"],
+      "common/*": ["client/common/*"],
+      "components/*": ["client/components/*"],
+      "containers/*": ["client/containers/*"],
+      "vuexModule/*": ["client/vuex/module/*"]
+    },
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es5",
+    "outDir": "./build",
+    "lib": [
+      "dom",
+      "es5",
+      "es2015",
+      "es2017.object",
+      "esnext.asynciterable"
+    ]
+  },
+  "include": [
+    "src/server/**/*.ts",
+    "src/types/*"
+  ]
+}
