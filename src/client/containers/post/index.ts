@@ -2,7 +2,8 @@
  * Created by jack on 16-4-25.
  */
 
-import Vue, { ComponentOptions } from 'vue';
+import Vue from 'vue';
+import Component from 'vue-class-component';
 import { mapActions, mapState, Store} from 'vuex';
 import VueRouter from 'vue-router';
 
@@ -13,14 +14,7 @@ import { IRootState } from 'vuexModule/index';
 import { PostState } from 'vuexModule/post';
 import postActions, { IPostQueryParam } from 'vuexModule/post/actions';
 
-export interface IPostContainer extends Vue {
-	post: Post;
-	postName: string;
-	getPost: (params: IPostQueryParam) => void;
-}
-
-export default Vue.extend({
-	template,
+@Component({
 	computed: mapState({
 		post: (state: IRootState) => state.post.post,
 		isLoading: (state: IRootState) => state.post.isLoading,
@@ -28,25 +22,32 @@ export default Vue.extend({
 	}),
 	methods: mapActions(['getPost']),
 	created() {
-		this.getPost({
-			postName: this.postName,
+		(this as PostContainer).getPost({
+			postName: (this as PostContainer).postName,
 			router: this.$router,
 		});
 	},
 	watch: {
 		postName() {
-			this.getPost({
-				postName: this.postName,
+			(this as PostContainer).getPost({
+				postName: (this as PostContainer).postName,
 				router: this.$router,
 			});
 		},
 	},
-	preFetch(store: Store<IRootState>, router: VueRouter) {
+	template,
+})
+export default class PostContainer extends Vue {
+	public post: Post;
+	public postName: string;
+	public getPost: (params: IPostQueryParam) => void;
+
+	public preFetch(store: Store<IRootState>, router: VueRouter) {
 		const actionContext = getActionContext<PostState, IRootState>('post', store);
 		return postActions.getPost(actionContext, {
 			postName: store.state.route.params.postName,
 			enableLoading: false,
 			router,
 		});
-	},
-} as ComponentOptions<IPostContainer>);
+	}
+}

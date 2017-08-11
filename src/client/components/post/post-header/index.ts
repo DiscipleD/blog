@@ -3,13 +3,13 @@
  */
 
 import Vue from 'vue';
+import Component from 'vue-class-component';
 
 import './style.scss';
 import template from './post-header.html';
 import _defaultImg from '../../../assets/img/tags-bg.jpg';
 
-const postHeader = Vue.component('postHeader', {
-	template,
+@Component({
 	props: {
 		boardImg: {
 			type: String,
@@ -28,6 +28,8 @@ const postHeader = Vue.component('postHeader', {
 			type: String,
 		},
 	},
-});
+	template,
+})
+class PostHeader extends Vue {}
 
-export default postHeader;
+export default Vue.component('postHeader', PostHeader);

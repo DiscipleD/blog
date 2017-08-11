@@ -2,7 +2,8 @@
  * Created by jack on 16-8-27.
  */
 
-import Vue, { ComponentOptions } from 'vue';
+import Vue from 'vue';
+import Component from 'vue-class-component';
 import { mapState, mapActions, Store } from 'vuex';
 import VueRouterstore from 'vue-router';
 
@@ -12,14 +13,7 @@ import { IRootState } from 'vuexModule/index';
 import { TagsState } from 'vuexModule/tags';
 import tagsActions, { ITagQueryParam } from 'vuexModule/tags/actions';
 
-export interface ITagsContainer extends Vue {
-	tagName: string;
-	initTagsPage: () => void;
-	queryTagsList: (params: ITagQueryParam) => void;
-}
-
-export default Vue.extend({
-	template,
+@Component({
 	computed: mapState({
 		header: (state: IRootState) => state.tags.header,
 		tagsList: (state: IRootState) => state.tags.list,
@@ -27,27 +21,35 @@ export default Vue.extend({
 		tagName: (state: IRootState) => state.route.params.tagName,
 	}),
 	methods: mapActions(['initTagsPage', 'queryTagsList']),
+	template,
 	watch: {
 		tagName() {
-			this.queryTagsList({
-				tagName: this.tagName,
+			(this as TagsContainer).queryTagsList({
+				tagName: (this as TagsContainer).tagName,
 				router: this.$router,
 			});
 		},
 	},
-	created() {
+})
+export default class TagsContainer extends Vue {
+	public tagName: string;
+	public initTagsPage: () => void;
+	public queryTagsList: (params: ITagQueryParam) => void;
+
+	public created() {
 		this.initTagsPage();
 		this.queryTagsList({
 			tagName: this.tagName,
 			router: this.$router,
 		});
-	},
-	preFetch(store: Store<IRootState>, router: VueRouterstore) {
+	}
+
+	public preFetch(store: Store<IRootState>, router: VueRouterstore) {
 		const actionContext = getActionContext<TagsState, IRootState>('tags', store);
 		return tagsActions.queryTagsList(actionContext, {
 			tagName: store.state.route.params.tagName,
 			enableLoading: false,
 			router,
 		});
-	},
-} as ComponentOptions<ITagsContainer>);
+	}
+}

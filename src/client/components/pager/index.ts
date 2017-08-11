@@ -3,13 +3,15 @@
  */
 
 import Vue from 'vue';
+import Component from 'vue-class-component';
 
 import template from './template.html';
 import './style.scss';
 
-const PagerComponent = Vue.component('pager', {
-	template,
+@Component({
 	props: ['prev', 'next'],
-});
+	template,
+})
+class Pager extends Vue {}
 
-export default PagerComponent;
+export default Vue.component('pager', Pager);

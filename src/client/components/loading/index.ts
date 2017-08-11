@@ -3,10 +3,14 @@
  */
 
 import Vue from 'vue';
+import Component from 'vue-class-component';
 
 import template from './template.html';
 import './style.scss';
 
-export default Vue.component('loading', {
+@Component({
 	template,
-});
+})
+class Loading extends Vue {}
+
+export default Vue.component('loading', Loading);

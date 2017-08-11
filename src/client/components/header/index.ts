@@ -3,12 +3,13 @@
  */
 
 import Vue from 'vue';
+import Component from 'vue-class-component';
 
 import './style.scss';
 import template from './template.html';
 import _defaultImg from '../../assets/img/tags-bg.jpg';
 
-export default Vue.component('contentHeader', {
+@Component({
 	template,
 	props: {
 		boardImg: {
@@ -23,4 +24,7 @@ export default Vue.component('contentHeader', {
 			type: String,
 		},
 	},
-});
+})
+class Header extends Vue {}
+
+export default Vue.component('contentHeader', Header);

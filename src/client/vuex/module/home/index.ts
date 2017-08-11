@@ -25,7 +25,7 @@ export class HomeState {
 			isLoading: false,
 			list: [],
 			pager: {
-				num: -1,
+				num: 0,
 				size: 5,
 			},
 		};

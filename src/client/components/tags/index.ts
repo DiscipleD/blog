@@ -3,13 +3,15 @@
  */
 
 import Vue from 'vue';
+import Component from 'vue-class-component';
 
 import template from './template.html';
 import './style.scss';
 
-const TagsComponent = Vue.component('tags', {
-	template,
+@Component({
 	props: ['tagsList'],
-});
+	template,
+})
+class Tags extends Vue {}
 
-export default TagsComponent;
+export default Vue.component('tags', Tags);

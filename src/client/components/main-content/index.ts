@@ -2,10 +2,14 @@
  * Created by jack on 16-8-21.
  */
 
-import vue from 'vue';
+import Vue from 'vue';
+import Component from 'vue-class-component';
 
 import template from './template.html';
 
-export default vue.component('mainContent', {
+@Component({
 	template,
-});
+})
+class MainContent extends Vue {}
+
+export default Vue.component('mainContent', MainContent);

@@ -30,7 +30,7 @@ const loadPostList = ({ state, commit }: ActionContext<HomeState, IRootState>) =
 	commit(QUERY_POSTS_LIST);
 	const pager = {
 		...state.posts.pager,
-		number: state.posts.pager.num++,
+		num: state.posts.pager.num,
 	};
 	return new PostService().queryPostList(pager)
 		.then((result = {}) => {

@@ -12,6 +12,7 @@
     },
     "module": "es2015",
     "moduleResolution": "node",
+    "experimentalDecorators": true,
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,

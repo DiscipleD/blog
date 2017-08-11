@@ -3,11 +3,15 @@
  */
 
 import Vue from 'vue';
+import Component from 'vue-class-component';
 
 import './style.scss';
 import template from './template.html';
 
-export default Vue.component('pageFooter', {
-	template,
+@Component({
 	props: ['socialLinkList'],
-});
+	template,
+})
+class PageFooter extends Vue {}
+
+export default Vue.component('pageFooter', PageFooter);

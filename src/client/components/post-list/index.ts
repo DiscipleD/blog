@@ -3,17 +3,20 @@
  */
 
 import Vue from 'vue';
+import Component from 'vue-class-component';
 
 import template from './template.html';
 import './style.scss';
 import DisqusService from '../../common/service/disqus/DisqusService';
 
-const PostListComponent = Vue.component('postList', {
-	template,
+@Component({
 	props: ['postList'],
-	mounted: () => {
+	template,
+})
+class PostList extends Vue {
+	protected mounted() {
 		new DisqusService().resetDisqusCountPlugin();
-	},
-});
+	}
+}
 
-export default PostListComponent;
+export default Vue.component('postList', PostList);

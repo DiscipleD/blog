@@ -3,6 +3,7 @@
  */
 
 import Vue, { ComponentOptions } from 'vue';
+import Component from 'vue-class-component';
 import { mapState, mapGetters, mapActions, Store } from 'vuex';
 
 import { getActionContext } from 'vuexModule/../common/actionHelper';
@@ -11,12 +12,7 @@ import { IRootState } from 'vuexModule/index';
 import { HomeState } from 'vuexModule/home';
 import homeActions from 'vuexModule/home/actions';
 
-export interface IHomeContainer extends Vue {
-	initHomePage: () => void;
-}
-
-export default Vue.extend({
-	template,
+@Component({
 	computed: {
 		...mapState({
 			header: (state: IRootState) => state.home.header,
@@ -24,11 +20,17 @@ export default Vue.extend({
 		...mapGetters(['posts']),
 	},
 	methods: mapActions(['initHomePage', 'loadPostList']),
-	created() {
+	template,
+})
+export default class HomeContainer extends Vue {
+	public initHomePage: () => void;
+
+	public created() {
 		this.initHomePage();
-	},
-	preFetch(store: Store<IRootState>) {
+	}
+
+	public preFetch(store: Store<IRootState>) {
 		const actionContext = getActionContext<HomeState, IRootState>('home', store);
 		return homeActions.loadPostList(actionContext);
-	},
-} as ComponentOptions<IHomeContainer>);
+	}
+}

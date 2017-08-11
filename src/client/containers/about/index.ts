@@ -3,6 +3,7 @@
  */
 
 import Vue, { ComponentOptions } from 'vue';
+import Component from 'vue-class-component';
 import { mapState, mapActions, Store } from 'vuex';
 
 import { getActionContext } from 'vuexModule/../common/actionHelper';
@@ -15,18 +16,23 @@ export interface IAboutContainer extends Vue {
 	initAboutPage: () => void;
 }
 
-export default Vue.extend({
+@Component({
 	template,
 	computed: mapState({
 		header: (state: IRootState) => state.aboutMe.header,
 		introduction: (state: IRootState) => state.aboutMe.introduction,
 	}),
 	methods: mapActions(['initAboutPage']),
-	created() {
+})
+export default class AboutMeContainer extends Vue {
+	private initAboutPage: () => void;
+
+	public created() {
 		this.initAboutPage();
-	},
-	preFetch(store: Store<IRootState>) {
+	}
+
+	public preFetch(store: Store<IRootState>) {
 		const actionContext = getActionContext<AboutMeState, IRootState>('aboutMe', store);
 		return aboutActions.initAboutPage(actionContext);
-	},
-} as ComponentOptions<IAboutContainer>);
+	}
+}

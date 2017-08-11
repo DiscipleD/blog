@@ -2,7 +2,8 @@
  * Created by jack on 16-4-21.
  */
 
-import Vue, { ComponentOptions } from 'vue';
+import Vue from 'vue';
+import Component from 'vue-class-component';
 import throttle from 'lodash/throttle';
 
 import './style.scss';
@@ -11,66 +12,70 @@ import template from './template.html';
 
 const DESKTOP_MODE = 'desktop';
 
-interface INavigationComponent extends Vue {
-	mode: string;
-	isShowList: boolean;
-	isVisible: boolean;
-	isFixed: boolean;
-	_navHeight: number;
-	_prevScrollTop: number;
-	_listener: () => void;
-	bodyScrollListener: () => void;
-	_initNav: (mode: string) => void;
+@Component({
+	props: ['navList', 'mode'],
+	template,
+})
+class Navigation extends Vue {
+	public mode: string;
+	public isShowList: boolean = false;
+	private isVisible: boolean = false;
+	private isFixed: boolean = false;
+	private navHeight: number = 0;
+	private prevScrollTop: number = 0;
+	private listener: () => void;
+
+	/*
+	 * lifesycle start
+	 */
+	protected mounted() {
+		this.initNav(this.mode);
+	}
+	protected destroyed() {
+		this.mode === DESKTOP_MODE && document.removeEventListener('scroll', this.listener);
+	}
+	/*
+	 * lifesycle start
+	 */
+
+	/*
+	 * methods start
+	 */
+	private initNav(mode = DESKTOP_MODE) {
+		if (mode === DESKTOP_MODE) {
+			this.isShowList = true;
+			this.navHeight = this.$el.clientHeight;
+
+			this.listener = throttle(this.bodyScrollListener, 200);
+			document.addEventListener('scroll', this.listener);
+		}
+	}
+	private bodyScrollListener() {
+		const currScrollTop = DOMUtil.getDocumentScrollTop();
+
+		if (currScrollTop < this.prevScrollTop) {
+			// if scrolling up...
+			if (currScrollTop > 0 && this.isFixed) {
+				this.isVisible = true;
+			} else {
+				// scroll to the top
+				this.isVisible = false;
+				this.isFixed = false;
+			}
+		} else if (currScrollTop > this.prevScrollTop) {
+			// if scrolling down...
+			this.isVisible = false;
+			currScrollTop > this.navHeight && (this.isFixed = true);
+		}
+
+		this.prevScrollTop = currScrollTop;
+	}
+	private toggleNavShown() {
+		this.isShowList = !this.isShowList;
+	}
+	/*
+	 * methods end
+	 */
 }
 
-export default Vue.component('navigation', {
-	template,
-	props: ['navList', 'mode'],
-	data: () => ({
-		isShowList: false,
-		isVisible: false,
-		isFixed: false,
-		_navHeight: 0,
-		_prevScrollTop: 0,
-	}),
-	methods: {
-		_initNav(mode = DESKTOP_MODE) {
-			if (mode === DESKTOP_MODE) {
-				this.isShowList = true;
-				this._navHeight = this.$el.clientHeight;
-
-				this._listener = throttle(this.bodyScrollListener, 200);
-				document.addEventListener('scroll', this._listener);
-			}
-		},
-		bodyScrollListener() {
-			const currScrollTop = DOMUtil.getDocumentScrollTop();
-
-			if (currScrollTop < this._prevScrollTop) {
-				// if scrolling up...
-				if (currScrollTop > 0 && this.isFixed) {
-					this.isVisible = true;
-				} else {
-					// scroll to the top
-					this.isVisible = false;
-					this.isFixed = false;
-				}
-			} else if (currScrollTop > this._prevScrollTop) {
-				// if scrolling down...
-				this.isVisible = false;
-				currScrollTop > this._navHeight && (this.isFixed = true);
-			}
-
-			this._prevScrollTop = currScrollTop;
-		},
-		toggleNavShown() {
-			this.isShowList = !this.isShowList;
-		},
-	},
-	mounted() {
-		this._initNav(this.mode);
-	},
-	destroyed() {
-		this.mode === DESKTOP_MODE && document.removeEventListener('scroll', this._listener);
-	},
-} as ComponentOptions<INavigationComponent>);
+export default Vue.component('navigation', Navigation);
