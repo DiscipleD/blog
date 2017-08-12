@@ -55,16 +55,9 @@ const addSubscription = subscription =>
 		})
 		.then(writeSubscription);
 
-const removeSubscription = subscription =>
+const removeSubscriptions = subs =>
 	readSubscriptions()
-		.then(subscriptions => {
-			const index = subscriptions.findIndex(item => item.endpoint === subscription.endpoint);
-			if (index > -1) {
-				subscriptions.splice(index, 1);
-			}
-
-			return subscriptions;
-		})
+		.then(subscriptions => subscriptions.filter(subscription => !subs.find(item => item.endpoint === subscription.endpoint)))
 		.then(writeSubscription);
 
 router
@@ -84,7 +77,7 @@ router
 	.post('/unsubscribe', async ctx => {
 		const body = await bodyParser(ctx.request);
 
-		await removeSubscription(body)
+		await removeSubscriptions([body])
 			.then(() => {
 				ctx.status = 200;
 				ctx.body = {};
@@ -98,18 +91,27 @@ router
 		const body = await bodyParser(ctx.request);
 
 		await readSubscriptions()
-			.then(subscriptions => {
-				ctx.status = 200;
-				ctx.body = {};
+			.then(subscriptions => new Promise(resolve => {
+				let i = 0;
+				const errorSubscriptions = [];
+				const resolveErrorSubsriptions = (len, subscribes) => subscriptions.length === len && resolve(subscribes);
 
 				subscriptions.forEach(subscription => {
 					webPush.sendNotification(subscription, JSON.stringify(body), { gcmAPIKey })
+						.then(() => resolveErrorSubsriptions(++i, errorSubscriptions))
 						.catch(err => {
 							console.error(err);
 							// retain the subscription, if the error cause by network not access (GREAT WALL)
-							if (err.code !== 'ETIMEDOUT') removeSubscription(subscription);
+							if (err.code !== 'ETIMEDOUT') errorSubscriptions.push(subscription);
+
+							resolveErrorSubsriptions(++i, errorSubscriptions);
 						});
 				});
+			}))
+			.then(subscriptions => {
+				ctx.status = 200;
+				ctx.body = subscriptions;
+				removeSubscriptions(subscriptions);
 			})
 			.catch(err => {
 				ctx.status = 500;
