@@ -46,13 +46,6 @@ const webpackConfig = Object.assign({}, baseWebpackConfig, {
 			filename: 'index.temp.html',
 			template: PATH.SOURCE_PATH + '/index.html'
 		}), */
-		// create another 404.html file
-		new HtmlWebpackPlugin({
-			favicon: PATH.SOURCE_PATH + '/client/assets/img/favicon.ico',
-			filename: '404.html',
-			template: PATH.SOURCE_PATH + '/404.html',
-			inject: false
-		}),
 		new CopyWebpackPlugin([
 			{
 				from: PATH.SOURCE_PATH + '/client/assets/img/logo',

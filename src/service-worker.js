@@ -81,10 +81,10 @@ const handleFetchRequest = function(req) {
 						.then(function(response) {
 
 							// Check a valid response
-							if(isValidResponse(response)) {
+							if (isValidResponse(response)) {
 								caches
 									.open(CACHE_NAME)
-									.then(function (cache) {
+									.then(function(cache) {
 										cache.put(request, response);
 									});
 							} else {
@@ -100,18 +100,16 @@ const handleFetchRequest = function(req) {
 				// Return fetch response
 				return fetch(request)
 					.then(function(response) {
-						// Check if we received an unvalid response
-						if(!isValidResponse(response)) {
-							return response;
+						// Check if we received an valid response
+						if (isValidResponse(response)) {
+							const clonedResponse = response.clone();
+
+							caches
+								.open(CACHE_NAME)
+								.then(function(cache) {
+									cache.put(request, clonedResponse);
+								});
 						}
-
-						const clonedResponse = response.clone();
-
-						caches
-							.open(CACHE_NAME)
-							.then(function(cache) {
-								cache.put(request, clonedResponse);
-							});
 
 						return response;
 					});

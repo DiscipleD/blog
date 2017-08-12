@@ -2,7 +2,13 @@
  * Created by jack on 16-8-22.
  */
 
+import path from 'path';
+
+import { readFile } from '../common/DataService';
 import serverRender from './server-render';
+
+let _404HTML;
+readFile(path.join(__dirname, '../../404.html')).then(buffer => { _404HTML = buffer.toString(); });
 
 // server error catcher
 const serverErrorHandler = async (ctx, next) => {
@@ -26,7 +32,8 @@ const pageNotFound = async (ctx, next) => {
 
 	switch (ctx.accepts('html', 'json')) {
 		case 'html':
-			ctx.response.redirect('/404.html');
+			ctx.type = 'text/html';
+			ctx.body = _404HTML;
 			break;
 		case 'json':
 			ctx.body = {
