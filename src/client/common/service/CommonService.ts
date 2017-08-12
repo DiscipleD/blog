@@ -3,7 +3,7 @@
  */
 
 import {BLOG_TITLE} from 'common/constant/site';
-import {setPageTitle} from 'common/util/DOM';
+import {setPageTitle} from 'common/util/dom';
 
 export const getBlogTitle = (str: string) => {
 	if (!str || str === BLOG_TITLE) return BLOG_TITLE;
