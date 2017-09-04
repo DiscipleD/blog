@@ -205,6 +205,11 @@ const POSTS_LIST: IPostBase[] = [{
 	subtitle: '如果说，2017 年计算机领域的潮流是人工智能的话，那么前端界的潮流想必就是 TypeScript 了',
 	createdTime: '2017-08-11',
 	tags: ['typescript', 'tslint', 'vue2', 'ssr', 'webpack'],
+}, {
+	name: 'translate-react-high-performance-tools',
+	title: '[译]使用 3 个工具加速你的 React 应用',
+	createdTime: '2017-09-04',
+	tags: ['react'],
 }];
 
 export default POSTS_LIST.sort(sortFn('createdTime'));
