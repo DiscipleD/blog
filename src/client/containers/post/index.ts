@@ -21,12 +21,6 @@ import postActions, { IPostQueryParam } from 'vuexModule/post/actions';
 		postName: (state: IRootState) => state.route.params.postName,
 	}),
 	methods: mapActions(['getPost']),
-	created() {
-		(this as PostContainer).getPost({
-			postName: (this as PostContainer).postName,
-			router: this.$router,
-		});
-	},
 	watch: {
 		postName() {
 			(this as PostContainer).getPost({
@@ -36,18 +30,24 @@ import postActions, { IPostQueryParam } from 'vuexModule/post/actions';
 		},
 	},
 	template,
+	preFetch(store: Store<IRootState>, router: VueRouter) {
+		const actionContext = getActionContext<PostState, IRootState>('post', store);
+		return postActions.getPost(actionContext, {
+			postName: store.state.route.params.postName,
+			enableLoading: false,
+			router,
+		});
+	},
 })
 export default class PostContainer extends Vue {
 	public post: Post;
 	public postName: string;
 	public getPost: (params: IPostQueryParam) => void;
 
-	public preFetch(store: Store<IRootState>, router: VueRouter) {
-		const actionContext = getActionContext<PostState, IRootState>('post', store);
-		return postActions.getPost(actionContext, {
-			postName: store.state.route.params.postName,
-			enableLoading: false,
-			router,
+	public mounted() {
+		this.getPost({
+			postName: this.postName,
+			router: this.$router,
 		});
 	}
 }

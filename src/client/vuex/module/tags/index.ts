@@ -15,6 +15,10 @@ export class TagsState {
 	public list: ITagPage[];
 	public isLoading: boolean;
 	constructor() {
+		this.header = {
+			image: '',
+			title: '',
+		};
 		this.isLoading = false;
 	}
 }

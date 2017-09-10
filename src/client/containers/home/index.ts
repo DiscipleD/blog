@@ -21,16 +21,15 @@ import homeActions from 'vuexModule/home/actions';
 	},
 	methods: mapActions(['initHomePage', 'loadPostList']),
 	template,
+	preFetch(store: Store<IRootState>) {
+		const actionContext = getActionContext<HomeState, IRootState>('home', store);
+		return homeActions.loadPostList(actionContext);
+	},
 })
 export default class HomeContainer extends Vue {
 	public initHomePage: () => void;
 
-	public created() {
+	public mounted() {
 		this.initHomePage();
-	}
-
-	public preFetch(store: Store<IRootState>) {
-		const actionContext = getActionContext<HomeState, IRootState>('home', store);
-		return homeActions.loadPostList(actionContext);
 	}
 }

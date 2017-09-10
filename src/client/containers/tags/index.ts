@@ -30,26 +30,25 @@ import tagsActions, { ITagQueryParam } from 'vuexModule/tags/actions';
 			});
 		},
 	},
+	preFetch(store: Store<IRootState>, router: VueRouterstore) {
+		const actionContext = getActionContext<TagsState, IRootState>('tags', store);
+		return tagsActions.queryTagsList(actionContext, {
+			tagName: store.state.route.params.tagName,
+			enableLoading: false,
+			router,
+		});
+	},
 })
 export default class TagsContainer extends Vue {
 	public tagName: string;
 	public initTagsPage: () => void;
 	public queryTagsList: (params: ITagQueryParam) => void;
 
-	public created() {
+	public mounted() {
 		this.initTagsPage();
 		this.queryTagsList({
 			tagName: this.tagName,
 			router: this.$router,
-		});
-	}
-
-	public preFetch(store: Store<IRootState>, router: VueRouterstore) {
-		const actionContext = getActionContext<TagsState, IRootState>('tags', store);
-		return tagsActions.queryTagsList(actionContext, {
-			tagName: store.state.route.params.tagName,
-			enableLoading: false,
-			router,
 		});
 	}
 }

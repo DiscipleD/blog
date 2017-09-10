@@ -20,6 +20,10 @@ export class HomeState {
 		isLoading: boolean,
 	};
 	constructor() {
+		this.header = {
+			image: '',
+			title: '',
+		};
 		this.posts = {
 			isFinished: false,
 			isLoading: false,
