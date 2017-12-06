@@ -16,7 +16,7 @@ type TSortKey = TSortFunc | string;
 const readFilePromisify = promisify(fs.readFile);
 const writeFilePromisify = promisify(fs.writeFile);
 
-const readFile = (path: string, options?: IFileOptions) => readFilePromisify(path, options);
+const readFile = (path: string, options?: IFileOptions) => readFilePromisify(path, options) as Promise<Buffer>;
 const writeFile = (path: string, data: any, options?: IFileOptions) => writeFilePromisify(path, data, options);
 
 const readMarkdownFile = (path: string, encoding: IFileOptions = { encoding: 'utf8' }) =>

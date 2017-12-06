@@ -6,7 +6,7 @@ import path = require('path');
 import * as DataService from '../common/DataService';
 
 import Post, { IPostBase } from '../../types/post';
-import Tag from '../../types/tag';
+import Tag, { ITagBase } from '../../types/tag';
 import POSTS from './posts';
 import TAGS from './tags';
 
@@ -23,7 +23,7 @@ const POST_DICTIONARY = path.join(__dirname, '/posts/');
 
 const Data: IData = {
 	posts: {},
-	tags: DataService.normalize(TAGS.map((tag: Tag, index: number) => new Tag({ ...tag, id: index }))),
+	tags: DataService.normalize(TAGS.map((tag: ITagBase, index: number) => new Tag({ ...tag, id: index }))),
 };
 
 // read .md file
