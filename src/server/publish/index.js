@@ -86,37 +86,37 @@ router
 				ctx.status = 500;
 				ctx.body = err;
 			});
-	})
-	.post('/broadcast', async ctx => {
-		const body = await bodyParser(ctx.request);
+	// })
+	// .post('/broadcast', async ctx => {
+	// 	const body = await bodyParser(ctx.request);
 
-		await readSubscriptions()
-			.then(subscriptions => new Promise(resolve => {
-				let i = 0;
-				const errorSubscriptions = [];
-				const resolveErrorSubsriptions = (len, subscribes) => subscriptions.length === len && resolve(subscribes);
+	// 	await readSubscriptions()
+	// 		.then(subscriptions => new Promise(resolve => {
+	// 			let i = 0;
+	// 			const errorSubscriptions = [];
+	// 			const resolveErrorSubsriptions = (len, subscribes) => subscriptions.length === len && resolve(subscribes);
 
-				subscriptions.forEach(subscription => {
-					webPush.sendNotification(subscription, JSON.stringify(body), { gcmAPIKey })
-						.then(() => resolveErrorSubsriptions(++i, errorSubscriptions))
-						.catch(err => {
-							console.error(err);
-							// retain the subscription, if the error cause by network not access (GREAT WALL)
-							if (err.code !== 'ETIMEDOUT') errorSubscriptions.push(subscription);
+	// 			subscriptions.forEach(subscription => {
+	// 				webPush.sendNotification(subscription, JSON.stringify(body), { gcmAPIKey })
+	// 					.then(() => resolveErrorSubsriptions(++i, errorSubscriptions))
+	// 					.catch(err => {
+	// 						console.error(err);
+	// 						// retain the subscription, if the error cause by network not access (GREAT WALL)
+	// 						if (err.code !== 'ETIMEDOUT') errorSubscriptions.push(subscription);
 
-							resolveErrorSubsriptions(++i, errorSubscriptions);
-						});
-				});
-			}))
-			.then(subscriptions => {
-				ctx.status = 200;
-				ctx.body = subscriptions;
-				removeSubscriptions(subscriptions);
-			})
-			.catch(err => {
-				ctx.status = 500;
-				ctx.body = err;
-			});
+	// 						resolveErrorSubsriptions(++i, errorSubscriptions);
+	// 					});
+	// 			});
+	// 		}))
+	// 		.then(subscriptions => {
+	// 			ctx.status = 200;
+	// 			ctx.body = subscriptions;
+	// 			removeSubscriptions(subscriptions);
+	// 		})
+	// 		.catch(err => {
+	// 			ctx.status = 500;
+	// 			ctx.body = err;
+	// 		});
 	});
 
 publishApp
