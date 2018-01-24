@@ -210,6 +210,11 @@ const POSTS_LIST: IPostBase[] = [{
 	title: '[译]使用 3 个工具加速你的 React 应用',
 	createdTime: '2017-09-04',
 	tags: ['react'],
+}, {
+	name: 'apologize-letter',
+	title: '致歉信',
+	createdTime: '2018-01-24',
+	tags: [],
 }];
 
 export default POSTS_LIST.sort(sortFn('createdTime'));
