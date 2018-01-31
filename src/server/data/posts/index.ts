@@ -215,6 +215,11 @@ const POSTS_LIST: IPostBase[] = [{
 	title: '致歉信',
 	createdTime: '2018-01-24',
 	tags: [],
+}, {
+	name: 'wechat-miniprogram-basic',
+	title: '微信小程序基础',
+	createdTime: '2018-01-31',
+	tags: ['wechat', 'miniprogram'],
 }];
 
 export default POSTS_LIST.sort(sortFn('createdTime'));

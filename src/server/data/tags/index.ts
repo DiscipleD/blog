@@ -237,6 +237,14 @@ const TAGS_LIST: ITagBase[] = [{
 	name: 'tslint',
 	label: 'Tslint',
 	createdTime: '2017-08-11',
+}, {
+	name: 'wechat',
+	label: 'Wechat',
+	createdTime: '2018-01-31',
+}, {
+	name: 'miniprogram',
+	label: 'Miniprogram',
+	createdTime: '2018-01-31',
 }];
 
 export default TAGS_LIST.sort(sortFn('createdTime'));
