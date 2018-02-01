@@ -4,46 +4,37 @@
  * @since 05/03/2017
  */
 
-import fs from 'fs';
 import path from 'path';
 import Koa from 'koa';
 import Router from 'koa-router';
 import bodyParser from 'co-body';
 import webPush from 'web-push';
 
+import { readFile, writeFile } from '../common/DataService';
 import { gcmAPIKey } from '../config';
 
 const publishApp = new Koa();
 const router = new Router();
 
 const SUBSCRIPTION_FILE = path.resolve(__dirname, '../../../data/subscriptions.txt');
+const TOKEN_FILE_PATH = path.resolve(__dirname, '../../../data/token.txt');
 
 const parseSubscriptions = string => string.split('\n').filter(item => !!item).map(item => JSON.parse(item));
 const stringifySubscriptions = subscriptions => subscriptions.map(item => JSON.stringify(item)).join('\n');
 
-const readSubscriptions = () =>
-	new Promise(resolve => {
-		fs.readFile(SUBSCRIPTION_FILE, 'utf8', (err, buffer) => {
-			if (err) {
-				resolve([]);
-			}
-			else {
-				const string = buffer.toString();
-				const subscriptions = parseSubscriptions(string);
+const isVerifyMessage = async meesage => {
+	const token = await readFile(TOKEN_FILE_PATH).then(b => b.toString());
+	return meesage.token === token;
+};
 
-				resolve(subscriptions);
-			}
-		});
+const readSubscriptions = () => readFile(SUBSCRIPTION_FILE, 'utf8')
+	.then(buffer => parseSubscriptions(buffer.toString()))
+	.catch(err => {
+		console.error(err);
+		return [];
 	});
 
-const writeSubscription = subscriptions =>
-	new Promise((resolve, reject) => {
-		fs.writeFile(SUBSCRIPTION_FILE, stringifySubscriptions(subscriptions), 'utf8', err => {
-			if (err) reject(err);
-
-			resolve();
-		});
-	});
+const writeSubscription = subscriptions => writeFile(SUBSCRIPTION_FILE, stringifySubscriptions(subscriptions), 'utf8');
 
 const addSubscription = subscription =>
 	readSubscriptions()
@@ -86,37 +77,44 @@ router
 				ctx.status = 500;
 				ctx.body = err;
 			});
-	// })
-	// .post('/broadcast', async ctx => {
-	// 	const body = await bodyParser(ctx.request);
+	})
+	.post('/broadcast', async ctx => {
+		const body = await bodyParser(ctx.request);
+		const isVerified = await isVerifyMessage(body);
 
-	// 	await readSubscriptions()
-	// 		.then(subscriptions => new Promise(resolve => {
-	// 			let i = 0;
-	// 			const errorSubscriptions = [];
-	// 			const resolveErrorSubsriptions = (len, subscribes) => subscriptions.length === len && resolve(subscribes);
+		if (isVerified) {
+			await readSubscriptions()
+			.then(subscriptions => new Promise(resolve => {
+				if (!subscriptions || subscriptions.length === 0) resolve([]);
+				let i = 0;
+				const errorSubscriptions = [];
+				const resolveErrorSubsriptions = (len, subscribes) => subscriptions.length === len && resolve(subscribes);
 
-	// 			subscriptions.forEach(subscription => {
-	// 				webPush.sendNotification(subscription, JSON.stringify(body), { gcmAPIKey })
-	// 					.then(() => resolveErrorSubsriptions(++i, errorSubscriptions))
-	// 					.catch(err => {
-	// 						console.error(err);
-	// 						// retain the subscription, if the error cause by network not access (GREAT WALL)
-	// 						if (err.code !== 'ETIMEDOUT') errorSubscriptions.push(subscription);
+				subscriptions.forEach(subscription => {
+					webPush.sendNotification(subscription, JSON.stringify(body), { gcmAPIKey })
+						.then(() => resolveErrorSubsriptions(++i, errorSubscriptions))
+						.catch(err => {
+							console.error(err);
+							// retain the subscription, if the error cause by network not access (GREAT WALL)
+							if (err.code !== 'ETIMEDOUT') errorSubscriptions.push(subscription);
 
-	// 						resolveErrorSubsriptions(++i, errorSubscriptions);
-	// 					});
-	// 			});
-	// 		}))
-	// 		.then(subscriptions => {
-	// 			ctx.status = 200;
-	// 			ctx.body = subscriptions;
-	// 			removeSubscriptions(subscriptions);
-	// 		})
-	// 		.catch(err => {
-	// 			ctx.status = 500;
-	// 			ctx.body = err;
-	// 		});
+							resolveErrorSubsriptions(++i, errorSubscriptions);
+						});
+				});
+			}))
+			.then(subscriptions => {
+				ctx.status = 200;
+				ctx.body = subscriptions;
+				removeSubscriptions(subscriptions);
+			})
+			.catch(err => {
+				ctx.status = 500;
+				ctx.body = err;
+			});
+		} else {
+			ctx.status = 400;
+			ctx.body = 'Buddy, you forgot the password! (:';
+		}
 	});
 
 publishApp
