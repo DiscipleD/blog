@@ -43,7 +43,6 @@ class Navigation extends Vue {
 	 */
 	private initNav(mode = DESKTOP_MODE) {
 		if (mode === DESKTOP_MODE) {
-			this.isShowList = true;
 			this.navHeight = this.$el.clientHeight;
 
 			this.listener = throttle(this.bodyScrollListener, 200);

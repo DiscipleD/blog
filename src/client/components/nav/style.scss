@@ -60,7 +60,7 @@ $gray-light: #eee;
 
     .navbar-nav{
       clear: initial;
-      display: flex;
+      display: flex !important;
       margin-top: 0.425rem;
 
       .nav-item + .nav-item{
