@@ -22,19 +22,19 @@ const TOKEN_FILE_PATH = path.resolve(__dirname, '../../../data/token.txt');
 const parseSubscriptions = string => string.split('\n').filter(item => !!item).map(item => JSON.parse(item));
 const stringifySubscriptions = subscriptions => subscriptions.map(item => JSON.stringify(item)).join('\n');
 
-const isVerifyMessage = async meesage => {
-	const token = await readFile(TOKEN_FILE_PATH).then(b => b.toString());
-	return meesage.token === token;
+const isVerifyMessage = async message => {
+	const token = await readFile(TOKEN_FILE_PATH).then(b => b.toString().replace(/\s/g, ''));
+	return message.token === token;
 };
 
-const readSubscriptions = () => readFile(SUBSCRIPTION_FILE, 'utf8')
+const readSubscriptions = () => readFile(SUBSCRIPTION_FILE, { encoding: 'utf8' })
 	.then(buffer => parseSubscriptions(buffer.toString()))
 	.catch(err => {
 		console.error(err);
 		return [];
 	});
 
-const writeSubscription = subscriptions => writeFile(SUBSCRIPTION_FILE, stringifySubscriptions(subscriptions), 'utf8');
+const writeSubscription = subscriptions => writeFile(SUBSCRIPTION_FILE, stringifySubscriptions(subscriptions), { encoding: 'utf8' });
 
 const addSubscription = subscription =>
 	readSubscriptions()
