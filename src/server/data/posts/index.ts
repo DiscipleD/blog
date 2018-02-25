@@ -220,6 +220,12 @@ const POSTS_LIST: IPostBase[] = [{
 	title: '微信小程序基础',
 	createdTime: '2018-01-31',
 	tags: ['wechat', 'miniprogram'],
+}, {
+	name: 'wechat-minigame-try',
+	title: '微信小游戏初试',
+	subtitle: '相信每个程序猿都有过这样一个梦想，梦想有一天自己能做一个游戏，如今微信小游戏让这个梦唾手可得',
+	createdTime: '2018-02-25',
+	tags: ['wechat', 'minigame'],
 }];
 
 export default POSTS_LIST.sort(sortFn('createdTime'));
