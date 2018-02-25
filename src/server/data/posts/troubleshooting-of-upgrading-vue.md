@@ -3,7 +3,7 @@
 > 2. [Vuex — The core of Vue application](http://discipled.me/posts/vuex-core-of-vue-application)
 > 3. [From SPA to SSR](http://discipled.me/posts/ssr)
 
-> 本文不包含 Vue 2.0 所有新特性，如 SSR 等，本文并没有涉及，本文只包含[个人博客项目]((https://github.com/DiscipleD/blog))升级中所遇到的经验分享，如有兴趣，可以查看 Vue 2.0 [changes log](https://github.com/vuejs/vue/issues/2873)。
+> 本文不包含 Vue 2.0 所有新特性，如 SSR 等，本文并没有涉及，本文只包含[个人博客项目](https://github.com/DiscipleD/blog)升级中所遇到的经验分享，如有兴趣，可以查看 Vue 2.0 [changes log](https://github.com/vuejs/vue/issues/2873)。
 
 ### 前言
 > 这节净是些唠叨，只想看升(tian)级(keng)的可直接跳过。
