@@ -9,8 +9,8 @@ import { IPostPage } from 'types/post';
 import './post-header';
 import template from './template.html';
 import './style.scss';
-import { IMAGE_SERVER_PREFIX } from '../../common/constant/site';
-import DisqusService from '../../common/service/disqus/DisqusService';
+import { IMAGE_SERVER_PREFIX } from '@/common/constant/site';
+import DisqusService from '@/common/service/disqus/DisqusService';
 
 @Component({
 	props: ['post'],

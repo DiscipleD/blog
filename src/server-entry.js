@@ -3,8 +3,8 @@
  */
 
 import createApp from './client/app';
-import { getBlogTitle } from 'common/service/CommonService';
-import siteActions from 'vuexModule/site/actions';
+import { getBlogTitle } from '@/common/service/CommonService';
+import siteActions from '@/vuex/module/site/actions';
 
 // Add global variables for node environment.
 const jsdom = require('jsdom').jsdom;

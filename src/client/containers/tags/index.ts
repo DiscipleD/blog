@@ -8,10 +8,10 @@ import { mapState, mapActions, Store } from 'vuex';
 import VueRouterstore from 'vue-router';
 
 import template from './tags.html';
-import { getActionContext } from 'vuexModule/../common/actionHelper';
-import { IRootState } from 'vuexModule/index';
-import { TagsState } from 'vuexModule/tags';
-import tagsActions, { ITagQueryParam } from 'vuexModule/tags/actions';
+import { getActionContext } from '@/vuex/common/actionHelper';
+import { IRootState } from '@/vuex/module/index';
+import { TagsState } from '@/vuex/module/tags';
+import tagsActions, { ITagQueryParam } from '@/vuex/module/tags/actions';
 
 @Component({
 	computed: mapState({

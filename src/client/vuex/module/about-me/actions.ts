@@ -8,7 +8,7 @@ import { createAction } from '../../common/actionHelper';
 import { IRootState } from '../index';
 import { AboutMeState } from './index';
 import { SET_BLOG_TITLE } from '../site/actions';
-import image from 'assets/img/about-bg.jpg';
+import image from '@/assets/img/about-bg.jpg';
 import introduction from './introductions.json';
 
 export const INIT_ABOUT_ME_PAGE = 'INIT_ABOUT_ME_PAGE';

@@ -5,7 +5,7 @@
 import { Module, ActionTree, GetterTree, MutationTree } from 'vuex';
 
 import { IRootState } from '../index';
-import { BLOG_TITLE } from 'common/constant/site';
+import { BLOG_TITLE } from '@/common/constant/site';
 import { Item } from 'types/nav';
 import { ISocialLink } from './setting';
 import mutations from './mutations';

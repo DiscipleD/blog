@@ -6,7 +6,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import { mapGetters, mapActions } from 'vuex';
 
-import { setBlogTitle } from 'common/service/CommonService';
+import { setBlogTitle } from '@/common/service/CommonService';
 import template from './blog.html';
 
 @Component({

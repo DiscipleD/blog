@@ -4,11 +4,7 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./src",
     "paths": {
-      "assets/*": ["client/assets/*"],
-      "common/*": ["client/common/*"],
-      "components/*": ["client/components/*"],
-      "containers/*": ["client/containers/*"],
-      "vuexModule/*": ["client/vuex/module/*"]
+      "@/*": ["client/*"]
     },
     "module": "commonjs",
     "moduleResolution": "node",

@@ -6,7 +6,7 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 import throttle from 'lodash/throttle';
 
-import * as DOMUtil from 'common/util/dom';
+import * as DOMUtil from '@/common/util/dom';
 import './style.scss';
 import template from './template.html';
 

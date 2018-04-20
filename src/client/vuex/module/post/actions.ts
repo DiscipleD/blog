@@ -5,7 +5,7 @@
 import { ActionContext, Store } from 'vuex';
 import VueRouter from 'vue-router';
 
-import PostService, { IQueryPostResponse } from 'common/service/PostService';
+import PostService, { IQueryPostResponse } from '@/common/service/PostService';
 
 import { createAction } from '../../common/actionHelper';
 import { IRootState } from '../index';

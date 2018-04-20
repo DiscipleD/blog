@@ -6,10 +6,10 @@ import Vue, { ComponentOptions } from 'vue';
 import Component from 'vue-class-component';
 import { mapState, mapActions, Store } from 'vuex';
 
-import { getActionContext } from 'vuexModule/../common/actionHelper';
-import { IRootState } from 'vuexModule/index';
-import { AboutMeState } from 'vuexModule/about-me';
-import aboutActions from 'vuexModule/about-me/actions';
+import { getActionContext } from '@/vuex/common/actionHelper';
+import { IRootState } from '@/vuex/module/index';
+import { AboutMeState } from '@/vuex/module/about-me';
+import aboutActions from '@/vuex/module/about-me/actions';
 import template from './about.html';
 
 export interface IAboutContainer extends Vue {

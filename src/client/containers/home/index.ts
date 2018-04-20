@@ -6,11 +6,11 @@ import Vue, { ComponentOptions } from 'vue';
 import Component from 'vue-class-component';
 import { mapState, mapGetters, mapActions, Store } from 'vuex';
 
-import { getActionContext } from 'vuexModule/../common/actionHelper';
+import { getActionContext } from '@/vuex/common/actionHelper';
 import template from './home.html';
-import { IRootState } from 'vuexModule/index';
-import { HomeState } from 'vuexModule/home';
-import homeActions from 'vuexModule/home/actions';
+import { IRootState } from '@/vuex/module/index';
+import { HomeState } from '@/vuex/module/home';
+import homeActions from '@/vuex/module/home/actions';
 
 @Component({
 	computed: {

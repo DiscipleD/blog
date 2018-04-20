@@ -4,7 +4,7 @@
 
 import { ActionContext } from 'vuex';
 
-import PostService from 'common/service/PostService';
+import PostService from '@/common/service/PostService';
 import {createAction} from '../../common/actionHelper';
 import { IRootState } from '../index';
 import { SiteState } from './index';

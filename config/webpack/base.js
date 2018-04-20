@@ -18,11 +18,7 @@ const webpackConfig = {
 	resolve: {
 		alias: {
 			'vue': 'vue/dist/vue.js',
-			'assets': PATH.SOURCE_PATH + '/client/assets',
-			'common': PATH.SOURCE_PATH + '/client/common',
-			'components': PATH.SOURCE_PATH + '/client/components',
-			'containers': PATH.SOURCE_PATH + '/client/containers',
-			'vuexModule': PATH.SOURCE_PATH + '/client/vuex/module'
+			'@': PATH.SOURCE_PATH + '/client'
 		},
 		extensions: [".ts", ".js", ".json"]
 	},

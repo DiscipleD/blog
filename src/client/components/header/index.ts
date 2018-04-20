@@ -7,7 +7,7 @@ import Component from 'vue-class-component';
 
 import './style.scss';
 import template from './template.html';
-import _defaultImg from '../../assets/img/tags-bg.jpg';
+import _defaultImg from '@/assets/img/tags-bg.jpg';
 
 @Component({
 	template,

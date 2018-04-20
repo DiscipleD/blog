@@ -7,7 +7,7 @@ import Component from 'vue-class-component';
 import throttle from 'lodash/throttle';
 
 import './style.scss';
-import * as DOMUtil from 'common/util/dom';
+import * as DOMUtil from '@/common/util/dom';
 import template from './template.html';
 
 const DESKTOP_MODE = 'desktop';

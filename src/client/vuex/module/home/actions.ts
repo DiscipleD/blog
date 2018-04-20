@@ -4,8 +4,8 @@
 
 import { ActionContext } from 'vuex';
 
-import image from 'assets/img/home-bg.jpg';
-import PostService from 'common/service/PostService';
+import image from '@/assets/img/home-bg.jpg';
+import PostService from '@/common/service/PostService';
 import { createAction } from '../../common/actionHelper';
 import { IRootState } from '../index';
 import { HomeState } from './index';

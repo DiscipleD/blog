@@ -4,8 +4,8 @@
 import { ActionContext } from 'vuex';
 import VueRouter from 'vue-router';
 
-import TagService, { IQueryTagsResponse } from 'common/service/TagService';
-import image from 'assets/img/tags-bg.jpg';
+import TagService, { IQueryTagsResponse } from '@/common/service/TagService';
+import image from '@/assets/img/tags-bg.jpg';
 import { createAction } from '../../common/actionHelper';
 import { IRootState } from '../index';
 import { TagsState } from './index';

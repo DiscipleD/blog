@@ -7,7 +7,7 @@ import Component from 'vue-class-component';
 
 import template from './template.html';
 import './style.scss';
-import DisqusService from '../../common/service/disqus/DisqusService';
+import DisqusService from '@/common/service/disqus/DisqusService';
 
 @Component({
 	props: ['postList'],

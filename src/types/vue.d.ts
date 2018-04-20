@@ -2,7 +2,7 @@ import Vue from 'vue';
 import { Store } from 'vuex';
 import VueRouter from 'vue-router';
 
-import { IRootState } from 'vuexModule/index';
+import { IRootState } from '@/vuex/module/index';
 
 declare global {
   interface Window {

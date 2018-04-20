@@ -6,7 +6,7 @@ import Vue from 'vue';
 import { sync } from 'vuex-router-sync';
 
 // Clean-blog less transform to Clean-blog cass
-import 'assets/scss/clean-blog.scss';
+import '@/assets/scss/clean-blog.scss';
 
 // Fetch service polyfill
 import 'whatwg-fetch';
@@ -14,8 +14,8 @@ import 'core-js/modules/es6.promise';
 
 import createStore from './vuex';
 import createRouter from './router';
-import 'containers/blog';
-import 'components';
+import '@/containers/blog';
+import '@/components';
 
 const createApp = () => {
 	const store = createStore();

@@ -8,11 +8,11 @@ import { mapActions, mapState, Store} from 'vuex';
 import VueRouter from 'vue-router';
 
 import Post from 'types/post';
-import { getActionContext } from 'vuexModule/../common/actionHelper';
+import { getActionContext } from '@/vuex/common/actionHelper';
 import template from './post.html';
-import { IRootState } from 'vuexModule/index';
-import { PostState } from 'vuexModule/post';
-import postActions, { IPostQueryParam } from 'vuexModule/post/actions';
+import { IRootState } from '@/vuex/module/index';
+import { PostState } from '@/vuex/module/post';
+import postActions, { IPostQueryParam } from '@/vuex/module/post/actions';
 
 @Component({
 	computed: mapState({
