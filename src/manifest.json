@@ -12,35 +12,44 @@
   "background_color": "transparent",
   "related_applications": [],
   "prefer_related_applications": false,
-  "icons": [{
-    "src": "assets/img/logo/size-32.png",
-    "sizes": "32x32",
-    "type": "image/png"
-  }, {
-    "src": "assets/img/logo/size-48.png",
-    "sizes": "48x48",
-    "type": "image/png"
-  }, {
-    "src": "assets/img/logo/size-72.png",
-    "sizes": "72x72",
-    "type": "image/png"
-  }, {
-    "src": "assets/img/logo/size-96.png",
-    "sizes": "96x96",
-    "type": "image/png"
-  }, {
-    "src": "assets/img/logo/size-144.png",
-    "sizes": "144x144",
-    "type": "image/png"
-  }, {
-    "src": "assets/img/logo/size-168.png",
-    "sizes": "168x168",
-    "type": "image/png"
-  }, {
-    "src": "assets/img/logo/size-192.png",
-    "sizes": "192x192",
-    "type": "image/png"
-  }],
+  "icons": [
+    {
+      "src": "assets/img/logo/size-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/logo/size-48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/logo/size-72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/logo/size-96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/logo/size-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/logo/size-168.png",
+      "sizes": "168x168",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/logo/size-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
   "gcm_sender_id": "445598565171",
-  "applicationServerKey": "AAAAZ7--gzM:APA91bH2YhYvmlO-NVzzz2_Ya0a4Gc2WoGwykLvf0bZ72RrLUogJwW01d1NZLyftRpCjvguJcRRn_FBeFwiwJQt6gLxYxeNkpekTn9wXL1qWWMrWV8-L_KMG05FveDy0zZ86MuCUNwnD"
+  "applicationServerKey":
+    "AAAAZ7--gzM:APA91bH2YhYvmlO-NVzzz2_Ya0a4Gc2WoGwykLvf0bZ72RrLUogJwW01d1NZLyftRpCjvguJcRRn_FBeFwiwJQt6gLxYxeNkpekTn9wXL1qWWMrWV8-L_KMG05FveDy0zZ86MuCUNwnD"
 }

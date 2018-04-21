@@ -6,6 +6,7 @@
   "author": "Discipe.Ding",
   "license": "MIT",
   "devDependencies": {
+    "prettier": "^1.12.1",
     "memory-fs": "^0.3.0",
     "stream": "0.0.2",
     "webpack-dev-middleware": "^1.12.2",
@@ -46,6 +47,7 @@
     "graphql": "^0.6.2",
     "html-loader": "^0.4.5",
     "html-webpack-plugin": "^2.29.0",
+    "husky": "^0.14.3",
     "image-webpack-loader": "^1.7.0",
     "jsdom": "^9.12.0",
     "koa": "^2.4.1",
@@ -55,6 +57,7 @@
     "koa-mount": "^2.0.0",
     "koa-router": "^7.3.0",
     "koa-static": "^2.1.0",
+    "lint-staged": "^7.0.4",
     "lodash": "^4.17.4",
     "lru-cache": "^4.1.1",
     "marked": "^0.3.12",
@@ -93,14 +96,22 @@
     "copy:posts": "cp src/server/data/posts/*.md build/server/data/posts/",
     "copy:404": "cp src/404.html build/",
     "ready": "npm run clean && npm run createDir && npm run copy",
-    "watch": "tsc -w -p tsconfig-server.json & babel src/server -w -d build/server --no-babelrc --presets=es2015,stage-3",
+    "watch":
+      "tsc -w -p tsconfig-server.json & babel src/server -w -d build/server --no-babelrc --presets=es2015,stage-3",
     "start": "npm run ready && npm run watch & nodemon --watch build/server --delay 2 build/server/server.js",
     "build": "npm run ready && NODE_ENV=production npm run build:server && NODE_ENV=production npm run build:client",
-    "build:client": "webpack --config config/webpack/client.js --display-optimization-bailout && webpack --config config/webpack/server.js",
+    "build:client":
+      "webpack --config config/webpack/client.js --display-optimization-bailout && webpack --config config/webpack/server.js",
     "build:clientDll": "webpack --config config/webpack/dll.js",
-    "build:server": "tsc -p tsconfig-server.json && babel src/server -d build/server --no-babelrc --presets=es2015,stage-3",
-    "start:server": "NODE_ENV=production pm2 start build/server/server.js --name blog -i 2 --output /var/log/node/out.log --error /var/log/node/error.log --no-daemon",
+    "build:server":
+      "tsc -p tsconfig-server.json && babel src/server -d build/server --no-babelrc --presets=es2015,stage-3",
+    "start:server":
+      "NODE_ENV=production pm2 start build/server/server.js --name blog -i 2 --output /var/log/node/out.log --error /var/log/node/error.log --no-daemon",
     "stop:server": "pm2 stop blog",
+    "precommit": "lint-staged",
     "log": "pm2 logs"
+  },
+  "lint-staged": {
+    "*.{json,scss,css}": ["prettier --write", "git add"]
   }
 }

@@ -14,18 +14,8 @@
     "sourceMap": true,
     "strict": true,
     "target": "es5",
-    "lib": [
-      "dom",
-      "es5",
-      "es2015",
-      "es2017.object",
-      "esnext.asynciterable"
-    ]
+    "lib": ["dom", "es5", "es2015", "es2017.object", "esnext.asynciterable"]
   },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "src/server/**/*.ts"
-  ]
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/server/**/*.ts"]
 }

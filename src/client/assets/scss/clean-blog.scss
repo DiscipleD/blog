@@ -1,10 +1,10 @@
-@import "variables";
-@import "animation";
+@import 'variables';
+@import 'animation';
 
 // Global Components
 
 html,
-body{
+body {
   height: 100%;
 }
 
@@ -74,7 +74,7 @@ hr.small {
     line-height: 1.764705882em;
     vertical-align: baseline;
     opacity: 0;
-    transition: top 0.3s ease,opacity 0.3s ease;
+    transition: top 0.3s ease, opacity 0.3s ease;
   }
   &::not(:first-child) {
     padding-left: 14px;

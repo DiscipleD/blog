@@ -1,4 +1,4 @@
-@import "~@/assets/scss/variables.scss";
+@import '~@/assets/scss/variables.scss';
 
 .page-footer {
   padding: 1rem 0;
@@ -10,7 +10,7 @@
   }
 
   .social-link-item {
-    padding: .225rem;
+    padding: 0.225rem;
 
     > a {
       background-color: $gray-dark;
@@ -18,7 +18,7 @@
       display: block;
       width: 3rem;
       height: 3rem;
-      padding: .75rem;
+      padding: 0.75rem;
 
       &:hover,
       &:focus {

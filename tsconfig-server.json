@@ -14,16 +14,7 @@
     "strict": true,
     "target": "es5",
     "outDir": "./build",
-    "lib": [
-      "dom",
-      "es5",
-      "es2015",
-      "es2017.object",
-      "esnext.asynciterable"
-    ]
+    "lib": ["dom", "es5", "es2015", "es2017.object", "esnext.asynciterable"]
   },
-  "include": [
-    "src/server/**/*.ts",
-    "src/types/*"
-  ]
+  "include": ["src/server/**/*.ts", "src/types/*"]
 }

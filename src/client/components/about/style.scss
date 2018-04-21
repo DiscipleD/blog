@@ -1,42 +1,42 @@
-@import "~@/assets/scss/variables";
+@import '~@/assets/scss/variables';
 
-.about-me-block{
-  .about-me-ul{
+.about-me-block {
+  .about-me-ul {
     list-style: none;
     padding: 0;
   }
 
-  .about-me-label{
+  .about-me-label {
     font-size: 1rem;
     font-weight: 800;
     margin: 0;
     color: $gray;
   }
 
-  .about-me-p{
+  .about-me-p {
     font-weight: 800;
     font-size: 1.5rem;
     color: $gray-dark;
   }
 
-  .about-me-skill{
+  .about-me-skill {
     display: flex;
     flex-flow: column wrap;
 
-    .about-me-skill__dl{
+    .about-me-skill__dl {
       margin: 5px;
       padding: 5px;
       border: 2px solid $gray;
-      border-radius: .5rem;
+      border-radius: 0.5rem;
     }
 
-    .about-me-skill__dd{
+    .about-me-skill__dd {
       margin: 0;
       display: flex;
       justify-content: space-between;
     }
 
-    .skill-link{
+    .skill-link {
       margin: 0;
       color: $gray;
       overflow: hidden;
@@ -44,19 +44,19 @@
       white-space: nowrap;
     }
 
-    .skill-score{
+    .skill-score {
       flex: none;
     }
 
     @media only screen and (min-width: 768px) {
       max-height: 400px;
 
-      .about-me-skill__dl{
+      .about-me-skill__dl {
         width: 180px;
       }
 
-      .skill-score{
-        .skill-score__span{
+      .skill-score {
+        .skill-score__span {
           margin: -2px;
           font-size: 18px;
         }

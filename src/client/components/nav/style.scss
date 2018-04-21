@@ -1,8 +1,8 @@
 $brand-primary: #8060ff;
 $gray-dark: lighten(black, 25%);
 $gray: lighten(black, 50%);
-$white-faded: rgba(255, 255, 255, .7);
-$black-faded: rgba(0, 0, 0, .8);
+$white-faded: rgba(255, 255, 255, 0.7);
+$black-faded: rgba(0, 0, 0, 0.8);
 $gray-light: #eee;
 
 .navbar-custom {
@@ -20,26 +20,27 @@ $gray-light: #eee;
   .navbar-toggler {
     border-color: #bbb;
   }
-  .navbar-nav{
+  .navbar-nav {
     clear: both;
 
-    .nav-item{
+    .nav-item {
       float: none;
     }
 
-    .nav-item + .nav-item{
+    .nav-item + .nav-item {
       margin: 0;
     }
   }
   /* .{name}-transition vue transition setting */
   .navbar-nav.nav-expand-transition {
-    transition: all .3s ease;
+    transition: all 0.3s ease;
     overflow: hidden;
     height: 6rem;
   }
   /* .{name}-enter 定义进入的开始状态 */
   /* .{name}-leave 定义离开的结束状态 */
-  .navbar-nav.nav-expand-enter, .navbar-nav.nav-expand-leave {
+  .navbar-nav.nav-expand-enter,
+  .navbar-nav.nav-expand-leave {
     height: 0; // 展开效果
     padding: 0 1rem; // 字插入效果
     opacity: 0; // 渐入效果
@@ -50,20 +51,20 @@ $gray-light: #eee;
     font-weight: 800;
     letter-spacing: 1px;
   }
-  .nav-link.router-link-active{
-    color: rgba(0,0,0,.6);
+  .nav-link.router-link-active {
+    color: rgba(0, 0, 0, 0.6);
   }
   @media only screen and (min-width: 768px) {
     background: transparent;
     border-bottom: 1px solid transparent;
     padding: 0.75rem 1rem;
 
-    .navbar-nav{
+    .navbar-nav {
       clear: initial;
       display: flex !important;
       margin-top: 0.425rem;
 
-      .nav-item + .nav-item{
+      .nav-item + .nav-item {
         margin-left: 1rem;
       }
     }
@@ -72,7 +73,8 @@ $gray-light: #eee;
       height: inherit;
     }
 
-    .navbar-brand, .navbar-nav .nav-link {
+    .navbar-brand,
+    .navbar-nav .nav-link {
       color: white;
 
       &.router-link-active,
@@ -91,7 +93,7 @@ $gray-light: #eee;
         color: $white-faded;
       }
 
-      &::after{
+      &::after {
         content: '';
         background-color: $white-faded;
         display: block;
@@ -101,7 +103,7 @@ $gray-light: #eee;
         transition: all 0.2s ease-in-out;
       }
 
-      &:hover::after{
+      &:hover::after {
         transform: scaleX(1);
       }
     }
@@ -120,7 +122,8 @@ $gray-light: #eee;
       background-color: rgba(255, 255, 255, 0.9);
       border-bottom: 1px solid darken(white, 5%);
       transition: transform 0.3s;
-      .navbar-brand, .nav-link {
+      .navbar-brand,
+      .nav-link {
         color: $gray-dark;
 
         &.router-link-active,
@@ -129,7 +132,7 @@ $gray-light: #eee;
           color: $brand-primary;
         }
       }
-      .nav-item::after{
+      .nav-item::after {
         background-color: $brand-primary;
       }
     }

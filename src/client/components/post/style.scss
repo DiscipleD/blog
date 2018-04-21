@@ -1,13 +1,13 @@
-.post-content{
-  font-family: 'Lora', 'Times New Roman', serif, "Microsoft YaHei";
+.post-content {
+  font-family: 'Lora', 'Times New Roman', serif, 'Microsoft YaHei';
   font-size: 18px;
 
-  p{
+  p {
     line-height: 1.5;
     margin: 1rem 0;
   }
 
-  pre{
+  pre {
     padding: 1rem;
     background-color: #f5f5f5;
     border: 1px solid #ccc;
@@ -15,21 +15,21 @@
     font-size: 80%;
   }
 
-  img{
+  img {
     max-width: 92.5%; // fix img too large bug
   }
 
-  blockquote{
+  blockquote {
     border-left: 5px solid #eee;
     padding: 0.75rem 1.5rem;
     margin: 0 0 1.5rem;
 
-    p{
+    p {
       margin: 0;
     }
   }
 
-  table{
+  table {
     width: 100%;
     margin-bottom: 20px;
     border: 1px solid #dddddd;
@@ -37,7 +37,7 @@
     border-left: none;
 
     th,
-    td{
+    td {
       padding: 6px;
       border-top: 1px solid #dddddd;
       border-left: 1px solid #dddddd;
