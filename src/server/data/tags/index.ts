@@ -249,6 +249,10 @@ const TAGS_LIST: ITagBase[] = [{
 	name: 'minigame',
 	label: 'Minigame',
 	createdTime: '2018-02-25',
+}, {
+	name: 'babel',
+	label: 'Babel',
+	createdTime: '2018-08-04',
 }];
 
 export default TAGS_LIST.sort(sortFn('createdTime'));

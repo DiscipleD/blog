@@ -231,6 +231,11 @@ const POSTS_LIST: IPostBase[] = [{
 	title: 'Webpack Alias in Css',
 	createdTime: '2018-04-22',
 	tags: ['webpack'],
+}, {
+	name: 'trouble-with-babelrc',
+	title: 'babelrc 两三事',
+	createdTime: '2018-08-04',
+	tags: ['babel'],
 }];
 
 export default POSTS_LIST.sort(sortFn('createdTime'));
