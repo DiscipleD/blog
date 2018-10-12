@@ -17,7 +17,6 @@ services:
     container_name: nginx
     depends_on:
       - node
-      - letsencrypt
     volumes:
       - ./config/nginx:/etc/nginx/conf.d:ro
       - ./letsencrypt/etc/letsencrypt:/etc/letsencrypt
@@ -36,6 +35,8 @@ services:
   letsencrypt:
     image: deliverous/certbot
     container_name: certbot
+    depends_on:
+      - nginx
     volumes:
       - ./letsencrypt/etc/letsencrypt:/etc/letsencrypt
       - ./letsencrypt/lib/letsencrypt:/var/lib/letsencrypt
